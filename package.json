@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/SudoDotDog/Brontosaurus-Server/issues"
   },
-  "homepage": "https://github.com/SudoDotDog/Brontosaurus-Server#readme"
+  "homepage": "https://github.com/SudoDotDog/Brontosaurus-Server#readme",
+  "dependencies": {
+    "@brontosaurus/core": "^0.2.0"
+  }
 }
