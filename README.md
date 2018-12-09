@@ -1,2 +1,0 @@
-# Brontosaurus-Server
-:zap: Thunder
