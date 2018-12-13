@@ -32,7 +32,7 @@
     "@types/chance": "^1.0.1",
     "@types/express": "^4.16.0",
     "@types/mocha": "^5.2.5",
-    "@types/node": "^10.12.12",
+    "@types/node": "^10.12.14",
     "chai": "^4.2.0",
     "chance": "^1.0.18",
     "mocha": "^5.2.0",
