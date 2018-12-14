@@ -23,8 +23,8 @@
   "dependencies": {
     "@brontosaurus/core": "^0.2.0",
     "@sudoo/bark": "^1.2.1",
-    "@sudoo/express": "^0.1.2",
-    "@sudoo/extract": "^0.1.1",
+    "@sudoo/express": "^0.1.3",
+    "@sudoo/extract": "^0.1.2",
     "@sudoo/log": "^0.1.0",
     "body-parser": "^1.18.3"
   },

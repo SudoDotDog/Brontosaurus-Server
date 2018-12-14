@@ -23,14 +23,19 @@ export const PortalRoute: ISudooExpressRoute = {
 
             const body: SafeExtract<PortalRouteBody> = SafeExtract.create(req.body);
 
-            res.agent
-                .add('username', body.safe('username'))
-                .add('password', body.safe('password'));
-            next();
+            try {
+                res.agent
+                    .add('username', body.direct('username'))
+                    .add('password', body.direct('password'));
+            } catch (err) {
+                res.agent.fail(400, err);
+            } finally {
+                next();
+            }
         },
     ],
 
-    errorHandler: (code: number, error: Error) => {
+    onError: (code: number, error: Error) => {
 
         return {
             code: 500,
