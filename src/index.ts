@@ -7,6 +7,7 @@
 import { SudooExpress, SudooExpressApplication } from '@sudoo/express';
 import * as BodyParser from 'body-parser';
 import { PortalRoute } from './routes/portal';
+import { RegisterRoute } from './routes/register';
 
 const setting: SudooExpressApplication = SudooExpressApplication.create('Brontosaurus', '1');
 const app: SudooExpress = SudooExpress.create(setting);
@@ -16,6 +17,7 @@ app.use(BodyParser.urlencoded({
 }));
 
 app.route(PortalRoute);
+app.route(RegisterRoute);
 
 app.host(8080);
 console.log('hosting');

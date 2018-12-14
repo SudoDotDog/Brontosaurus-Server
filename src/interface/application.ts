@@ -1,6 +1,6 @@
 /**
  * @author WMXPY
- * @namespace Brontosaurus_Server_Database_Interface
+ * @namespace Brontosaurus_Server_Interface
  * @description Application
 */
 
