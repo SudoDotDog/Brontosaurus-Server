@@ -2,7 +2,7 @@
  * @author WMXPY
  * @namespace Brontosaurus_Server_Interface
  * @description Application
-*/
+ */
 
 import { ObjectID } from "bson";
 

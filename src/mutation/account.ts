@@ -2,7 +2,7 @@
  * @author WMXPY
  * @namespace Brontosaurus_Server_Mutation
  * @description Account
-*/
+ */
 
 import { ObjectID } from "bson";
 import { AccountInfo } from "../interface/account";

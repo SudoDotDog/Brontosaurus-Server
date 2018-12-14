@@ -2,7 +2,7 @@
  * @author WMXPY
  * @namespace Brontosaurus_Server_Model
  * @description Permission
-*/
+ */
 
 import { Document, model, Model, Schema } from "mongoose";
 import { IPermission } from "../interface/permission";

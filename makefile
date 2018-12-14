@@ -2,6 +2,8 @@
 build := typescript/tsconfig.build.json
 dev := typescript/tsconfig.dev.json
 
+dbPath := F:/db/
+
 # NPX functions
 ifeq ($(OS), Windows_NT)
 	tsc := .\node_modules\.bin\tsc
@@ -24,6 +26,9 @@ build:
 run: dev
 	@node dist/index.js
 
+host:
+	@mongod --dbpath $(dbPath)
+	
 tests:
 	@echo "[INFO] Testing with Mocha"
 ifeq ($(OS), Windows_NT)

@@ -2,7 +2,7 @@
  * @author WMXPY
  * @namespace Brontosaurus_Server_Model
  * @description Account
-*/
+ */
 
 import { Document, model, Model, Schema } from "mongoose";
 import { IAccount } from "../interface/account";

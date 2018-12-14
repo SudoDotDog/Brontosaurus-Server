@@ -2,7 +2,7 @@
  * @author WMXPY
  * @namespace Brontosaurus_Server_Model
  * @description Preference
-*/
+ */
 
 import { Document, model, Model, Schema } from "mongoose";
 import { IPreference } from "../interface/preference";

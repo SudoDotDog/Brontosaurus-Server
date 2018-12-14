@@ -2,7 +2,7 @@
  * @author WMXPY
  * @namespace Brontosaurus_Server_Interface
  * @description Preference
-*/
+ */
 
 export type Preferences = {
 
