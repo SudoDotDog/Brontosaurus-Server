@@ -2,30 +2,34 @@
 # yarn lockfile v1
 
 
-"@brontosaurus/core@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-0.2.0.tgz#4ea2592bc26e4eb2dc396d6ead2ed46ece231cf5"
+"@brontosaurus/core@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-0.2.1.tgz#0dd782670764c68e219175238e6ef94abcf9a695"
 
 "@sudoo/bark@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-1.2.1.tgz#622e75a36388af50539e0896563bd15163e059e6"
 
-"@sudoo/express@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-0.1.3.tgz#ec93505f18ac5634c3b6407765fc145a6e443084"
+"@sudoo/express@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-0.1.4.tgz#12e1c89ab8d723a6af454c94c4b47cb5befa5395"
   dependencies:
     "@sudoo/bark" "^1.2.1"
     body-parser "^1.18.3"
     connor "^2.0.0"
     express "^4.16.4"
 
-"@sudoo/extract@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@sudoo/extract/-/extract-0.1.2.tgz#6a61d598c3e7056c93a097372de8bc80f551d5fb"
+"@sudoo/extract@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@sudoo/extract/-/extract-0.1.3.tgz#14bbcc698dd06db2401129ae8ad328758df53798"
 
 "@sudoo/log@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@sudoo/log/-/log-0.1.0.tgz#0bfc4873b3f4fae29fcaa89b4eb20727261d9d4f"
+
+"@sudoo/tslint-config@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/tslint-config/-/tslint-config-1.0.0.tgz#535c5522220d59d850108d3429cc449731d18a2c"
 
 "@types/body-parser@*":
   version "1.17.0"
