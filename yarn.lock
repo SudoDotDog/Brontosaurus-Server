@@ -19,6 +19,10 @@
     connor "^2.0.0"
     express "^4.16.4"
 
+"@sudoo/extract@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@sudoo/extract/-/extract-0.1.1.tgz#4e0a3673ea639bf25b2f5906952363f69acef6df"
+
 "@sudoo/log@^0.1.0":
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@sudoo/log/-/log-0.1.0.tgz#0bfc4873b3f4fae29fcaa89b4eb20727261d9d4f"
