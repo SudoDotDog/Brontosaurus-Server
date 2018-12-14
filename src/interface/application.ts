@@ -1,0 +1,21 @@
+/**
+ * @author WMXPY
+ * @namespace Brontosaurus_Server_Database_Interface
+ * @description Application
+*/
+
+import { ObjectID } from "bson";
+
+export interface IApplicationConfig {
+
+    name: string;
+    key: string;
+    permissions: ObjectID[];
+}
+
+export interface IApplication extends IApplicationConfig {
+
+    active: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+}
