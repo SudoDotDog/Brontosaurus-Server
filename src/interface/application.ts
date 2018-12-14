@@ -8,8 +8,9 @@ import { ObjectID } from "bson";
 
 export interface IApplicationConfig {
 
-    name: string;
     key: string;
+    name: string;
+    token: string;
     permissions: ObjectID[];
 }
 

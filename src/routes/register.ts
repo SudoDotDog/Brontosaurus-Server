@@ -1,13 +1,13 @@
 /**
  * @author WMXPY
  * @namespace Brontosaurus_Server_Routes
- * @description Portal
+ * @description Register
 */
 
 import { ISudooExpressRoute, ROUTE_MODE, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { SafeExtract } from '@sudoo/extract';
 
-export type PortalRouteBody = {
+export type RegisterRouteBody = {
 
     username: string;
     password: string;
@@ -15,13 +15,13 @@ export type PortalRouteBody = {
 
 export const PortalRoute: ISudooExpressRoute = {
 
-    path: '/portal',
+    path: '/register',
     mode: ROUTE_MODE.POST,
 
     groups: [
         (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction) => {
 
-            const body: SafeExtract<PortalRouteBody> = SafeExtract.create(req.body);
+            const body: SafeExtract<RegisterRouteBody> = SafeExtract.create(req.body);
 
             try {
                 res.agent

@@ -14,14 +14,18 @@ const ApplicationSchema: Schema = new Schema({
         required: true,
         default: true,
     },
-    name: {
-        type: String,
-        required: true,
-    },
     key: {
         type: String,
         required: true,
         index: true,
+    },
+    name: {
+        type: String,
+        required: true,
+    },
+    token: {
+        type: String,
+        required: true,
     },
     permissions: {
         type: [Schema.Types.ObjectId],
