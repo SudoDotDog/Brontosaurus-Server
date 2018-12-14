@@ -5,20 +5,27 @@
 */
 
 import { ISudooExpressRoute, ROUTE_MODE, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
+import { SafeExtract } from '@sudoo/extract';
 
 export type PortalRouteBody = {
 
+    username: string;
+    password: string;
 };
 
 export const PortalRoute: ISudooExpressRoute = {
 
     path: '/portal',
-    mode: ROUTE_MODE.GET,
+    mode: ROUTE_MODE.POST,
 
     groups: [
         (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction) => {
 
-            res.agent.add('hello', 'world');
+            const body: SafeExtract<PortalRouteBody> = SafeExtract.create(req.body);
+
+            res.agent
+                .add('username', body.safe('username'))
+                .add('password', body.safe('password'));
             next();
         },
     ],

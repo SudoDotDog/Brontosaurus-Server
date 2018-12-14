@@ -11,6 +11,10 @@ import { PortalRoute } from './routes/portal';
 const setting: SudooExpressApplication = SudooExpressApplication.create('Brontosaurus', '1');
 const app: SudooExpress = SudooExpress.create(setting);
 
+app.use(BodyParser.urlencoded({
+    extended: true,
+}));
+
 app.route(PortalRoute);
 
 app.host(8080);
