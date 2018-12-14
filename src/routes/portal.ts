@@ -6,6 +6,10 @@
 
 import { ISudooExpressRoute, ROUTE_MODE, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 
+export type PortalRouteBody = {
+
+};
+
 export const PortalRoute: ISudooExpressRoute = {
 
     path: '/portal',
