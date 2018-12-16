@@ -24,10 +24,7 @@ const AccountSchema: Schema = new Schema({
         required: true,
     },
     infos: {
-        type: [{
-            name: String,
-            value: String,
-        }],
+        type: [String],
         required: true,
         default: [],
     },

@@ -6,17 +6,11 @@
 
 import { ObjectID } from "bson";
 
-export type AccountInfo = {
-
-    name: string;
-    value: string;
-};
-
 export interface IAccountConfig {
 
     username: string;
     password: string;
-    infos: AccountInfo[];
+    infos: string[];
     permissions: ObjectID[];
 }
 

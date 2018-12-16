@@ -7,7 +7,6 @@
 import { _Map } from '@sudoo/bark';
 import { ISudooExpressRoute, ROUTE_MODE, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { SafeExtract } from '@sudoo/extract';
-import { AccountInfo } from "../interface/account";
 import { IAccountModel } from "../model/account";
 import { createAccount } from "../mutation/account";
 
@@ -15,9 +14,7 @@ export type RegisterRouteBody = {
 
     username: string;
     password: string;
-    infos: {
-        [key: string]: string;
-    };
+    infos: string[];
 };
 
 export const RegisterRoute: ISudooExpressRoute = {
@@ -36,12 +33,7 @@ export const RegisterRoute: ISudooExpressRoute = {
                 const password = body.direct('password');
                 const infos = JSON.parse(body.direct('infos') as any as string);
 
-                const parsed: AccountInfo[] = _Map.keys(infos).map((key: string) => ({
-                    name: key,
-                    value: infos[key],
-                }));
-
-                const account: IAccountModel = createAccount(username, password, parsed);
+                const account: IAccountModel = createAccount(username, password, infos);
 
                 await account.save();
 

@@ -5,10 +5,9 @@
  */
 
 import { ObjectID } from "bson";
-import { AccountInfo } from "../interface/account";
 import { AccountModel, IAccountModel } from "../model/account";
 
-export const createAccount = (username: string, password: string, infos: AccountInfo[], permissions: ObjectID[] = []): IAccountModel => {
+export const createAccount = (username: string, password: string, infos: string[], permissions: ObjectID[] = []): IAccountModel => {
 
     return new AccountModel({
 
