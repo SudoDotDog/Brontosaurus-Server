@@ -6,6 +6,8 @@
 
 import { ISudooExpressRoute, ROUTE_MODE, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { SafeExtract } from '@sudoo/extract';
+import { IApplicationModel } from "../model/application";
+import { getApplicationByKey } from "../mutation/application";
 
 export type RetrieveRouteBody = {
 
@@ -20,11 +22,12 @@ export const RetrieveRoute: ISudooExpressRoute = {
     mode: ROUTE_MODE.POST,
 
     groups: [
-        (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction) => {
+        async (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction) => {
 
             const body: SafeExtract<RetrieveRouteBody> = SafeExtract.create(req.body);
 
             try {
+                const application: IApplicationModel = await getApplicationByKey(body.direct('applicationKey'));
                 res.agent
                     .add('username', body.direct('username'))
                     .add('password', body.direct('password'));

@@ -6,6 +6,7 @@
 
 export interface IApplicationConfig {
 
+    avatar: string;
     key: string;
     name: string;
     token: string;

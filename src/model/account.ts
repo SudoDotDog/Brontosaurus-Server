@@ -23,6 +23,7 @@ const AccountSchema: Schema = new Schema({
         type: String,
         required: true,
     },
+
     infos: {
         type: [String],
         required: true,
@@ -32,6 +33,10 @@ const AccountSchema: Schema = new Schema({
         type: [Schema.Types.ObjectId],
         required: true,
         default: [],
+    },
+
+    avatar: {
+        type: String,
     },
 }, {
         timestamps: {

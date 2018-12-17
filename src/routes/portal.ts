@@ -19,7 +19,7 @@ export const PortalRoute: ISudooExpressRoute = {
     mode: ROUTE_MODE.POST,
 
     groups: [
-        (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction) => {
+        async (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction) => {
 
             const body: SafeExtract<PortalRouteBody> = SafeExtract.create(req.body);
 

@@ -10,6 +10,7 @@ export interface IAccountConfig {
 
     username: string;
     password: string;
+
     infos: string[];
     groups: ObjectID[];
 }
@@ -19,4 +20,6 @@ export interface IAccount extends IAccountConfig {
     active: boolean;
     createdAt: Date;
     updatedAt: Date;
+
+    avatar?: string;
 }

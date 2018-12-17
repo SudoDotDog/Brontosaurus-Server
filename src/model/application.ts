@@ -14,6 +14,10 @@ const ApplicationSchema: Schema = new Schema({
         required: true,
         default: true,
     },
+    avatar: {
+        type: String,
+        required: true,
+    },
     key: {
         type: String,
         required: true,
