@@ -7,13 +7,13 @@
 import { ObjectID } from "bson";
 import { AccountModel, IAccountModel } from "../model/account";
 
-export const createAccount = (username: string, password: string, infos: string[], permissions: ObjectID[] = []): IAccountModel => {
+export const createAccount = (username: string, password: string, infos: string[], groups: ObjectID[] = []): IAccountModel => {
 
     return new AccountModel({
 
         username,
         password,
         infos,
-        permissions,
+        groups,
     });
 };

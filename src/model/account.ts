@@ -28,7 +28,7 @@ const AccountSchema: Schema = new Schema({
         required: true,
         default: [],
     },
-    permissions: {
+    groups: {
         type: [Schema.Types.ObjectId],
         required: true,
         default: [],

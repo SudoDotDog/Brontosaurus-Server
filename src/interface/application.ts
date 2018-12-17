@@ -4,14 +4,11 @@
  * @description Application
  */
 
-import { ObjectID } from "bson";
-
 export interface IApplicationConfig {
 
     key: string;
     name: string;
     token: string;
-    permissions: ObjectID[];
 }
 
 export interface IApplication extends IApplicationConfig {

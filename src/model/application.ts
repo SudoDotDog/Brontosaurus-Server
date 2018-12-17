@@ -27,11 +27,6 @@ const ApplicationSchema: Schema = new Schema({
         type: String,
         required: true,
     },
-    permissions: {
-        type: [Schema.Types.ObjectId],
-        required: true,
-        default: [],
-    },
 }, {
         timestamps: {
             createdAt: true,

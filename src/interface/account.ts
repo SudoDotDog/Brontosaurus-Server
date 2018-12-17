@@ -11,7 +11,7 @@ export interface IAccountConfig {
     username: string;
     password: string;
     infos: string[];
-    permissions: ObjectID[];
+    groups: ObjectID[];
 }
 
 export interface IAccount extends IAccountConfig {
