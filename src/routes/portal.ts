@@ -4,8 +4,9 @@
  * @description Portal
  */
 
-import { ISudooExpressRoute, ROUTE_MODE, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
+import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { SafeExtract } from '@sudoo/extract';
+import { BrontosaurusRoute } from "./basic";
 
 export type PortalRouteBody = {
 
@@ -13,33 +14,27 @@ export type PortalRouteBody = {
     password: string;
 };
 
-export const PortalRoute: ISudooExpressRoute = {
+export class PortalRoute extends BrontosaurusRoute {
 
-    path: '/portal',
-    mode: ROUTE_MODE.POST,
+    public readonly path: string = '/portal';
+    public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
-    groups: [
-        async (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction) => {
+    public readonly groups: SudooExpressHandler[] = [
+        this._portalHandler,
+    ];
 
-            const body: SafeExtract<PortalRouteBody> = SafeExtract.create(req.body);
+    private async _portalHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
-            try {
-                res.agent
-                    .add('username', body.direct('username'))
-                    .add('password', body.direct('password'));
-            } catch (err) {
-                res.agent.fail(400, err);
-            } finally {
-                next();
-            }
-        },
-    ],
+        const body: SafeExtract<PortalRouteBody> = SafeExtract.create(req.body);
 
-    onError: (code: number, error: Error) => {
-
-        return {
-            code: 500,
-            message: 'hello',
-        };
-    },
-};
+        try {
+            res.agent
+                .add('username', body.direct('username'))
+                .add('password', body.direct('password'));
+        } catch (err) {
+            res.agent.fail(400, err);
+        } finally {
+            next();
+        }
+    }
+}

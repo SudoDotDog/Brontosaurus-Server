@@ -7,7 +7,7 @@
 import { ObjectID } from "bson";
 import { AccountModel, IAccountModel } from "../model/account";
 
-export const createAccount = (username: string, password: string, infos: string[], groups: ObjectID[] = []): IAccountModel => {
+export const createUnsavedAccount = (username: string, password: string, infos: string[], groups: ObjectID[] = []): IAccountModel => {
 
     return new AccountModel({
 
@@ -15,5 +15,13 @@ export const createAccount = (username: string, password: string, infos: string[
         password,
         infos,
         groups,
+    });
+};
+
+export const getAccountByUsername = async (username: string): Promise<IAccountModel> => {
+
+    return await AccountModel.findOne({
+
+        username,
     });
 };

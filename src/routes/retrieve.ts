@@ -4,10 +4,13 @@
  * @description Retrieve
  */
 
-import { ISudooExpressRoute, ROUTE_MODE, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
+import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { SafeExtract } from '@sudoo/extract';
+import { getAccountByUsername } from "../controller/account";
+import { getApplicationByKey } from "../controller/application";
+import { IAccountModel } from "../model/account";
 import { IApplicationModel } from "../model/application";
-import { getApplicationByKey } from "../mutation/application";
+import { BrontosaurusRoute } from "./basic";
 
 export type RetrieveRouteBody = {
 
@@ -16,34 +19,31 @@ export type RetrieveRouteBody = {
     applicationKey: string;
 };
 
-export const RetrieveRoute: ISudooExpressRoute = {
+export class RetrieveRoute extends BrontosaurusRoute {
 
-    path: '/retrieve',
-    mode: ROUTE_MODE.POST,
+    public readonly path: string = '/portal';
+    public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
-    groups: [
-        async (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction) => {
+    public readonly groups: SudooExpressHandler[] = [
+        this._retrieveHandler,
+    ];
 
-            const body: SafeExtract<RetrieveRouteBody> = SafeExtract.create(req.body);
+    private async _retrieveHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
-            try {
-                const application: IApplicationModel = await getApplicationByKey(body.direct('applicationKey'));
-                res.agent
-                    .add('username', body.direct('username'))
-                    .add('password', body.direct('password'));
-            } catch (err) {
-                res.agent.fail(400, err);
-            } finally {
-                next();
-            }
-        },
-    ],
+        const body: SafeExtract<RetrieveRouteBody> = SafeExtract.create(req.body);
 
-    onError: (code: number, error: Error) => {
+        try {
 
-        return {
-            code: 500,
-            message: 'hello',
-        };
-    },
-};
+            const account: IAccountModel = await getAccountByUsername(body.direct('username'));
+
+            const application: IApplicationModel = await getApplicationByKey(body.direct('applicationKey'));
+            res.agent
+                .add('username', body.direct('username'))
+                .add('password', body.direct('password'));
+        } catch (err) {
+            res.agent.fail(400, err);
+        } finally {
+            next();
+        }
+    }
+}
