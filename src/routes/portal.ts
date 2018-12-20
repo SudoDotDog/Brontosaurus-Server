@@ -5,7 +5,7 @@
  */
 
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
-import { SafeExtract } from '@sudoo/extract';
+import { Safe, SafeExtract } from '@sudoo/extract';
 import { BrontosaurusRoute } from "./basic";
 
 export type PortalRouteBody = {
@@ -25,7 +25,7 @@ export class PortalRoute extends BrontosaurusRoute {
 
     private async _portalHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
-        const body: SafeExtract<PortalRouteBody> = SafeExtract.create(req.body);
+        const body: SafeExtract<PortalRouteBody> = Safe.extract(req.body as PortalRouteBody);
 
         try {
             res.agent

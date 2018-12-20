@@ -11,11 +11,14 @@ import { PortalRoute } from './routes/portal';
 import { RegisterRoute } from './routes/register';
 import { RetrieveRoute } from './routes/retrieve';
 import { BrontosaurusConfig, readConfigSync } from './util/conf';
+import { registerConnor } from './util/error';
 
 const setting: SudooExpressApplication = SudooExpressApplication.create('Brontosaurus', '1');
 const app: SudooExpress = SudooExpress.create(setting);
 
 const config: BrontosaurusConfig = readConfigSync();
+
+registerConnor();
 
 Mongoose.set('useCreateIndex', true);
 

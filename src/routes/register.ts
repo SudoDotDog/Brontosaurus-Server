@@ -5,7 +5,8 @@
  */
 
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
-import { SafeExtract } from '@sudoo/extract';
+import { Safe } from '@sudoo/extract';
+import { SafeExtract } from "@sudoo/extract/dist/extract";
 import { createUnsavedAccount } from "../controller/account";
 import { IAccountModel } from "../model/account";
 import { BrontosaurusRoute } from "./basic";
@@ -28,7 +29,7 @@ export class RegisterRoute extends BrontosaurusRoute {
 
     private async _registerHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
-        const body: SafeExtract<RegisterRouteBody> = SafeExtract.create(req.body);
+        const body: SafeExtract<RegisterRouteBody> = Safe.extract(req.body as RegisterRouteBody);
 
         try {
 
