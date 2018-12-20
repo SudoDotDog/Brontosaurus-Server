@@ -5,13 +5,15 @@
  */
 
 import { ApplicationModel, IApplicationModel } from "../model/application";
+import { SafeValue, Safe } from "@sudoo/extract";
 
 export const getApplicationByKey = async (key: string): Promise<IApplicationModel> => {
 
-    const application: IApplicationModel = await ApplicationModel.findOne({
+    const safeApplication: SafeValue<IApplicationModel> = Safe.value(
+        await ApplicationModel.findOne({
+            key,
+        })
+    );
 
-        key,
-    });
-
-    return application;
+    return safeApplication.safe();
 };

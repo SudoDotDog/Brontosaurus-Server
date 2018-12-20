@@ -4,6 +4,7 @@
  * @description Account
  */
 
+import { Safe, SafeValue } from "@sudoo/extract";
 import { ObjectID } from "bson";
 import { AccountModel, IAccountModel } from "../model/account";
 
@@ -20,8 +21,11 @@ export const createUnsavedAccount = (username: string, password: string, infos: 
 
 export const getAccountByUsername = async (username: string): Promise<IAccountModel> => {
 
-    return await AccountModel.findOne({
+    const safeAccount: SafeValue<IAccountModel> = Safe.value(
+        await AccountModel.findOne({
+            username,
+        })
+    );
 
-        username,
-    });
+    return safeAccount.safe();
 };
