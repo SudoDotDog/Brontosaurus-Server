@@ -24,7 +24,7 @@ export const getAccountByUsername = async (username: string): Promise<IAccountMo
     const safeAccount: SafeValue<IAccountModel> = Safe.value(
         await AccountModel.findOne({
             username,
-        })
+        }),
     );
 
     return safeAccount.safe();

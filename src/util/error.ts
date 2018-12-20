@@ -4,12 +4,12 @@
  * @description Error
  */
 
-import Connor, {} from 'connor';
+import Connor, { } from 'connor';
 
 export enum ERROR_CODE {
-  
+
     PASSWORD_DOES_NOT_MATCH = 4001,
-} 
+}
 
 export const MODULE_NAME = 'Brontosaurus-Server';
 export const ERROR_LIST = {
