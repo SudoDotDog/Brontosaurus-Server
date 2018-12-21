@@ -7,6 +7,7 @@
 import { SudooExpress, SudooExpressApplication } from '@sudoo/express';
 import * as BodyParser from 'body-parser';
 import * as Mongoose from "mongoose";
+import { AccountValidateRoute } from './routes/account/validate';
 import { CreateApplicationRoute } from './routes/application/create';
 import { PortalRoute } from './routes/portal';
 import { RegisterRoute } from './routes/register';
@@ -40,6 +41,7 @@ app.route(new RegisterRoute());
 app.route(new RetrieveRoute());
 
 app.route(new CreateApplicationRoute());
+app.route(new AccountValidateRoute());
 
 app.host(8080);
 console.log('hosting');

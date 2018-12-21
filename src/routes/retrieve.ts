@@ -27,7 +27,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
-        this._retrieveHandler,
+        this._retrieveHandler.bind(this),
     ];
 
     private async _retrieveHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
@@ -46,7 +46,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
             const application: IApplicationModel = await getApplicationByKey(body.direct('applicationKey'));
             const sign: BrontosaurusSign = BrontosaurusSign.create({}, application.token);
 
-            const token: string = sign.token();
+            const token: string = sign.token(Date.now() + 10000000);
 
             res.agent.add('token', token);
         } catch (err) {
