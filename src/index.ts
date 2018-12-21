@@ -7,6 +7,7 @@
 import { SudooExpress, SudooExpressApplication } from '@sudoo/express';
 import * as BodyParser from 'body-parser';
 import * as Mongoose from "mongoose";
+import { CreateApplicationRoute } from './routes/application/create';
 import { PortalRoute } from './routes/portal';
 import { RegisterRoute } from './routes/register';
 import { RetrieveRoute } from './routes/retrieve';
@@ -37,6 +38,8 @@ app.use(BodyParser.urlencoded({
 app.route(new PortalRoute());
 app.route(new RegisterRoute());
 app.route(new RetrieveRoute());
+
+app.route(new CreateApplicationRoute());
 
 app.host(8080);
 console.log('hosting');

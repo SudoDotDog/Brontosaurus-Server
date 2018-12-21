@@ -16,7 +16,7 @@ const ApplicationSchema: Schema = new Schema({
     },
     avatar: {
         type: String,
-        required: true,
+        default: null,
     },
     key: {
         type: String,
@@ -26,6 +26,7 @@ const ApplicationSchema: Schema = new Schema({
     name: {
         type: String,
         required: true,
+        index: true,
     },
     token: {
         type: String,

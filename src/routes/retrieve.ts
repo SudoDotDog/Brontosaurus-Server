@@ -4,6 +4,7 @@
  * @description Retrieve
  */
 
+import { BrontosaurusSign } from '@brontosaurus/core';
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { getAccountByUsername } from "../controller/account";
@@ -22,7 +23,7 @@ export type RetrieveRouteBody = {
 
 export class RetrieveRoute extends BrontosaurusRoute {
 
-    public readonly path: string = '/portal';
+    public readonly path: string = '/retrieve';
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
@@ -43,15 +44,17 @@ export class RetrieveRoute extends BrontosaurusRoute {
             }
 
             const application: IApplicationModel = await getApplicationByKey(body.direct('applicationKey'));
+            const sign: BrontosaurusSign = BrontosaurusSign.create({}, application.token);
 
+            const token: string = sign.token();
 
-
-            res.agent
-                .add('username', body.direct('username'))
-                .add('password', body.direct('password'));
+            res.agent.add('token', token);
         } catch (err) {
+
+            console.log(err);
             res.agent.fail(400, err);
         } finally {
+
             next();
         }
     }
