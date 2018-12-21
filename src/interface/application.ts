@@ -4,12 +4,18 @@
  * @description Application
  */
 
+import { ObjectID } from "bson";
+
 export interface IApplicationConfig {
 
     avatar: string;
     key: string;
     name: string;
+
+    expire: number;
     token: string;
+
+    groups: ObjectID[];
 }
 
 export interface IApplication extends IApplicationConfig {

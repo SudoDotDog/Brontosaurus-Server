@@ -36,10 +36,14 @@ export class AccountValidateRoute extends BrontosaurusRoute {
             const application: IApplicationModel = await getApplicationByKey(body.direct('applicationKey'));
             const token: BrontosaurusToken = BrontosaurusToken.withSecret(application.token);
 
-            if (token.validate(body.direct('token'))) {
-                res.agent.add('validate', true);
+            if (token.clock(body.direct('token'), application.expire)) {
+                if (token.check(body.direct('token'))) {
+                    res.agent.add('validate', true);
+                } else {
+                    res.agent.fail(400, this._error(ERROR_CODE.TOKEN_INVALID));
+                }
             } else {
-                res.agent.fail(400, this._error(ERROR_CODE.TOKEN_INVALID));
+                res.agent.fail(400, this._error(ERROR_CODE.TOKEN_EXPIRED));
             }
         } catch (err) {
             res.agent.fail(400, err);

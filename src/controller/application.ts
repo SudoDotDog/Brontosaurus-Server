@@ -9,13 +9,17 @@ import Connor from "connor";
 import { ApplicationModel, IApplicationModel } from "../model/application";
 import { ERROR_CODE, MODULE_NAME } from "../util/error";
 
-export const createUnsavedApplication = (name: string, key: string, token: string): IApplicationModel => {
+export const createUnsavedApplication = (name: string, key: string, expire: number, token: string): IApplicationModel => {
 
     return new ApplicationModel({
 
         key,
         name,
+
+        expire,
         token,
+
+        groups: [],
     });
 };
 

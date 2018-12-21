@@ -10,6 +10,7 @@ export enum ERROR_CODE {
 
     PASSWORD_DOES_NOT_MATCH = 4001,
     TOKEN_INVALID = 4106,
+    TOKEN_EXPIRED = 4107,
 
     APPLICATION_NOT_FOUND = 6200,
 }
@@ -19,6 +20,7 @@ export const ERROR_LIST = {
 
     [ERROR_CODE.PASSWORD_DOES_NOT_MATCH]: 'Username and password not match',
     [ERROR_CODE.TOKEN_INVALID]: 'Token invalid',
+    [ERROR_CODE.TOKEN_EXPIRED]: 'Token expired',
 
     [ERROR_CODE.APPLICATION_NOT_FOUND]: 'Application: {} not found',
 };

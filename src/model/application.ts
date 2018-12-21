@@ -18,6 +18,15 @@ const ApplicationSchema: Schema = new Schema({
         type: String,
         default: null,
     },
+    expire: {
+        type: Number,
+        required: true,
+    },
+    groups: {
+        type: [Schema.Types.ObjectId],
+        required: true,
+        default: [],
+    },
     key: {
         type: String,
         required: true,
