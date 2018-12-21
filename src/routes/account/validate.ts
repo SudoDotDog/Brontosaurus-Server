@@ -42,7 +42,6 @@ export class AccountValidateRoute extends BrontosaurusRoute {
                 res.agent.fail(400, this._error(ERROR_CODE.TOKEN_INVALID));
             }
         } catch (err) {
-            console.log(err);
             res.agent.fail(400, err);
         } finally {
             next();

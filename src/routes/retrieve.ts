@@ -50,11 +50,8 @@ export class RetrieveRoute extends BrontosaurusRoute {
 
             res.agent.add('token', token);
         } catch (err) {
-
-            console.log(err);
             res.agent.fail(400, err);
         } finally {
-
             next();
         }
     }
