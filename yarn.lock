@@ -10,9 +10,9 @@
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-1.2.1.tgz#622e75a36388af50539e0896563bd15163e059e6"
 
-"@sudoo/express@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-0.1.4.tgz#12e1c89ab8d723a6af454c94c4b47cb5befa5395"
+"@sudoo/express@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-1.0.0.tgz#6fe2217e67b79bc095372dbfe5d25676b7d583b9"
   dependencies:
     "@sudoo/bark" "^1.2.1"
     body-parser "^1.18.3"
@@ -23,13 +23,13 @@
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@sudoo/extract/-/extract-1.1.2.tgz#7c7d142285d21fce0550e999397e045ca0c224f5"
 
-"@sudoo/log@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/log/-/log-0.1.0.tgz#0bfc4873b3f4fae29fcaa89b4eb20727261d9d4f"
-
-"@sudoo/tslint-config@^1.0.0":
+"@sudoo/log@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/tslint-config/-/tslint-config-1.0.0.tgz#535c5522220d59d850108d3429cc449731d18a2c"
+  resolved "https://registry.yarnpkg.com/@sudoo/log/-/log-1.0.0.tgz#10ef671d33606633f76a3c540d62851ba800057f"
+
+"@sudoo/tslint-config@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@sudoo/tslint-config/-/tslint-config-1.0.1.tgz#027c46d40048f91b0886cfa77eefcacac9752164"
 
 "@types/body-parser@*":
   version "1.17.0"

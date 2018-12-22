@@ -23,15 +23,15 @@
   "dependencies": {
     "@brontosaurus/core": "^1.0.0",
     "@sudoo/bark": "^1.2.1",
-    "@sudoo/express": "^0.1.4",
+    "@sudoo/express": "^1.0.0",
     "@sudoo/extract": "^1.1.2",
-    "@sudoo/log": "^0.1.0",
+    "@sudoo/log": "^1.0.0",
     "body-parser": "^1.18.3",
     "connor": "^2.0.0",
     "mongoose": "^5.4.0"
   },
   "devDependencies": {
-    "@sudoo/tslint-config": "^1.0.0",
+    "@sudoo/tslint-config": "^1.0.1",
     "@types/chai": "^4.1.7",
     "@types/chance": "^1.0.1",
     "@types/express": "^4.16.0",
