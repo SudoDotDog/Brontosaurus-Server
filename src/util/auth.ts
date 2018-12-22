@@ -23,3 +23,25 @@ export const Throwable_ValidateToken = (secret: string, expire: number, tokenStr
 
     return true;
 };
+
+export const parseBearerAuthorization = (auth: string | undefined): string | null => {
+
+    if (!auth || auth.length <= 7) {
+        return null;
+    }
+
+    const splited: string[] = auth.split(' ');
+    if (splited.length !== 2) {
+        return null;
+    }
+
+    const type: string = splited[0];
+
+    if (type.toLowerCase() !== 'bearer') {
+        return null;
+    }
+
+    const value: string = splited[1];
+    return value;
+};
+

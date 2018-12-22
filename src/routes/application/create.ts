@@ -24,10 +24,10 @@ export class CreateApplicationRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
-        this._portalHandler.bind(this),
+        this._applicationCreateHandler.bind(this),
     ];
 
-    private async _portalHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
+    private async _applicationCreateHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
         const body: SafeExtract<CreateApplicationRouteBody> = Safe.extract(req.body as CreateApplicationRouteBody);
 
