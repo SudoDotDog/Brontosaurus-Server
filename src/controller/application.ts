@@ -9,7 +9,7 @@ import Connor from "connor";
 import { ApplicationModel, IApplicationModel } from "../model/application";
 import { ERROR_CODE, MODULE_NAME } from "../util/error";
 
-export const createUnsavedApplication = (name: string, key: string, expire: number, token: string): IApplicationModel => {
+export const createUnsavedApplication = (name: string, key: string, expire: number, secret: string): IApplicationModel => {
 
     return new ApplicationModel({
 
@@ -17,7 +17,7 @@ export const createUnsavedApplication = (name: string, key: string, expire: numb
         name,
 
         expire,
-        token,
+        secret,
 
         groups: [],
     });

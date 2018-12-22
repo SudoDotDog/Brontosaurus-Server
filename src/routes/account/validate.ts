@@ -4,12 +4,11 @@
  * @description Validate
  */
 
-import { BrontosaurusToken } from "@brontosaurus/core";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { getApplicationByKey } from "../../controller/application";
 import { IApplicationModel } from "../../model/application";
-import { ERROR_CODE } from "../../util/error";
+import { Throwable_ValidateToken } from "../../util/auth";
 import { BrontosaurusRoute } from "../basic";
 
 export type AccountValidateRouteBody = {
@@ -34,17 +33,9 @@ export class AccountValidateRoute extends BrontosaurusRoute {
         try {
 
             const application: IApplicationModel = await getApplicationByKey(body.direct('applicationKey'));
-            const token: BrontosaurusToken = BrontosaurusToken.withSecret(application.token);
+            Throwable_ValidateToken(application.secret, application.expire, body.direct('token'));
 
-            if (token.clock(body.direct('token'), application.expire)) {
-                if (token.check(body.direct('token'))) {
-                    res.agent.add('validate', true);
-                } else {
-                    res.agent.fail(400, this._error(ERROR_CODE.TOKEN_INVALID));
-                }
-            } else {
-                res.agent.fail(400, this._error(ERROR_CODE.TOKEN_EXPIRED));
-            }
+            res.agent.add('validate', true);
         } catch (err) {
             res.agent.fail(400, err);
         } finally {

@@ -37,7 +37,7 @@ const ApplicationSchema: Schema = new Schema({
         required: true,
         index: true,
     },
-    token: {
+    secret: {
         type: String,
         required: true,
     },

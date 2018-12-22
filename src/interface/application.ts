@@ -13,7 +13,7 @@ export interface IApplicationConfig {
     name: string;
 
     expire: number;
-    token: string;
+    secret: string;
 
     groups: ObjectID[];
 }
