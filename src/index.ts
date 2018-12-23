@@ -7,11 +7,11 @@
 import { SudooExpress, SudooExpressApplication } from '@sudoo/express';
 import * as BodyParser from 'body-parser';
 import * as Mongoose from "mongoose";
+import { RegisterRoute } from './red/account/register';
+import { CreateApplicationRoute } from './red/application/create';
+import { RetrieveRoute } from './routes/account/retrieve';
 import { AccountValidateRoute } from './routes/account/validate';
-import { CreateApplicationRoute } from './routes/application/create';
-import { PortalRoute } from './routes/portal';
-import { RegisterRoute } from './routes/register';
-import { RetrieveRoute } from './routes/retrieve';
+import { PortalRoute } from './routes/static/portal';
 import { BrontosaurusConfig, readConfigSync } from './util/conf';
 import { registerConnor } from './util/error';
 
@@ -37,6 +37,7 @@ app.use(BodyParser.urlencoded({
 }));
 
 app.route(new PortalRoute());
+
 app.route(new RegisterRoute());
 app.route(new RetrieveRoute());
 

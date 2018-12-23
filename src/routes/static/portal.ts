@@ -6,7 +6,7 @@
 
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
-import { BrontosaurusRoute } from "./basic";
+import { BrontosaurusRoute } from "../basic";
 
 export type PortalRouteBody = {
 

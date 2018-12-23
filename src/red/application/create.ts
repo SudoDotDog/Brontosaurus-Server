@@ -8,7 +8,7 @@ import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpress
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { createUnsavedApplication } from "../../controller/application";
 import { IApplicationModel } from "../../model/application";
-import { BrontosaurusRoute } from "../basic";
+import { BrontosaurusRoute } from "../../routes/basic";
 
 export type CreateApplicationRouteBody = {
 

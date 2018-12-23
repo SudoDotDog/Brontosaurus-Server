@@ -7,9 +7,9 @@
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe } from '@sudoo/extract';
 import { SafeExtract } from "@sudoo/extract/dist/extract";
-import { createUnsavedAccount } from "../controller/account";
-import { IAccountModel } from "../model/account";
-import { BrontosaurusRoute } from "./basic";
+import { createUnsavedAccount } from "../../controller/account";
+import { IAccountModel } from "../../model/account";
+import { BrontosaurusRoute } from "../../routes/basic";
 
 export type RegisterRouteBody = {
 

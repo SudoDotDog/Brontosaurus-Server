@@ -36,6 +36,7 @@ const log = SudooLog.create(LOG_LEVEL.DEBUG);
 
         if (isPrepared) {
 
+            log.info('already prepared');
             return;
         }
 
@@ -61,12 +62,13 @@ const log = SudooLog.create(LOG_LEVEL.DEBUG);
 
         await setSinglePreference('prepared', true);
 
-        log.info('complete');
+        log.debug('set preference');
     } catch (err) {
 
         log.error(err);
     } finally {
 
-        db.close();
+        await db.close();
+        log.info('complete');
     }
 })();
