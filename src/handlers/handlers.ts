@@ -65,7 +65,7 @@ export const createGroupVerifyHandler = (groups: string[], error: ErrorCreationF
 
             const tokenBody: IBrontosaurusBody = Throwable_GetBody(token.safe());
 
-            const account: IAccountModel = await getAccountByUsername(Safe.value(tokenBody.username).safe());
+            const account: IAccountModel = Safe.value(await getAccountByUsername(Safe.value(tokenBody.username).safe())).safe();
             const accountGroups: string[] = await Throwable_MapGroups(account.groups);
 
             if (!compareGroups(accountGroups, groups)) {
