@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@brontosaurus/core@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-1.0.0.tgz#b4e715593d49cf8bff0de0b816591a4a13e4efe6"
+"@brontosaurus/core@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-1.2.0.tgz#d68b6cfb0b28da43946285cc428fbabf5cfe3184"
 
 "@sudoo/bark@^1.2.1":
   version "1.2.1"

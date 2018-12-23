@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/SudoDotDog/Brontosaurus-Server#readme",
   "dependencies": {
-    "@brontosaurus/core": "^1.0.0",
+    "@brontosaurus/core": "^1.2.0",
     "@sudoo/bark": "^1.2.1",
     "@sudoo/express": "^1.1.0",
     "@sudoo/extract": "^1.1.2",
