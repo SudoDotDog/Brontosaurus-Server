@@ -6,22 +6,26 @@
 
 import { IBrontosaurusBody } from "@brontosaurus/core";
 import { SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
-import { Safe, SafeExtract, SafeValue } from "@sudoo/extract";
+import { Safe, SafeValue } from "@sudoo/extract";
 import { ErrorCreationFunction } from "connor";
 import { getAccountByUsername } from "../controller/account";
 import { getApplicationByKey } from "../controller/application";
+import { INTERNAL_APPLICATION } from "../interface/application";
 import { IAccountModel } from "../model/account";
 import { IApplicationModel } from "../model/application";
 import { compareGroups, parseBearerAuthorization, Throwable_GetBody, Throwable_MapGroups, Throwable_ValidateToken } from "../util/auth";
 import { ERROR_CODE } from "../util/error";
 
-export const createTokenHandler = (): SudooExpressHandler => () =>
+export const createTokenHandler = (): SudooExpressHandler =>
     async (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> => {
+
+        console.log('createTokenHandler');
 
         if (res.agent.isFailed()) {
             next();
             return;
         }
+
 
         const authHeader: string | undefined = req.header('authorization');
         const auth: string | null = parseBearerAuthorization(authHeader);
@@ -31,24 +35,22 @@ export const createTokenHandler = (): SudooExpressHandler => () =>
         next();
     };
 
-export const createAuthenticateHandler = (): SudooExpressHandler => () =>
+export const createAuthenticateHandler = (): SudooExpressHandler =>
     async (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> => {
+
+        console.log('createAuthenticateHandler');
 
         if (res.agent.isFailed()) {
             next();
             return;
         }
 
+
         const token: SafeValue<string> = Safe.value(req.info.token);
-        const body: SafeExtract<{
-            applicationKey: string;
-        }> = Safe.extract(req.body as {
-            applicationKey: string;
-        });
 
         try {
 
-            const application: IApplicationModel = Safe.value(await getApplicationByKey(body.direct('applicationKey'))).safe();
+            const application: IApplicationModel = Safe.value(await getApplicationByKey(INTERNAL_APPLICATION.RED)).safe();
 
             Throwable_ValidateToken(application.secret, application.expire, token.safe());
 
@@ -60,13 +62,15 @@ export const createAuthenticateHandler = (): SudooExpressHandler => () =>
         }
     };
 
-export const createGroupVerifyHandler = (groups: string[], error: ErrorCreationFunction): SudooExpressHandler => () =>
+export const createGroupVerifyHandler = (groups: string[], error: ErrorCreationFunction): SudooExpressHandler =>
     async (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> => {
 
+        console.log('createGroupVerifyHandler');
         if (res.agent.isFailed()) {
             next();
             return;
         }
+
 
         const token: SafeValue<string> = Safe.value(req.info.token);
 

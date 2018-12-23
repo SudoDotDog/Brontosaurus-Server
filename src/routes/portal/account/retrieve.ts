@@ -34,6 +34,8 @@ export class RetrieveRoute extends BrontosaurusRoute {
 
         const body: SafeExtract<RetrieveRouteBody> = Safe.extract(req.body as RetrieveRouteBody);
 
+        console.log('retrieve');
+
         try {
 
             const account: IAccountModel = Safe.value(await getAccountByUsername(body.direct('username'))).safe();

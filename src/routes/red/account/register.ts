@@ -34,6 +34,8 @@ export class RegisterRoute extends BrontosaurusRoute {
 
     private async _registerHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
+        console.log('register');
+
         if (res.agent.isFailed()) {
             next();
             return;
