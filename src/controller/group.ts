@@ -11,3 +11,10 @@ export const getGroupById = async (id: ObjectID): Promise<IGroupModel | null> =>
     await GroupModel.findOne({
         _id: id,
     });
+
+
+export const createUnsavedGroup = (name: string): IGroupModel =>
+    new GroupModel({
+
+        name,
+    });

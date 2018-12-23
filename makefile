@@ -26,6 +26,9 @@ build:
 run: dev
 	@node dist/index.js
 
+prepare: dev
+	@node dist/prepare.js
+
 host:
 	@mongod --dbpath $(dbPath)
 	

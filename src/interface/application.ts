@@ -6,6 +6,11 @@
 
 import { ObjectID } from "bson";
 
+export enum INTERNAL_APPLICATION {
+
+    RED = 'BRONTOSAURUS_RED',
+}
+
 export interface IApplicationConfig {
 
     avatar: string;

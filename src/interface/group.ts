@@ -4,6 +4,11 @@
  * @description Group
  */
 
+export enum INTERNAL_USER_GROUP {
+
+    SUPER_ADMIN = 'BRONTOSAURUS_SUPER_ADMIN',
+}
+
 export interface IGroupConfig {
 
     name: string;

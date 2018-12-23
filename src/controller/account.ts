@@ -1,6 +1,6 @@
 /**
  * @author WMXPY
- * @namespace Brontosaurus_Server_Mutation
+ * @namespace Brontosaurus_Server_Controller
  * @description Account
  */
 

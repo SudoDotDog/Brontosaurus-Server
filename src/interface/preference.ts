@@ -10,6 +10,7 @@ export type Preferences = {
         name: string;
         type: string;
     };
+    prepared: boolean;
 };
 
 export interface IPreferenceConfig {
