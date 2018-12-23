@@ -8,6 +8,8 @@ import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpress
 import { Safe } from '@sudoo/extract';
 import { SafeExtract } from "@sudoo/extract/dist/extract";
 import { createUnsavedAccount } from "../../../controller/account";
+import { createAuthenticateHandler, createGroupVerifyHandler, createTokenHandler } from "../../../handlers/handlers";
+import { INTERNAL_USER_GROUP } from "../../../interface/group";
 import { IAccountModel } from "../../../model/account";
 import { BrontosaurusRoute } from "../../../routes/basic";
 
@@ -24,11 +26,15 @@ export class RegisterRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
+        createTokenHandler(),
+        createAuthenticateHandler(),
+        createGroupVerifyHandler([INTERNAL_USER_GROUP.SUPER_ADMIN], this._error),
         this._registerHandler.bind(this),
     ];
 
     private async _registerHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
+        const wrappedNext: SudooExpressNextFunction = res.agent.catchAndWrap(next);
         const body: SafeExtract<RegisterRouteBody> = Safe.extract(req.body as RegisterRouteBody);
 
         try {
@@ -45,7 +51,7 @@ export class RegisterRoute extends BrontosaurusRoute {
         } catch (err) {
             res.agent.fail(400, err);
         } finally {
-            next();
+            wrappedNext();
         }
     }
 }
