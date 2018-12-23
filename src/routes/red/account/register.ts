@@ -34,7 +34,11 @@ export class RegisterRoute extends BrontosaurusRoute {
 
     private async _registerHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
-        const wrappedNext: SudooExpressNextFunction = res.agent.catchAndWrap(next);
+        if (res.agent.isFailed()) {
+            next();
+            return;
+        }
+
         const body: SafeExtract<RegisterRouteBody> = Safe.extract(req.body as RegisterRouteBody);
 
         try {
@@ -51,7 +55,7 @@ export class RegisterRoute extends BrontosaurusRoute {
         } catch (err) {
             res.agent.fail(400, err);
         } finally {
-            wrappedNext();
+            next();
         }
     }
 }

@@ -18,20 +18,26 @@ import { ERROR_CODE } from "../util/error";
 export const createTokenHandler = (): SudooExpressHandler => () =>
     async (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> => {
 
-        const wrappedNext: SudooExpressNextFunction = res.agent.catchAndWrap(next);
+        if (res.agent.isFailed()) {
+            next();
+            return;
+        }
 
         const authHeader: string | undefined = req.header('authorization');
         const auth: string | null = parseBearerAuthorization(authHeader);
 
         req.info.token = auth;
 
-        wrappedNext();
+        next();
     };
 
 export const createAuthenticateHandler = (): SudooExpressHandler => () =>
     async (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> => {
 
-        const wrappedNext: SudooExpressNextFunction = res.agent.catchAndWrap(next);
+        if (res.agent.isFailed()) {
+            next();
+            return;
+        }
 
         const token: SafeValue<string> = Safe.value(req.info.token);
         const body: SafeExtract<{
@@ -50,14 +56,17 @@ export const createAuthenticateHandler = (): SudooExpressHandler => () =>
         } catch (err) {
             res.agent.fail(400, err);
         } finally {
-            wrappedNext();
+            next();
         }
     };
 
 export const createGroupVerifyHandler = (groups: string[], error: ErrorCreationFunction): SudooExpressHandler => () =>
     async (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> => {
 
-        const wrappedNext: SudooExpressNextFunction = res.agent.catchAndWrap(next);
+        if (res.agent.isFailed()) {
+            next();
+            return;
+        }
 
         const token: SafeValue<string> = Safe.value(req.info.token);
 
@@ -77,6 +86,6 @@ export const createGroupVerifyHandler = (groups: string[], error: ErrorCreationF
         } catch (err) {
             res.agent.fail(400, err);
         } finally {
-            wrappedNext();
+            next();
         }
     };
