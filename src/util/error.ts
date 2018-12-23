@@ -13,6 +13,9 @@ export enum ERROR_CODE {
     TOKEN_EXPIRED = 4107,
 
     APPLICATION_NOT_FOUND = 6200,
+    GROUP_NOT_FOUND = 6201,
+
+    NOT_ENOUGH_PERMISSION = 7001,
 }
 
 export const MODULE_NAME = 'Brontosaurus-Server';
@@ -23,6 +26,9 @@ export const ERROR_LIST = {
     [ERROR_CODE.TOKEN_EXPIRED]: 'Token expired',
 
     [ERROR_CODE.APPLICATION_NOT_FOUND]: 'Application: {} not found',
+    [ERROR_CODE.GROUP_NOT_FOUND]: 'Group {} not found',
+
+    [ERROR_CODE.NOT_ENOUGH_PERMISSION]: 'Permission insufficient, need {}',
 };
 
 export const registerConnor = () => Connor.dictionary(MODULE_NAME, ERROR_LIST);
