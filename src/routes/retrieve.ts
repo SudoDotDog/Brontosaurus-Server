@@ -36,14 +36,14 @@ export class RetrieveRoute extends BrontosaurusRoute {
 
         try {
 
-            const account: IAccountModel = await getAccountByUsername(body.direct('username'));
+            const account: IAccountModel = Safe.value(await getAccountByUsername(body.direct('username'))).safe();
 
             if (account.password !== body.direct('password')) {
 
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
             }
 
-            const application: IApplicationModel = await getApplicationByKey(body.direct('applicationKey'));
+            const application: IApplicationModel = Safe.value(await getApplicationByKey(body.direct('applicationKey'))).safe();
             const sign: BrontosaurusSign = BrontosaurusSign.create({}, application.secret);
 
             const token: string = sign.token(Date.now() + 10000000);

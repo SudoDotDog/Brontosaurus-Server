@@ -32,7 +32,7 @@ export class AccountValidateRoute extends BrontosaurusRoute {
 
         try {
 
-            const application: IApplicationModel = await getApplicationByKey(body.direct('applicationKey'));
+            const application: IApplicationModel = Safe.value(await getApplicationByKey(body.direct('applicationKey'))).safe();
             Throwable_ValidateToken(application.secret, application.expire, body.direct('token'));
 
             res.agent.add('validate', true);
