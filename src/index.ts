@@ -5,6 +5,7 @@
  */
 
 import { SudooExpress, SudooExpressApplication } from '@sudoo/express';
+import { LOG_LEVEL, SudooLog } from '@sudoo/log';
 import * as BodyParser from 'body-parser';
 import * as Mongoose from "mongoose";
 import { RetrieveRoute } from './routes/portal/account/retrieve';
@@ -21,6 +22,7 @@ const app: SudooExpress = SudooExpress.create(setting);
 const config: BrontosaurusConfig = readConfigSync();
 
 registerConnor();
+SudooLog.global.level(LOG_LEVEL.DEBUG);
 
 Mongoose.set('useCreateIndex', true);
 

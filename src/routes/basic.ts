@@ -20,7 +20,7 @@ export abstract class BrontosaurusRoute implements ISudooExpressRoute {
 
     public onError(code: number, error: Error) {
 
-        this._log.error(error as any);
+        this._log.error(`${this.path} - ${error.message} (${code})`);
         return {
             code: 500,
             message: 'hello',
