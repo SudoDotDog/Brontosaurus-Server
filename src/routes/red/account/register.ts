@@ -45,7 +45,7 @@ export class RegisterRoute extends BrontosaurusRoute {
 
         try {
 
-            // upper hanlder
+            // upper handler
             console.log(body.value);
             const username = body.direct('username');
             const password = body.direct('password');
