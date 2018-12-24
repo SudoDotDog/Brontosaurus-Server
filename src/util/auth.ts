@@ -21,7 +21,7 @@ export const Throwable_ValidateToken = (secret: string, expire: number, tokenStr
         throw createError(ERROR_CODE.TOKEN_EXPIRED);
     }
 
-    if (token.check(tokenString)) {
+    if (!token.check(tokenString)) {
         throw createError(ERROR_CODE.TOKEN_INVALID);
     }
 

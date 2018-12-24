@@ -45,10 +45,13 @@ export class RegisterRoute extends BrontosaurusRoute {
 
         try {
 
+            // upper hanlder
+            console.log(body.value);
             const username = body.direct('username');
             const password = body.direct('password');
             const infos = JSON.parse(body.direct('infos') as any as string);
 
+            console.log('here');
             const account: IAccountModel = createUnsavedAccount(username, password, infos);
 
             await account.save();
