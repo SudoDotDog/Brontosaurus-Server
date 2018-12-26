@@ -26,7 +26,6 @@ export const createTokenHandler = (): SudooExpressHandler =>
             return;
         }
 
-
         const authHeader: string | undefined = req.header('authorization');
         const auth: string | null = parseBearerAuthorization(authHeader);
 
@@ -44,7 +43,6 @@ export const createAuthenticateHandler = (): SudooExpressHandler =>
             next();
             return;
         }
-
 
         const token: SafeValue<string> = Safe.value(req.info.token);
 
@@ -70,7 +68,6 @@ export const createGroupVerifyHandler = (groups: string[], error: ErrorCreationF
             next();
             return;
         }
-
 
         const token: SafeValue<string> = Safe.value(req.info.token);
         const createError: ErrorCreationFunction = Connor.getErrorCreator(MODULE_NAME);
