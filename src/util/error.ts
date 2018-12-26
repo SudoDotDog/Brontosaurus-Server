@@ -14,6 +14,9 @@ export enum ERROR_CODE {
 
     TOKEN_DOES_NOT_CONTAIN_INFORMATION = 4150,
 
+    INSUFFICIENT_INFORMATION = 4500,
+    INSUFFICIENT_SPECIFIC_INFORMATION = 4501,
+
     APPLICATION_NOT_FOUND = 6200,
     GROUP_NOT_FOUND = 6201,
 
@@ -28,6 +31,9 @@ export const ERROR_LIST = {
     [ERROR_CODE.TOKEN_EXPIRED]: 'Token expired',
 
     [ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_INFORMATION]: 'Token does not contain information: {}',
+
+    [ERROR_CODE.INSUFFICIENT_INFORMATION]: 'Insufficient information',
+    [ERROR_CODE.INSUFFICIENT_SPECIFIC_INFORMATION]: 'Insufficient information, need: {}',
 
     [ERROR_CODE.APPLICATION_NOT_FOUND]: 'Application: {} not found',
     [ERROR_CODE.GROUP_NOT_FOUND]: 'Group {} not found',

@@ -12,6 +12,7 @@ import { RetrieveRoute } from './routes/portal/account/retrieve';
 import { AccountValidateRoute } from './routes/portal/account/validate';
 import { RegisterRoute } from './routes/red/account/register';
 import { CreateApplicationRoute } from './routes/red/application/create';
+import { CreateGroupRoute } from './routes/red/group/create';
 import { PortalRoute } from './routes/static/portal';
 import { BrontosaurusConfig, readConfigSync } from './util/conf';
 import { registerConnor } from './util/error';
@@ -44,6 +45,7 @@ app.route(new RegisterRoute());
 app.route(new RetrieveRoute());
 
 app.route(new CreateApplicationRoute());
+app.route(new CreateGroupRoute());
 app.route(new AccountValidateRoute());
 
 app.host(8080);

@@ -13,6 +13,7 @@ import { basicHook } from "../../../handlers/hook";
 import { INTERNAL_USER_GROUP } from "../../../interface/group";
 import { IAccountModel } from "../../../model/account";
 import { BrontosaurusRoute } from "../../../routes/basic";
+import { ERROR_CODE } from "../../../util/error";
 
 export type RegisterRouteBody = {
 
@@ -35,12 +36,10 @@ export class RegisterRoute extends BrontosaurusRoute {
 
     private async _registerHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
-        const body: SafeExtract<RegisterRouteBody> = Safe.extract(req.body as RegisterRouteBody);
+        const body: SafeExtract<RegisterRouteBody> = Safe.extract(req.body as RegisterRouteBody, this._error(ERROR_CODE.INSUFFICIENT_INFORMATION));
 
         try {
 
-            // upper handler
-            console.log(body.value);
             const username = body.direct('username');
             const password = body.direct('password');
             const infos = JSON.parse(body.direct('infos') as any as string);
