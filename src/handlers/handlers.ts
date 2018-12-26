@@ -19,11 +19,6 @@ import { ERROR_CODE, MODULE_NAME } from "../util/error";
 export const createTokenHandler = (): SudooExpressHandler =>
     async (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> => {
 
-        if (res.agent.isFailed()) {
-            next();
-            return;
-        }
-
         const authHeader: string | undefined = req.header('authorization');
         const auth: string | null = parseBearerAuthorization(authHeader);
 
@@ -34,11 +29,6 @@ export const createTokenHandler = (): SudooExpressHandler =>
 
 export const createAuthenticateHandler = (): SudooExpressHandler =>
     async (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> => {
-
-        if (res.agent.isFailed()) {
-            next();
-            return;
-        }
 
         const token: SafeValue<string> = Safe.value(req.info.token);
 
@@ -57,11 +47,6 @@ export const createAuthenticateHandler = (): SudooExpressHandler =>
 
 export const createGroupVerifyHandler = (groups: string[], error: ErrorCreationFunction): SudooExpressHandler =>
     async (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> => {
-
-        if (res.agent.isFailed()) {
-            next();
-            return;
-        }
 
         const token: SafeValue<string> = Safe.value(req.info.token);
         const createError: ErrorCreationFunction = Connor.getErrorCreator(MODULE_NAME);

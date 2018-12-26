@@ -27,18 +27,13 @@ export class RegisterRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
-        basicHook.wrap(createTokenHandler(), 'TokenHandler'),
-        basicHook.wrap(createAuthenticateHandler(), 'AuthenticateHandler'),
-        basicHook.wrap(createGroupVerifyHandler([INTERNAL_USER_GROUP.SUPER_ADMIN], this._error), 'GroupVerifyHandler'),
-        basicHook.wrap(this._registerHandler.bind(this), 'Register', true),
+        basicHook.wrap(createTokenHandler(), '/register - TokenHandler'),
+        basicHook.wrap(createAuthenticateHandler(), '/register - AuthenticateHandler'),
+        basicHook.wrap(createGroupVerifyHandler([INTERNAL_USER_GROUP.SUPER_ADMIN], this._error), '/register - GroupVerifyHandler'),
+        basicHook.wrap(this._registerHandler.bind(this), '/register - Register', true),
     ];
 
     private async _registerHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
-
-        if (res.agent.isFailed()) {
-            next();
-            return;
-        }
 
         const body: SafeExtract<RegisterRouteBody> = Safe.extract(req.body as RegisterRouteBody);
 

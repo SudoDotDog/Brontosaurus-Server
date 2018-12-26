@@ -4,20 +4,28 @@
  * @description Hook
  */
 
-import { SudooExpressHook } from '@sudoo/express';
+import { SudooExpressHook, SudooExpressRequest, SudooExpressResponse } from '@sudoo/express';
 import { SudooLog } from '@sudoo/log';
 
 export const basicHook: SudooExpressHook<[string, boolean?]> =
     SudooExpressHook.create<[string, boolean?]>()
-        .before((content: string, isInfo: boolean = false): true => {
+        .before((req: SudooExpressRequest, res: SudooExpressResponse, content: string, isInfo: boolean = false): boolean => {
 
-            const log = SudooLog.global;
+            const log: SudooLog = SudooLog.global;
+            const isFailed: boolean = res.agent.isFailed();
+
+            const parsedContent = `${content}: ${
+                isFailed
+                    ? 'Failed'
+                    : 'Passed'
+                }`;
+
             if (isInfo) {
-                log.info(content);
+                log.info(parsedContent);
             } else {
-                log.verbose(content);
+                log.verbose(parsedContent);
             }
 
-            return true;
+            return !isFailed;
         });
 
