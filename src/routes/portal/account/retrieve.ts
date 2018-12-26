@@ -46,7 +46,9 @@ export class RetrieveRoute extends BrontosaurusRoute {
             }
 
             const application: IApplicationModel = Safe.value(await getApplicationByKey(body.direct('applicationKey'))).safe();
-            const sign: BrontosaurusSign = BrontosaurusSign.create({}, application.secret);
+            const sign: BrontosaurusSign = BrontosaurusSign.create({
+                username: account.username,
+            }, application.secret);
 
             const token: string = sign.token(Date.now() + 10000000);
 
