@@ -5,7 +5,7 @@
  */
 
 import { ISudooExpressRoute, ROUTE_MODE, SudooExpressHandler } from "@sudoo/express";
-import { LOG_LEVEL, SudooLog } from '@sudoo/log';
+import { SudooLog } from '@sudoo/log';
 import { ErrorCreationFunction } from "connor";
 import { getErrorCreationFunction } from "../util/error";
 
@@ -16,7 +16,7 @@ export abstract class BrontosaurusRoute implements ISudooExpressRoute {
     public abstract readonly groups: SudooExpressHandler[];
 
     protected readonly _error: ErrorCreationFunction = getErrorCreationFunction();
-    protected readonly _log: SudooLog = SudooLog.create(LOG_LEVEL.DEBUG);
+    protected readonly _log: SudooLog = SudooLog.global;
 
     public onError(code: number, error: Error) {
 

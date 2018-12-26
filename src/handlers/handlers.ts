@@ -19,8 +19,6 @@ import { ERROR_CODE, MODULE_NAME } from "../util/error";
 export const createTokenHandler = (): SudooExpressHandler =>
     async (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> => {
 
-        console.log('createTokenHandler');
-
         if (res.agent.isFailed()) {
             next();
             return;
@@ -37,8 +35,6 @@ export const createTokenHandler = (): SudooExpressHandler =>
 export const createAuthenticateHandler = (): SudooExpressHandler =>
     async (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> => {
 
-        console.log('createAuthenticateHandler');
-
         if (res.agent.isFailed()) {
             next();
             return;
@@ -49,7 +45,6 @@ export const createAuthenticateHandler = (): SudooExpressHandler =>
         try {
 
             const application: IApplicationModel = Safe.value(await getApplicationByKey(INTERNAL_APPLICATION.RED)).safe();
-
             Throwable_ValidateToken(application.secret, application.expire, token.safe());
 
             req.authenticate = application;
@@ -63,7 +58,6 @@ export const createAuthenticateHandler = (): SudooExpressHandler =>
 export const createGroupVerifyHandler = (groups: string[], error: ErrorCreationFunction): SudooExpressHandler =>
     async (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> => {
 
-        console.log('createGroupVerifyHandler');
         if (res.agent.isFailed()) {
             next();
             return;
@@ -85,7 +79,6 @@ export const createGroupVerifyHandler = (groups: string[], error: ErrorCreationF
 
                 throw error(ERROR_CODE.NOT_ENOUGH_PERMISSION, groups.toString());
             }
-
             req.valid = true;
         } catch (err) {
             res.agent.fail(400, err);

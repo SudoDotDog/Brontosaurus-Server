@@ -9,6 +9,7 @@ import { Safe } from '@sudoo/extract';
 import { SafeExtract } from "@sudoo/extract/dist/extract";
 import { createUnsavedAccount } from "../../../controller/account";
 import { createAuthenticateHandler, createGroupVerifyHandler, createTokenHandler } from "../../../handlers/handlers";
+import { basicHook } from "../../../handlers/hook";
 import { INTERNAL_USER_GROUP } from "../../../interface/group";
 import { IAccountModel } from "../../../model/account";
 import { BrontosaurusRoute } from "../../../routes/basic";
@@ -26,15 +27,13 @@ export class RegisterRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
-        createTokenHandler(),
-        createAuthenticateHandler(),
-        createGroupVerifyHandler([INTERNAL_USER_GROUP.SUPER_ADMIN], this._error),
-        this._registerHandler.bind(this),
+        basicHook.wrap(createTokenHandler(), 'TokenHandler'),
+        basicHook.wrap(createAuthenticateHandler(), 'AuthenticateHandler'),
+        basicHook.wrap(createGroupVerifyHandler([INTERNAL_USER_GROUP.SUPER_ADMIN], this._error), 'GroupVerifyHandler'),
+        basicHook.wrap(this._registerHandler.bind(this), 'Register', true),
     ];
 
     private async _registerHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
-
-        console.log('register');
 
         if (res.agent.isFailed()) {
             next();

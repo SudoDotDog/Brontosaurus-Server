@@ -22,7 +22,7 @@ const app: SudooExpress = SudooExpress.create(setting);
 const config: BrontosaurusConfig = readConfigSync();
 
 registerConnor();
-SudooLog.global.level(LOG_LEVEL.DEBUG);
+SudooLog.global.level(LOG_LEVEL.VERBOSE);
 
 Mongoose.set('useCreateIndex', true);
 
