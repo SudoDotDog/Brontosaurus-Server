@@ -23,9 +23,9 @@
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@sudoo/extract/-/extract-1.1.2.tgz#7c7d142285d21fce0550e999397e045ca0c224f5"
 
-"@sudoo/log@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/log/-/log-1.1.0.tgz#83492bf7cb4ab7336cdb921af09d86c30253bee8"
+"@sudoo/log@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/log/-/log-1.2.0.tgz#acae478764a893f337c5f73a66a68a6a5ee5e4b2"
 
 "@sudoo/tslint-config@^1.0.1":
   version "1.0.1"
