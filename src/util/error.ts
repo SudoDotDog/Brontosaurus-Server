@@ -12,6 +12,8 @@ export enum ERROR_CODE {
     TOKEN_INVALID = 4106,
     TOKEN_EXPIRED = 4107,
 
+    APPLICATION_KEY_NOT_FOUND = 4120,
+
     TOKEN_DOES_NOT_CONTAIN_INFORMATION = 4150,
 
     INSUFFICIENT_INFORMATION = 4500,
@@ -34,6 +36,8 @@ export const ERROR_LIST = {
     [ERROR_CODE.PASSWORD_DOES_NOT_MATCH]: 'Username and password not match',
     [ERROR_CODE.TOKEN_INVALID]: 'Token invalid',
     [ERROR_CODE.TOKEN_EXPIRED]: 'Token expired',
+
+    [ERROR_CODE.APPLICATION_KEY_NOT_FOUND]: 'Application key not found',
 
     [ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_INFORMATION]: 'Token does not contain information: "{}"',
 

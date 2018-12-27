@@ -10,20 +10,22 @@ import { getApplicationByKey } from "../../../controller/application";
 import { IApplicationModel } from "../../../model/application";
 import { Throwable_ValidateToken } from "../../../util/auth";
 import { BrontosaurusRoute } from "../../basic";
+import { BrontosaurusToken } from "@brontosaurus/core";
+import { ERROR_CODE } from "../../../util/error";
+import { basicHook } from "../../../handlers/hook";
 
 export type AccountValidateRouteBody = {
 
     token: string;
-    applicationKey: string;
 };
 
 export class AccountValidateRoute extends BrontosaurusRoute {
 
-    public readonly path: string = '/account/validate';
+    public readonly path: string = '/validate';
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
-        this._portalHandler.bind(this),
+        basicHook.wrap(this._portalHandler.bind(this), '/validate - Validate', true),
     ];
 
     private async _portalHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
@@ -32,8 +34,15 @@ export class AccountValidateRoute extends BrontosaurusRoute {
 
         try {
 
-            const application: IApplicationModel = Safe.value(await getApplicationByKey(body.direct('applicationKey'))).safe();
-            Throwable_ValidateToken(application.secret, application.expire, body.direct('token'));
+            const token: string = body.direct('token');
+            const applicationKey: string | null = BrontosaurusToken.withoutSecret().key(token);
+
+            if (!applicationKey) {
+                throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
+            }
+
+            const application: IApplicationModel = Safe.value(await getApplicationByKey(applicationKey)).safe();
+            Throwable_ValidateToken(application.secret, application.expire, token);
 
             res.agent.add('validate', true);
         } catch (err) {

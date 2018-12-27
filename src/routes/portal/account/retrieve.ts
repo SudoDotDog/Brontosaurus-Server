@@ -8,12 +8,12 @@ import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpress
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { getAccountByUsername } from "../../../controller/account";
 import { getApplicationByKey } from "../../../controller/application";
+import { basicHook } from "../../../handlers/hook";
 import { IAccountModel } from "../../../model/account";
 import { IApplicationModel } from "../../../model/application";
 import { ERROR_CODE } from "../../../util/error";
 import { createToken } from '../../../util/token';
 import { BrontosaurusRoute } from "../../basic";
-import { basicHook } from "../../../handlers/hook";
 
 export type RetrieveRouteBody = {
 
