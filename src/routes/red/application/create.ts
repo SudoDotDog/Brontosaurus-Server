@@ -1,6 +1,6 @@
 /**
  * @author WMXPY
- * @namespace Brontosaurus_Server_Routes_Application
+ * @namespace Brontosaurus_Server_Routes_Red_Application
  * @description Create
  */
 

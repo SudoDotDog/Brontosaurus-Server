@@ -1,6 +1,6 @@
 /**
  * @author WMXPY
- * @namespace Brontosaurus_Server_Routes
+ * @namespace Brontosaurus_Server_Routes_Red_Account
  * @description Register
  */
 
@@ -24,7 +24,7 @@ export type RegisterRouteBody = {
 
 export class RegisterRoute extends BrontosaurusRoute {
 
-    public readonly path: string = '/register';
+    public readonly path: string = '/account/register';
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
