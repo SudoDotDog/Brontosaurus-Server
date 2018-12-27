@@ -19,6 +19,7 @@ export enum ERROR_CODE {
 
     APPLICATION_NOT_FOUND = 6200,
     GROUP_NOT_FOUND = 6201,
+    ACCOUNT_NOT_FOUND = 6202,
 
     NOT_ENOUGH_PERMISSION = 7001,
 }
@@ -30,15 +31,16 @@ export const ERROR_LIST = {
     [ERROR_CODE.TOKEN_INVALID]: 'Token invalid',
     [ERROR_CODE.TOKEN_EXPIRED]: 'Token expired',
 
-    [ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_INFORMATION]: 'Token does not contain information: {}',
+    [ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_INFORMATION]: 'Token does not contain information: "{}"',
 
     [ERROR_CODE.INSUFFICIENT_INFORMATION]: 'Insufficient information',
-    [ERROR_CODE.INSUFFICIENT_SPECIFIC_INFORMATION]: 'Insufficient information, need: {}',
+    [ERROR_CODE.INSUFFICIENT_SPECIFIC_INFORMATION]: 'Insufficient information, need: "{}"',
 
-    [ERROR_CODE.APPLICATION_NOT_FOUND]: 'Application: {} not found',
-    [ERROR_CODE.GROUP_NOT_FOUND]: 'Group {} not found',
+    [ERROR_CODE.APPLICATION_NOT_FOUND]: 'Application: "{}" not found',
+    [ERROR_CODE.GROUP_NOT_FOUND]: 'Group: "{}" not found',
+    [ERROR_CODE.ACCOUNT_NOT_FOUND]: 'Account: "{}" not found',
 
-    [ERROR_CODE.NOT_ENOUGH_PERMISSION]: 'Permission insufficient, need {}',
+    [ERROR_CODE.NOT_ENOUGH_PERMISSION]: 'Permission insufficient, need "{}"',
 };
 
 export const registerConnor = () => Connor.dictionary(MODULE_NAME, ERROR_LIST);

@@ -42,7 +42,12 @@ export class AddGroupRoute extends BrontosaurusRoute {
             const username: string = body.direct('username');
             const group: string = body.direct('group');
 
-            const account: IAccountModel | null = await getAccountByUsername(username); // TODO
+            const account: IAccountModel | null = await getAccountByUsername(username);
+
+            if (!account) {
+                throw this._error(ERROR_CODE.ACCOUNT_NOT_FOUND, username);
+            }
+
 
             res.agent.add('account', account.id);
         } catch (err) {
