@@ -40,8 +40,9 @@ export class CreateGroupRoute extends BrontosaurusRoute {
             const group: IGroupModel = createUnsavedGroup(
                 body.direct('name'),
             );
-
             await group.save();
+
+            res.agent.add('group', group.name);
         } catch (err) {
 
             res.agent.fail(400, err);

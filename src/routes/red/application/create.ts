@@ -46,8 +46,9 @@ export class CreateApplicationRoute extends BrontosaurusRoute {
                 body.direct('expire'),
                 body.direct('token'),
             );
-
             await application.save();
+
+            res.agent.add('application', application.key);
         } catch (err) {
 
             res.agent.fail(400, err);
