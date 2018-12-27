@@ -6,7 +6,7 @@
 
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
-import { createUnsavedApplication } from "../../../controller/application";
+import { createUnsavedApplication, isApplicationDuplicatedByKey } from "../../../controller/application";
 import { createAuthenticateHandler, createGroupVerifyHandler, createTokenHandler } from "../../../handlers/handlers";
 import { basicHook } from "../../../handlers/hook";
 import { INTERNAL_USER_GROUP } from "../../../interface/group";
@@ -40,9 +40,17 @@ export class CreateApplicationRoute extends BrontosaurusRoute {
 
         try {
 
+            const key: string = body.direct('key');
+
+            const isDuplicated: boolean = await isApplicationDuplicatedByKey(key);
+
+            if (isDuplicated) {
+                throw this._error(ERROR_CODE.DUPLICATE_APPLICATION, key);
+            }
+
             const application: IApplicationModel = createUnsavedApplication(
                 body.direct('name'),
-                body.direct('key'),
+                key,
                 body.direct('expire'),
                 body.direct('token'),
             );

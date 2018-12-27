@@ -23,3 +23,7 @@ export const getAccountByUsername = async (username: string): Promise<IAccountMo
         username,
     });
 
+export const isAccountDuplicatedByUsername = async (username: string): Promise<boolean> => {
+    const account: IAccountModel | null = await getAccountByUsername(username);
+    return Boolean(account);
+};

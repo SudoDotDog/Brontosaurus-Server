@@ -30,6 +30,7 @@ const ApplicationSchema: Schema = new Schema({
     key: {
         type: String,
         required: true,
+        unique: true,
         index: true,
     },
     name: {

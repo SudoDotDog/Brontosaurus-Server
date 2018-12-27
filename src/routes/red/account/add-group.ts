@@ -5,8 +5,7 @@
  */
 
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
-import { Safe } from '@sudoo/extract';
-import { SafeExtract } from "@sudoo/extract/dist/extract";
+import { Safe, SafeExtract } from '@sudoo/extract';
 import { getAccountByUsername } from "../../../controller/account";
 import { getGroupByName } from "../../../controller/group";
 import { createAuthenticateHandler, createGroupVerifyHandler, createTokenHandler } from "../../../handlers/handlers";

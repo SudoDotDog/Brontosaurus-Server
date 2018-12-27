@@ -18,6 +18,7 @@ const AccountSchema: Schema = new Schema({
     username: {
         type: String,
         required: true,
+        unique: true,
         index: true,
     },
     password: {

@@ -17,6 +17,7 @@ const GroupSchema: Schema = new Schema({
     name: {
         type: String,
         required: true,
+        unique: true,
         index: true,
     },
 }, {

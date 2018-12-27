@@ -21,6 +21,10 @@ export enum ERROR_CODE {
     GROUP_NOT_FOUND = 6201,
     ACCOUNT_NOT_FOUND = 6202,
 
+    DUPLICATE_ACCOUNT = 6250,
+    DUPLICATE_APPLICATION = 6251,
+    DUPLICATE_GROUP = 6252,
+
     NOT_ENOUGH_PERMISSION = 7001,
 }
 
@@ -39,6 +43,10 @@ export const ERROR_LIST = {
     [ERROR_CODE.APPLICATION_NOT_FOUND]: 'Application: "{}" not found',
     [ERROR_CODE.GROUP_NOT_FOUND]: 'Group: "{}" not found',
     [ERROR_CODE.ACCOUNT_NOT_FOUND]: 'Account: "{}" not found',
+
+    [ERROR_CODE.DUPLICATE_ACCOUNT]: 'Account: "{}" already exist',
+    [ERROR_CODE.DUPLICATE_APPLICATION]: 'Application: "{}" already exist',
+    [ERROR_CODE.DUPLICATE_GROUP]: 'Group: "{}" already exist',
 
     [ERROR_CODE.NOT_ENOUGH_PERMISSION]: 'Permission insufficient, need "{}"',
 };

@@ -23,3 +23,13 @@ export const createUnsavedGroup = (name: string): IGroupModel =>
 
         name,
     });
+
+export const isGroupDuplicatedByName = async (name: string): Promise<boolean> => {
+    const group: IGroupModel | null = await getGroupByName(name);
+    return Boolean(group);
+};
+
+export const isGroupDuplicatedById = async (id: ObjectID): Promise<boolean> => {
+    const group: IGroupModel | null = await getGroupById(id);
+    return Boolean(group);
+};

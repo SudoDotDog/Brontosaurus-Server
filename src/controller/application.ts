@@ -22,3 +22,8 @@ export const getApplicationByKey = async (key: string): Promise<IApplicationMode
     await ApplicationModel.findOne({
         key,
     });
+
+export const isApplicationDuplicatedByKey = async (key: string): Promise<boolean> => {
+    const application: IApplicationModel | null = await getApplicationByKey(key);
+    return Boolean(application);
+};
