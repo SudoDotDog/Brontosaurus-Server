@@ -28,7 +28,7 @@
     "@sudoo/log": "^1.2.0",
     "body-parser": "^1.18.3",
     "connor": "^2.0.0",
-    "mongoose": "^5.4.0"
+    "mongoose": "^5.4.1"
   },
   "devDependencies": {
     "@sudoo/tslint-config": "^1.0.1",
