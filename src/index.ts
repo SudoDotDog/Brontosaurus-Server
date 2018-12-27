@@ -10,6 +10,7 @@ import * as BodyParser from 'body-parser';
 import * as Mongoose from "mongoose";
 import { RetrieveRoute } from './routes/portal/account/retrieve';
 import { AccountValidateRoute } from './routes/portal/account/validate';
+import { AddGroupRoute } from './routes/red/account/add-group';
 import { RegisterRoute } from './routes/red/account/register';
 import { CreateApplicationRoute } from './routes/red/application/create';
 import { CreateGroupRoute } from './routes/red/group/create';
@@ -46,6 +47,7 @@ app.route(new RetrieveRoute());
 
 app.route(new CreateApplicationRoute());
 app.route(new CreateGroupRoute());
+app.route(new AddGroupRoute());
 app.route(new AccountValidateRoute());
 
 app.host(8080);

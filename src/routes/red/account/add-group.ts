@@ -7,11 +7,13 @@
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe } from '@sudoo/extract';
 import { SafeExtract } from "@sudoo/extract/dist/extract";
-import { createUnsavedAccount, getAccountByUsername } from "../../../controller/account";
+import { getAccountByUsername } from "../../../controller/account";
+import { getGroupByName } from "../../../controller/group";
 import { createAuthenticateHandler, createGroupVerifyHandler, createTokenHandler } from "../../../handlers/handlers";
 import { basicHook } from "../../../handlers/hook";
 import { INTERNAL_USER_GROUP } from "../../../interface/group";
 import { IAccountModel } from "../../../model/account";
+import { IGroupModel } from "../../../model/group";
 import { BrontosaurusRoute } from "../../../routes/basic";
 import { ERROR_CODE } from "../../../util/error";
 
@@ -40,14 +42,22 @@ export class AddGroupRoute extends BrontosaurusRoute {
         try {
 
             const username: string = body.direct('username');
-            const group: string = body.direct('group');
+            const groupName: string = body.direct('group');
 
             const account: IAccountModel | null = await getAccountByUsername(username);
+            const group: IGroupModel | null = await getGroupByName(groupName);
 
             if (!account) {
                 throw this._error(ERROR_CODE.ACCOUNT_NOT_FOUND, username);
             }
 
+            if (!group) {
+                throw this._error(ERROR_CODE.GROUP_NOT_FOUND, groupName);
+            }
+
+            account.addGroup(group._id);
+
+            await account.save();
 
             res.agent.add('account', account.id);
         } catch (err) {

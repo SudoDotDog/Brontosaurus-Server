@@ -12,6 +12,11 @@ export const getGroupById = async (id: ObjectID): Promise<IGroupModel | null> =>
         _id: id,
     });
 
+export const getGroupByName = async (name: string): Promise<IGroupModel | null> =>
+    await GroupModel.findOne({
+        name,
+    });
+
 
 export const createUnsavedGroup = (name: string): IGroupModel =>
     new GroupModel({
