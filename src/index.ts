@@ -8,8 +8,8 @@ import { SudooExpress, SudooExpressApplication } from '@sudoo/express';
 import { LOG_LEVEL, SudooLog } from '@sudoo/log';
 import * as BodyParser from 'body-parser';
 import * as Mongoose from "mongoose";
-import { RetrieveRoute } from './routes/portal/account/retrieve';
-import { AccountValidateRoute } from './routes/portal/account/validate';
+import { RetrieveRoute } from './routes/portal/retrieve';
+import { AccountValidateRoute } from './routes/portal/validate';
 import { AddGroupRoute } from './routes/red/account/add-group';
 import { RegisterRoute } from './routes/red/account/register';
 import { CreateApplicationRoute } from './routes/red/application/create';
@@ -19,6 +19,9 @@ import { BrontosaurusConfig, readConfigSync } from './util/conf';
 import { registerConnor } from './util/error';
 
 const setting: SudooExpressApplication = SudooExpressApplication.create('Brontosaurus', '1');
+
+setting.allowCrossOrigin();
+
 const app: SudooExpress = SudooExpress.create(setting);
 
 const config: BrontosaurusConfig = readConfigSync();
