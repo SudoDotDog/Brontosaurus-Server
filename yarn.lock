@@ -93,9 +93,9 @@
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/mongoose@^5.3.5":
-  version "5.3.5"
-  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.3.5.tgz#9e84a5ddebfb404adc3b5afa90b41e7474397870"
+"@types/mongoose@^5.3.7":
+  version "5.3.7"
+  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.3.7.tgz#426c6735122ae565f3073bdea97ebae2cdba1bf8"
   dependencies:
     "@types/mongodb" "*"
     "@types/node" "*"
