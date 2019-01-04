@@ -28,23 +28,15 @@
     "@sudoo/log": "^1.2.0",
     "body-parser": "^1.18.3",
     "connor": "^2.0.0",
-    "mongoose": "^5.4.1"
+    "mongoose": "^5.4.2"
   },
   "devDependencies": {
-    "@sudoo/tslint-config": "^1.0.1",
-    "@types/chai": "^4.1.7",
-    "@types/chance": "^1.0.1",
+    "@sudoo/triforce": "^1.1.0",
+    "@sudoo/tslint-config": "^1.1.0",
     "@types/express": "^4.16.0",
-    "@types/mocha": "^5.2.5",
     "@types/mongodb": "^3.1.18",
-    "@types/mongoose": "^5.3.5",
-    "@types/node": "^10.12.12",
-    "chai": "^4.2.0",
-    "chance": "^1.0.18",
-    "mocha": "^5.2.0",
-    "ts-node": "^7.0.1",
-    "tslint": "^5.11.0",
-    "typescript": "^3.2.2"
+    "@types/mongoose": "^5.3.7",
+    "@types/node": "^10.12.18"
   },
   "nyc": {
     "extension": [

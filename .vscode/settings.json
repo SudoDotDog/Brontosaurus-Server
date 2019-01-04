@@ -13,6 +13,7 @@
         "setx",
         "splited",
         "sudoo",
+        "triforce",
         "tshook"
     ],
     "tslint.configFile": "typescript/tslint.json"
