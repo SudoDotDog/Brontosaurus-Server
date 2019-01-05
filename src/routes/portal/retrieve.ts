@@ -33,11 +33,15 @@ export class RetrieveRoute extends BrontosaurusRoute {
 
     private async _retrieveHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
-        const body: SafeExtract<RetrieveRouteBody> = Safe.extract(req.body as RetrieveRouteBody);
+        const body: SafeExtract<RetrieveRouteBody> = Safe.extract(req.body as RetrieveRouteBody, this._error(ERROR_CODE.REQUEST_DOES_MATCH_PATTERN));
 
         try {
 
-            const account: IAccountModel = Safe.value(await getAccountByUsername(body.direct('username'))).safe();
+            const account: IAccountModel | null = await getAccountByUsername(body.direct('username'));
+
+            if (!account) {
+                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
+            }
 
             if (account.password !== body.direct('password')) {
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);

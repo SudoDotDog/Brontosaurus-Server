@@ -39,6 +39,7 @@ Mongoose.connect(
 const db: Mongoose.Connection = Mongoose.connection;
 db.on('error', console.log.bind(console, 'connection error:'));
 
+app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({
     extended: true,
 }));

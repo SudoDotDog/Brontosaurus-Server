@@ -10,9 +10,10 @@
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-1.2.1.tgz#622e75a36388af50539e0896563bd15163e059e6"
 
-"@sudoo/express@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-1.5.0.tgz#27fe237dd6f319fd4035cb6241ca1735e67b286c"
+"@sudoo/express@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-1.6.0.tgz#5ad337011697c374101fdf3398aba6ca43aeaf88"
+  integrity sha512-ixMAYjJ2akKT31Cg7MZ+Z1S383xVycXfn5WMi9syMawHF8MqaGGr7oV6+nBTuO82r/ekpTyhBPrBLjuX/ik19w==
   dependencies:
     "@sudoo/bark" "^1.2.1"
     body-parser "^1.18.3"
