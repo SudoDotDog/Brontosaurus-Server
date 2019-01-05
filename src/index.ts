@@ -6,7 +6,6 @@
 
 import { SudooExpress, SudooExpressApplication } from '@sudoo/express';
 import { LOG_LEVEL, SudooLog } from '@sudoo/log';
-import * as BodyParser from 'body-parser';
 import * as Mongoose from "mongoose";
 import { RetrieveRoute } from './routes/portal/retrieve';
 import { AccountValidateRoute } from './routes/portal/validate';
@@ -38,11 +37,6 @@ Mongoose.connect(
 
 const db: Mongoose.Connection = Mongoose.connection;
 db.on('error', console.log.bind(console, 'connection error:'));
-
-app.use(BodyParser.json());
-app.use(BodyParser.urlencoded({
-    extended: true,
-}));
 
 app.route(new PortalRoute());
 
