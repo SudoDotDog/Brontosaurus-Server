@@ -6,7 +6,7 @@
 
 import { ISudooExpressRoute, ROUTE_MODE, SudooExpressHandler } from "@sudoo/express";
 import { SudooLog } from '@sudoo/log';
-import { ErrorCreationFunction } from "connor";
+import { ConnorError, ErrorCreationFunction } from "connor";
 import { getErrorCreationFunction } from "../util/error";
 
 export abstract class BrontosaurusRoute implements ISudooExpressRoute {
@@ -20,10 +20,11 @@ export abstract class BrontosaurusRoute implements ISudooExpressRoute {
 
     public onError(code: number, error: Error) {
 
+        const err: ConnorError = error as any;
         this._log.error(`${this.path} - ${error.message} (${code})`);
         return {
-            code: 500,
-            message: 'hello',
+            code,
+            message: err.code.toString(),
         };
     }
 }
