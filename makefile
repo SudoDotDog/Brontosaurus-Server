@@ -34,11 +34,11 @@ host:
 	
 tests:
 	@echo "[INFO] Testing with Mocha"
-	@NODE_ENV=development $(mocha)
+	@NODE_ENV=test $(mocha)
 
 cov:
 	@echo "[INFO] Testing with Nyc and Mocha"
-	@NODE_ENV=development \
+	@NODE_ENV=test \
 	nyc $(mocha)
 
 install:
