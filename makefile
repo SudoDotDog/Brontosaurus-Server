@@ -7,11 +7,10 @@ dbPath := F:/db/
 # NPX functions
 ifeq ($(OS), Windows_NT)
 	tsc := .\node_modules\.bin\tsc
-	mocha := .\node_modules\.bin\mocha
 else
 	tsc := node_modules/.bin/tsc
-	mocha := node_modules/.bin/mocha
 endif
+mocha := node_modules/.bin/mocha
 
 main: dev
 
@@ -24,7 +23,8 @@ build:
 	@$(tsc) --p $(build)
 
 run: dev
-	@node dist/index.js
+	@NODE_ENV=development \
+	node dist/index.js
 
 prepare: dev
 	@node dist/prepare.js
@@ -34,21 +34,12 @@ host:
 	
 tests:
 	@echo "[INFO] Testing with Mocha"
-ifeq ($(OS), Windows_NT)
-	@-setx NODE_ENV test
-else
-	@-export NODE_ENV=test
-endif
-	@$(mocha)
+	@NODE_ENV=development $(mocha)
 
 cov:
 	@echo "[INFO] Testing with Nyc and Mocha"
-ifeq ($(OS), Windows_NT)
-	@-setx NODE_ENV test
-else
-	@-export NODE_ENV=test
-endif
-	@nyc $(mocha)
+	@NODE_ENV=development \
+	nyc $(mocha)
 
 install:
 	@echo "[INFO] Installing dev Dependencies"
