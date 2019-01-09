@@ -17,7 +17,8 @@ export const readConfigSync = (): BrontosaurusConfig => {
 
     try {
 
-        return JSON.parse(Fs.readFileSync(Path.join(__dirname, '..', '..', 'brontosaurus.conf'), 'utf8'));
+        const configPath: string = Path.join(__dirname, '..', '..', 'brontosaurus.conf');
+        return JSON.parse(Fs.readFileSync(configPath, 'utf8'));
     } catch (err) {
 
         console.log('Config file not exist');

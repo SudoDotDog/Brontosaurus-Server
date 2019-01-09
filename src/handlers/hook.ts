@@ -17,7 +17,7 @@ export const basicHook: SudooExpressHook<[string, boolean?]> =
             const parsedContent = `${content}: ${
                 isFailed
                     ? 'Failed'
-                    : 'Passed'
+                    : 'Entered'
                 }`;
 
             if (isInfo) {

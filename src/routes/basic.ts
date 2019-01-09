@@ -22,9 +22,10 @@ export abstract class BrontosaurusRoute implements ISudooExpressRoute {
 
         const err: ConnorError = error as any;
         this._log.error(`${this.path} - ${error.message} (${code})`);
+
         return {
             code,
-            message: err.code.toString(),
+            message: String(err.code),
         };
     }
 }

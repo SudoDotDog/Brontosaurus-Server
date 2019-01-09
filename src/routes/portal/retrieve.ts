@@ -47,7 +47,12 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
             }
 
-            const application: IApplicationModel = Safe.value(await getApplicationByKey(body.direct('applicationKey'))).safe();
+            const application: IApplicationModel | null = await getApplicationByKey(body.direct('applicationKey'));
+
+            if (!application) {
+                throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
+            }
+
             const token: string = createToken(account.username, application);
 
             res.agent.add('token', token);

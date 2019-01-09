@@ -2,13 +2,13 @@
 build := typescript/tsconfig.build.json
 dev := typescript/tsconfig.dev.json
 
-dbPath := F:/db/
-
 # NPX functions
 ifeq ($(OS), Windows_NT)
 	tsc := .\node_modules\.bin\tsc
+	dbPath := F:/db/
 else
 	tsc := node_modules/.bin/tsc
+	dbPath := ~/Desktop/db/
 endif
 mocha := node_modules/.bin/mocha
 
