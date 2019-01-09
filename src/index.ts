@@ -7,6 +7,7 @@
 import { SudooExpress, SudooExpressApplication } from '@sudoo/express';
 import { LOG_LEVEL, SudooLog } from '@sudoo/log';
 import * as Mongoose from "mongoose";
+import { ApplicationRoute } from './routes/portal/application';
 import { RetrieveRoute } from './routes/portal/retrieve';
 import { AccountValidateRoute } from './routes/portal/validate';
 import { AddGroupRoute } from './routes/red/account/add-group';
@@ -38,11 +39,15 @@ Mongoose.connect(
 const db: Mongoose.Connection = Mongoose.connection;
 db.on('error', console.log.bind(console, 'connection error:'));
 
+// Static
 app.route(new PortalRoute());
 
+// Portal
 app.route(new RegisterRoute());
 app.route(new RetrieveRoute());
+app.route(new ApplicationRoute());
 
+// Red
 app.route(new CreateApplicationRoute());
 app.route(new CreateGroupRoute());
 app.route(new AddGroupRoute());
