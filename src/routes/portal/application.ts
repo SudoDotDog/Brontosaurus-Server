@@ -4,6 +4,7 @@
  * @description Application
  */
 
+import { _Array } from "@sudoo/bark";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { getApplicationByKey } from "../../controller/application";
@@ -42,7 +43,7 @@ export class ApplicationRoute extends BrontosaurusRoute {
             const backgroundImages: string[] | null = await getSinglePreference('backgroundImages');
 
             if (backgroundImages) {
-                res.agent.add('background', backgroundImages[Math.floor(Math.random() * backgroundImages.length)]);
+                res.agent.add('background', _Array.sample(backgroundImages));
             }
 
             if (application.avatar) {
