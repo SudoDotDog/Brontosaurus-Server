@@ -41,19 +41,25 @@ const db: Mongoose.Connection = Mongoose.connection;
 db.on('error', console.log.bind(console, 'connection error:'));
 
 // Static
-app.route(new PortalRoute());
+app.routes(
+    new PortalRoute(),
+);
 
 // Portal
-app.route(new RegisterRoute());
-app.route(new RetrieveRoute());
-app.route(new ApplicationRoute());
+app.routes(
+    new RegisterRoute(),
+    new RetrieveRoute(),
+    new ApplicationRoute(),
+);
 
 // Red
-app.route(new CreateApplicationRoute());
-app.route(new CreateGroupRoute());
-app.route(new AddGroupRoute());
-app.route(new AccountValidateRoute());
-app.route(new GlobalPreferenceRoute());
+app.routes(
+    new CreateApplicationRoute(),
+    new CreateGroupRoute(),
+    new AddGroupRoute(),
+    new AccountValidateRoute(),
+    new GlobalPreferenceRoute(),
+);
 
 app.host(8080);
 console.log('hosting');

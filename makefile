@@ -4,23 +4,22 @@ dev := typescript/tsconfig.dev.json
 
 # NPX functions
 ifeq ($(OS), Windows_NT)
-	tsc := .\node_modules\.bin\tsc
 	dbPath := F:/db/
 else
-	tsc := node_modules/.bin/tsc
 	dbPath := ~/Desktop/db/
 endif
+tsc := node_modules/.bin/tsc
 mocha := node_modules/.bin/mocha
 
 main: dev
 
 dev:
 	@echo "[INFO] Building for development"
-	@$(tsc) --p $(dev)
+	@NODE_ENV=development $(tsc) --p $(dev)
 
-build:
+build: clean
 	@echo "[INFO] Building for production"
-	@$(tsc) --p $(build)
+	@NODE_ENV=production $(tsc) --p $(build)
 
 run: dev
 	@NODE_ENV=development \
@@ -58,7 +57,3 @@ else
 	@rm -rf .nyc_output
 	@rm -rf coverage
 endif
-
-publish: install build
-	@echo "[INFO] Publishing package"
-	@npm publish --access=public
