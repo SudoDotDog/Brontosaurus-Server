@@ -13,7 +13,7 @@ export enum INTERNAL_APPLICATION {
 
 export interface IApplicationConfig {
 
-    avatar: string;
+    avatar?: string;
     key: string;
     name: string;
 

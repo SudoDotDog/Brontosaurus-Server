@@ -16,7 +16,6 @@ const ApplicationSchema: Schema = new Schema({
     },
     avatar: {
         type: String,
-        default: null,
     },
     expire: {
         type: Number,

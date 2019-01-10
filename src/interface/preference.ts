@@ -11,6 +11,9 @@ export type Preferences = {
         type: string;
     };
     prepared: boolean;
+
+    backgroundImages: string[];
+    globalAvatar: string;
 };
 
 export interface IPreferenceConfig {

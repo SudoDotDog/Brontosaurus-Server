@@ -7,6 +7,7 @@
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { getApplicationByKey } from "../../controller/application";
+import { getSinglePreference } from "../../controller/preference";
 import { basicHook } from "../../handlers/hook";
 import { IApplicationModel } from "../../model/application";
 import { ERROR_CODE } from "../../util/error";
@@ -38,8 +39,23 @@ export class ApplicationRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
             }
 
+            const backgroundImages: string[] | null = await getSinglePreference('backgroundImages');
+
+            if (backgroundImages) {
+                res.agent.add('background', backgroundImages[Math.floor(Math.random() * backgroundImages.length)]);
+            }
+
+            if (application.avatar) {
+                res.agent.add('avatar', application.avatar);
+            } else {
+                const globalAvatar: string | null = await getSinglePreference('globalAvatar');
+
+                if (globalAvatar) {
+                    res.agent.add('avatar', globalAvatar);
+                }
+            }
+
             res.agent
-                .add('avatar', application.avatar)
                 .add('key', application.key)
                 .add('name', application.name);
         } catch (err) {
