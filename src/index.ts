@@ -16,19 +16,23 @@ import { CreateApplicationRoute } from './routes/red/application/create';
 import { CreateGroupRoute } from './routes/red/group/create';
 import { GlobalPreferenceRoute } from './routes/red/preference/global';
 import { PortalRoute } from './routes/static/portal';
-import { BrontosaurusConfig, readConfigSync } from './util/conf';
+import { BrontosaurusConfig, isDevelopment, readConfigSync } from './util/conf';
 import { registerConnor } from './util/error';
 
 const setting: SudooExpressApplication = SudooExpressApplication.create('Brontosaurus', '1');
 
-setting.allowCrossOrigin();
+if (isDevelopment()) {
+    setting.allowCrossOrigin();
+    SudooLog.global.level(LOG_LEVEL.VERBOSE);
+} else {
+    SudooLog.global.level(LOG_LEVEL.INFO);
+}
 
 const app: SudooExpress = SudooExpress.create(setting);
 
 const config: BrontosaurusConfig = readConfigSync();
 
 registerConnor();
-SudooLog.global.level(LOG_LEVEL.VERBOSE);
 
 Mongoose.set('useCreateIndex', true);
 

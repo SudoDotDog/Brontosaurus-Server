@@ -56,9 +56,7 @@ export class ApplicationRoute extends BrontosaurusRoute {
                 }
             }
 
-            res.agent
-                .add('key', application.key)
-                .add('name', application.name);
+            res.agent.add('name', application.name);
         } catch (err) {
             res.agent.fail(400, err);
         } finally {
