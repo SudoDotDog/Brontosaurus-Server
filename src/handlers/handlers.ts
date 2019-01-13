@@ -4,7 +4,7 @@
  * @description Authenticate
  */
 
-import { IBrontosaurusBody } from "@brontosaurus/core";
+import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeValue } from "@sudoo/extract";
 import Connor, { ErrorCreationFunction } from "connor";

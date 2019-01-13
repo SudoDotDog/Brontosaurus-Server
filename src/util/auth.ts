@@ -4,7 +4,8 @@
  * @description Auth
  */
 
-import { Brontosaurus, BrontosaurusToken, IBrontosaurusBody } from "@brontosaurus/core";
+import { Brontosaurus, BrontosaurusToken } from "@brontosaurus/core";
+import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ObjectID } from "bson";
 import Connor, { ErrorCreationFunction } from "connor";
 import { isArray } from "util";
