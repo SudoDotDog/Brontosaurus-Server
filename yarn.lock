@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@brontosaurus/core@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-1.4.1.tgz#1ae2ef083418b60aa151679131c1fcda516fa3b1"
-  integrity sha512-b5W316KdL5f1jFp8n5llXh/VlT0KkCQBG2dXfDvMQop9Dm6ONk0cvS+AsgxUzrihAhIkz+oxPQw1T2m5Hp4UyQ==
+"@brontosaurus/core@^1.5.3":
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-1.5.3.tgz#42d9ab4c14aaed6b1bfb07c79090949a68ea5ec0"
+  integrity sha512-z/WoT9Ekz6QW3D1QZCpAFQxGaNNWk3vO4TkBdC+FnuFrhXjF+1OYwWbWP+AA1HadumSgA+1jPYyX9z3zWawkIA==
   dependencies:
-    "@brontosaurus/definition" "^1.0.0"
+    "@brontosaurus/definition" "^1.2.0"
 
-"@brontosaurus/definition@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/definition/-/definition-1.0.0.tgz#54069bf83784833a8c9cd0c704a15eb912644d0b"
-  integrity sha512-J6eoRPs7OMqaNzSnz7KxMEIE2oc0Q1MTteIKNYJknzNn1iA0VSWa3IDSQkdHpVtQO15OmN51j1kBsVFIAwbXHQ==
+"@brontosaurus/definition@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/definition/-/definition-1.2.0.tgz#5952e6fc48b289d9e71e456ad3a39a3d46b2e6e6"
+  integrity sha512-OlIrLch8z18Tzh15ZY7Fv9SGQQC9yA8BFBlz9i1yaSnOpDweeK8UcEirbyWqEe40yokqKpLWp1Dc4gaF9K+FeA==
 
 "@sudoo/bark@^1.2.1", "@sudoo/bark@^1.2.2":
   version "1.2.2"
@@ -726,10 +726,10 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@^5.4.3:
-  version "5.4.3"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.4.3.tgz#9cbc689ca0c529c2d7dd5a84dcfbc9b041084367"
-  integrity sha512-zhfypQm63CPYHi43O/3lTcEPVucY3h6CqONbzreMKZIEXtwgkB9HCm4wn441Z9/CpM94G6/NA3wcaRb0N2kPYQ==
+mongoose@^5.4.4:
+  version "5.4.4"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.4.4.tgz#923923cd39a03b970c269f828322990ea163f9a8"
+  integrity sha512-KoYUFtgrXQ9Sxuf5IEE0Y2LswWGhHiN27bxtObANxMgXbuNLTtLB3xaep8jITUDitG4kkI+FKElUJH4uY8G2Bw==
   dependencies:
     async "2.6.1"
     bson "~1.1.0"

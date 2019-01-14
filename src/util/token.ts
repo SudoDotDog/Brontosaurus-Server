@@ -5,15 +5,12 @@
  */
 
 import { BrontosaurusSign } from "@brontosaurus/core";
+import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { IApplicationModel } from "../model/application";
 
-export const createToken = (username: string, application: IApplicationModel): string => {
+export const createToken = (body: IBrontosaurusBody, application: IApplicationModel): string => {
 
-    const sign: BrontosaurusSign = BrontosaurusSign.create({
-        username,
-    }, application.secret);
-
-    sign.key(application.key);
+    const sign: BrontosaurusSign = BrontosaurusSign.create(application.key, body, application.secret);
     const token: string = sign.token(Date.now() + application.expire);
 
     return token;

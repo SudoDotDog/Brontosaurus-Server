@@ -4,13 +4,16 @@
  * @description Retrieve
  */
 
+import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { getAccountByUsername } from "../../controller/account";
 import { getApplicationByKey } from "../../controller/application";
+import { getGroupsByIds } from "../../controller/group";
 import { basicHook } from "../../handlers/hook";
 import { IAccountModel } from "../../model/account";
 import { IApplicationModel } from "../../model/application";
+import { IGroupModel } from "../../model/group";
 import { ERROR_CODE } from "../../util/error";
 import { createToken } from '../../util/token';
 import { BrontosaurusRoute } from "../basic";
@@ -53,7 +56,14 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
             }
 
-            const token: string = createToken(account.username, application);
+            const groups: IGroupModel[] = await getGroupsByIds(account.groups);
+
+            const object: IBrontosaurusBody = {
+                username: account.username,
+                groups: groups.map((group: IGroupModel) => group.name),
+                infos: account.getInfoRecords(),
+            };
+            const token: string = createToken(object, application);
 
             res.agent.add('token', token);
         } catch (err) {

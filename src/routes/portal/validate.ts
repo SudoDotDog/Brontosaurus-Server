@@ -35,7 +35,7 @@ export class AccountValidateRoute extends BrontosaurusRoute {
         try {
 
             const token: string = body.direct('token');
-            const applicationKey: string | null = BrontosaurusToken.withoutSecret().key(token);
+            const applicationKey: string | null = BrontosaurusToken.key(token);
 
             if (!applicationKey) {
                 throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);

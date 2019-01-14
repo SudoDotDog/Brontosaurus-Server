@@ -21,13 +21,13 @@
   },
   "homepage": "https://github.com/SudoDotDog/Brontosaurus-Server#readme",
   "dependencies": {
-    "@brontosaurus/core": "^1.4.1",
+    "@brontosaurus/core": "^1.5.3",
     "@sudoo/bark": "^1.2.2",
     "@sudoo/express": "^1.7.2",
     "@sudoo/extract": "^1.1.2",
     "@sudoo/log": "^1.2.0",
     "connor": "^2.0.0",
-    "mongoose": "^5.4.3"
+    "mongoose": "^5.4.4"
   },
   "devDependencies": {
     "@sudoo/triforce": "^1.1.0",

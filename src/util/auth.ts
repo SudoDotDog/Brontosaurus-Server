@@ -15,7 +15,7 @@ import { ERROR_CODE, MODULE_NAME } from "./error";
 
 export const Throwable_ValidateToken = (secret: string, expire: number, tokenString: string): true => {
 
-    const token: BrontosaurusToken = BrontosaurusToken.withSecret(secret);
+    const token: BrontosaurusToken = Brontosaurus.token(secret);
     const createError: ErrorCreationFunction = Connor.getErrorCreator(MODULE_NAME);
 
     if (!token.clock(tokenString, expire)) {
@@ -53,7 +53,7 @@ export const parseBearerAuthorization = (auth: string | undefined): string | nul
 
 export const Throwable_GetBody = (token: string): IBrontosaurusBody => {
 
-    const body: IBrontosaurusBody | null = Brontosaurus.decoupleBody<IBrontosaurusBody>(token);
+    const body: IBrontosaurusBody | null = Brontosaurus.decoupleBody(token);
 
     const createError: ErrorCreationFunction = Connor.getErrorCreator(MODULE_NAME);
 

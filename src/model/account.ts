@@ -4,6 +4,7 @@
  * @description Account
  */
 
+import { Basics } from "@brontosaurus/definition";
 import { ObjectID } from "bson";
 import { Document, model, Model, Schema } from "mongoose";
 import { IAccount } from "../interface/account";
@@ -49,9 +50,24 @@ const AccountSchema: Schema = new Schema({
 
 
 export interface IAccountModel extends IAccount, Document {
+    getInfoRecords: () => Record<string, Basics>;
     addGroup: (id: ObjectID) => IAccountModel;
     removeGroup: (id: ObjectID) => IAccountModel;
 }
+
+AccountSchema.methods.getInfoRecords = function (this: IAccountModel): Record<string, Basics> {
+
+    return this.infos.reduce((previous: Record<string, Basics>, current: string) => {
+        const splited: string[] = current.split(':*:');
+        if (splited.length === 2) {
+            return {
+                ...previous,
+                [splited[0]]: splited[1],
+            };
+        }
+        return previous;
+    }, {} as Record<string, Basics>);
+};
 
 AccountSchema.methods.addGroup = function (this: IAccountModel, id: ObjectID): IAccountModel {
 

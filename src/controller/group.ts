@@ -12,6 +12,13 @@ export const getGroupById = async (id: ObjectID): Promise<IGroupModel | null> =>
         _id: id,
     });
 
+export const getGroupsByIds = async (ids: ObjectID[]): Promise<IGroupModel[]> =>
+    await GroupModel.find({
+        _id: {
+            $in: ids,
+        },
+    });
+
 export const getGroupByName = async (name: string): Promise<IGroupModel | null> =>
     await GroupModel.findOne({
         name,
