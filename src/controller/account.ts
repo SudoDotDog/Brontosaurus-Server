@@ -4,16 +4,20 @@
  * @description Account
  */
 
+import { Basics } from "@brontosaurus/definition";
 import { ObjectID } from "bson";
 import { AccountModel, IAccountModel } from "../model/account";
+import { parseInfo } from "../util/token";
 
-export const createUnsavedAccount = (username: string, password: string, infos: string[], groups: ObjectID[] = []): IAccountModel => {
+export const createUnsavedAccount = (username: string, password: string, groups: ObjectID[] = [], infos: Record<string, Basics>): IAccountModel => {
+
+    const infoList: string[] = parseInfo(infos);
 
     return new AccountModel({
 
         username,
         password,
-        infos,
+        infos: infoList,
         groups,
     });
 };

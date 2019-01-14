@@ -6,6 +6,8 @@
 
 import { ObjectID } from "bson";
 
+export const INFOS_SPLITTER = ':*:';
+
 export interface IAccountConfig {
 
     username: string;

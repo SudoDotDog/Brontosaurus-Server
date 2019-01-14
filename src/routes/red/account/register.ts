@@ -4,6 +4,7 @@
  * @description Register
  */
 
+import { Basics } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { createUnsavedAccount, isAccountDuplicatedByUsername } from "../../../controller/account";
@@ -18,7 +19,7 @@ export type RegisterRouteBody = {
 
     username: string;
     password: string;
-    infos: string[];
+    infos: Record<string, Basics>;
 };
 
 export class RegisterRoute extends BrontosaurusRoute {
@@ -41,7 +42,7 @@ export class RegisterRoute extends BrontosaurusRoute {
 
             const username = body.direct('username');
             const password = body.direct('password');
-            const infos = JSON.parse(body.direct('infos') as any as string);
+            const infos: Record<string, Basics> = JSON.parse(body.direct('infos') as any as string);
 
             const isDuplicated: boolean = await isAccountDuplicatedByUsername(username);
 
@@ -49,7 +50,7 @@ export class RegisterRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.DUPLICATE_ACCOUNT, username);
             }
 
-            const account: IAccountModel = createUnsavedAccount(username, password, infos);
+            const account: IAccountModel = createUnsavedAccount(username, password, [], infos);
             await account.save();
 
             res.agent.add('account', account.id);

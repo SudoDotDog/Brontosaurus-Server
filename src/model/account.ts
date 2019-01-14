@@ -7,7 +7,7 @@
 import { Basics } from "@brontosaurus/definition";
 import { ObjectID } from "bson";
 import { Document, model, Model, Schema } from "mongoose";
-import { IAccount } from "../interface/account";
+import { IAccount, INFOS_SPLITTER } from "../interface/account";
 
 const AccountSchema: Schema = new Schema({
 
@@ -58,7 +58,7 @@ export interface IAccountModel extends IAccount, Document {
 AccountSchema.methods.getInfoRecords = function (this: IAccountModel): Record<string, Basics> {
 
     return this.infos.reduce((previous: Record<string, Basics>, current: string) => {
-        const splited: string[] = current.split(':*:');
+        const splited: string[] = current.split(INFOS_SPLITTER);
         if (splited.length === 2) {
             return {
                 ...previous,
