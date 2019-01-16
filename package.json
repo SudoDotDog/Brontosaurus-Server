@@ -23,7 +23,7 @@
   "dependencies": {
     "@brontosaurus/core": "^1.5.3",
     "@sudoo/bark": "^1.2.2",
-    "@sudoo/express": "^1.7.2",
+    "@sudoo/express": "^1.7.3",
     "@sudoo/extract": "^1.1.2",
     "@sudoo/log": "^1.2.0",
     "connor": "^2.0.0",
@@ -31,9 +31,8 @@
   },
   "devDependencies": {
     "@sudoo/triforce": "^1.1.0",
-    "@sudoo/tslint-config": "^1.1.0",
     "@types/express": "^4.16.0",
-    "@types/mongodb": "^3.1.18",
+    "@types/mongodb": "^3.1.19",
     "@types/mongoose": "^5.3.7",
     "@types/node": "^10.12.18"
   },

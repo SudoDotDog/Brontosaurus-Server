@@ -64,8 +64,12 @@ const log = SudooLog.create(LOG_LEVEL.DEBUG);
 
         await setSinglePreference('prepared', true);
         await addMultiplePreference('registerInfo', {
-            name: 'email',
+            name: 'Email',
             type: 'string',
+        });
+        await addMultiplePreference('registerInfo', {
+            name: 'Phone',
+            type: 'number',
         });
 
         log.debug('set preference');

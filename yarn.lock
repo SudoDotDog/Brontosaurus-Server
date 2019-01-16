@@ -14,17 +14,17 @@
   resolved "https://registry.yarnpkg.com/@brontosaurus/definition/-/definition-1.2.0.tgz#5952e6fc48b289d9e71e456ad3a39a3d46b2e6e6"
   integrity sha512-OlIrLch8z18Tzh15ZY7Fv9SGQQC9yA8BFBlz9i1yaSnOpDweeK8UcEirbyWqEe40yokqKpLWp1Dc4gaF9K+FeA==
 
-"@sudoo/bark@^1.2.1", "@sudoo/bark@^1.2.2":
+"@sudoo/bark@^1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-1.2.2.tgz#c42c63eeb1b5908dcfad25cab442a9407d4f32ac"
   integrity sha512-Hauvvdbr+AxnFrke0KPwW4lmdGFPLlsL1utaKRUmCTsqKd6HIVrowgLhZNGsWI+D31uTeDyP8rjIUBXHeyzQcA==
 
-"@sudoo/express@^1.7.2":
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-1.7.2.tgz#99624383f1b4a5449557dd4c47f05ec640779756"
-  integrity sha512-OjTPiH2HDW4O0cqEAH9jcQfh7PkoXypWvucBvMqj6HFeZERXlN3ZQT8+TdSaM32/fgmi62FUxTb73Uy+gpbkhw==
+"@sudoo/express@^1.7.3":
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-1.7.3.tgz#d73e148c4f4f8a5056331fd204fb49c5a80be4aa"
+  integrity sha512-hzeirtF+5supR7heZ0bQCydMYeknAWSo1bq319sffKifuvhOcQNUVFT2moCZwM5USDWZGpEN5d7cWsVfHziuLQ==
   dependencies:
-    "@sudoo/bark" "^1.2.1"
+    "@sudoo/bark" "^1.2.2"
     body-parser "^1.18.3"
     connor "^2.0.0"
     express "^4.16.4"
@@ -125,10 +125,18 @@
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.5.tgz#8a4accfc403c124a0bafe8a9fc61a05ec1032073"
   integrity sha512-lAVp+Kj54ui/vLUFxsJTMtWvZraZxum3w3Nwkble2dNuV5VnPA+Mi2oGX9XYJAaIvZi3tn3cbjS/qcJXRb6Bww==
 
-"@types/mongodb@*", "@types/mongodb@^3.1.18":
+"@types/mongodb@*":
   version "3.1.18"
   resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.1.18.tgz#24e847c15155226895ec9c79660ec0907005deff"
   integrity sha512-8m8yvrDagesNNJdOIMk+g0b5z/sW48FwNp4GS1tRcHMKfQ/o40WsFXOXSfYY7y4xkutPFGQKGb4/GpzGFhpnqw==
+  dependencies:
+    "@types/bson" "*"
+    "@types/node" "*"
+
+"@types/mongodb@^3.1.19":
+  version "3.1.19"
+  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.1.19.tgz#40c4310986888975771857810aa47fd3ea8e1acf"
+  integrity sha512-H54hQEovAhyLrIZOhPNfGyCCDoTqKsjb8GQBy8nptJqfxrYCp5WVcPJf9v0kfTPR72xOhaz9+WcYxOXWwEg1Vg==
   dependencies:
     "@types/bson" "*"
     "@types/node" "*"
