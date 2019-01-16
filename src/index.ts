@@ -7,6 +7,7 @@
 import { SudooExpress, SudooExpressApplication } from '@sudoo/express';
 import { LOG_LEVEL, SudooLog } from '@sudoo/log';
 import * as Mongoose from "mongoose";
+import * as Path from 'path';
 import { ApplicationRoute } from './routes/portal/application';
 import { RetrieveRoute } from './routes/portal/retrieve';
 import { AccountValidateRoute } from './routes/portal/validate';
@@ -17,7 +18,6 @@ import { CreateGroupRoute } from './routes/red/group/create';
 import { GlobalPreferenceRoute } from './routes/red/preference/global';
 import { InfosPreferenceRoute } from './routes/red/preference/infos';
 import { ReadPreferenceRoute } from './routes/red/preference/read';
-import { PortalRoute } from './routes/static/portal';
 import { BrontosaurusConfig, isDevelopment, readConfigSync } from './util/conf';
 import { registerConnor } from './util/error';
 
@@ -47,9 +47,7 @@ const db: Mongoose.Connection = Mongoose.connection;
 db.on('error', console.log.bind(console, 'connection error:'));
 
 // Static
-app.routes(
-    new PortalRoute(),
-);
+app.static(Path.join(__dirname, '..', 'public', 'portal'));
 
 // Portal
 app.routes(

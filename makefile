@@ -25,6 +25,10 @@ run: dev
 	@NODE_ENV=development \
 	node dist/index.js
 
+p-run: dev
+	@NODE_ENV=production \
+	node dist/index.js
+
 prepare: dev
 	@node dist/prepare.js
 
