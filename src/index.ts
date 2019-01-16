@@ -15,6 +15,8 @@ import { RegisterRoute } from './routes/red/account/register';
 import { CreateApplicationRoute } from './routes/red/application/create';
 import { CreateGroupRoute } from './routes/red/group/create';
 import { GlobalPreferenceRoute } from './routes/red/preference/global';
+import { InfosPreferenceRoute } from './routes/red/preference/infos';
+import { ReadPreferenceRoute } from './routes/red/preference/read';
 import { PortalRoute } from './routes/static/portal';
 import { BrontosaurusConfig, isDevelopment, readConfigSync } from './util/conf';
 import { registerConnor } from './util/error';
@@ -63,6 +65,8 @@ app.routes(
     new AddGroupRoute(),
     new AccountValidateRoute(),
     new GlobalPreferenceRoute(),
+    new ReadPreferenceRoute(),
+    new InfosPreferenceRoute(),
 );
 
 app.host(8080);

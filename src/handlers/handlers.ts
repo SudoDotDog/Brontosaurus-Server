@@ -19,7 +19,7 @@ import { ERROR_CODE, MODULE_NAME } from "../util/error";
 export const createTokenHandler = (): SudooExpressHandler =>
     async (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> => {
 
-        const authHeader: string | undefined = req.header('authorization');
+        const authHeader: string | undefined = req.header('authorization') || req.header('Authorization');
         const auth: string | null = parseBearerAuthorization(authHeader);
 
         req.info.token = auth;

@@ -7,6 +7,7 @@
 import { Basics } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
+import { isString } from "util";
 import { createUnsavedAccount, isAccountDuplicatedByUsername } from "../../../controller/account";
 import { createAuthenticateHandler, createGroupVerifyHandler, createTokenHandler } from "../../../handlers/handlers";
 import { basicHook } from "../../../handlers/hook";
@@ -42,7 +43,11 @@ export class RegisterRoute extends BrontosaurusRoute {
 
             const username = body.direct('username');
             const password = body.direct('password');
-            const infos: Record<string, Basics> = JSON.parse(body.direct('infos') as any as string);
+
+            const infoLine: any = body.direct('infos');
+            const infos: Record<string, Basics> = isString(infoLine)
+                ? JSON.parse(infoLine)
+                : infoLine;
 
             const isDuplicated: boolean = await isAccountDuplicatedByUsername(username);
 

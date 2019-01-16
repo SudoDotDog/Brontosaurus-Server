@@ -4,12 +4,15 @@
  * @description Preference
  */
 
+export type RegisterInfoType = 'string';
+export type RegisterInfo = {
+    name: string;
+    type: RegisterInfoType;
+};
+
 export type Preferences = {
 
-    register_info: {
-        name: string;
-        type: string;
-    };
+    registerInfo: RegisterInfo;
     prepared: boolean;
 
     backgroundImages: string[];

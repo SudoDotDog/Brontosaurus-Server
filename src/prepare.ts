@@ -9,7 +9,7 @@ import * as Mongoose from "mongoose";
 import { createUnsavedAccount } from "./controller/account";
 import { createUnsavedApplication } from "./controller/application";
 import { createUnsavedGroup } from "./controller/group";
-import { getSinglePreference, setSinglePreference } from "./controller/preference";
+import { addMultiplePreference, getSinglePreference, setSinglePreference } from "./controller/preference";
 import { INTERNAL_APPLICATION } from "./interface/application";
 import { INTERNAL_USER_GROUP } from "./interface/group";
 import { BrontosaurusConfig, readConfigSync } from './util/conf';
@@ -63,6 +63,10 @@ const log = SudooLog.create(LOG_LEVEL.DEBUG);
         log.debug('add user');
 
         await setSinglePreference('prepared', true);
+        await addMultiplePreference('registerInfo', {
+            name: 'email',
+            type: 'string',
+        });
 
         log.debug('set preference');
     } catch (err) {

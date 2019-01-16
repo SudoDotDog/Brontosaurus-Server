@@ -17,7 +17,18 @@ export const getSinglePreference = async <N extends keyof Preferences>(name: N):
         return null;
     }
 
-    return preference.value;
+    return JSON.parse(preference.value);
+};
+
+export const addMultiplePreference = async <N extends keyof Preferences>(name: N, value: Preferences[N]): Promise<void> => {
+
+    const castedValue: string = JSON.stringify(value);
+
+    const newPreference: IPreferenceModel = new PreferenceModel({
+        name,
+        value: castedValue,
+    });
+    await newPreference.save();
 };
 
 export const getMultiplePreference = async <N extends keyof Preferences>(name: N): Promise<Array<Preferences[N]>> => {
@@ -26,7 +37,7 @@ export const getMultiplePreference = async <N extends keyof Preferences>(name: N
         name,
     });
 
-    return preferences.map((model: IPreferenceModel) => model.value);
+    return preferences.map((model: IPreferenceModel) => JSON.parse(model.value));
 };
 
 export const setSinglePreference = async <N extends keyof Preferences>(name: N, value: Preferences[N]): Promise<void> => {
@@ -34,15 +45,17 @@ export const setSinglePreference = async <N extends keyof Preferences>(name: N, 
     const preference: IPreferenceModel | null = await PreferenceModel.findOne({
         name,
     });
+    const castedValue: string = JSON.stringify(value);
+
     if (preference) {
 
-        preference.value = value;
+        preference.value = castedValue;
         await preference.save();
     } else {
 
         const newPreference: IPreferenceModel = new PreferenceModel({
             name,
-            value,
+            value: castedValue,
         });
         await newPreference.save();
     }
