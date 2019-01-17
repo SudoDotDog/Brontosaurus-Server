@@ -18,7 +18,7 @@ import { CreateGroupRoute } from './routes/red/group/create';
 import { GlobalPreferenceRoute } from './routes/red/preference/global';
 import { InfosPreferenceRoute } from './routes/red/preference/infos';
 import { ReadPreferenceRoute } from './routes/red/preference/read';
-import { BrontosaurusConfig, isDevelopment, readConfigSync } from './util/conf';
+import { BrontosaurusConfig, isDevelopment, readConfigEnvironment } from './util/conf';
 import { registerConnor } from './util/error';
 
 const setting: SudooExpressApplication = SudooExpressApplication.create('Brontosaurus', '1');
@@ -32,7 +32,7 @@ if (isDevelopment()) {
 
 const app: SudooExpress = SudooExpress.create(setting);
 
-const config: BrontosaurusConfig = readConfigSync();
+const config: BrontosaurusConfig = readConfigEnvironment();
 
 registerConnor();
 

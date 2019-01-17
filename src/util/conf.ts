@@ -28,4 +28,22 @@ export const readConfigSync = (): BrontosaurusConfig => {
     throw new Error('never');
 };
 
+export const readConfigEnvironment = (): BrontosaurusConfig => {
+
+    const host: string | undefined = process.env.BRONTOSAURUS_HOST;
+    const database: string | undefined = process.env.BRONTOSAURUS_DATABASE;
+
+    if (host && database) {
+        return {
+            host,
+            database,
+        };
+    }
+
+    console.log('Config file not exist');
+    process.exit();
+
+    throw new Error('never');
+};
+
 export const isDevelopment = (): boolean => process.env.NODE_ENV === 'development';
