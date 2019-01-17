@@ -12,14 +12,14 @@ import { createUnsavedGroup } from "./controller/group";
 import { addMultiplePreference, getSinglePreference, setSinglePreference } from "./controller/preference";
 import { INTERNAL_APPLICATION } from "./interface/application";
 import { INTERNAL_USER_GROUP } from "./interface/group";
-import { BrontosaurusConfig, readConfigSync } from './util/conf';
+import { BrontosaurusConfig, readConfigEnvironment } from './util/conf';
 
-const config: BrontosaurusConfig = readConfigSync();
+const config: BrontosaurusConfig = readConfigEnvironment();
 
 Mongoose.set('useCreateIndex', true);
 
 Mongoose.connect(
-    config.host + '/' + config.database,
+    config.database,
     { useNewUrlParser: true },
 );
 

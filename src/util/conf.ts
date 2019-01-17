@@ -29,7 +29,7 @@ export const readConfigSync = (): BrontosaurusConfig => {
 
 export const readConfigEnvironment = (): BrontosaurusConfig => {
 
-    const database: string | undefined = process.env.BRONTOSAURUS_DB;
+    const database: string | undefined = process.env.BRONTOSAURUS_DB || process.env.BRONTOSAURUS_DATABASE;
 
     if (database) {
         return {
