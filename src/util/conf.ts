@@ -9,7 +9,6 @@ import * as Path from 'path';
 
 export type BrontosaurusConfig = {
 
-    host: string;
     database: string;
 };
 
@@ -30,12 +29,10 @@ export const readConfigSync = (): BrontosaurusConfig => {
 
 export const readConfigEnvironment = (): BrontosaurusConfig => {
 
-    const host: string | undefined = process.env.BRONTOSAURUS_HOST;
-    const database: string | undefined = process.env.BRONTOSAURUS_DATABASE;
+    const database: string | undefined = process.env.BRONTOSAURUS_DB;
 
-    if (host && database) {
+    if (database) {
         return {
-            host,
             database,
         };
     }

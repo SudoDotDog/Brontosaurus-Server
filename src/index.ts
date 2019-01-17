@@ -39,7 +39,7 @@ registerConnor();
 Mongoose.set('useCreateIndex', true);
 
 Mongoose.connect(
-    config.host + '/' + config.database,
+    config.database,
     { useNewUrlParser: true },
 );
 
