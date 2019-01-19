@@ -30,4 +30,6 @@ export interface IPreference extends IPreferenceConfig {
     active: boolean;
     createdAt: Date;
     updatedAt: Date;
+
+    history: string[];
 }

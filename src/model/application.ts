@@ -41,6 +41,11 @@ const ApplicationSchema: Schema = new Schema({
         type: String,
         required: true,
     },
+    history: {
+        type: [String],
+        required: true,
+        default: [],
+    },
 }, {
         timestamps: {
             createdAt: true,
@@ -50,6 +55,14 @@ const ApplicationSchema: Schema = new Schema({
 
 
 export interface IApplicationModel extends IApplication, Document {
+    pushHistory: (history: string) => IApplicationModel;
 }
+
+ApplicationSchema.methods.pushHistory = function (this: IApplicationModel, history: string): IApplicationModel {
+
+    this.history = [...this.history, history];
+
+    return this;
+};
 
 export const ApplicationModel: Model<IApplicationModel> = model<IApplicationModel>('Application', ApplicationSchema);

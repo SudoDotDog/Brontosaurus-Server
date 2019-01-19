@@ -32,11 +32,6 @@ const AccountSchema: Schema = new Schema({
         required: true,
         default: [],
     },
-    history: {
-        type: [String],
-        required: true,
-        default: [],
-    },
     groups: {
         type: [Schema.Types.ObjectId],
         required: true,
@@ -45,6 +40,11 @@ const AccountSchema: Schema = new Schema({
 
     avatar: {
         type: String,
+    },
+    history: {
+        type: [String],
+        required: true,
+        default: [],
     },
 }, {
         timestamps: {

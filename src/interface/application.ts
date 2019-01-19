@@ -28,4 +28,6 @@ export interface IApplication extends IApplicationConfig {
     active: boolean;
     createdAt: Date;
     updatedAt: Date;
+
+    history: string[];
 }

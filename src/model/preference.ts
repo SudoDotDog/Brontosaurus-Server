@@ -23,6 +23,11 @@ const PreferenceSchema: Schema = new Schema({
         type: String,
         required: true,
     },
+    history: {
+        type: [String],
+        required: true,
+        default: [],
+    },
 }, {
         timestamps: {
             createdAt: true,
@@ -32,6 +37,14 @@ const PreferenceSchema: Schema = new Schema({
 
 
 export interface IPreferenceModel extends IPreference, Document {
+    pushHistory: (history: string) => IPreferenceModel;
 }
+
+PreferenceSchema.methods.pushHistory = function (this: IPreferenceModel, history: string): IPreferenceModel {
+
+    this.history = [...this.history, history];
+
+    return this;
+};
 
 export const PreferenceModel: Model<IPreferenceModel> = model<IPreferenceModel>('Preference', PreferenceSchema);

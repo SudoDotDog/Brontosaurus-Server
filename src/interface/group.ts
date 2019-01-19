@@ -19,4 +19,6 @@ export interface IGroup extends IGroupConfig {
     active: boolean;
     createdAt: Date;
     updatedAt: Date;
+
+    history: string[];
 }

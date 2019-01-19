@@ -20,9 +20,9 @@ export interface IAccountConfig {
 export interface IAccount extends IAccountConfig {
 
     active: boolean;
-    history: string[];
     createdAt: Date;
     updatedAt: Date;
 
     avatar?: string;
+    history: string[];
 }

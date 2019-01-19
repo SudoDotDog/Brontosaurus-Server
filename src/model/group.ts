@@ -20,6 +20,11 @@ const GroupSchema: Schema = new Schema({
         unique: true,
         index: true,
     },
+    history: {
+        type: [String],
+        required: true,
+        default: [],
+    },
 }, {
         timestamps: {
             createdAt: true,
@@ -29,6 +34,14 @@ const GroupSchema: Schema = new Schema({
 
 
 export interface IGroupModel extends IGroup, Document {
+    pushHistory: (history: string) => IGroupModel;
 }
+
+GroupSchema.methods.pushHistory = function (this: IGroupModel, history: string): IGroupModel {
+
+    this.history = [...this.history, history];
+
+    return this;
+};
 
 export const GroupModel: Model<IGroupModel> = model<IGroupModel>('Group', GroupSchema);
