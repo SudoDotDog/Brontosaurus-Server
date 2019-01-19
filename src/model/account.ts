@@ -32,6 +32,11 @@ const AccountSchema: Schema = new Schema({
         required: true,
         default: [],
     },
+    history: {
+        type: [String],
+        required: true,
+        default: [],
+    },
     groups: {
         type: [Schema.Types.ObjectId],
         required: true,
@@ -51,6 +56,7 @@ const AccountSchema: Schema = new Schema({
 
 export interface IAccountModel extends IAccount, Document {
     getInfoRecords: () => Record<string, Basics>;
+    pushHistory: (history: string) => IAccountModel;
     addGroup: (id: ObjectID) => IAccountModel;
     removeGroup: (id: ObjectID) => IAccountModel;
 }
@@ -67,6 +73,13 @@ AccountSchema.methods.getInfoRecords = function (this: IAccountModel): Record<st
         }
         return previous;
     }, {} as Record<string, Basics>);
+};
+
+AccountSchema.methods.pushHistory = function (this: IAccountModel, history: string): IAccountModel {
+
+    this.history = [...this.history, history];
+
+    return this;
 };
 
 AccountSchema.methods.addGroup = function (this: IAccountModel, id: ObjectID): IAccountModel {
