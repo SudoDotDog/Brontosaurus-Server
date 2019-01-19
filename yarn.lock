@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@brontosaurus/core@^1.5.3":
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-1.5.3.tgz#42d9ab4c14aaed6b1bfb07c79090949a68ea5ec0"
-  integrity sha512-z/WoT9Ekz6QW3D1QZCpAFQxGaNNWk3vO4TkBdC+FnuFrhXjF+1OYwWbWP+AA1HadumSgA+1jPYyX9z3zWawkIA==
+"@brontosaurus/core@^1.5.4":
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-1.5.4.tgz#064f6d2a64dc731159ab8b58226690d17c072fb2"
+  integrity sha512-a7Ynu9tozmSMg3g8TnhBefCZ4p1VcU0BFjS4Piw0CN6vvf6btoSOftDrTW0mr+NVmu4WIvU6UQ4xhOacvhBLdw==
   dependencies:
     "@brontosaurus/definition" "^1.2.0"
 

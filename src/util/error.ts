@@ -15,6 +15,7 @@ export enum ERROR_CODE {
     APPLICATION_KEY_NOT_FOUND = 4120,
 
     TOKEN_DOES_NOT_CONTAIN_INFORMATION = 4150,
+    TOKEN_DOES_NOT_CONTAIN_BODY = 4151,
 
     INSUFFICIENT_INFORMATION = 4500,
     INSUFFICIENT_SPECIFIC_INFORMATION = 4501,
@@ -30,6 +31,7 @@ export enum ERROR_CODE {
     DUPLICATE_GROUP = 6252,
 
     NOT_ENOUGH_PERMISSION = 7001,
+    PERMISSION_USER_DOES_NOT_MATCH = 7002,
 }
 
 export const MODULE_NAME = 'Brontosaurus-Server';
@@ -42,6 +44,7 @@ export const ERROR_LIST = {
     [ERROR_CODE.APPLICATION_KEY_NOT_FOUND]: 'Application key not found',
 
     [ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_INFORMATION]: 'Token does not contain information: "{}"',
+    [ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_BODY]: 'Token does not contain body',
 
     [ERROR_CODE.INSUFFICIENT_INFORMATION]: 'Insufficient information',
     [ERROR_CODE.INSUFFICIENT_SPECIFIC_INFORMATION]: 'Insufficient information, need: "{}"',
@@ -57,6 +60,7 @@ export const ERROR_LIST = {
     [ERROR_CODE.DUPLICATE_GROUP]: 'Group: "{}" already exist',
 
     [ERROR_CODE.NOT_ENOUGH_PERMISSION]: 'Permission insufficient, need "{}"',
+    [ERROR_CODE.PERMISSION_USER_DOES_NOT_MATCH]: 'Permission user does not match between: "{}" and "{}"',
 };
 
 export const registerConnor = () => Connor.dictionary(MODULE_NAME, ERROR_LIST);

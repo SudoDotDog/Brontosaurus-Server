@@ -8,7 +8,7 @@ import { Brontosaurus, BrontosaurusToken } from "@brontosaurus/core";
 import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ObjectID } from "bson";
 import Connor, { ErrorCreationFunction } from "connor";
-import { isArray } from "util";
+import { isArray, isString } from "util";
 import { getGroupById } from "../controller/group";
 import { IGroupModel } from "../model/group";
 import { ERROR_CODE, MODULE_NAME } from "./error";
@@ -32,8 +32,18 @@ export const Throwable_ValidateToken = (secret: string, expire: number, tokenStr
 export const getUsernameFromToken = (secret: string, tokenString: string): string => {
 
     const token: BrontosaurusToken = Brontosaurus.token(secret);
-    // TODO
-    return tokenString;
+    const body: IBrontosaurusBody | null = token.body(tokenString);
+    const createError: ErrorCreationFunction = Connor.getErrorCreator(MODULE_NAME);
+
+    if (!body) {
+        throw createError(ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_BODY);
+    }
+
+    if (!isString(body.username)) {
+        throw createError(ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_INFORMATION, 'username');
+    }
+
+    return body.username;
 };
 
 export const parseBearerAuthorization = (auth: string | undefined): string | null => {

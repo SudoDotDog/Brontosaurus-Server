@@ -5,7 +5,7 @@
  */
 
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
-import { Safe, SafeExtract } from '@sudoo/extract';
+import { Safe, SafeExtract, Unsafe } from '@sudoo/extract';
 import { getAccountByUsername } from "../../../controller/account";
 import { createAuthenticateHandler, createGroupVerifyHandler, createTokenHandler } from "../../../handlers/handlers";
 import { basicHook } from "../../../handlers/hook";
@@ -39,13 +39,25 @@ export class SelfEditRoute extends BrontosaurusRoute {
         try {
 
             const username: string = body.direct('username');
+            const tokenUsername: Unsafe<string> = req.info.username;
 
-            // TODO
+            if (!tokenUsername) {
+                throw this._error(ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_INFORMATION, 'username');
+            }
+
+            if (username !== tokenUsername) {
+                throw this._error(ERROR_CODE.PERMISSION_USER_DOES_NOT_MATCH, username, tokenUsername);
+            }
+
             const account: IAccountModel | null = await getAccountByUsername(username);
 
             if (!account) {
                 throw this._error(ERROR_CODE.ACCOUNT_NOT_FOUND, username);
             }
+
+            account.password = body.direct('password');
+
+            await account.save();
 
             res.agent.add('account', account.id);
         } catch (err) {

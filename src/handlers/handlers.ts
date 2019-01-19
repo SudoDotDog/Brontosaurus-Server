@@ -13,7 +13,7 @@ import { getApplicationByKey } from "../controller/application";
 import { INTERNAL_APPLICATION } from "../interface/application";
 import { IAccountModel } from "../model/account";
 import { IApplicationModel } from "../model/application";
-import { compareGroups, parseBearerAuthorization, Throwable_GetBody, Throwable_MapGroups, Throwable_ValidateToken } from "../util/auth";
+import { compareGroups, getUsernameFromToken, parseBearerAuthorization, Throwable_GetBody, Throwable_MapGroups, Throwable_ValidateToken } from "../util/auth";
 import { ERROR_CODE, MODULE_NAME } from "../util/error";
 
 export const createTokenHandler = (): SudooExpressHandler =>
@@ -37,7 +37,7 @@ export const createAuthenticateHandler = (): SudooExpressHandler =>
             const application: IApplicationModel = Safe.value(await getApplicationByKey(INTERNAL_APPLICATION.RED)).safe();
 
             Throwable_ValidateToken(application.secret, application.expire, token.safe());
-            // req.info.username =  // TODO
+            req.info.username = getUsernameFromToken(application.secret, token.safe());
 
             req.authenticate = application;
         } catch (err) {
