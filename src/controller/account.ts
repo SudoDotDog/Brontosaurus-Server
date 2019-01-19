@@ -27,6 +27,8 @@ export const getAccountByUsername = async (username: string): Promise<IAccountMo
         username,
     });
 
+export const getAllAccounts = async (): Promise<IAccountModel[]> => AccountModel.find({});
+
 export const isAccountDuplicatedByUsername = async (username: string): Promise<boolean> => {
     const account: IAccountModel | null = await getAccountByUsername(username);
     return Boolean(account);

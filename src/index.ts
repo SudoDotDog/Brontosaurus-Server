@@ -12,6 +12,7 @@ import { ApplicationRoute } from './routes/portal/application';
 import { RetrieveRoute } from './routes/portal/retrieve';
 import { AccountValidateRoute } from './routes/portal/validate';
 import { AddGroupRoute } from './routes/red/account/add-group';
+import { AllAccountRoute } from './routes/red/account/all';
 import { RegisterRoute } from './routes/red/account/register';
 import { CreateApplicationRoute } from './routes/red/application/create';
 import { CreateGroupRoute } from './routes/red/group/create';
@@ -51,17 +52,27 @@ app.static(Path.join(__dirname, '..', 'public', 'portal'));
 
 // Portal
 app.routes(
-    new RegisterRoute(),
     new RetrieveRoute(),
     new ApplicationRoute(),
+    new AccountValidateRoute(),
 );
 
 // Red
 app.routes(
+
+    // Application
     new CreateApplicationRoute(),
+
+
+    // Group
     new CreateGroupRoute(),
+
+    // Account
     new AddGroupRoute(),
-    new AccountValidateRoute(),
+    new AllAccountRoute(),
+    new RegisterRoute(),
+
+    // Preference
     new GlobalPreferenceRoute(),
     new ReadPreferenceRoute(),
     new InfosPreferenceRoute(),

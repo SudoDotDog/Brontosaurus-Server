@@ -37,7 +37,7 @@ export const readConfigEnvironment = (): BrontosaurusConfig => {
         };
     }
 
-    console.log('Config file not exist');
+    console.log('Environment variable not found');
     process.exit();
 
     throw new Error('never');
