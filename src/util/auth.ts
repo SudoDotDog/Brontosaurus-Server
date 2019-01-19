@@ -29,6 +29,13 @@ export const Throwable_ValidateToken = (secret: string, expire: number, tokenStr
     return true;
 };
 
+export const getUsernameFromToken = (secret: string, tokenString: string): string => {
+
+    const token: BrontosaurusToken = Brontosaurus.token(secret);
+    // TODO
+    return tokenString;
+};
+
 export const parseBearerAuthorization = (auth: string | undefined): string | null => {
 
     if (!auth || auth.length <= 7) {
