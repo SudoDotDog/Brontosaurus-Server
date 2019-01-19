@@ -14,6 +14,7 @@ export interface IAccountConfig {
     password: string;
 
     infos: string[];
+    beacons: string[];
     groups: ObjectID[];
 }
 

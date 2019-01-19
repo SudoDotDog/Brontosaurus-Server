@@ -32,6 +32,11 @@ const AccountSchema: Schema = new Schema({
         required: true,
         default: [],
     },
+    beacons: {
+        type: [String],
+        required: true,
+        default: [],
+    },
     groups: {
         type: [Schema.Types.ObjectId],
         required: true,
@@ -56,6 +61,7 @@ const AccountSchema: Schema = new Schema({
 
 export interface IAccountModel extends IAccount, Document {
     getInfoRecords: () => Record<string, Basics>;
+    getBeaconRecords: () => Record<string, Basics>;
     pushHistory: (history: string) => IAccountModel;
     addGroup: (id: ObjectID) => IAccountModel;
     removeGroup: (id: ObjectID) => IAccountModel;
@@ -64,6 +70,20 @@ export interface IAccountModel extends IAccount, Document {
 AccountSchema.methods.getInfoRecords = function (this: IAccountModel): Record<string, Basics> {
 
     return this.infos.reduce((previous: Record<string, Basics>, current: string) => {
+        const splited: string[] = current.split(INFOS_SPLITTER);
+        if (splited.length === 2) {
+            return {
+                ...previous,
+                [splited[0]]: splited[1],
+            };
+        }
+        return previous;
+    }, {} as Record<string, Basics>);
+};
+
+AccountSchema.methods.getBeaconRecords = function (this: IAccountModel): Record<string, Basics> {
+
+    return this.beacons.reduce((previous: Record<string, Basics>, current: string) => {
         const splited: string[] = current.split(INFOS_SPLITTER);
         if (splited.length === 2) {
             return {

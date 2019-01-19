@@ -9,15 +9,23 @@ import { ObjectID } from "bson";
 import { AccountModel, IAccountModel } from "../model/account";
 import { parseInfo } from "../util/token";
 
-export const createUnsavedAccount = (username: string, password: string, groups: ObjectID[] = [], infos: Record<string, Basics>): IAccountModel => {
+export const createUnsavedAccount = (
+    username: string,
+    password: string,
+    groups: ObjectID[] = [],
+    infos: Record<string, Basics> = {},
+    beacons: Record<string, Basics> = {},
+): IAccountModel => {
 
     const infoList: string[] = parseInfo(infos);
+    const beaconList: string[] = parseInfo(beacons);
 
     return new AccountModel({
 
         username,
         password,
         infos: infoList,
+        beacons: beaconList,
         groups,
     });
 };

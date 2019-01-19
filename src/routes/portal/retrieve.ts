@@ -62,6 +62,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 username: account.username,
                 groups: groups.map((group: IGroupModel) => group.name),
                 infos: account.getInfoRecords(),
+                beacons: account.getBeaconRecords(),
             };
             const token: string = createToken(object, application);
 
