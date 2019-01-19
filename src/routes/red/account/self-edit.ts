@@ -4,6 +4,7 @@
  * @description Self Edit
  */
 
+import { Basics } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract, Unsafe } from '@sudoo/extract';
 import { getAccountByUsername } from "../../../controller/account";
@@ -13,11 +14,13 @@ import { INTERNAL_USER_GROUP } from "../../../interface/group";
 import { IAccountModel } from "../../../model/account";
 import { BrontosaurusRoute } from "../../../routes/basic";
 import { ERROR_CODE } from "../../../util/error";
+import { parseInfo } from "../../../util/token";
 
 export type SelfEditBody = {
 
     username: string;
     password: string;
+    infos: Record<string, Basics>;
 };
 
 export class SelfEditRoute extends BrontosaurusRoute {
@@ -55,6 +58,12 @@ export class SelfEditRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.ACCOUNT_NOT_FOUND, username);
             }
 
+            const newInfos: Record<string, Basics> = {
+                ...account.getInfoRecords(),
+                ...body.direct('infos'),
+            };
+
+            account.infos = parseInfo(newInfos);
             account.password = body.direct('password');
 
             await account.save();

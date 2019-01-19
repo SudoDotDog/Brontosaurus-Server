@@ -14,6 +14,7 @@ import { AccountValidateRoute } from './routes/portal/validate';
 import { AddGroupRoute } from './routes/red/account/add-group';
 import { AllAccountRoute } from './routes/red/account/all';
 import { RegisterRoute } from './routes/red/account/register';
+import { SelfEditRoute } from './routes/red/account/self-edit';
 import { CreateApplicationRoute } from './routes/red/application/create';
 import { CreateGroupRoute } from './routes/red/group/create';
 import { GlobalPreferenceRoute } from './routes/red/preference/global';
@@ -71,6 +72,7 @@ app.routes(
     new AddGroupRoute(),
     new AllAccountRoute(),
     new RegisterRoute(),
+    new SelfEditRoute(),
 
     // Preference
     new GlobalPreferenceRoute(),
