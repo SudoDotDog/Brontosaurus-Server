@@ -54,8 +54,8 @@ const log = SudooLog.create(LOG_LEVEL.DEBUG);
 
         log.debug('add application');
 
-        const adminUser = createUnsavedAccount('admin', 'admin', [adminGroup._id], {
-            tag: "default account",
+        const adminUser = createUnsavedAccount('admin', 'admin', [adminGroup._id], {}, {
+            tag: "Default",
         });
 
         await adminUser.save();
