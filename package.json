@@ -23,17 +23,17 @@
   "dependencies": {
     "@brontosaurus/core": "^1.5.4",
     "@sudoo/bark": "^1.2.2",
-    "@sudoo/express": "^1.7.4",
+    "@sudoo/express": "^1.7.5",
     "@sudoo/extract": "^1.1.2",
     "@sudoo/log": "^1.2.0",
     "connor": "^2.0.0",
     "mongoose": "^5.4.4"
   },
   "devDependencies": {
-    "@sudoo/triforce": "^1.1.0",
+    "@sudoo/triforce": "^1.2.0",
     "@types/express": "^4.16.0",
     "@types/mongodb": "^3.1.19",
-    "@types/mongoose": "^5.3.7",
+    "@types/mongoose": "^5.3.8",
     "@types/node": "^10.12.18"
   },
   "nyc": {
