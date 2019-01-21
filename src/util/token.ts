@@ -5,10 +5,17 @@
  */
 
 import { BrontosaurusSign } from "@brontosaurus/core";
-import { Basics, IBrontosaurusBody } from "@brontosaurus/definition";
+import { Basics, IBrontosaurusBody, IBrontosaurusHeader } from "@brontosaurus/definition";
 import { _Map } from "@sudoo/bark";
+import { SafeObject } from "@sudoo/extract";
 import { INFOS_SPLITTER } from "../interface/account";
 import { IApplicationModel } from "../model/application";
+
+export type SafeToken = {
+
+    readonly header: SafeObject<IBrontosaurusHeader>;
+    readonly body: SafeObject<IBrontosaurusBody>;
+};
 
 export const createToken = (body: IBrontosaurusBody, application: IApplicationModel): string => {
 

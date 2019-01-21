@@ -13,7 +13,7 @@ import { getApplicationByKey } from "../controller/application";
 import { INTERNAL_APPLICATION } from "../interface/application";
 import { IAccountModel } from "../model/account";
 import { IApplicationModel } from "../model/application";
-import { compareGroups, getUsernameFromToken, parseBearerAuthorization, Throwable_GetBody, Throwable_MapGroups, Throwable_ValidateToken } from "../util/auth";
+import { compareGroups, getPrincipleFromToken, parseBearerAuthorization, Throwable_GetBody, Throwable_MapGroups, Throwable_ValidateToken } from "../util/auth";
 import { ERROR_CODE, MODULE_NAME } from "../util/error";
 
 export const createTokenHandler = (): SudooExpressHandler =>
@@ -30,15 +30,14 @@ export const createTokenHandler = (): SudooExpressHandler =>
 export const createAuthenticateHandler = (): SudooExpressHandler =>
     async (req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> => {
 
-        const token: SafeValue<string> = Safe.value(req.info.token);
-
         try {
 
+            const token: string = Safe.value(req.info.token).safe();
             const application: IApplicationModel = Safe.value(await getApplicationByKey(INTERNAL_APPLICATION.RED)).safe();
 
-            Throwable_ValidateToken(application.secret, application.expire, token.safe());
-            req.info.username = getUsernameFromToken(application.secret, token.safe());
+            Throwable_ValidateToken(application.secret, application.expire, token);
 
+            req.principal = getPrincipleFromToken(token);
             req.authenticate = application;
         } catch (err) {
             res.agent.fail(400, err);

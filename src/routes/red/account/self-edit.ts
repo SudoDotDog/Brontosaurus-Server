@@ -6,7 +6,7 @@
 
 import { Basics } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
-import { Safe, SafeExtract, Unsafe } from '@sudoo/extract';
+import { Safe, SafeExtract } from '@sudoo/extract';
 import { getAccountByUsername } from "../../../controller/account";
 import { createAuthenticateHandler, createGroupVerifyHandler, createTokenHandler } from "../../../handlers/handlers";
 import { basicHook } from "../../../handlers/hook";
@@ -14,7 +14,7 @@ import { INTERNAL_USER_GROUP } from "../../../interface/group";
 import { IAccountModel } from "../../../model/account";
 import { BrontosaurusRoute } from "../../../routes/basic";
 import { ERROR_CODE } from "../../../util/error";
-import { parseInfo } from "../../../util/token";
+import { parseInfo, SafeToken } from "../../../util/token";
 
 export type SelfEditBody = {
 
@@ -42,11 +42,9 @@ export class SelfEditRoute extends BrontosaurusRoute {
         try {
 
             const username: string = body.direct('username');
-            const tokenUsername: Unsafe<string> = req.info.username;
+            const principal: SafeToken = req.principal;
 
-            if (!tokenUsername) {
-                throw this._error(ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_INFORMATION, 'username');
-            }
+            const tokenUsername: string = principal.body.direct('username');
 
             if (username !== tokenUsername) {
                 throw this._error(ERROR_CODE.PERMISSION_USER_DOES_NOT_MATCH, username, tokenUsername);

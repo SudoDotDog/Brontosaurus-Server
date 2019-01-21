@@ -5,13 +5,15 @@
  */
 
 import { Brontosaurus, BrontosaurusToken } from "@brontosaurus/core";
-import { IBrontosaurusBody } from "@brontosaurus/definition";
+import { IBrontosaurusBody, IBrontosaurusHeader } from "@brontosaurus/definition";
+import { Safe } from "@sudoo/extract";
 import { ObjectID } from "bson";
 import Connor, { ErrorCreationFunction } from "connor";
 import { isArray, isString } from "util";
 import { getGroupById } from "../controller/group";
 import { IGroupModel } from "../model/group";
 import { ERROR_CODE, MODULE_NAME } from "./error";
+import { SafeToken } from "./token";
 
 export const Throwable_ValidateToken = (secret: string, expire: number, tokenString: string): true => {
 
@@ -29,21 +31,26 @@ export const Throwable_ValidateToken = (secret: string, expire: number, tokenStr
     return true;
 };
 
-export const getUsernameFromToken = (secret: string, tokenString: string): string => {
+export const getPrincipleFromToken =  (tokenString: string): SafeToken => {
 
-    const token: BrontosaurusToken = Brontosaurus.token(secret);
-    const body: IBrontosaurusBody | null = token.body(tokenString);
     const createError: ErrorCreationFunction = Connor.getErrorCreator(MODULE_NAME);
+
+    const header: IBrontosaurusHeader | null = Brontosaurus.decoupleHeader(tokenString);
+
+    if (!header) {
+        throw createError(ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_HEADER);
+    }
+
+    const body: IBrontosaurusBody | null = Brontosaurus.decoupleBody(tokenString);
 
     if (!body) {
         throw createError(ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_BODY);
     }
 
-    if (!isString(body.username)) {
-        throw createError(ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_INFORMATION, 'username');
-    }
-
-    return body.username;
+    return {
+        header: Safe.object(header),
+        body: Safe.object(body),
+    };
 };
 
 export const parseBearerAuthorization = (auth: string | undefined): string | null => {
