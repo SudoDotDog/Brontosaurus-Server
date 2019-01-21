@@ -44,7 +44,7 @@ export class SelfEditRoute extends BrontosaurusRoute {
             const username: string = body.direct('username');
             const principal: SafeToken = req.principal;
 
-            const tokenUsername: string = principal.body.direct('username');
+            const tokenUsername: string = principal.body.direct('username', this._error(ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_INFORMATION, 'username'));
 
             if (username !== tokenUsername) {
                 throw this._error(ERROR_CODE.PERMISSION_USER_DOES_NOT_MATCH, username, tokenUsername);

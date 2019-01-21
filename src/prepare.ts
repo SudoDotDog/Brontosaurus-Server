@@ -43,8 +43,10 @@ const log = SudooLog.create(LOG_LEVEL.DEBUG);
         log.info('start');
 
         const adminGroup = createUnsavedGroup(INTERNAL_USER_GROUP.SUPER_ADMIN);
+        const selfGroup = createUnsavedGroup(INTERNAL_USER_GROUP.SELF_CONTROL);
 
         await adminGroup.save();
+        await selfGroup.save();
 
         log.debug('add group');
 
@@ -54,11 +56,33 @@ const log = SudooLog.create(LOG_LEVEL.DEBUG);
 
         log.debug('add application');
 
-        const adminUser = createUnsavedAccount('admin', 'admin', [adminGroup._id], {}, {
-            tag: "Default",
-        });
+        const adminUser = createUnsavedAccount(
+            'admin',
+            'admin',
+            [
+                adminGroup._id,
+                selfGroup._id,
+            ],
+            {},
+            {
+                tag: "Default",
+            },
+        );
+
+        const testUser = createUnsavedAccount(
+            'test',
+            'test',
+            [
+                selfGroup._id,
+            ],
+            {},
+            {
+                tag: "Default",
+            },
+        );
 
         await adminUser.save();
+        await testUser.save();
 
         log.debug('add user');
 

@@ -23,6 +23,7 @@ build: clean
 
 run: dev
 	@NODE_ENV=development \
+	BRONTOSAURUS_DB=$(DB) \
 	node dist/index.js
 
 p-run: dev
@@ -30,7 +31,9 @@ p-run: dev
 	node dist/index.js
 
 prepare: dev
-	@node dist/prepare.js
+	@NODE_ENV=development \
+	BRONTOSAURUS_DB=$(DB) \
+	node dist/prepare.js
 
 host:
 	@mongod --dbpath $(dbPath)
