@@ -40,3 +40,44 @@ export const isGroupDuplicatedById = async (id: ObjectID): Promise<boolean> => {
     const group: IGroupModel | null = await getGroupById(id);
     return Boolean(group);
 };
+
+export const getTotalActiveGroupPages = async (limit: number): Promise<number> =>
+    (await GroupModel.estimatedDocumentCount({
+        active: true,
+    })) / limit;
+
+export const getSelectedActiveGroupsByPage = async (limit: number, page: number, keyword?: string): Promise<IGroupModel[]> => {
+
+    if (keyword) {
+        return await getActiveGroupsByPage(keyword, limit, page);
+    }
+    return await getAllActiveGroupsByPage(limit, page);
+};
+
+export const getActiveGroupsByPage = async (keyword: string, limit: number, page: number): Promise<IGroupModel[]> => {
+
+    if (page < 0) {
+        return [];
+    }
+
+    const regexp: RegExp = new RegExp(keyword, 'i');
+    const groups: IGroupModel[] = await GroupModel.find({
+        name: {
+            $regex: regexp,
+        },
+        active: true,
+    }).skip(page * limit).limit(limit).sort({ _id: -1 });
+    return groups;
+};
+
+export const getAllActiveGroupsByPage = async (limit: number, page: number): Promise<IGroupModel[]> => {
+
+    if (page < 0) {
+        return [];
+    }
+
+    const groups: IGroupModel[] = await GroupModel.find({
+        active: true,
+    }).skip(page * limit).limit(limit).sort({ _id: -1 });
+    return groups;
+};

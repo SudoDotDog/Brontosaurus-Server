@@ -12,11 +12,13 @@ import { ApplicationRoute } from './routes/portal/application';
 import { RetrieveRoute } from './routes/portal/retrieve';
 import { AccountValidateRoute } from './routes/portal/validate';
 import { AddGroupRoute } from './routes/red/account/add-group';
-import { AllAccountRoute } from './routes/red/account/all';
+import { FetchAccountRoute } from './routes/red/account/fetch';
 import { RegisterRoute } from './routes/red/account/register';
 import { SelfEditRoute } from './routes/red/account/self-edit';
 import { CreateApplicationRoute } from './routes/red/application/create';
+import { FetchApplicationRoute } from './routes/red/application/fetch';
 import { CreateGroupRoute } from './routes/red/group/create';
+import { FetchGroupRoute } from './routes/red/group/fetch';
 import { GlobalPreferenceRoute } from './routes/red/preference/global';
 import { InfosPreferenceRoute } from './routes/red/preference/infos';
 import { ReadPreferenceRoute } from './routes/red/preference/read';
@@ -63,14 +65,15 @@ app.routes(
 
     // Application
     new CreateApplicationRoute(),
-
+    new FetchApplicationRoute(),
 
     // Group
     new CreateGroupRoute(),
+    new FetchGroupRoute(),
 
     // Account
     new AddGroupRoute(),
-    new AllAccountRoute(),
+    new FetchAccountRoute(),
     new RegisterRoute(),
     new SelfEditRoute(),
 
