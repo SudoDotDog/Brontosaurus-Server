@@ -5,12 +5,20 @@
  */
 
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
-import { getAllAccounts } from "../../../controller/account";
+import { Safe, SafeExtract } from "@sudoo/extract";
+import { isNumber } from "util";
+import { getAccountsByPage, getTotalAccountPages } from "../../../controller/account";
 import { createAuthenticateHandler, createGroupVerifyHandler, createTokenHandler } from "../../../handlers/handlers";
 import { basicHook } from "../../../handlers/hook";
 import { INTERNAL_USER_GROUP } from "../../../interface/group";
 import { IAccountModel } from "../../../model/account";
 import { BrontosaurusRoute } from "../../../routes/basic";
+import { ERROR_CODE } from "../../../util/error";
+
+export type AllAccountBody = {
+
+    page: number;
+};
 
 export class AllAccountRoute extends BrontosaurusRoute {
 
@@ -26,16 +34,29 @@ export class AllAccountRoute extends BrontosaurusRoute {
 
     private async _allAccountHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
+        const body: SafeExtract<AllAccountBody> = Safe.extract(req.body as AllAccountBody, this._error(ERROR_CODE.INSUFFICIENT_INFORMATION));
+
         try {
 
-            const accounts: IAccountModel[] = await getAllAccounts();
+            const page: number = body.direct('page');
+            if (!isNumber(page)) {
+
+                throw this._error(ERROR_CODE.REQUEST_FORMAT_ERROR, 'page', 'number', (page as any).toString());
+            }
+
+            const limit: number = 10;
+
+            const pages: number = await getTotalAccountPages(limit);
+            const accounts: IAccountModel[] = await getAccountsByPage(limit, Math.floor(page));
 
             const parsed = accounts.map((account: IAccountModel) => ({
                 username: account.username,
+                groups: account.groups.length,
                 infos: account.getInfoRecords(),
             }));
 
             res.agent.add('accounts', parsed);
+            res.agent.add('pages', Math.ceil(pages));
         } catch (err) {
             res.agent.fail(400, err);
         } finally {

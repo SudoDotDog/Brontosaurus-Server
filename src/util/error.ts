@@ -22,6 +22,7 @@ export enum ERROR_CODE {
     INSUFFICIENT_SPECIFIC_INFORMATION = 4501,
 
     REQUEST_DOES_MATCH_PATTERN = 5005,
+    REQUEST_FORMAT_ERROR = 5006,
 
     APPLICATION_NOT_FOUND = 6200,
     GROUP_NOT_FOUND = 6201,
@@ -52,6 +53,7 @@ export const ERROR_LIST = {
     [ERROR_CODE.INSUFFICIENT_SPECIFIC_INFORMATION]: 'Insufficient information, need: "{}"',
 
     [ERROR_CODE.REQUEST_DOES_MATCH_PATTERN]: 'Request does not match pattern',
+    [ERROR_CODE.REQUEST_FORMAT_ERROR]: 'Request format error: "{}", should be: "{}", but: "{}"',
 
     [ERROR_CODE.APPLICATION_NOT_FOUND]: 'Application: "{}" not found',
     [ERROR_CODE.GROUP_NOT_FOUND]: 'Group: "{}" not found',

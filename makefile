@@ -11,7 +11,7 @@ endif
 tsc := node_modules/.bin/tsc
 mocha := node_modules/.bin/mocha
 
-main: dev
+main: run
 
 dev:
 	@echo "[INFO] Building for development"

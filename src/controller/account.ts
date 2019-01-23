@@ -37,6 +37,18 @@ export const getAccountByUsername = async (username: string): Promise<IAccountMo
 
 export const getAllAccounts = async (): Promise<IAccountModel[]> => AccountModel.find({});
 
+export const getTotalAccountPages = async (limit: number): Promise<number> => (await AccountModel.estimatedDocumentCount({})) / limit;
+
+export const getAccountsByPage = async (limit: number, page: number): Promise<IAccountModel[]> => {
+
+    if (page < 0) {
+        return [];
+    }
+
+    const accounts: IAccountModel[] = await AccountModel.find({}).skip(page * limit).limit(limit).sort({ _id: -1 });
+    return accounts;
+};
+
 export const isAccountDuplicatedByUsername = async (username: string): Promise<boolean> => {
     const account: IAccountModel | null = await getAccountByUsername(username);
     return Boolean(account);
