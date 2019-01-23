@@ -29,10 +29,10 @@ export class RegisterRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
-        basicHook.wrap(createTokenHandler(), '/register - TokenHandler'),
-        basicHook.wrap(createAuthenticateHandler(), '/register - AuthenticateHandler'),
-        basicHook.wrap(createGroupVerifyHandler([INTERNAL_USER_GROUP.SUPER_ADMIN], this._error), '/register - GroupVerifyHandler'),
-        basicHook.wrap(this._registerHandler.bind(this), '/register - Register', true),
+        basicHook.wrap(createTokenHandler(), '/account/register - TokenHandler'),
+        basicHook.wrap(createAuthenticateHandler(), '/account/register - AuthenticateHandler'),
+        basicHook.wrap(createGroupVerifyHandler([INTERNAL_USER_GROUP.SUPER_ADMIN], this._error), '/account/register - GroupVerifyHandler'),
+        basicHook.wrap(this._registerHandler.bind(this), '/account/register - Register', true),
     ];
 
     private async _registerHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
@@ -41,8 +41,8 @@ export class RegisterRoute extends BrontosaurusRoute {
 
         try {
 
-            const username = body.direct('username');
-            const password = body.direct('password');
+            const username: string = body.directEnsure('username');
+            const password: string = body.directEnsure('password');
 
             const infoLine: any = body.direct('infos');
             const infos: Record<string, Basics> = isString(infoLine)

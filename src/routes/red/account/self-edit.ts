@@ -41,10 +41,10 @@ export class SelfEditRoute extends BrontosaurusRoute {
 
         try {
 
-            const username: string = body.direct('username');
+            const username: string = body.directEnsure('username');
             const principal: SafeToken = req.principal;
 
-            const tokenUsername: string = principal.body.direct('username', this._error(ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_INFORMATION, 'username'));
+            const tokenUsername: string = principal.body.directEnsure('username', this._error(ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_INFORMATION, 'username'));
 
             if (username !== tokenUsername) {
                 throw this._error(ERROR_CODE.PERMISSION_USER_DOES_NOT_MATCH, username, tokenUsername);
@@ -58,11 +58,11 @@ export class SelfEditRoute extends BrontosaurusRoute {
 
             const newInfos: Record<string, Basics> = {
                 ...account.getInfoRecords(),
-                ...body.direct('infos'),
+                ...body.directEnsure('infos'),
             };
 
             account.infos = parseInfo(newInfos);
-            account.password = body.direct('password');
+            account.password = body.directEnsure('password');
 
             await account.save();
 

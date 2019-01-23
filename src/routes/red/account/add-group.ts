@@ -40,8 +40,8 @@ export class AddGroupRoute extends BrontosaurusRoute {
 
         try {
 
-            const username: string = body.direct('username');
-            const groupName: string = body.direct('group');
+            const username: string = body.directEnsure('username');
+            const groupName: string = body.directEnsure('group');
 
             const account: IAccountModel | null = await getAccountByUsername(username);
             const group: IGroupModel | null = await getGroupByName(groupName);

@@ -39,7 +39,7 @@ export class AllAccountRoute extends BrontosaurusRoute {
         try {
 
             const page: number = body.direct('page');
-            if (!isNumber(page)) {
+            if (!isNumber(page) || page < 0) {
 
                 throw this._error(ERROR_CODE.REQUEST_FORMAT_ERROR, 'page', 'number', (page as any).toString());
             }
