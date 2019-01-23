@@ -34,9 +34,6 @@ prepare: dev
 	@NODE_ENV=development \
 	BRONTOSAURUS_DB=$(DB) \
 	node dist/prepare.js
-
-host:
-	@mongod --dbpath $(dbPath)
 	
 tests:
 	@echo "[INFO] Testing with Mocha"
@@ -48,7 +45,7 @@ cov:
 	nyc $(mocha)
 
 host:
-	@mongod --dbpath $(DB)
+	@mongod --dbpath $(dbPath)
 
 install:
 	@echo "[INFO] Installing dev Dependencies"

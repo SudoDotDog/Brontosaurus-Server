@@ -24,6 +24,11 @@ export class Connector {
         this._timeout = 3000;
     }
 
+    public get timeout(): number {
+
+        return this._timeout;
+    }
+
     public setTimeout(timeout: number): Connector {
 
         this._timeout = timeout;
