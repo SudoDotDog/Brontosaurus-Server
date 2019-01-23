@@ -47,6 +47,9 @@ cov:
 	@NODE_ENV=test \
 	nyc $(mocha)
 
+host:
+	@mongod --dbpath $(DB)
+
 install:
 	@echo "[INFO] Installing dev Dependencies"
 	@yarn install --production=false

@@ -1,6 +1,9 @@
 language: 
  - node_js
 
+services: 
+ - mongodb
+
 node_js:
  - '8'
  - '9'
@@ -15,6 +18,7 @@ install:
 
 before_script:
  - make
+ - sleep 1
 
 script:
  - nyc mocha
