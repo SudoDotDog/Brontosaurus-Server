@@ -111,10 +111,10 @@
     "@types/node" "*"
     "@types/range-parser" "*"
 
-"@types/express@^4.16.0":
-  version "4.16.0"
-  resolved "https://registry.yarnpkg.com/@types/express/-/express-4.16.0.tgz#6d8bc42ccaa6f35cf29a2b7c3333cb47b5a32a19"
-  integrity sha512-TtPEYumsmSTtTetAPXlJVf3kEqb6wZK0bZojpJQrnD/djV4q1oB6QQ8aKvKqwNPACoe02GNiy5zDzcYivR5Z2w==
+"@types/express@^4.16.1":
+  version "4.16.1"
+  resolved "https://registry.yarnpkg.com/@types/express/-/express-4.16.1.tgz#d756bd1a85c34d87eaf44c888bad27ba8a4b7cf0"
+  integrity sha512-V0clmJow23WeyblmACoxbHBu2JKlE5TiIme6Lem14FnPW9gsttyHtk6wq7njcdIWH1njAaFgR8gW09lgY98gQg==
   dependencies:
     "@types/body-parser" "*"
     "@types/express-serve-static-core" "*"
@@ -146,10 +146,10 @@
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/mongoose@^5.3.8":
-  version "5.3.8"
-  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.3.8.tgz#d6d466d868136cae3404ff2292afe3d0f936acc4"
-  integrity sha512-JYqTaP15pt03e7z4Hbzn14RiUwQMia3mSJSyrTfR59x+7n7WeX1v2G+k+xO2AOYPbVdq3X9W3nVGTNTO0FYkbg==
+"@types/mongoose@^5.3.9":
+  version "5.3.9"
+  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.3.9.tgz#f467e26ced4c9ecf4c0844ab27197e0b0a88ec6d"
+  integrity sha512-QPPbcdr73+Uid4rVeQTmRbXnKWD7OFFvFUeD/8lg0ZjEpQ0XoyH8Kb2489FbUFgUJg5GFhLRekwLPkj1YS4gew==
   dependencies:
     "@types/mongodb" "*"
     "@types/node" "*"
@@ -739,10 +739,10 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@^5.4.5:
-  version "5.4.5"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.4.5.tgz#264f8a0bc507ce94f4e22a9788e03e83c6d60ec3"
-  integrity sha512-TO1xFVyZHALSaN3EEXY5rhpKNYDF0SQxK2TlYbCOGD/rurv9c9PQiNV6xcDZ09FPIoj/cOy4xDJnt3LnthTv5A==
+mongoose@^5.4.6:
+  version "5.4.6"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.4.6.tgz#5b2830a4a0cd1caf1ed91501b25e6874389c4ba5"
+  integrity sha512-b5LgAWUsT04LbFfwuwUa5hWyuPKQI8m3V+idAMriqU26P7d32Wu5RmtEBJyy2A5VlHIDtPseAqhLmJ1fGWHBGA==
   dependencies:
     async "2.6.1"
     bson "~1.1.0"
