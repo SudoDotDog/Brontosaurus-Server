@@ -19,23 +19,22 @@ import { parseInfo, SafeToken } from "../../../util/token";
 export type SelfEditBody = {
 
     username: string;
-    password: string;
     infos: Record<string, Basics>;
 };
 
 export class SelfEditRoute extends BrontosaurusRoute {
 
-    public readonly path: string = '/account/self-edit';
+    public readonly path: string = '/account/edit/self';
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
-        basicHook.wrap(createTokenHandler(), '/account/self-edit - TokenHandler'),
-        basicHook.wrap(createAuthenticateHandler(), '/account/self-edit - AuthenticateHandler'),
-        basicHook.wrap(createGroupVerifyHandler([INTERNAL_USER_GROUP.SELF_CONTROL], this._error), '/account/self-edit - GroupVerifyHandler'),
-        basicHook.wrap(this._addGroupHandler.bind(this), '/account/self-edit - Self Edit', true),
+        basicHook.wrap(createTokenHandler(), '/account/edit/self - TokenHandler'),
+        basicHook.wrap(createAuthenticateHandler(), '/account/edit/self - AuthenticateHandler'),
+        basicHook.wrap(createGroupVerifyHandler([INTERNAL_USER_GROUP.SELF_CONTROL], this._error), '/account/edit/self - GroupVerifyHandler'),
+        basicHook.wrap(this._selfEditHandler.bind(this), '/account/edit/self - Self Edit', true),
     ];
 
-    private async _addGroupHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
+    private async _selfEditHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
         const body: SafeExtract<SelfEditBody> = Safe.extract(req.body as SelfEditBody, this._error(ERROR_CODE.INSUFFICIENT_INFORMATION));
 
@@ -62,7 +61,6 @@ export class SelfEditRoute extends BrontosaurusRoute {
             };
 
             account.infos = parseInfo(newInfos);
-            account.password = body.directEnsure('password');
 
             await account.save();
 
