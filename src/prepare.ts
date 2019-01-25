@@ -50,7 +50,7 @@ const log = SudooLog.create(LOG_LEVEL.DEBUG);
 
         log.debug('add group');
 
-        const redApplication = createUnsavedApplication(INTERNAL_APPLICATION.RED, INTERNAL_APPLICATION.RED, 600000, INTERNAL_APPLICATION.RED);
+        const redApplication = createUnsavedApplication(INTERNAL_APPLICATION.RED, INTERNAL_APPLICATION.RED, 3600000, INTERNAL_APPLICATION.RED);
 
         await redApplication.save();
 

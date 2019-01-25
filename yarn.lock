@@ -19,6 +19,11 @@
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-1.2.2.tgz#c42c63eeb1b5908dcfad25cab442a9407d4f32ac"
   integrity sha512-Hauvvdbr+AxnFrke0KPwW4lmdGFPLlsL1utaKRUmCTsqKd6HIVrowgLhZNGsWI+D31uTeDyP8rjIUBXHeyzQcA==
 
+"@sudoo/bark@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-1.3.0.tgz#329e21a16ac5f0c3ca9a8a998fddd3439970c6d3"
+  integrity sha512-uklP6HOO+EW/YREedQ3g2YaPjKGhatsAk74Lk2r5P0aLHVcS0kR0f2YWJkddW44/J0mVfUxhUs7SR/CGVtK0nQ==
+
 "@sudoo/express@^1.7.5":
   version "1.7.5"
   resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-1.7.5.tgz#49800db698bd9b457f0cca39c2e0063cceeefb57"
@@ -34,10 +39,10 @@
   resolved "https://registry.yarnpkg.com/@sudoo/extract/-/extract-1.2.0.tgz#42c0753c1b76bc964180a54ca31668a9ac6576ae"
   integrity sha512-3/F3HuTnX2tAvkSS1KA2A6DPwZQDVhlRT2xfDmHhXp0p2aENvfdvBaiUU+xCqvHfS/Koi4pBUoWryGkTWdn4IA==
 
-"@sudoo/log@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/log/-/log-1.2.0.tgz#acae478764a893f337c5f73a66a68a6a5ee5e4b2"
-  integrity sha512-qfLcXBOt91xIMPFqDyS0VfnFYAnYSQZd+qH6HvMOXpZlSmLJt1KNq9QRBa/xvBwI+1X4K1S4YTH6yiTtGZYWiQ==
+"@sudoo/log@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@sudoo/log/-/log-1.2.1.tgz#407bef57e82e7ee9d79189b1800384d8b6b7056a"
+  integrity sha512-bLvSPdIDyhIyLpFN0YxWaawoXfcIz9GGGRLmg6Dv/rgOp+VRnl3Oe7YX64jH3lETkYZ458N1c/5H2oBKFMm+2w==
 
 "@sudoo/mock@^1.0.0":
   version "1.0.0"
@@ -146,10 +151,10 @@
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/mongoose@^5.3.9":
-  version "5.3.9"
-  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.3.9.tgz#f467e26ced4c9ecf4c0844ab27197e0b0a88ec6d"
-  integrity sha512-QPPbcdr73+Uid4rVeQTmRbXnKWD7OFFvFUeD/8lg0ZjEpQ0XoyH8Kb2489FbUFgUJg5GFhLRekwLPkj1YS4gew==
+"@types/mongoose@^5.3.10":
+  version "5.3.10"
+  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.3.10.tgz#7c5e8ff0c51a2c750b9d0ee6bb1cf0ee65826719"
+  integrity sha512-Sl5zbzBtjBMdEldbfiZEuF6p1FQZ+7R9TaFYROpeQzBKW9ZK/Xf0Y+E2mtWSNVM3mMjM/Hzw+20K+j/WV6TenQ==
   dependencies:
     "@types/mongodb" "*"
     "@types/node" "*"
