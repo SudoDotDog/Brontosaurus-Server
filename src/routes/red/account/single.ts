@@ -12,6 +12,7 @@ import { createAuthenticateHandler, createGroupVerifyHandler, createTokenHandler
 import { basicHook } from "../../../handlers/hook";
 import { INTERNAL_USER_GROUP } from "../../../interface/group";
 import { IAccountModel } from "../../../model/account";
+import { Throwable_MapGroups } from "../../../util/auth";
 import { ERROR_CODE } from "../../../util/error";
 import { BrontosaurusRoute } from "../../basic";
 
@@ -48,8 +49,11 @@ export class SingleAccountRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.ACCOUNT_NOT_FOUND, username);
             }
 
+            const accountGroups: string[] = await Throwable_MapGroups(account.groups);
+
             res.agent.add('account', {
                 username: account.username,
+                groups: accountGroups,
                 infos: account.getInfoRecords(),
                 beacons: account.getBeaconRecords(),
             });
