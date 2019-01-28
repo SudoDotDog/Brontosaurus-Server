@@ -19,6 +19,7 @@ import { SelfEditRoute } from './routes/red/account/self-edit';
 import { SingleAccountRoute } from './routes/red/account/single';
 import { CreateApplicationRoute } from './routes/red/application/create';
 import { FetchApplicationRoute } from './routes/red/application/fetch';
+import { SingleApplicationRoute } from './routes/red/application/single';
 import { CreateGroupRoute } from './routes/red/group/create';
 import { FetchGroupRoute } from './routes/red/group/fetch';
 import { GlobalPreferenceRoute } from './routes/red/preference/global';
@@ -68,6 +69,7 @@ app.routes(
     // Application
     new CreateApplicationRoute(),
     new FetchApplicationRoute(),
+    new SingleApplicationRoute(),
 
     // Group
     new CreateGroupRoute(),
