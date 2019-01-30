@@ -19,7 +19,9 @@ import { parseInfo, SafeToken } from "../../../util/token";
 export type SelfEditBody = {
 
     username: string;
-    infos: Record<string, Basics>;
+    account: Partial<{
+        infos: Record<string, Basics>;
+    }>;
 };
 
 export class SelfEditRoute extends BrontosaurusRoute {
@@ -55,12 +57,19 @@ export class SelfEditRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.ACCOUNT_NOT_FOUND, username);
             }
 
-            const newInfos: Record<string, Basics> = {
-                ...account.getInfoRecords(),
-                ...body.directEnsure('infos'),
-            };
+            const update: Partial<{
+                infos: Record<string, Basics>;
+            }> = body.direct('account');
 
-            account.infos = parseInfo(newInfos);
+            if (update.infos) {
+
+                const newInfos: Record<string, Basics> = {
+                    ...account.getInfoRecords(),
+                    ...update.infos,
+                };
+
+                account.infos = parseInfo(newInfos);
+            }
 
             await account.save();
 

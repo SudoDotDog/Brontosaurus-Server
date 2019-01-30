@@ -14,7 +14,7 @@ import { INTERNAL_USER_GROUP } from "../../../interface/group";
 import { IAccountModel } from "../../../model/account";
 import { BrontosaurusRoute } from "../../../routes/basic";
 import { ERROR_CODE } from "../../../util/error";
-import { parseInfo, SafeToken } from "../../../util/token";
+import { parseInfo } from "../../../util/token";
 
 export type AdminEditBody = {
 
@@ -44,13 +44,6 @@ export class AdminEditRoute extends BrontosaurusRoute {
         try {
 
             const username: string = body.directEnsure('username');
-            const principal: SafeToken = req.principal;
-
-            const tokenUsername: string = principal.body.directEnsure('username', this._error(ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_INFORMATION, 'username'));
-
-            if (username !== tokenUsername) {
-                throw this._error(ERROR_CODE.PERMISSION_USER_DOES_NOT_MATCH, username, tokenUsername);
-            }
 
             const account: IAccountModel | null = await getAccountByUsername(username);
 
