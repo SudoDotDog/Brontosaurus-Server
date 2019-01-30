@@ -58,7 +58,7 @@ export class RegisterRoute extends BrontosaurusRoute {
             const account: IAccountModel = createUnsavedAccount(username, password, [], infos);
             await account.save();
 
-            res.agent.add('account', account.id);
+            res.agent.add('account', account.username);
         } catch (err) {
             res.agent.fail(400, err);
         } finally {

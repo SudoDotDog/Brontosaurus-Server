@@ -19,8 +19,10 @@ import { parseInfo, SafeToken } from "../../../util/token";
 export type AdminEditBody = {
 
     username: string;
-    infos: Record<string, Basics>;
-    beacons: Record<string, Basics>;
+    account: Partial<{
+        infos: Record<string, Basics>;
+        beacons: Record<string, Basics>;
+    }>;
 };
 
 export class AdminEditRoute extends BrontosaurusRoute {
@@ -56,22 +58,30 @@ export class AdminEditRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.ACCOUNT_NOT_FOUND, username);
             }
 
-            const newInfos: Record<string, Basics> = {
-                ...account.getInfoRecords(),
-                ...body.directEnsure('infos'),
-            };
+            const update: Partial<{
+                infos: Record<string, Basics>;
+                beacons: Record<string, Basics>;
+            }> = body.direct('account');
 
-            const newBeacons: Record<string, Basics> = {
-                ...account.getBeaconRecords(),
-                ...body.directEnsure('beacons'),
-            };
+            if (update.beacons) {
+                const newBeacons: Record<string, Basics> = {
+                    ...account.getBeaconRecords(),
+                    ...update.beacons,
+                };
+                account.beacons = parseInfo(newBeacons);
+            }
 
-            account.infos = parseInfo(newInfos);
-            account.beacons = parseInfo(newBeacons);
+            if (update.infos) {
+                const newInfos: Record<string, Basics> = {
+                    ...account.getInfoRecords(),
+                    ...update.infos,
+                };
+                account.infos = parseInfo(newInfos);
+            }
 
             await account.save();
 
-            res.agent.add('account', account.id);
+            res.agent.add('account', account.username);
         } catch (err) {
             res.agent.fail(400, err);
         } finally {

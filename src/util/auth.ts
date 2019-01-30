@@ -9,8 +9,8 @@ import { IBrontosaurusBody, IBrontosaurusHeader } from "@brontosaurus/definition
 import { Safe } from "@sudoo/extract";
 import { ObjectID } from "bson";
 import Connor, { ErrorCreationFunction } from "connor";
-import { isArray, isString } from "util";
-import { getGroupById } from "../controller/group";
+import { isArray } from "util";
+import { getGroupById, getGroupByName } from "../controller/group";
 import { IGroupModel } from "../model/group";
 import { ERROR_CODE, MODULE_NAME } from "./error";
 import { SafeToken } from "./token";
@@ -31,7 +31,7 @@ export const Throwable_ValidateToken = (secret: string, expire: number, tokenStr
     return true;
 };
 
-export const getPrincipleFromToken =  (tokenString: string): SafeToken => {
+export const getPrincipleFromToken = (tokenString: string): SafeToken => {
 
     const createError: ErrorCreationFunction = Connor.getErrorCreator(MODULE_NAME);
 
@@ -103,6 +103,26 @@ export const Throwable_MapGroups = async (groups: ObjectID[]): Promise<string[]>
         }
 
         result.push(current.name);
+    }
+
+    return result;
+};
+
+export const Throwable_GetGroupsByNames = async (groups: string[]): Promise<IGroupModel[]> => {
+
+    const createError: ErrorCreationFunction = Connor.getErrorCreator(MODULE_NAME);
+
+    const result: IGroupModel[] = [];
+
+    for (const group of groups) {
+
+        const current: IGroupModel | null = await getGroupByName(group);
+
+        if (!current) {
+            throw createError(ERROR_CODE.GROUP_NOT_FOUND);
+        }
+
+        result.push(current);
     }
 
     return result;

@@ -32,6 +32,8 @@ export enum ERROR_CODE {
     DUPLICATE_APPLICATION = 6251,
     DUPLICATE_GROUP = 6252,
 
+    CANNOT_MODIFY_INTERNAL_GROUP = 6701,
+
     NOT_ENOUGH_PERMISSION = 7001,
     PERMISSION_USER_DOES_NOT_MATCH = 7002,
 }
@@ -62,6 +64,8 @@ export const ERROR_LIST = {
     [ERROR_CODE.DUPLICATE_ACCOUNT]: 'Account: "{}" already exist',
     [ERROR_CODE.DUPLICATE_APPLICATION]: 'Application: "{}" already exist',
     [ERROR_CODE.DUPLICATE_GROUP]: 'Group: "{}" already exist',
+
+    [ERROR_CODE.CANNOT_MODIFY_INTERNAL_GROUP]: 'Internal group cannot be modify',
 
     [ERROR_CODE.NOT_ENOUGH_PERMISSION]: 'Permission insufficient, need "{}"',
     [ERROR_CODE.PERMISSION_USER_DOES_NOT_MATCH]: 'Permission user does not match between: "{}" and "{}"',

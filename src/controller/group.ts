@@ -19,11 +19,17 @@ export const getGroupsByIds = async (ids: ObjectID[]): Promise<IGroupModel[]> =>
         },
     });
 
-export const getGroupByName = async (name: string): Promise<IGroupModel | null> =>
+export const getGroupByName = async (names: string): Promise<IGroupModel | null> =>
     await GroupModel.findOne({
         name,
     });
 
+export const getGroupByNames = async (names: string[]): Promise<IGroupModel[]> =>
+    await GroupModel.find({
+        name: {
+            $in: names,
+        },
+    });
 
 export const createUnsavedGroup = (name: string): IGroupModel =>
     new GroupModel({

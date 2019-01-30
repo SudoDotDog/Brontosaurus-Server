@@ -20,6 +20,7 @@ import { SingleAccountRoute } from './routes/red/account/single';
 import { CreateApplicationRoute } from './routes/red/application/create';
 import { FetchApplicationRoute } from './routes/red/application/fetch';
 import { SingleApplicationRoute } from './routes/red/application/single';
+import { UpdateApplicationRoute } from './routes/red/application/update';
 import { CreateGroupRoute } from './routes/red/group/create';
 import { FetchGroupRoute } from './routes/red/group/fetch';
 import { GlobalPreferenceRoute } from './routes/red/preference/global';
@@ -70,6 +71,7 @@ app.routes(
     new CreateApplicationRoute(),
     new FetchApplicationRoute(),
     new SingleApplicationRoute(),
+    new UpdateApplicationRoute(),
 
     // Group
     new CreateGroupRoute(),
