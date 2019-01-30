@@ -6,7 +6,6 @@
 
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from "@sudoo/extract";
-import { isNumber, isString } from "util";
 import { getSelectedActiveApplicationsByPage, getTotalActiveApplicationPages } from "../../../controller/application";
 import { createAuthenticateHandler, createGroupVerifyHandler, createTokenHandler } from "../../../handlers/handlers";
 import { basicHook } from "../../../handlers/hook";
@@ -40,12 +39,12 @@ export class FetchApplicationRoute extends BrontosaurusRoute {
         try {
 
             const page: number = body.direct('page');
-            if (!isNumber(page) || page < 0) {
+            if (typeof page !== 'number' || page < 0) {
                 throw this._error(ERROR_CODE.REQUEST_FORMAT_ERROR, 'page', 'number', (page as any).toString());
             }
 
             const keyword: string = body.direct('keyword');
-            if (!isString(keyword)) {
+            if (typeof keyword !== 'string') {
                 throw this._error(ERROR_CODE.REQUEST_FORMAT_ERROR, 'keyword', 'string', (keyword as any).toString());
             }
 

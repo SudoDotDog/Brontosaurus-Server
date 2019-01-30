@@ -6,7 +6,6 @@
 
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from "@sudoo/extract";
-import { isString } from "util";
 import { getApplicationByKey } from "../../../controller/application";
 import { createAuthenticateHandler, createGroupVerifyHandler, createTokenHandler } from "../../../handlers/handlers";
 import { basicHook } from "../../../handlers/hook";
@@ -40,7 +39,7 @@ export class SingleApplicationRoute extends BrontosaurusRoute {
         try {
 
             const key: string = body.direct('key');
-            if (!isString(key)) {
+            if (typeof key !== 'string') {
                 throw this._error(ERROR_CODE.REQUEST_FORMAT_ERROR, 'key', 'string', (key as any).toString());
             }
 

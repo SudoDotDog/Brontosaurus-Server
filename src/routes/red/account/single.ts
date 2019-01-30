@@ -6,7 +6,6 @@
 
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from "@sudoo/extract";
-import { isString } from "util";
 import { getAccountByUsername } from "../../../controller/account";
 import { createAuthenticateHandler, createGroupVerifyHandler, createTokenHandler } from "../../../handlers/handlers";
 import { basicHook } from "../../../handlers/hook";
@@ -40,7 +39,7 @@ export class SingleAccountRoute extends BrontosaurusRoute {
         try {
 
             const username: string = body.direct('username');
-            if (!isString(username)) {
+            if (typeof username !== 'string') {
                 throw this._error(ERROR_CODE.REQUEST_FORMAT_ERROR, 'username', 'string', (username as any).toString());
             }
 
