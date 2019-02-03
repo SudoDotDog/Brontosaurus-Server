@@ -6,7 +6,7 @@
 
 import { BrontosaurusSign } from "@brontosaurus/core";
 import { Basics, IBrontosaurusBody, IBrontosaurusHeader } from "@brontosaurus/definition";
-import { _Map } from "@sudoo/bark";
+import { _Map } from "@sudoo/bark/map";
 import { SafeObject } from "@sudoo/extract";
 import { INFOS_SPLITTER } from "../interface/account";
 import { IApplicationModel } from "../model/application";

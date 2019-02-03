@@ -4,7 +4,7 @@
  * @description Application
  */
 
-import { _Array } from "@sudoo/bark";
+import { _Array } from "@sudoo/bark/array";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { getApplicationByKey } from "../../controller/application";
