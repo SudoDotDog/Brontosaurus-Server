@@ -46,7 +46,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
             }
 
-            if (account.password !== body.direct('password')) {
+            if (account.verifyPassword(body.direct('password'))) {
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
             }
 

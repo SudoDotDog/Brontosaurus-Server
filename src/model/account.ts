@@ -8,6 +8,7 @@ import { Basics } from "@brontosaurus/definition";
 import { ObjectID } from "bson";
 import { Document, model, Model, Schema } from "mongoose";
 import { IAccount, INFOS_SPLITTER } from "../interface/account";
+import { garblePassword } from "../util/auth";
 
 const AccountSchema: Schema = new Schema({
 
@@ -65,11 +66,13 @@ const AccountSchema: Schema = new Schema({
 
 
 export interface IAccountModel extends IAccount, Document {
-    getInfoRecords: () => Record<string, Basics>;
-    getBeaconRecords: () => Record<string, Basics>;
-    pushHistory: (history: string) => IAccountModel;
-    addGroup: (id: ObjectID) => IAccountModel;
-    removeGroup: (id: ObjectID) => IAccountModel;
+    readonly getInfoRecords: () => Record<string, Basics>;
+    readonly getBeaconRecords: () => Record<string, Basics>;
+    readonly pushHistory: (history: string) => IAccountModel;
+    readonly addGroup: (id: ObjectID) => IAccountModel;
+    readonly removeGroup: (id: ObjectID) => IAccountModel;
+    readonly setPassword: (password: string) => IAccountModel;
+    readonly verifyPassword: (password: string) => boolean;
 }
 
 AccountSchema.methods.getInfoRecords = function (this: IAccountModel): Record<string, Basics> {
@@ -129,6 +132,21 @@ AccountSchema.methods.removeGroup = function (this: IAccountModel, id: ObjectID)
     }, [] as ObjectID[]);
 
     return this;
+};
+
+AccountSchema.methods.setPassword = function (this: IAccountModel, password: string): IAccountModel {
+
+    const saltedPassword: string = garblePassword(password, this.salt);
+    this.password = saltedPassword;
+
+    return this;
+};
+
+AccountSchema.methods.verifyPassword = function (this: IAccountModel, password: string): boolean {
+
+    const saltedPassword: string = garblePassword(password, this.salt);
+
+    return this.password === saltedPassword;
 };
 
 export const AccountModel: Model<IAccountModel> = model<IAccountModel>('Account', AccountSchema);
