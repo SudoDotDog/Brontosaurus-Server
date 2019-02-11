@@ -26,6 +26,7 @@ export const createUnsavedAccount = (
         password,
         infos: infoList,
         beacons: beaconList,
+        salt: Math.random().toString(36).substring(2, 9),
         groups,
     });
 };

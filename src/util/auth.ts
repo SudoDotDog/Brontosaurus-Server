@@ -9,6 +9,7 @@ import { IBrontosaurusBody, IBrontosaurusHeader } from "@brontosaurus/definition
 import { Safe } from "@sudoo/extract";
 import { ObjectID } from "bson";
 import Connor, { ErrorCreationFunction } from "connor";
+import { createHash, Hash } from 'crypto';
 import { isArray } from "util";
 import { getGroupById, getGroupByName } from "../controller/group";
 import { IGroupModel } from "../model/group";
@@ -145,3 +146,10 @@ export const compareGroups = (userGroups: string[], targetGroups: any): boolean 
     return true;
 };
 
+export const garblePassword = (password: string, salt: string): string => {
+
+    const salted: string = password + ':' + salt;
+    const md5: Hash = createHash('md5').update(salted);
+
+    return md5.digest('hex');
+};

@@ -24,6 +24,8 @@ export interface IAccount extends IAccountConfig {
     createdAt: Date;
     updatedAt: Date;
 
+    salt: string;
+
     avatar?: string;
     history: string[];
 }

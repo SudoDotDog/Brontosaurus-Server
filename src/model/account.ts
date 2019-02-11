@@ -43,6 +43,11 @@ const AccountSchema: Schema = new Schema({
         default: [],
     },
 
+    salt: {
+        type: String,
+        required: true,
+    },
+
     avatar: {
         type: String,
     },
