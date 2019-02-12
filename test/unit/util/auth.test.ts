@@ -7,11 +7,18 @@
 
 import { expect } from 'chai';
 import * as Chance from "chance";
-import { garblePassword } from '../../../src/util/auth';
+import { createSalt, garblePassword } from '../../../src/util/auth';
 
 describe('Given [Auth] Helper Methods', (): void => {
 
     const chance: Chance.Chance = new Chance('brontosaurus-server-util-auth');
+
+    it('should be able to create salt', (): void => {
+
+        const salt: string = createSalt();
+
+        expect(salt).to.be.lengthOf(7);
+    });
 
     describe('Garble password', (): void => {
 
