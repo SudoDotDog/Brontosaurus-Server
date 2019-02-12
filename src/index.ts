@@ -13,6 +13,7 @@ import { RetrieveRoute } from './routes/portal/retrieve';
 import { AccountValidateRoute } from './routes/portal/validate';
 import { AddGroupRoute } from './routes/red/account/add-group';
 import { AdminEditRoute } from './routes/red/account/admin-edit';
+import { ChangePasswordRoute } from './routes/red/account/change-password';
 import { FetchAccountRoute } from './routes/red/account/fetch';
 import { RegisterRoute } from './routes/red/account/register';
 import { SelfEditRoute } from './routes/red/account/self-edit';
@@ -82,6 +83,7 @@ app.routes(
     new FetchAccountRoute(),
     new RegisterRoute(),
     new SelfEditRoute(),
+    new ChangePasswordRoute(),
     new AdminEditRoute(),
     new SingleAccountRoute(),
 
