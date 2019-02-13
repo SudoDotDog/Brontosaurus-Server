@@ -14,6 +14,8 @@ export enum ERROR_CODE {
 
     APPLICATION_KEY_NOT_FOUND = 4120,
 
+    ACCOUNT_MINT_NOT_VALID = 4130,
+
     TOKEN_DOES_NOT_CONTAIN_INFORMATION = 4150,
     TOKEN_DOES_NOT_CONTAIN_HEADER = 4151,
     TOKEN_DOES_NOT_CONTAIN_BODY = 4152,
@@ -46,6 +48,8 @@ export const ERROR_LIST = {
     [ERROR_CODE.TOKEN_EXPIRED]: 'Token expired',
 
     [ERROR_CODE.APPLICATION_KEY_NOT_FOUND]: 'Application key not found',
+
+    [ERROR_CODE.ACCOUNT_MINT_NOT_VALID]: 'Account mint not valid',
 
     [ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_INFORMATION]: 'Token does not contain information: "{}"',
     [ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_HEADER]: 'Token does not contain header',
