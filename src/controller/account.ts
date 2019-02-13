@@ -7,7 +7,7 @@
 import { Basics } from "@brontosaurus/definition";
 import { ObjectID } from "bson";
 import { AccountModel, IAccountModel } from "../model/account";
-import { createSalt, garblePassword } from "../util/auth";
+import { createMint, createSalt, garblePassword } from "../util/auth";
 import { parseInfo } from "../util/token";
 
 export const createUnsavedAccount = (
@@ -22,6 +22,7 @@ export const createUnsavedAccount = (
     const beaconList: string[] = parseInfo(beacons);
 
     const salt: string = createSalt();
+    const mint: string = createMint();
 
     return new AccountModel({
 
@@ -29,6 +30,7 @@ export const createUnsavedAccount = (
         password: garblePassword(password, salt),
         infos: infoList,
         beacons: beaconList,
+        mint,
         salt,
         groups,
     });

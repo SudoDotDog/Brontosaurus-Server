@@ -24,6 +24,7 @@ export interface IAccount extends IAccountConfig {
     createdAt: Date;
     updatedAt: Date;
 
+    mint: string;
     salt: string;
 
     avatar?: string;

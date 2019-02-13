@@ -16,7 +16,7 @@ import { IGroupModel } from "../model/group";
 import { ERROR_CODE, MODULE_NAME } from "./error";
 import { SafeToken } from "./token";
 
-export const Throwable_ValidateToken = (secret: string, expire: number, tokenString: string): true => {
+export const Throwable_ValidateToken = (secret: string, expire: number, tokenString: string): IBrontosaurusBody => {
 
     const token: BrontosaurusToken = Brontosaurus.token(secret);
     const createError: ErrorCreationFunction = Connor.getErrorCreator(MODULE_NAME);
@@ -29,7 +29,7 @@ export const Throwable_ValidateToken = (secret: string, expire: number, tokenStr
         throw createError(ERROR_CODE.TOKEN_INVALID);
     }
 
-    return true;
+    return token.body(tokenString);
 };
 
 export const getPrincipleFromToken = (tokenString: string): SafeToken => {
@@ -147,6 +147,7 @@ export const compareGroups = (userGroups: string[], targetGroups: any): boolean 
 };
 
 export const createSalt = (): string => Math.random().toString(36).substring(2, 9);
+export const createMint = (): string => Math.random().toString(36).substring(2, 9);
 
 export const garblePassword = (password: string, salt: string): string => {
 

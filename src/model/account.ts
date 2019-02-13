@@ -8,7 +8,7 @@ import { Basics } from "@brontosaurus/definition";
 import { ObjectID } from "bson";
 import { Document, model, Model, Schema } from "mongoose";
 import { IAccount, INFOS_SPLITTER } from "../interface/account";
-import { garblePassword } from "../util/auth";
+import { createMint, garblePassword } from "../util/auth";
 
 const AccountSchema: Schema = new Schema({
 
@@ -44,6 +44,10 @@ const AccountSchema: Schema = new Schema({
         default: [],
     },
 
+    mint: {
+        type: String,
+        required: true,
+    },
     salt: {
         type: String,
         required: true,
@@ -138,6 +142,7 @@ AccountSchema.methods.setPassword = function (this: IAccountModel, password: str
 
     const saltedPassword: string = garblePassword(password, this.salt);
     this.password = saltedPassword;
+    this.mint = createMint();
 
     return this;
 };

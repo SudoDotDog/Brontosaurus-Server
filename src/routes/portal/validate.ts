@@ -5,6 +5,7 @@
  */
 
 import { BrontosaurusToken } from "@brontosaurus/core";
+import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { getApplicationByKey } from "../../controller/application";
@@ -42,7 +43,7 @@ export class AccountValidateRoute extends BrontosaurusRoute {
             }
 
             const application: IApplicationModel = Safe.value(await getApplicationByKey(applicationKey)).safe();
-            Throwable_ValidateToken(application.secret, application.expire, token);
+            const brontosaurus: IBrontosaurusBody = Throwable_ValidateToken(application.secret, application.expire, token);
 
             res.agent.add('validate', true);
         } catch (err) {
