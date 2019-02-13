@@ -29,7 +29,13 @@ export const Throwable_ValidateToken = (secret: string, expire: number, tokenStr
         throw createError(ERROR_CODE.TOKEN_INVALID);
     }
 
-    return token.body(tokenString);
+    const body: IBrontosaurusBody | null = token.body(tokenString);
+
+    if (!body) {
+        throw createError(ERROR_CODE.TOKEN_INVALID);
+    }
+
+    return body;
 };
 
 export const getPrincipleFromToken = (tokenString: string): SafeToken => {
