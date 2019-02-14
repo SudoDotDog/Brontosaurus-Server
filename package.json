@@ -1,6 +1,5 @@
 {
   "name": "@brontosaurus/server",
-  "version": "0.0.0",
   "description": ":zap: Thunder",
   "main": "dist/brontosaurus.js",
   "scripts": {
@@ -27,15 +26,15 @@
     "@sudoo/extract": "^1.2.0",
     "@sudoo/log": "^1.2.2",
     "connor": "^2.0.0",
-    "mongoose": "^5.4.11"
+    "mongoose": "^5.4.12"
   },
   "devDependencies": {
     "@sudoo/mock": "^1.0.0",
     "@sudoo/triforce": "^1.2.0",
     "@types/express": "^4.16.1",
     "@types/mongodb": "^3.1.19",
-    "@types/mongoose": "^5.3.13",
-    "@types/node": "^11.9.0"
+    "@types/mongoose": "^5.3.16",
+    "@types/node": "^11.9.4"
   },
   "nyc": {
     "extension": [
