@@ -49,6 +49,21 @@
   resolved "https://registry.yarnpkg.com/@sudoo/mock/-/mock-1.0.0.tgz#333c2df6b8a8e27b062a799e767772ca53a39e05"
   integrity sha512-jPoJrsI/3UchQpeBGYj6ds4Hmnwzy+b3NKBTMjlyC3rPlx74y4HHm2ussmydDaJAxLm6iG/1EKRR0Kqdb90YYw==
 
+"@sudoo/triforce-mongoose-dev@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/triforce-mongoose-dev/-/triforce-mongoose-dev-1.0.0.tgz#56d91eb82582ecd6901554e73cc96ef034694143"
+  integrity sha512-8Jt7EiAHThYm/kbirgmpvoc7g3q5ieWMK3wBOcmHxvB22bF0vqUrOg973RR0i6+NCBr/Pe+QfTSZnFQgHNrDxw==
+  dependencies:
+    "@types/mongodb" "^3.1.19"
+    "@types/mongoose" "^5.3.20"
+
+"@sudoo/triforce-mongoose@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/triforce-mongoose/-/triforce-mongoose-1.0.0.tgz#9119478d42cbdebe30b0511fcd2df90c4eef4c95"
+  integrity sha512-QwweTKIqhBAKmcbxHUTRRQrh3SnyITyjnXpnLPxF7k8z0W9B3mbbLMsKDwjaN6mHsBi21ilu/255S/yeAbrGlw==
+  dependencies:
+    mongoose "^5.4.16"
+
 "@sudoo/triforce@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@sudoo/triforce/-/triforce-1.4.0.tgz#4c7d5ae21044a21df0f494c0031e7c24b17921cb"
@@ -725,10 +740,10 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@^5.4.15:
-  version "5.4.15"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.4.15.tgz#5b6581ffb048b4c6ec6f5b9d792d759f3ba8eb02"
-  integrity sha512-CodfapidWmPlU93ZmdQ8H9UGg5Mc/5MqEy8y5zNQKw+Kp1UwOzSEJY6zXJW76/5MBQER859KHl3rvHijVMsUMg==
+mongoose@^5.4.16:
+  version "5.4.16"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.4.16.tgz#2043f1e311c69584c7723f851eb01c75d9879076"
+  integrity sha512-1lGuXBBxs8KloHMe0mZGpC8L+l+flRFh3IoNf2lRmSaSMrpgEjrBHm6Aypfe2s+Y5xO0h7gua3TAZUplWpMxSw==
   dependencies:
     async "2.6.1"
     bson "~1.1.0"
