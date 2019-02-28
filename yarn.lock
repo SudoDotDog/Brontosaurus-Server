@@ -57,13 +57,6 @@
     "@types/mongodb" "^3.1.19"
     "@types/mongoose" "^5.3.20"
 
-"@sudoo/triforce-mongoose@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/triforce-mongoose/-/triforce-mongoose-1.0.0.tgz#9119478d42cbdebe30b0511fcd2df90c4eef4c95"
-  integrity sha512-QwweTKIqhBAKmcbxHUTRRQrh3SnyITyjnXpnLPxF7k8z0W9B3mbbLMsKDwjaN6mHsBi21ilu/255S/yeAbrGlw==
-  dependencies:
-    mongoose "^5.4.16"
-
 "@sudoo/triforce@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@sudoo/triforce/-/triforce-1.4.0.tgz#4c7d5ae21044a21df0f494c0031e7c24b17921cb"

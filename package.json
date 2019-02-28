@@ -25,8 +25,8 @@
     "@sudoo/express": "^1.7.5",
     "@sudoo/extract": "^1.2.0",
     "@sudoo/log": "^1.2.2",
-    "@sudoo/triforce-mongoose": "^1.0.0",
-    "connor": "^2.0.0"
+    "connor": "^2.0.0",
+    "mongoose": "^5.4.16"
   },
   "devDependencies": {
     "@sudoo/mock": "^1.0.0",
