@@ -25,7 +25,7 @@
     "@sudoo/express": "^1.7.5",
     "@sudoo/extract": "^1.2.0",
     "@sudoo/log": "^1.2.2",
-    "connor": "^2.0.0",
+    "connor": "^2.4.0",
     "mongoose": "^5.4.19"
   },
   "devDependencies": {
