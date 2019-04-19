@@ -1,10 +1,6 @@
 {
   "name": "@brontosaurus/server",
   "description": ":zap: Thunder",
-  "main": "dist/brontosaurus.js",
-  "scripts": {
-    "test": "mocha"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SudoDotDog/Brontosaurus-Server.git"
