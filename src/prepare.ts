@@ -4,14 +4,13 @@
  * @description Prepare
  */
 
+import { INTERNAL_APPLICATION, INTERNAL_USER_GROUP } from "@brontosaurus/db";
+import { createUnsavedAccount } from "@brontosaurus/db/controller/account";
+import { createUnsavedApplication } from "@brontosaurus/db/controller/application";
+import { createUnsavedGroup } from "@brontosaurus/db/controller/group";
+import { addMultiplePreference, getSinglePreference, setSinglePreference } from "@brontosaurus/db/controller/preference";
 import { LOG_LEVEL, SudooLog } from "@sudoo/log";
 import * as Mongoose from "mongoose";
-import { createUnsavedAccount } from "./controller/account";
-import { createUnsavedApplication } from "./controller/application";
-import { createUnsavedGroup } from "./controller/group";
-import { addMultiplePreference, getSinglePreference, setSinglePreference } from "./controller/preference";
-import { INTERNAL_APPLICATION } from "./interface/application";
-import { INTERNAL_USER_GROUP } from "./interface/group";
 import { BrontosaurusConfig, readConfigEnvironment } from './util/conf';
 
 const config: BrontosaurusConfig = readConfigEnvironment();

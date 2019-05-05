@@ -5,11 +5,10 @@
  */
 
 import { BrontosaurusSign } from "@brontosaurus/core";
+import { IApplicationModel, INFOS_SPLITTER } from "@brontosaurus/db";
 import { Basics, IBrontosaurusBody, IBrontosaurusHeader } from "@brontosaurus/definition";
 import { _Map } from "@sudoo/bark/map";
 import { SafeObject } from "@sudoo/extract";
-import { INFOS_SPLITTER } from "../interface/account";
-import { IApplicationModel } from "../model/application";
 
 export type SafeToken = {
 

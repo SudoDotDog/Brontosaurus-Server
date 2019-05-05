@@ -4,7 +4,7 @@
  * @description Error
  */
 
-import Connor, { } from 'connor';
+import Connor from 'connor';
 
 export enum ERROR_CODE {
 

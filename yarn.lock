@@ -9,6 +9,15 @@
   dependencies:
     "@brontosaurus/definition" "^1.3.0"
 
+"@brontosaurus/db@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-1.0.1.tgz#c156ee49ef085272747ad8cf5399bb7927e479b9"
+  integrity sha512-+78WsrmLoLwC50TMHXCWaK1IZLXbREnzAnL6q4pUgXyigYj9GgyhrS2B3Mlr+tniqTfHtkpQOCVIKJpbwYO9ng==
+  dependencies:
+    "@brontosaurus/definition" "^1.3.0"
+    "@sudoo/bark" "^2.5.1"
+    mongoose "^5.5.1"
+
 "@brontosaurus/definition@^1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@brontosaurus/definition/-/definition-1.3.0.tgz#7af9a03713313f09f7622b6b049bbdc967b478f6"
@@ -734,7 +743,7 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@^5.5.5:
+mongoose@^5.5.1, mongoose@^5.5.5:
   version "5.5.5"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.5.5.tgz#d04b97a1ad0740671deeeee09ded5149fa47fe56"
   integrity sha512-rov43FpXDMoE22q8/iUoeSdg6zBtyTE/ZIIKRpQomASl0JOyD0479Weu9w5g0GjmP8fHmNjsWneoLIbnyGcnDQ==

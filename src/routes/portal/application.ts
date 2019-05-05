@@ -4,13 +4,13 @@
  * @description Application
  */
 
+import { IApplicationModel } from "@brontosaurus/db";
+import { getApplicationByKey } from "@brontosaurus/db/controller/application";
+import { getSinglePreference } from "@brontosaurus/db/controller/preference";
 import { _Array } from "@sudoo/bark/array";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
-import { getApplicationByKey } from "../../controller/application";
-import { getSinglePreference } from "../../controller/preference";
 import { basicHook } from "../../handlers/hook";
-import { IApplicationModel } from "../../model/application";
 import { ERROR_CODE } from "../../util/error";
 import { BrontosaurusRoute } from "../basic";
 
