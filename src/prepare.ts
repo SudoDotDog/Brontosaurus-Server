@@ -56,6 +56,7 @@ const log = SudooLog.create(LOG_LEVEL.DEBUG);
         const adminUser = AccountController.createUnsavedAccount(
             'admin',
             'admin',
+            [],
             [
                 adminGroup._id,
                 selfGroup._id,
@@ -72,6 +73,7 @@ const log = SudooLog.create(LOG_LEVEL.DEBUG);
             [
                 selfGroup._id,
             ],
+            [],
             {},
             {
                 tag: "Default",
