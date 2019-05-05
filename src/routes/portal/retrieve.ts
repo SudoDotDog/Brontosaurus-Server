@@ -4,10 +4,7 @@
  * @description Retrieve
  */
 
-import { IAccountModel, IApplicationModel, IGroupModel } from "@brontosaurus/db";
-import { getAccountByUsername } from "@brontosaurus/db/controller/account";
-import { getApplicationByKey } from "@brontosaurus/db/controller/application";
-import { getGroupsByIds } from "@brontosaurus/db/controller/group";
+import { AccountController, ApplicationController, GroupController, IAccountModel, IApplicationModel, IGroupModel } from "@brontosaurus/db";
 import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
@@ -38,7 +35,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
 
         try {
 
-            const account: IAccountModel | null = await getAccountByUsername(body.direct('username'));
+            const account: IAccountModel | null = await AccountController.getAccountByUsername(body.direct('username'));
 
             if (!account) {
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
@@ -50,13 +47,13 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
             }
 
-            const application: IApplicationModel | null = await getApplicationByKey(body.direct('applicationKey'));
+            const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.direct('applicationKey'));
 
             if (!application) {
                 throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
             }
 
-            const groups: IGroupModel[] = await getGroupsByIds(account.groups);
+            const groups: IGroupModel[] = await GroupController.getGroupsByIds(account.groups);
 
             const object: IBrontosaurusBody = {
                 username: account.username,

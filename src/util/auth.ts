@@ -5,14 +5,13 @@
  */
 
 import { Brontosaurus, BrontosaurusToken } from "@brontosaurus/core";
+import { GroupController, IGroupModel } from "@brontosaurus/db";
 import { IBrontosaurusBody, IBrontosaurusHeader } from "@brontosaurus/definition";
 import { Safe } from "@sudoo/extract";
 import { ObjectID } from "bson";
 import Connor, { ErrorCreationFunction } from "connor";
 import { createHash, Hash } from 'crypto';
 import { isArray } from "util";
-import { getGroupById, getGroupByName } from "../controller/group";
-import { IGroupModel } from "../model/group";
 import { ERROR_CODE, MODULE_NAME } from "./error";
 import { SafeToken } from "./token";
 
@@ -103,7 +102,7 @@ export const Throwable_MapGroups = async (groups: ObjectID[]): Promise<string[]>
 
     for (const group of groups) {
 
-        const current: IGroupModel | null = await getGroupById(group);
+        const current: IGroupModel | null = await GroupController.getGroupById(group);
 
         if (!current) {
             throw createError(ERROR_CODE.GROUP_NOT_FOUND);
@@ -123,7 +122,7 @@ export const Throwable_GetGroupsByNames = async (groups: string[]): Promise<IGro
 
     for (const group of groups) {
 
-        const current: IGroupModel | null = await getGroupByName(group);
+        const current: IGroupModel | null = await GroupController.getGroupByName(group);
 
         if (!current) {
             throw createError(ERROR_CODE.GROUP_NOT_FOUND);

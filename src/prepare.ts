@@ -4,11 +4,7 @@
  * @description Prepare
  */
 
-import { INTERNAL_APPLICATION, INTERNAL_USER_GROUP } from "@brontosaurus/db";
-import { createUnsavedAccount } from "@brontosaurus/db/controller/account";
-import { createUnsavedApplication } from "@brontosaurus/db/controller/application";
-import { createUnsavedGroup } from "@brontosaurus/db/controller/group";
-import { addMultiplePreference, getSinglePreference, setSinglePreference } from "@brontosaurus/db/controller/preference";
+import { AccountController, ApplicationController, GroupController, INTERNAL_APPLICATION, INTERNAL_USER_GROUP, PreferenceController } from "@brontosaurus/db";
 import { LOG_LEVEL, SudooLog } from "@sudoo/log";
 import * as Mongoose from "mongoose";
 import { BrontosaurusConfig, readConfigEnvironment } from './util/conf';
@@ -31,7 +27,7 @@ const log = SudooLog.create(LOG_LEVEL.DEBUG);
 
     try {
 
-        const isPrepared = await getSinglePreference('prepared');
+        const isPrepared = await PreferenceController.getSinglePreference('prepared');
 
         if (isPrepared) {
 
@@ -41,23 +37,23 @@ const log = SudooLog.create(LOG_LEVEL.DEBUG);
 
         log.info('start');
 
-        const adminGroup = createUnsavedGroup(INTERNAL_USER_GROUP.SUPER_ADMIN);
-        const selfGroup = createUnsavedGroup(INTERNAL_USER_GROUP.SELF_CONTROL);
+        const adminGroup = GroupController.createUnsavedGroup(INTERNAL_USER_GROUP.SUPER_ADMIN);
+        const selfGroup = GroupController.createUnsavedGroup(INTERNAL_USER_GROUP.SELF_CONTROL);
 
         await adminGroup.save();
         await selfGroup.save();
 
         log.debug('add group');
 
-        const redApplication = createUnsavedApplication(INTERNAL_APPLICATION.RED, INTERNAL_APPLICATION.RED, 3600000, INTERNAL_APPLICATION.RED);
-        const portalApplication = createUnsavedApplication(INTERNAL_APPLICATION.PORTAL, INTERNAL_APPLICATION.PORTAL, 3600000, INTERNAL_APPLICATION.PORTAL);
+        const redApplication = ApplicationController.createUnsavedApplication(INTERNAL_APPLICATION.RED, INTERNAL_APPLICATION.RED, 3600000, INTERNAL_APPLICATION.RED);
+        const portalApplication = ApplicationController.createUnsavedApplication(INTERNAL_APPLICATION.PORTAL, INTERNAL_APPLICATION.PORTAL, 3600000, INTERNAL_APPLICATION.PORTAL);
 
         await redApplication.save();
         await portalApplication.save();
 
         log.debug('add application');
 
-        const adminUser = createUnsavedAccount(
+        const adminUser = AccountController.createUnsavedAccount(
             'admin',
             'admin',
             [
@@ -70,7 +66,7 @@ const log = SudooLog.create(LOG_LEVEL.DEBUG);
             },
         );
 
-        const testUser = createUnsavedAccount(
+        const testUser = AccountController.createUnsavedAccount(
             'test',
             'test',
             [
@@ -87,12 +83,12 @@ const log = SudooLog.create(LOG_LEVEL.DEBUG);
 
         log.debug('add user');
 
-        await setSinglePreference('prepared', true);
-        await addMultiplePreference('registerInfo', {
+        await PreferenceController.setSinglePreference('prepared', true);
+        await PreferenceController.addMultiplePreference('registerInfo', {
             name: 'Email',
             type: 'string',
         });
-        await addMultiplePreference('registerInfo', {
+        await PreferenceController.addMultiplePreference('registerInfo', {
             name: 'Phone',
             type: 'number',
         });

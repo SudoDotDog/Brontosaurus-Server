@@ -5,9 +5,7 @@
  */
 
 import { BrontosaurusToken } from "@brontosaurus/core";
-import { IAccountModel, IApplicationModel } from "@brontosaurus/db";
-import { getAccountByUsername } from "@brontosaurus/db/controller/account";
-import { getApplicationByKey } from "@brontosaurus/db/controller/application";
+import { AccountController, ApplicationController, IAccountModel, IApplicationModel } from "@brontosaurus/db";
 import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
@@ -43,10 +41,10 @@ export class AccountValidateRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
             }
 
-            const application: IApplicationModel = Safe.value(await getApplicationByKey(applicationKey)).safe();
+            const application: IApplicationModel = Safe.value(await ApplicationController.getApplicationByKey(applicationKey)).safe();
             const brontosaurus: IBrontosaurusBody = Throwable_ValidateToken(application.secret, application.expire, token);
 
-            const account: IAccountModel | null = await getAccountByUsername(brontosaurus.username);
+            const account: IAccountModel | null = await AccountController.getAccountByUsername(brontosaurus.username);
 
             if (!account) {
                 throw this._error(ERROR_CODE.ACCOUNT_NOT_FOUND, brontosaurus.username);

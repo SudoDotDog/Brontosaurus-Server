@@ -4,9 +4,7 @@
  * @description Application
  */
 
-import { IApplicationModel } from "@brontosaurus/db";
-import { getApplicationByKey } from "@brontosaurus/db/controller/application";
-import { getSinglePreference } from "@brontosaurus/db/controller/preference";
+import { ApplicationController, IApplicationModel, PreferenceController } from "@brontosaurus/db";
 import { _Array } from "@sudoo/bark/array";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
@@ -34,13 +32,13 @@ export class ApplicationRoute extends BrontosaurusRoute {
 
         try {
 
-            const application: IApplicationModel | null = await getApplicationByKey(body.direct('applicationKey'));
+            const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.direct('applicationKey'));
 
             if (!application) {
                 throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
             }
 
-            const backgroundImages: string[] | null = await getSinglePreference('backgroundImages');
+            const backgroundImages: string[] | null = await PreferenceController.getSinglePreference('backgroundImages');
 
             if (backgroundImages) {
                 res.agent.add('background', _Array.sample(backgroundImages));
@@ -49,7 +47,7 @@ export class ApplicationRoute extends BrontosaurusRoute {
             if (application.avatar) {
                 res.agent.add('avatar', application.avatar);
             } else {
-                const globalAvatar: string | null = await getSinglePreference('globalAvatar');
+                const globalAvatar: string | null = await PreferenceController.getSinglePreference('globalAvatar');
 
                 if (globalAvatar) {
                     res.agent.add('avatar', globalAvatar);
