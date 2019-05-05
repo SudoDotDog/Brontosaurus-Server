@@ -4,7 +4,7 @@
  * @description Retrieve
  */
 
-import { AccountController, ApplicationController, GroupController, IAccountModel, IApplicationModel, IGroupModel } from "@brontosaurus/db";
+import { AccountController, ApplicationController, GroupController, IAccountModel, IApplicationModel, IGroupModel, IOrganizationModel, OrganizationController } from "@brontosaurus/db";
 import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
@@ -54,11 +54,13 @@ export class RetrieveRoute extends BrontosaurusRoute {
             }
 
             const groups: IGroupModel[] = await GroupController.getGroupsByIds(account.groups);
+            const organizations: IOrganizationModel[] = await OrganizationController.getOrganizationsByIds(account.organizations);
 
             const object: IBrontosaurusBody = {
                 username: account.username,
                 mint: account.mint,
                 groups: groups.map((group: IGroupModel) => group.name),
+                organizations: organizations.map((orientation: IOrganizationModel) => orientation.name),
                 infos: account.getInfoRecords(),
                 beacons: account.getBeaconRecords(),
             };
