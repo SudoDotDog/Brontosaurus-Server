@@ -18,26 +18,26 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@brontosaurus/core@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-1.6.0.tgz#2b1f04744c4db681f246a33cb431f1bb5c5bd0e1"
-  integrity sha512-sbaXqpCqCyeIi00tkHftYy+y+ZfSqG61v5yR4OLtKVdJ7cEbfnCML69rys24kXUPHTHX3zfCpvdo50Qmd5y3mw==
+"@brontosaurus/core@^1.6.2":
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-1.6.2.tgz#68bf140860d3fd1b7e7c4a1f6154a5923593bce3"
+  integrity sha512-MzyDxgjW2InHr1raCAU0XT0BDPEd0cigjWDxJJvyhQi+iqyrVcjj0X68P2J3GzS6Gp4EmUAqBJw7LfTqNIq1FQ==
   dependencies:
-    "@brontosaurus/definition" "^1.3.0"
+    "@brontosaurus/definition" "^1.4.3"
 
-"@brontosaurus/db@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-1.2.1.tgz#cb45f0c44184345122286b1ea84ff514e7dc3d46"
-  integrity sha512-uz8zZnTSJonivQTqo3YtaI7HuBasvsh5dZNDYXq5exbW9K52ck+1NFQqpgmXos+t5eUr2Kqyf2e77udZw8mR4Q==
+"@brontosaurus/db@^1.2.4":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-1.2.4.tgz#76b4d7059204539c73567e2b709ec4ce98ceea24"
+  integrity sha512-e0oXjSj3JGZigno9I9OgLm0uEsut6xju48udr6ir2Bb6UCc7kgMb/t42RADsdTZDdgoqrW7Nea6DJ2KPHNFjxQ==
   dependencies:
-    "@brontosaurus/definition" "^1.4.1"
+    "@brontosaurus/definition" "^1.4.3"
     "@sudoo/bark" "^2.6.1"
-    mongoose "^5.5.5"
+    mongoose "^5.5.7"
 
-"@brontosaurus/definition@^1.3.0", "@brontosaurus/definition@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/definition/-/definition-1.4.1.tgz#49c18c139ffd14b78394d98361e40cec32ad7938"
-  integrity sha512-eSUZlizk6cEQnnwC2wLA0+D2JfI1cdQaPtgGWiDcjcEbwAezOvohP/EnlJEwEbDI3TaLoX4UqVCBXlEEnn5Txg==
+"@brontosaurus/definition@^1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/definition/-/definition-1.4.3.tgz#95898b2a2c9e02ec88de445d083873236e1e3901"
+  integrity sha512-FdnuyLKTVNmvFsoruVyTENnBAoJZaevDCpMW3K8+qakVqpwgbdT+xnxv/lZPd8/K/go+A7/bTGNtefkcKnuh+A==
 
 "@sudoo/bark@^1.2.2":
   version "1.3.0"
@@ -570,9 +570,9 @@ glob@7.1.2:
     path-is-absolute "^1.0.0"
 
 glob@^7.1.1:
-  version "7.1.3"
-  resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.3.tgz#3960832d3f1574108342dafd3a67b332c0969df1"
-  integrity sha512-vcfuiIxogLV4DlGBHIUOwI0IbrJ8HWPc4MU7HzviGeNho/UJDfi6B5p3sHeWIQ0KGIU0Jpxi5ZHxemQfLkkAwQ==
+  version "7.1.4"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.4.tgz#aa608a2f6c577ad357e1ae5a5c26d9a8d1969255"
+  integrity sha512-hkLPepehmnKk41pUGm3sYxoFs/umurYfYJCerbXEyFIWcAzvpipAgVkBqqT9RBKMGjnq6kMuyYwha6csxbiM1A==
   dependencies:
     fs.realpath "^1.0.0"
     inflight "^1.0.4"
@@ -750,10 +750,21 @@ mocha@^5.2.0:
     mkdirp "0.5.1"
     supports-color "5.4.0"
 
-mongodb-core@3.2.3, mongodb-core@^3.2.3:
+mongodb-core@3.2.3:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-3.2.3.tgz#eb9bcb876f169f5843fd135f7f7686dbac0e9e34"
   integrity sha512-UyI0rmvPPkjOJV8XGWa9VCTq7R4hBVipimhnAXeSXnuAPjuTqbyfA5Ec9RcYJ1Hhu+ISnc8bJ1KfGZd4ZkYARQ==
+  dependencies:
+    bson "^1.1.1"
+    require_optional "^1.0.1"
+    safe-buffer "^5.1.2"
+  optionalDependencies:
+    saslprep "^1.0.0"
+
+mongodb-core@^3.2.3:
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-3.2.4.tgz#6731b46c5f367bfeca94a0989e0dcb9f54e95208"
+  integrity sha512-Ea/fjVntuj0nhLPuDPj54Kce+w4Ee6b1oSM2EvNB4OdwXJ5WIEh79st9/FRZVKwGnc2oB19P1SMSC1noOBXUCQ==
   dependencies:
     bson "^1.1.1"
     require_optional "^1.0.1"
@@ -774,7 +785,7 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@^5.5.5, mongoose@^5.5.7:
+mongoose@^5.5.7:
   version "5.5.7"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.5.7.tgz#496d2142b594579adaba5d4e3f1cc70c5a9ddd74"
   integrity sha512-Xs4SVuMGkMRdmKZ6ATGVvbp2pjI+KENCNhPZMnksjU3ZerkJHGhWKrUE1A6e/5iZ2lTu6Oz9AOPcfrDgp6BCUw==

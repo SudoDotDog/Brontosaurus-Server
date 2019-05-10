@@ -53,18 +53,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
             }
 
-            const groups: IGroupModel[] = await GroupController.getGroupsByIds(account.groups);
-            const organizations: IOrganizationModel[] = await OrganizationController.getOrganizationsByIds(account.organizations);
-
-            const object: IBrontosaurusBody = {
-                username: account.username,
-                mint: account.mint,
-                groups: groups.map((group: IGroupModel) => group.name),
-                organizations: organizations.map((orientation: IOrganizationModel) => orientation.name),
-                infos: account.getInfoRecords(),
-                beacons: account.getBeaconRecords(),
-            };
-
+            const object: IBrontosaurusBody = await this._buildBrontosaurusBody(account);
             const token: string = createToken(object, application);
 
             res.agent.add('token', token);
@@ -73,5 +62,36 @@ export class RetrieveRoute extends BrontosaurusRoute {
         } finally {
             next();
         }
+    }
+
+    private async _buildBrontosaurusBody(account: IAccountModel): Promise<IBrontosaurusBody | undefined> {
+
+        const groups: IGroupModel[] = await GroupController.getGroupsByIds(account.groups);
+
+        if (account.organization) {
+
+            const organization: IOrganizationModel | null = await OrganizationController.getOrganizationById(account.organization);
+
+            if (!organization) {
+                throw this._error(ERROR_CODE.ORGANIZATION_NOT_FOUND, account.organization.toHexString());
+            }
+
+            return {
+                username: account.username,
+                mint: account.mint,
+                organization: organization.name,
+                groups: groups.map((group: IGroupModel) => group.name),
+                infos: account.getInfoRecords(),
+                beacons: account.getBeaconRecords(),
+            };
+        }
+
+        return {
+            username: account.username,
+            mint: account.mint,
+            groups: groups.map((group: IGroupModel) => group.name),
+            infos: account.getInfoRecords(),
+            beacons: account.getBeaconRecords(),
+        };
     }
 }

@@ -50,4 +50,4 @@ app.routes(
 );
 
 app.host(8080);
-console.log('hosting');
+SudooLog.global.critical('Hosting at 8080');
