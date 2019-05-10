@@ -64,7 +64,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
         }
     }
 
-    private async _buildBrontosaurusBody(account: IAccountModel): Promise<IBrontosaurusBody | undefined> {
+    private async _buildBrontosaurusBody(account: IAccountModel): Promise<IBrontosaurusBody> {
 
         const groups: IGroupModel[] = await GroupController.getGroupsByIds(account.groups);
 
