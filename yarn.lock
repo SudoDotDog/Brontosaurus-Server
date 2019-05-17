@@ -39,24 +39,19 @@
   resolved "https://registry.yarnpkg.com/@brontosaurus/definition/-/definition-1.4.3.tgz#95898b2a2c9e02ec88de445d083873236e1e3901"
   integrity sha512-FdnuyLKTVNmvFsoruVyTENnBAoJZaevDCpMW3K8+qakVqpwgbdT+xnxv/lZPd8/K/go+A7/bTGNtefkcKnuh+A==
 
-"@sudoo/bark@^1.2.2":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-1.3.0.tgz#329e21a16ac5f0c3ca9a8a998fddd3439970c6d3"
-  integrity sha512-uklP6HOO+EW/YREedQ3g2YaPjKGhatsAk74Lk2r5P0aLHVcS0kR0f2YWJkddW44/J0mVfUxhUs7SR/CGVtK0nQ==
-
 "@sudoo/bark@^2.6.1":
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-2.6.1.tgz#04ec9a269c451abb7765915e2c710b0382e816fc"
   integrity sha512-HTjzCNHqE6WFp9S4dhmAtWS7RE0UTV90EcnR6LM7X+SXCIjkBC0JhNhss8nptiT2sDTs76rRV4SCXs6QNExooQ==
 
-"@sudoo/express@^1.7.5":
-  version "1.7.5"
-  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-1.7.5.tgz#49800db698bd9b457f0cca39c2e0063cceeefb57"
-  integrity sha512-t1xix0Fs5HXyeon4GctKjOiq/JgL5VSucvly89jC6MMQwpjOEMhPh69ZNjgA8XBHWpbM/i2P5PnxdAVPkDZV6g==
+"@sudoo/express@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-1.8.1.tgz#d4ea5dc691496a65f56d119ff7c6fe8853addda5"
+  integrity sha512-D5a8oKzNI28dSy3IxxRBLRqjbwk9nyf/YoRqHsXDJ/4jS9UibfMRsFV6mB52ubHeFvDCUALJuHo1xHrOa2Pa9A==
   dependencies:
-    "@sudoo/bark" "^1.2.2"
-    body-parser "^1.18.3"
-    connor "^2.0.0"
+    "@sudoo/bark" "^2.6.1"
+    body-parser "^1.19.0"
+    connor "^2.4.0"
     express "^4.16.4"
 
 "@sudoo/extract@^1.2.0":
@@ -280,7 +275,7 @@ body-parser@1.18.3:
     raw-body "2.3.3"
     type-is "~1.6.16"
 
-body-parser@^1.18.3:
+body-parser@^1.19.0:
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.19.0.tgz#96b2709e57c9c4e09a6fd66a8fd979844f69f08a"
   integrity sha512-dhEPs72UPbDnAQJ9ZKMNTP6ptJaionhP5cBb541nXPlW60Jepo9RV/a4fX4XWW9CuFNK22krhrj1+rgzifNCsw==
@@ -392,7 +387,7 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
 
-connor@^2.0.0, connor@^2.4.0:
+connor@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/connor/-/connor-2.4.0.tgz#af25da66e2bc5d9861595b2992ccda2bb4316d73"
   integrity sha512-8Kwp8LEWxJyW/n5ApHAi34WvxblPzOODXMso3OZJE/gpWdK6vRl7MhVy4/ZSCrIjHvWNNOumhbvEM4GocQgdcA==
