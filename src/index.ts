@@ -13,6 +13,7 @@ import { RetrieveRoute } from './routes/portal/retrieve';
 import { AccountValidateRoute } from './routes/portal/validate';
 import { BrontosaurusConfig, isDevelopment, readConfigEnvironment } from './util/conf';
 import { registerConnor } from './util/error';
+import { connect } from '@brontosaurus/db';
 
 const setting: SudooExpressApplication = SudooExpressApplication.create('Brontosaurus', '1');
 
@@ -29,14 +30,7 @@ const config: BrontosaurusConfig = readConfigEnvironment();
 
 registerConnor();
 
-Mongoose.set('useCreateIndex', true);
-
-Mongoose.connect(
-    config.database,
-    { useNewUrlParser: true },
-);
-
-const db: Mongoose.Connection = Mongoose.connection;
+const db: Mongoose.Connection = connect(config.database);
 db.on('error', console.log.bind(console, 'connection error:'));
 
 // Static
