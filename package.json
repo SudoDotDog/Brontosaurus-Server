@@ -19,11 +19,11 @@
     "@brontosaurus/core": "^1.6.2",
     "@brontosaurus/db": "^1.2.4",
     "@sudoo/bark": "^2.6.1",
-    "@sudoo/express": "^1.7.5",
+    "@sudoo/express": "^1.9.0",
     "@sudoo/extract": "^1.2.0",
     "@sudoo/log": "^1.2.2",
     "connor": "^2.4.0",
-    "mongoose": "^5.5.10"
+    "mongoose": "^5.5.11"
   },
   "devDependencies": {
     "@sudoo/mock": "^1.2.0",
