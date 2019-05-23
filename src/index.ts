@@ -42,6 +42,9 @@ db.on('error', console.log.bind(console, 'connection error:'));
 // Static
 app.static(Path.join(__dirname, '..', 'public', 'portal'));
 
+// Health
+app.health('/health');
+
 // Portal
 app.routes(
     new RetrieveRoute(),
