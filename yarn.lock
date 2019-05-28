@@ -39,10 +39,10 @@
   resolved "https://registry.yarnpkg.com/@brontosaurus/definition/-/definition-1.4.3.tgz#95898b2a2c9e02ec88de445d083873236e1e3901"
   integrity sha512-FdnuyLKTVNmvFsoruVyTENnBAoJZaevDCpMW3K8+qakVqpwgbdT+xnxv/lZPd8/K/go+A7/bTGNtefkcKnuh+A==
 
-"@sudoo/bark@^2.6.1":
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-2.6.1.tgz#04ec9a269c451abb7765915e2c710b0382e816fc"
-  integrity sha512-HTjzCNHqE6WFp9S4dhmAtWS7RE0UTV90EcnR6LM7X+SXCIjkBC0JhNhss8nptiT2sDTs76rRV4SCXs6QNExooQ==
+"@sudoo/bark@^2.6.1", "@sudoo/bark@^2.6.3":
+  version "2.6.3"
+  resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-2.6.3.tgz#b617d9c366ac7f99f4e8953fea10fbf52be6b32b"
+  integrity sha512-6Wmbjeqrx3rX7UBdNckj2ZkH+8LAtq9Lc28GhO5UoTrh5xtBQ+TVVAPYULuTd2C3GiOvC1nI9g0MgX7w5rux7Q==
 
 "@sudoo/express@^1.9.0":
   version "1.9.0"
