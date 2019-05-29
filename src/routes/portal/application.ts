@@ -48,12 +48,13 @@ export class ApplicationRoute extends BrontosaurusRoute {
                 res.agent.add('avatar', application.avatar);
             } else {
                 const globalAvatar: string | null = await PreferenceController.getSinglePreference('globalAvatar');
-
-                if (globalAvatar) {
-                    res.agent.add('avatar', globalAvatar);
-                }
+                res.agent.addIfExist('avatar', globalAvatar);
             }
 
+            const privacyPolicy: string | null = await PreferenceController.getSinglePreference('privacyPolicy');
+            res.agent.addIfExist('privacy', privacyPolicy);
+
+            res.agent.addIfExist('help', application.help);
             res.agent.add('name', application.name);
         } catch (err) {
             res.agent.fail(400, err);
