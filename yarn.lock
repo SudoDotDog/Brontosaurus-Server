@@ -25,34 +25,34 @@
   dependencies:
     "@brontosaurus/definition" "^1.4.3"
 
-"@brontosaurus/db@^1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-1.2.4.tgz#76b4d7059204539c73567e2b709ec4ce98ceea24"
-  integrity sha512-e0oXjSj3JGZigno9I9OgLm0uEsut6xju48udr6ir2Bb6UCc7kgMb/t42RADsdTZDdgoqrW7Nea6DJ2KPHNFjxQ==
+"@brontosaurus/db@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-1.3.0.tgz#b58f688f3aeeaac39f85bdc2c67682f0eefa77eb"
+  integrity sha512-4N8mjBqdVde6G4EWUwx/J0ZthGvUFYgoHqRoZGmjtpxNcGy36tBpUb7LgYeIv4LfdIAtSV+ZxHS8USoP1G+icA==
   dependencies:
     "@brontosaurus/definition" "^1.4.3"
-    "@sudoo/bark" "^2.6.1"
-    mongoose "^5.5.7"
+    "@sudoo/bark" "^2.6.4"
+    mongoose "^5.5.11"
 
 "@brontosaurus/definition@^1.4.3":
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/@brontosaurus/definition/-/definition-1.4.3.tgz#95898b2a2c9e02ec88de445d083873236e1e3901"
   integrity sha512-FdnuyLKTVNmvFsoruVyTENnBAoJZaevDCpMW3K8+qakVqpwgbdT+xnxv/lZPd8/K/go+A7/bTGNtefkcKnuh+A==
 
-"@sudoo/bark@^2.6.1", "@sudoo/bark@^2.6.4":
+"@sudoo/bark@^2.6.3", "@sudoo/bark@^2.6.4":
   version "2.6.4"
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-2.6.4.tgz#e2232edfa76dcfc362cd16da662a36a57b3bd1f2"
   integrity sha512-kfRGRwG+KiUm4yl+PiE1mJs9/QPKQ3yrtdPN6LPbzfi7mNJ80ry28YGB709Od2qijA12nPN9zWnOCxd7qr1JAQ==
 
-"@sudoo/express@^1.9.0":
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-1.9.0.tgz#defa16714bef63b2646b1538b435a959b0db024a"
-  integrity sha512-ud3AlIQB7MWcFdQmELVPLHhDFMpssjeFAKvAXb7tPtCARZfbTavCy1HmfNAJ5EIFloYHG8yeN33Rv4R7RDz2rw==
+"@sudoo/express@^1.9.1":
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-1.9.1.tgz#0c06163dc7535a8241efe47cb535ccf151855bca"
+  integrity sha512-abIxG67y5MiUNb3dLfQCyaqlnV2Na/ktpqMu5jWnmJmDlNvgRvhxeNXwDfbfQ/9+y2dAZ9noVEXZCjQxwB70kg==
   dependencies:
-    "@sudoo/bark" "^2.6.1"
+    "@sudoo/bark" "^2.6.3"
     body-parser "^1.19.0"
     connor "^2.4.0"
-    express "^4.17.0"
+    express "^4.17.1"
 
 "@sudoo/extract@^1.2.0":
   version "1.2.0"
@@ -464,10 +464,10 @@ etag@~1.8.1:
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
 
-express@^4.17.0:
-  version "4.17.0"
-  resolved "https://registry.yarnpkg.com/express/-/express-4.17.0.tgz#288af62228a73f4c8ea2990ba3b791bb87cd4438"
-  integrity sha512-1Z7/t3Z5ZnBG252gKUPyItc4xdeaA0X934ca2ewckAsVsw9EG71i++ZHZPYnus8g/s5Bty8IMpSVEuRkmwwPRQ==
+express@^4.17.1:
+  version "4.17.1"
+  resolved "https://registry.yarnpkg.com/express/-/express-4.17.1.tgz#4491fc38605cf51f8629d39c2b5d026f98a4c134"
+  integrity sha512-mHJ9O79RqluphRrcw2X/GTh3k9tVv8YcoyY4Kkh4WDMUYKRZUq0h1o0w2rrrxBqM7VoeUVqgb27xlEMXTnYt4g==
   dependencies:
     accepts "~1.3.7"
     array-flatten "1.1.1"
@@ -737,25 +737,6 @@ mongoose@^5.5.11:
   version "5.5.11"
   resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.5.11.tgz#3e83ea51b8e71d6e6af6cd48871843c8f523e73f"
   integrity sha512-jLYPk4jYe1N5CNwBcj48tQwQZ5Dc8VsnAjdMiqaKh5+CwU9EqEfuEtYMkFhJLu/LaTA4LN7crFzydGHdlAZtmg==
-  dependencies:
-    async "2.6.2"
-    bson "~1.1.1"
-    kareem "2.3.0"
-    mongodb "3.2.5"
-    mongodb-core "3.2.5"
-    mongoose-legacy-pluralize "1.0.2"
-    mpath "0.6.0"
-    mquery "3.2.0"
-    ms "2.1.1"
-    regexp-clone "0.0.1"
-    safe-buffer "5.1.2"
-    sift "7.0.1"
-    sliced "1.0.1"
-
-mongoose@^5.5.7:
-  version "5.5.10"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.5.10.tgz#dfa92c3249d3a71d60c28311764fd765f54f0b60"
-  integrity sha512-YsW0AYooX5P1RmbuMYDmq8htnkqmxzjEpD8qOKDwVclg/mzTDMoTCUBCAQ5lBFbBaHX10rB6MClDGugpDQOWXg==
   dependencies:
     async "2.6.2"
     bson "~1.1.1"
