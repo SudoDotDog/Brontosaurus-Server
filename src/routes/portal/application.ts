@@ -4,8 +4,7 @@
  * @description Application
  */
 
-import { ApplicationController, IApplicationModel, PreferenceController } from "@brontosaurus/db";
-import { _Array } from "@sudoo/bark/array";
+import { ApplicationController, ApplicationOthersConfig, IApplicationModel, InformationController } from "@brontosaurus/db";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { basicHook } from "../../handlers/hook";
@@ -38,24 +37,13 @@ export class ApplicationRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
             }
 
-            const backgroundImages: string[] | null = await PreferenceController.getSinglePreference('backgroundImages');
+            const otherInformation: ApplicationOthersConfig = await InformationController.getApplicationOtherInformationByApplication(application);
 
-            if (backgroundImages) {
-                res.agent.add('background', _Array.sample(backgroundImages));
-            }
-
-            if (application.avatar) {
-                res.agent.add('avatar', application.avatar);
-            } else {
-                const globalAvatar: string | null = await PreferenceController.getSinglePreference('globalAvatar');
-                res.agent.addIfExist('avatar', globalAvatar);
-            }
-
-            const privacyPolicy: string | null = await PreferenceController.getSinglePreference('privacyPolicy');
-            res.agent.addIfExist('privacy', privacyPolicy);
-
-            res.agent.addIfExist('help', application.help);
-            res.agent.add('name', application.name);
+            res.agent.add('name', application.name)
+                .addIfExist('avatar', otherInformation.avatar)
+                .addIfExist('background', otherInformation.backgroundImage)
+                .addIfExist('privacy', otherInformation.privacyPolicy)
+                .addIfExist('help', otherInformation.helpLink);
         } catch (err) {
             res.agent.fail(400, err);
         } finally {
