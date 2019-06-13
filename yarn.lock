@@ -366,10 +366,10 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
 
-connor@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/connor/-/connor-2.4.0.tgz#af25da66e2bc5d9861595b2992ccda2bb4316d73"
-  integrity sha512-8Kwp8LEWxJyW/n5ApHAi34WvxblPzOODXMso3OZJE/gpWdK6vRl7MhVy4/ZSCrIjHvWNNOumhbvEM4GocQgdcA==
+connor@^2.4.0, connor@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/connor/-/connor-2.5.1.tgz#bf9ca2b77d363bc78b78fb23aaf143a3b5ce171b"
+  integrity sha512-t65hAFdl34SLOpjWKxAHuGpbjqXG9CdGunyF6M+J5uuaU9BILVVEwD3M4oqD1sChJK8unuIOzNHhqTDMVz1QqA==
 
 content-disposition@0.5.3:
   version "0.5.3"
