@@ -25,13 +25,13 @@
   dependencies:
     "@brontosaurus/definition" "^1.4.3"
 
-"@brontosaurus/db@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-2.1.0.tgz#ff155cd71631bd5ba974c9d77d5785187d0403f3"
-  integrity sha512-a2aUbuKTOtHM99MfGPqKNX/nknjso47q9MDqpn+83dIRmy4DgaakWVWnOLYE8nCSCE/Qo8nXGTJYVoVWV9sUvw==
+"@brontosaurus/db@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-2.3.0.tgz#429d431dd1b9cdc0ed94bbcd16ad47e81d6fc2c3"
+  integrity sha512-wTiIKqIEORFJvKoSFeDPEsvdMjbBlg5Q00wuCFw2LfwE0xVkCZeB4GHsQ0Uw4ceTRZ4ml3axzgf3GvFkvcM6bQ==
   dependencies:
     "@brontosaurus/definition" "^1.4.3"
-    "@sudoo/bark" "^2.6.4"
+    "@sudoo/bark" "^2.7.1"
     mongoose "^5.5.11"
 
 "@brontosaurus/definition@^1.4.3":
@@ -39,10 +39,15 @@
   resolved "https://registry.yarnpkg.com/@brontosaurus/definition/-/definition-1.4.3.tgz#95898b2a2c9e02ec88de445d083873236e1e3901"
   integrity sha512-FdnuyLKTVNmvFsoruVyTENnBAoJZaevDCpMW3K8+qakVqpwgbdT+xnxv/lZPd8/K/go+A7/bTGNtefkcKnuh+A==
 
-"@sudoo/bark@^2.6.3", "@sudoo/bark@^2.6.4":
+"@sudoo/bark@^2.6.3":
   version "2.6.4"
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-2.6.4.tgz#e2232edfa76dcfc362cd16da662a36a57b3bd1f2"
   integrity sha512-kfRGRwG+KiUm4yl+PiE1mJs9/QPKQ3yrtdPN6LPbzfi7mNJ80ry28YGB709Od2qijA12nPN9zWnOCxd7qr1JAQ==
+
+"@sudoo/bark@^2.7.1":
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-2.7.1.tgz#84b9db0be3aa7b4d6896ced81d9fa9aac96578ef"
+  integrity sha512-0zBFbIQAtu3XNJkFPszdljYXXIPXzR63qypfTwFRupmu3gxgfBMtdPShbQebGuGG0KQEmXasGMBQVi2O0jWbbQ==
 
 "@sudoo/express@^1.9.1":
   version "1.9.1"
@@ -370,6 +375,11 @@ connor@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/connor/-/connor-2.4.0.tgz#af25da66e2bc5d9861595b2992ccda2bb4316d73"
   integrity sha512-8Kwp8LEWxJyW/n5ApHAi34WvxblPzOODXMso3OZJE/gpWdK6vRl7MhVy4/ZSCrIjHvWNNOumhbvEM4GocQgdcA==
+
+connor@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/connor/-/connor-2.5.1.tgz#bf9ca2b77d363bc78b78fb23aaf143a3b5ce171b"
+  integrity sha512-t65hAFdl34SLOpjWKxAHuGpbjqXG9CdGunyF6M+J5uuaU9BILVVEwD3M4oqD1sChJK8unuIOzNHhqTDMVz1QqA==
 
 content-disposition@0.5.3:
   version "0.5.3"
