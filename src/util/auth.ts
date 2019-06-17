@@ -9,7 +9,7 @@ import { GroupController, IGroupModel } from "@brontosaurus/db";
 import { IBrontosaurusBody, IBrontosaurusHeader } from "@brontosaurus/definition";
 import { Safe } from "@sudoo/extract";
 import { ObjectID } from "bson";
-import Connor, { ErrorCreationFunction } from "connor";
+import { Connor, ErrorCreationFunction } from "connor";
 import { createHash, Hash } from 'crypto';
 import { isArray } from "util";
 import { ERROR_CODE, MODULE_NAME } from "./error";
