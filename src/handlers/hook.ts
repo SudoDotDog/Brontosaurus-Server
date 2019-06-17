@@ -9,7 +9,7 @@ import { SudooLog } from '@sudoo/log';
 
 export const basicHook: SudooExpressHook<[string, boolean?]> =
     SudooExpressHook.create<[string, boolean?]>()
-        .before((req: SudooExpressRequest, res: SudooExpressResponse, content: string, isInfo: boolean = false): boolean => {
+        .before((_: SudooExpressRequest, res: SudooExpressResponse, content: string, isInfo: boolean = false): boolean => {
 
             const log: SudooLog = SudooLog.global;
             const isFailed: boolean = res.agent.isFailed();

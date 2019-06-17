@@ -16,7 +16,7 @@ import { BrontosaurusRoute } from "../basic";
 
 export type AccountValidateRouteBody = {
 
-    token: string;
+    readonly token: string;
 };
 
 export class AccountValidateRoute extends BrontosaurusRoute {

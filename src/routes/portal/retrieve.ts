@@ -15,9 +15,9 @@ import { BrontosaurusRoute } from "../basic";
 
 export type RetrieveRouteBody = {
 
-    username: string;
-    password: string;
-    applicationKey: string;
+    readonly username: string;
+    readonly password: string;
+    readonly applicationKey: string;
 };
 
 export class RetrieveRoute extends BrontosaurusRoute {

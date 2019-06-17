@@ -13,7 +13,7 @@ import { BrontosaurusRoute } from "../basic";
 
 export type ApplicationRouteBody = {
 
-    applicationKey: string;
+    readonly applicationKey: string;
 };
 
 export class ApplicationRoute extends BrontosaurusRoute {
