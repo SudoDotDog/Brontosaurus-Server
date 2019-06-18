@@ -4,6 +4,7 @@
  * @description Index
  */
 
+import { connect } from '@brontosaurus/db';
 import { SudooExpress, SudooExpressApplication } from '@sudoo/express';
 import { LOG_LEVEL, SudooLog } from '@sudoo/log';
 import * as Mongoose from "mongoose";
@@ -13,7 +14,6 @@ import { RetrieveRoute } from './routes/portal/retrieve';
 import { AccountValidateRoute } from './routes/portal/validate';
 import { BrontosaurusConfig, isDevelopment, readConfigEnvironment } from './util/conf';
 import { registerConnor } from './util/error';
-import { connect } from '@brontosaurus/db';
 
 const setting: SudooExpressApplication = SudooExpressApplication.create('Brontosaurus', '1');
 
