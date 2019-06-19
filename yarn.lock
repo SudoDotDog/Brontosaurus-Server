@@ -39,24 +39,19 @@
   resolved "https://registry.yarnpkg.com/@brontosaurus/definition/-/definition-1.4.3.tgz#95898b2a2c9e02ec88de445d083873236e1e3901"
   integrity sha512-FdnuyLKTVNmvFsoruVyTENnBAoJZaevDCpMW3K8+qakVqpwgbdT+xnxv/lZPd8/K/go+A7/bTGNtefkcKnuh+A==
 
-"@sudoo/bark@^2.6.3":
-  version "2.6.4"
-  resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-2.6.4.tgz#e2232edfa76dcfc362cd16da662a36a57b3bd1f2"
-  integrity sha512-kfRGRwG+KiUm4yl+PiE1mJs9/QPKQ3yrtdPN6LPbzfi7mNJ80ry28YGB709Od2qijA12nPN9zWnOCxd7qr1JAQ==
-
 "@sudoo/bark@^2.7.1":
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-2.7.1.tgz#84b9db0be3aa7b4d6896ced81d9fa9aac96578ef"
   integrity sha512-0zBFbIQAtu3XNJkFPszdljYXXIPXzR63qypfTwFRupmu3gxgfBMtdPShbQebGuGG0KQEmXasGMBQVi2O0jWbbQ==
 
-"@sudoo/express@^1.9.1":
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-1.9.1.tgz#0c06163dc7535a8241efe47cb535ccf151855bca"
-  integrity sha512-abIxG67y5MiUNb3dLfQCyaqlnV2Na/ktpqMu5jWnmJmDlNvgRvhxeNXwDfbfQ/9+y2dAZ9noVEXZCjQxwB70kg==
+"@sudoo/express@^1.10.0":
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-1.10.0.tgz#384d36630dada9814839ab2e0d63644bf362ad32"
+  integrity sha512-YRyd/o8buobVT7mndnr1rNNzMHUXkfuLFGxZoAcl5wHsBPfy5UoH4I62PeIU7T/Fv6feS2j0dIdQYKAB1E4xQw==
   dependencies:
-    "@sudoo/bark" "^2.6.3"
+    "@sudoo/bark" "^2.7.1"
     body-parser "^1.19.0"
-    connor "^2.4.0"
+    connor "^2.5.1"
     express "^4.17.1"
 
 "@sudoo/extract@^1.2.0":
@@ -370,11 +365,6 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
-
-connor@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/connor/-/connor-2.4.0.tgz#af25da66e2bc5d9861595b2992ccda2bb4316d73"
-  integrity sha512-8Kwp8LEWxJyW/n5ApHAi34WvxblPzOODXMso3OZJE/gpWdK6vRl7MhVy4/ZSCrIjHvWNNOumhbvEM4GocQgdcA==
 
 connor@^2.5.1:
   version "2.5.1"
