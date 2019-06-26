@@ -35,28 +35,35 @@ export class RetrieveRoute extends BrontosaurusRoute {
 
         try {
 
-            const account: IAccountModel | null = await AccountController.getAccountByUsername(body.direct('username'));
+            const account: IAccountModel | null = await AccountController.getAccountByUsername(body.directEnsure('username'));
 
             if (!account) {
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
             }
 
-            const passwordMatched: boolean = account.verifyPassword(body.direct('password'));
+            const passwordMatched: boolean = account.verifyPassword(body.directEnsure('password'));
 
             if (!passwordMatched) {
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
             }
 
-            const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.direct('applicationKey'));
+            if (account.limbo) {
+                res.agent.add('limbo', account.limbo);
+                res.agent.add('token', null);
+            } else {
 
-            if (!application) {
-                throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
+                const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.directEnsure('applicationKey'));
+
+                if (!application) {
+                    throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
+                }
+
+                const object: IBrontosaurusBody = await this._buildBrontosaurusBody(account);
+                const token: string = createToken(object, application);
+
+                res.agent.add('limbo', account.limbo);
+                res.agent.add('token', token);
             }
-
-            const object: IBrontosaurusBody = await this._buildBrontosaurusBody(account);
-            const token: string = createToken(object, application);
-
-            res.agent.add('token', token);
         } catch (err) {
             res.agent.fail(400, err);
         } finally {

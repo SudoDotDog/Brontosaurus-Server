@@ -10,6 +10,7 @@ import { LOG_LEVEL, SudooLog } from '@sudoo/log';
 import * as Mongoose from "mongoose";
 import * as Path from 'path';
 import { ApplicationRoute } from './routes/portal/application';
+import { LimboRoute } from './routes/portal/limbo';
 import { RetrieveRoute } from './routes/portal/retrieve';
 import { AccountValidateRoute } from './routes/portal/validate';
 import { BrontosaurusConfig, isDevelopment, readConfigEnvironment } from './util/conf';
@@ -42,6 +43,7 @@ app.health('/health');
 // Portal
 app.routes(
     new RetrieveRoute(),
+    new LimboRoute(),
     new ApplicationRoute(),
     new AccountValidateRoute(),
 );
