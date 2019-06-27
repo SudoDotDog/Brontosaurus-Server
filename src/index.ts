@@ -12,6 +12,7 @@ import * as Path from 'path';
 import { ApplicationRoute } from './routes/portal/application';
 import { LimboRoute } from './routes/portal/limbo';
 import { RetrieveRoute } from './routes/portal/retrieve';
+import { TwoFARoute } from './routes/portal/twoFA';
 import { AccountValidateRoute } from './routes/portal/validate';
 import { BrontosaurusConfig, isDevelopment, readConfigEnvironment } from './util/conf';
 import { registerConnor } from './util/error';
@@ -44,6 +45,7 @@ app.health('/health');
 app.routes(
     new RetrieveRoute(),
     new LimboRoute(),
+    new TwoFARoute(),
     new ApplicationRoute(),
     new AccountValidateRoute(),
 );

@@ -47,8 +47,11 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
             }
 
-            if (account.limbo) {
-                res.agent.add('limbo', account.limbo);
+            res.agent.add('limbo', Boolean(account.limbo));
+            res.agent.add('needTwoFA', Boolean(account.twoFA));
+
+            if (account.limbo || account.twoFA) {
+
                 res.agent.add('token', null);
             } else {
 
@@ -61,7 +64,6 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 const object: IBrontosaurusBody = await this._buildBrontosaurusBody(account);
                 const token: string = createToken(object, application);
 
-                res.agent.add('limbo', account.limbo);
                 res.agent.add('token', token);
             }
         } catch (err) {

@@ -1,7 +1,7 @@
 /**
  * @author WMXPY
  * @namespace Brontosaurus_Server_Routes
- * @description Limbo
+ * @description TwoFA
  */
 
 import { AccountController, ApplicationController, GroupController, IAccountModel, IApplicationModel, IGroupModel, IOrganizationModel, OrganizationController } from "@brontosaurus/db";
@@ -13,26 +13,26 @@ import { ERROR_CODE } from "../../util/error";
 import { createToken } from '../../util/token';
 import { BrontosaurusRoute } from "../basic";
 
-export type LimboRouteBody = {
+export type TwoFARouteBody = {
 
     readonly username: string;
-    readonly oldPassword: string;
-    readonly newPassword: string;
+    readonly password: string;
+    readonly code: string;
     readonly applicationKey: string;
 };
 
-export class LimboRoute extends BrontosaurusRoute {
+export class TwoFARoute extends BrontosaurusRoute {
 
-    public readonly path: string = '/limbo';
+    public readonly path: string = '/twoFA';
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
-        basicHook.wrap(this._limboHandler.bind(this), '/limbo - Limbo', true),
+        basicHook.wrap(this._twoFAHandler.bind(this), '/twoFA - TwoFA', true),
     ];
 
-    private async _limboHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
+    private async _twoFAHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
-        const body: SafeExtract<LimboRouteBody> = Safe.extract(req.body as LimboRouteBody, this._error(ERROR_CODE.REQUEST_DOES_MATCH_PATTERN));
+        const body: SafeExtract<TwoFARouteBody> = Safe.extract(req.body as TwoFARouteBody, this._error(ERROR_CODE.REQUEST_DOES_MATCH_PATTERN));
 
         try {
 
@@ -43,17 +43,17 @@ export class LimboRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
             }
 
-            const passwordMatched: boolean = account.verifyPassword(body.directEnsure('oldPassword'));
+            const passwordMatched: boolean = account.verifyPassword(body.directEnsure('password'));
 
             if (!passwordMatched) {
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
             }
 
-            const newPassword: string = body.directEnsure('newPassword');
-            const newAccount: IAccountModel | null = await AccountController.setPasswordAndRemoveFromLimbo(username, newPassword);
+            const code: string = body.directEnsure('code');
+            const verifyResult: boolean = account.verifyTwoFA(code);
 
-            if (!newAccount) {
-                throw this._error(ERROR_CODE.INTERNAL_ERROR);
+            if (!verifyResult) {
+                throw this._error(ERROR_CODE.TWO_FA_DOES_NOT_MATCH);
             }
 
             const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.directEnsure('applicationKey'));
@@ -62,11 +62,11 @@ export class LimboRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
             }
 
-            const object: IBrontosaurusBody = await this._buildBrontosaurusBody(newAccount);
+            const object: IBrontosaurusBody = await this._buildBrontosaurusBody(account);
             const token: string = createToken(object, application);
 
-            res.agent.add('limbo', newAccount.limbo);
-            res.agent.add('needTwoFA', Boolean(newAccount.twoFA));
+            res.agent.add('limbo', account.limbo);
+            res.agent.add('needTwoFA', Boolean(account.twoFA));
             res.agent.add('token', token);
         } catch (err) {
             res.agent.fail(400, err);
