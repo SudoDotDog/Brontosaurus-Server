@@ -20,7 +20,7 @@ public
 
 # temp
 dist
-temp
+temp.txt
 brontosaurus.conf
 
 # nyc test coverage
