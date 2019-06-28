@@ -10,6 +10,7 @@ export enum ERROR_CODE {
 
     PASSWORD_DOES_NOT_MATCH = 4001,
     TWO_FA_DOES_NOT_MATCH = 4002,
+    OUT_OF_ATTEMPT = 4003,
     TOKEN_INVALID = 4106,
     TOKEN_EXPIRED = 4107,
 
@@ -49,6 +50,7 @@ export const ERROR_LIST: Record<ERROR_CODE, string> = {
 
     [ERROR_CODE.PASSWORD_DOES_NOT_MATCH]: 'Username and password not match',
     [ERROR_CODE.TWO_FA_DOES_NOT_MATCH]: 'TwoFA not match',
+    [ERROR_CODE.OUT_OF_ATTEMPT]: 'Non attempt left',
     [ERROR_CODE.TOKEN_INVALID]: 'Token invalid',
     [ERROR_CODE.TOKEN_EXPIRED]: 'Token expired',
 

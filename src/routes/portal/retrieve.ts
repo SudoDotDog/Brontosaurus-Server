@@ -41,9 +41,15 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
             }
 
+            if (account.attemptLeft <= 0) {
+                throw this._error(ERROR_CODE.OUT_OF_ATTEMPT);
+            }
+
             const passwordMatched: boolean = account.verifyPassword(body.directEnsure('password'));
 
             if (!passwordMatched) {
+                account.attemptLeft = account.attemptLeft - 1;
+                await account.save();
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
             }
 
@@ -63,6 +69,9 @@ export class RetrieveRoute extends BrontosaurusRoute {
 
                 const object: IBrontosaurusBody = await this._buildBrontosaurusBody(account);
                 const token: string = createToken(object, application);
+
+                account.resetAttempt();
+                await account.save();
 
                 res.agent.add('token', token);
             }
