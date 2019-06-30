@@ -41,14 +41,15 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
             }
 
-            if (account.attemptLeft <= 0) {
+            if (account.attemptPoints <= 0) {
                 throw this._error(ERROR_CODE.OUT_OF_ATTEMPT);
             }
 
             const passwordMatched: boolean = account.verifyPassword(body.directEnsure('password'));
 
             if (!passwordMatched) {
-                account.attemptLeft = account.attemptLeft - 1;
+
+                account.useAttemptPoint(20);
                 await account.save();
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
             }

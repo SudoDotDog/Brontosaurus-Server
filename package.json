@@ -17,7 +17,7 @@
   "homepage": "https://github.com/SudoDotDog/Brontosaurus-Server#readme",
   "dependencies": {
     "@brontosaurus/core": "^1.6.2",
-    "@brontosaurus/db": "^2.6.1",
+    "@brontosaurus/db": "^2.7.0",
     "@sudoo/bark": "^2.7.1",
     "@sudoo/express": "^1.11.0",
     "@sudoo/extract": "^1.2.0",
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@sudoo/mock": "^1.2.0",
     "@sudoo/triforce": "^1.6.0",
-    "@sudoo/triforce-mongoose-dev": "^1.1.0",
+    "@sudoo/triforce-mongoose-dev": "^1.2.0",
     "@types/express": "^4.17.0"
   },
   "nyc": {
