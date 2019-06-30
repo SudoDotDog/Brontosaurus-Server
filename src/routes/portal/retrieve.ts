@@ -41,6 +41,10 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
             }
 
+            if (!account.active) {
+                throw this._error(ERROR_CODE.INACTIVE_ACCOUNT, account.username);
+            }
+
             if (account.attemptPoints <= 0) {
                 throw this._error(ERROR_CODE.OUT_OF_ATTEMPT);
             }

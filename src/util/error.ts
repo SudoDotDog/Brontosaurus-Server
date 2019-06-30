@@ -8,6 +8,7 @@ import { Connor } from 'connor';
 
 export enum ERROR_CODE {
 
+    INACTIVE_ACCOUNT = 4000,
     PASSWORD_DOES_NOT_MATCH = 4001,
     TWO_FA_DOES_NOT_MATCH = 4002,
     OUT_OF_ATTEMPT = 4003,
@@ -48,6 +49,7 @@ export enum ERROR_CODE {
 export const MODULE_NAME = 'Brontosaurus-Server';
 export const ERROR_LIST: Record<ERROR_CODE, string> = {
 
+    [ERROR_CODE.INACTIVE_ACCOUNT]: 'Account: "{}" is not active',
     [ERROR_CODE.PASSWORD_DOES_NOT_MATCH]: 'Username and password not match',
     [ERROR_CODE.TWO_FA_DOES_NOT_MATCH]: 'TwoFA not match',
     [ERROR_CODE.OUT_OF_ATTEMPT]: 'Non attempt left',

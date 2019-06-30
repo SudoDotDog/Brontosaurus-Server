@@ -50,6 +50,10 @@ export class AccountValidateRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.ACCOUNT_NOT_FOUND, brontosaurus.username);
             }
 
+            if (!account.active) {
+                throw this._error(ERROR_CODE.INACTIVE_ACCOUNT, account.username);
+            }
+
             if (account.mint !== brontosaurus.mint) {
                 throw this._error(ERROR_CODE.ACCOUNT_MINT_NOT_VALID);
             }
