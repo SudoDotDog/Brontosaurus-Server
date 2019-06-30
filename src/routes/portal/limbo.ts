@@ -50,11 +50,6 @@ export class LimboRoute extends BrontosaurusRoute {
             }
 
             const newPassword: string = body.directEnsure('newPassword');
-            const newAccount: IAccountModel | null = await AccountController.setPasswordAndRemoveFromLimbo(username, newPassword);
-
-            if (!newAccount) {
-                throw this._error(ERROR_CODE.INTERNAL_ERROR);
-            }
 
             const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.directEnsure('applicationKey'));
 
@@ -62,11 +57,17 @@ export class LimboRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
             }
 
-            const object: IBrontosaurusBody = await this._buildBrontosaurusBody(newAccount);
+            account.setPassword(newPassword);
+            account.limbo = false;
+            account.resetAttempt();
+
+            await account.save();
+
+            const object: IBrontosaurusBody = await this._buildBrontosaurusBody(account);
             const token: string = createToken(object, application);
 
-            res.agent.add('limbo', newAccount.limbo);
-            res.agent.add('needTwoFA', Boolean(newAccount.twoFA));
+            res.agent.add('limbo', account.limbo);
+            res.agent.add('needTwoFA', Boolean(account.twoFA));
             res.agent.add('token', token);
         } catch (err) {
             res.agent.fail(400, err);
