@@ -4,7 +4,7 @@
  * @description Application
  */
 
-import { ApplicationController, ApplicationOthersConfig, IApplicationModel, InformationController } from "@brontosaurus/db";
+import { ApplicationController, ApplicationOthersConfig, IApplicationModel, InformationController, PreferenceController } from "@brontosaurus/db";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { basicHook } from "../../handlers/hook";
@@ -39,11 +39,16 @@ export class ApplicationRoute extends BrontosaurusRoute {
 
             const otherInformation: ApplicationOthersConfig = await InformationController.getApplicationOtherInformationByApplication(application);
 
+            const accountName: string | null = await PreferenceController.getSinglePreference('accountName');
+            const systemName: string | null = await PreferenceController.getSinglePreference('systemName');
+
             res.agent.add('name', application.name)
                 .addIfExist('avatar', otherInformation.avatar)
                 .addIfExist('background', otherInformation.backgroundImage)
                 .addIfExist('privacy', otherInformation.privacyPolicy)
-                .addIfExist('help', otherInformation.helpLink);
+                .addIfExist('help', otherInformation.helpLink)
+                .addIfExist('accountName', accountName)
+                .addIfExist('systemName', systemName);
         } catch (err) {
             res.agent.fail(400, err);
         } finally {
