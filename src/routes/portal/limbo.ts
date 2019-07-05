@@ -4,7 +4,7 @@
  * @description Limbo
  */
 
-import { AccountController, ApplicationController, GroupController, IAccountModel, IApplicationModel, IGroupModel, IOrganizationModel, OrganizationController } from "@brontosaurus/db";
+import { AccountController, ApplicationController, GroupController, IAccountModel, IApplicationModel, IGroupModel, IOrganizationModel, OrganizationController, PASSWORD_VALIDATE_RESPONSE, validatePassword } from "@brontosaurus/db";
 import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
@@ -58,6 +58,12 @@ export class LimboRoute extends BrontosaurusRoute {
             }
 
             const newPassword: string = body.directEnsure('newPassword');
+
+            const validateResult: PASSWORD_VALIDATE_RESPONSE = validatePassword(newPassword);
+
+            if (validateResult !== PASSWORD_VALIDATE_RESPONSE.OK) {
+                throw this._error(ERROR_CODE.INVALID_PASSWORD, validateResult);
+            }
 
             const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.directEnsure('applicationKey'));
 
