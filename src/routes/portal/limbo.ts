@@ -62,7 +62,10 @@ export class LimboRoute extends BrontosaurusRoute {
             const validateResult: PASSWORD_VALIDATE_RESPONSE = validatePassword(newPassword);
 
             if (validateResult !== PASSWORD_VALIDATE_RESPONSE.OK) {
-                throw this._error(ERROR_CODE.INVALID_PASSWORD, validateResult);
+                if (validateResult !== PASSWORD_VALIDATE_RESPONSE.ONLY_KEYBOARD_CHARACTER_AVAILABLE) {
+                    throw this._error(ERROR_CODE.INVALID_PASSWORD, validateResult);
+                }
+                throw this._error(ERROR_CODE.WIRED_PASSWORD, validateResult);
             }
 
             const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.directEnsure('applicationKey'));
