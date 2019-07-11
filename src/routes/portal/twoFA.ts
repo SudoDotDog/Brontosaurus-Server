@@ -4,7 +4,7 @@
  * @description TwoFA
  */
 
-import { AccountController, ApplicationController, GroupController, IAccountModel, IApplicationModel, IGroupModel, IOrganizationModel, OrganizationController } from "@brontosaurus/db";
+import { AccountController, ApplicationController, GroupController, IAccountModel, IApplicationModel, IGroupModel, IOrganizationModel, ITagModel, OrganizationController, TagController } from "@brontosaurus/db";
 import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
@@ -93,6 +93,7 @@ export class TwoFARoute extends BrontosaurusRoute {
     private async _buildBrontosaurusBody(account: IAccountModel): Promise<IBrontosaurusBody> {
 
         const groups: IGroupModel[] = await GroupController.getGroupsByIds(account.groups);
+        const tags: ITagModel[] = await TagController.getTagsByIds(account.tags);
 
         if (account.organization) {
 
@@ -102,11 +103,14 @@ export class TwoFARoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.ORGANIZATION_NOT_FOUND, account.organization.toHexString());
             }
 
+            const organizationTags: ITagModel[] = await TagController.getTagsByIds(organization.tags);
+
             return {
                 username: account.username,
                 mint: account.mint,
                 organization: organization.name,
                 groups: groups.map((group: IGroupModel) => group.name),
+                tags: organizationTags.map((tag: ITagModel) => tag.name),
                 infos: account.getInfoRecords(),
                 beacons: account.getBeaconRecords(),
             };
@@ -116,6 +120,7 @@ export class TwoFARoute extends BrontosaurusRoute {
             username: account.username,
             mint: account.mint,
             groups: groups.map((group: IGroupModel) => group.name),
+            tags: tags.map((tag: ITagModel) => tag.name),
             infos: account.getInfoRecords(),
             beacons: account.getBeaconRecords(),
         };
