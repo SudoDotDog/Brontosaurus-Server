@@ -92,6 +92,8 @@ export class RetrieveRoute extends BrontosaurusRoute {
         const groups: IGroupModel[] = await GroupController.getGroupsByIds(account.groups);
         const tags: ITagModel[] = await TagController.getTagsByIds(account.tags);
 
+        const displayName: string = account.displayName || account.username;
+
         if (account.organization) {
 
             const organization: IOrganizationModel | null = await OrganizationController.getOrganizationById(account.organization);
@@ -104,6 +106,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
 
             return {
                 username: account.username,
+                displayName,
                 mint: account.mint,
                 organization: organization.name,
                 organizationTags: organizationTags.map((tag: ITagModel) => tag.name),
@@ -116,6 +119,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
 
         return {
             username: account.username,
+            displayName,
             mint: account.mint,
             groups: groups.map((group: IGroupModel) => group.name),
             tags: tags.map((tag: ITagModel) => tag.name),
