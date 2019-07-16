@@ -110,6 +110,7 @@ export class LimboRoute extends BrontosaurusRoute {
 
             return {
                 username: account.username,
+                displayName: account.displayName,
                 mint: account.mint,
                 organization: organization.name,
                 groups: groups.map((group: IGroupModel) => group.name),
@@ -121,6 +122,7 @@ export class LimboRoute extends BrontosaurusRoute {
 
         return {
             username: account.username,
+            displayName: account.displayName,
             mint: account.mint,
             groups: groups.map((group: IGroupModel) => group.name),
             tags: tags.map((tag: ITagModel) => tag.name),
