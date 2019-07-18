@@ -45,10 +45,10 @@
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-2.7.1.tgz#84b9db0be3aa7b4d6896ced81d9fa9aac96578ef"
   integrity sha512-0zBFbIQAtu3XNJkFPszdljYXXIPXzR63qypfTwFRupmu3gxgfBMtdPShbQebGuGG0KQEmXasGMBQVi2O0jWbbQ==
 
-"@sudoo/express@^1.12.0":
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-1.12.0.tgz#e1515bfc5c9265004174ec338fd00c945f02d7a7"
-  integrity sha512-pcNXFWGuzph20jSbFJKbgVMoi+0L0AAGQ6fbGdWWAv6QcabFd3tJY/39x+AwZvM/hiREcfqlwVte3xH9yfkpxw==
+"@sudoo/express@^1.13.0":
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-1.13.0.tgz#de3535d5337be9aa944b792a84a7ca03cbbe0c2c"
+  integrity sha512-UFhHeVWf5OYSfDLLIXRwt1bnpJcU5rNIfwMYKHJ63L8NDz6C+SVL9XaT9oK+pQqeo4aoi8s0cXGOB1A59AE/Ww==
   dependencies:
     "@sudoo/bark" "^2.7.1"
     body-parser "^1.19.0"
