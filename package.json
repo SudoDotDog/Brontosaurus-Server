@@ -22,7 +22,7 @@
     "@sudoo/express": "^1.14.1",
     "@sudoo/extract": "^1.2.0",
     "@sudoo/log": "^1.2.2",
-    "connor": "^2.5.1"
+    "connor": "^2.6.0"
   },
   "devDependencies": {
     "@sudoo/mock": "^1.2.0",
