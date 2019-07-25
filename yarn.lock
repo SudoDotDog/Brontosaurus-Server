@@ -45,14 +45,14 @@
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-2.7.1.tgz#84b9db0be3aa7b4d6896ced81d9fa9aac96578ef"
   integrity sha512-0zBFbIQAtu3XNJkFPszdljYXXIPXzR63qypfTwFRupmu3gxgfBMtdPShbQebGuGG0KQEmXasGMBQVi2O0jWbbQ==
 
-"@sudoo/express@^1.14.1":
-  version "1.14.1"
-  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-1.14.1.tgz#84b3c98b792326b02da7a970950ee7e1d6684d6d"
-  integrity sha512-pKpV5Xn6PAQavH/wWbl1D+h5esacgYPSJ6GrfRPvJJwiERk1IZO44ay50b9jhy+F2m84T1GWIV7v+AW8FtMURA==
+"@sudoo/express@^1.14.2":
+  version "1.14.2"
+  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-1.14.2.tgz#36242a7a3fba022b25eaa7c843ba2085907b4491"
+  integrity sha512-7Ea/2Wiaw9c4FQCOz8AAoOiLsmw0yeH9eC2e6NiFrdBkzl5XovleZrJJGI7Mv+U2Rn0+M/kFtv+Vl2P+QMFMuQ==
   dependencies:
     "@sudoo/bark" "^2.7.1"
     body-parser "^1.19.0"
-    connor "^2.5.1"
+    connor "^2.6.0"
     express "^4.17.1"
 
 "@sudoo/extract@^1.2.0":
@@ -364,7 +364,7 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
 
-connor@^2.5.1, connor@^2.6.0:
+connor@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/connor/-/connor-2.6.0.tgz#1ffc2ebc60c2fa0908afd22bc763c74fd6dd4a0f"
   integrity sha512-8y18++OijPHvT3C8d57Z2I3xTFgLJU4hyphsty19kja1KqtgZDFmBwRPZ2zaJHlJZzMAvztVClv30WAaT2l6SA==
