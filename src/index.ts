@@ -36,7 +36,11 @@ const db: Mongoose.Connection = connect(config.database);
 db.on('error', console.log.bind(console, 'connection error:'));
 
 // Static
-app.static(Path.join(__dirname, '..', 'public', 'portal'));
+const tenHour: number = 36000000;
+app.static(Path.join(__dirname, '..', 'public', 'portal'), {
+    immutable: true,
+    maxAge: tenHour,
+});
 
 // Health
 app.health('/health');
