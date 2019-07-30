@@ -55,10 +55,10 @@
     connor "^2.6.0"
     express "^4.17.1"
 
-"@sudoo/extract@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/extract/-/extract-1.2.0.tgz#42c0753c1b76bc964180a54ca31668a9ac6576ae"
-  integrity sha512-3/F3HuTnX2tAvkSS1KA2A6DPwZQDVhlRT2xfDmHhXp0p2aENvfdvBaiUU+xCqvHfS/Koi4pBUoWryGkTWdn4IA==
+"@sudoo/extract@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@sudoo/extract/-/extract-1.2.1.tgz#3602980cff44116e897a186ffdc5250af99b2f5c"
+  integrity sha512-oMAvUcPRZq4FlxuBjJXLsfPvZJ7UJUL0xEmh6l3eyW8E4A9USoFiMFTKovk2bPexBCQbC9lARWXo6KfbGMKGRw==
 
 "@sudoo/log@^1.2.2":
   version "1.2.2"
