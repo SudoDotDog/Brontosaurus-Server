@@ -25,14 +25,14 @@
   dependencies:
     "@brontosaurus/definition" "^1.6.1"
 
-"@brontosaurus/db@^2.17.3":
-  version "2.17.3"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-2.17.3.tgz#3709291ae8cbf0412f8e358fbcbda59feb3d9886"
-  integrity sha512-N8GLtWXwGuycji9FJSCdi/lF/9dCZtJwQ59+utIimPFilbS5iTEaQpPaEKht6nI6zZ1iFgJaFP+8i95EsXNkRg==
+"@brontosaurus/db@^2.18.0":
+  version "2.18.0"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-2.18.0.tgz#81a05616dfdb975ef25cb1fc3a0ca6301afb596c"
+  integrity sha512-kLNbyurdGjK7OVqoAUUmos44C+hI0+kvcYjnlfCMLAXtOwe2ZWKFE6RTVF8qzwDw5+utLlsfRmnZE8TnNINDbA==
   dependencies:
     "@brontosaurus/definition" "^1.6.1"
     "@sudoo/bark" "^2.7.1"
-    mongoose "^5.6.4"
+    mongoose "^5.6.8"
     speakeasy "^2.0.0"
 
 "@brontosaurus/definition@^1.6.1":
@@ -752,10 +752,10 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@^5.6.4:
-  version "5.6.4"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.6.4.tgz#049ca8ad5ac16a528c23a20301579f7ac92fdb0e"
-  integrity sha512-mwMpa82uGvxSmkwTbxCmXb8/Nn9+2e+X61DiGFV9ZeenTsJKcdjc0QMGwDyDEkLcnYwQ5VrQbiB9548RZbFgVw==
+mongoose@^5.6.8:
+  version "5.6.8"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.6.8.tgz#9b6d2575c21402def45f50072a3900c54b697cc8"
+  integrity sha512-BhgGU/KvnVX8WbamcWgtG/45rp+xZnaF9MhNbzESIIYxK7g5QurXYcaGGCm/JFiIdIxkVUgBycWG7UzRUEzvDg==
   dependencies:
     async "2.6.2"
     bson "~1.1.1"
