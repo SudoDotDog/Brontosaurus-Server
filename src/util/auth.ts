@@ -4,7 +4,7 @@
  * @description Auth
  */
 
-import { Brontosaurus, BrontosaurusToken } from "@brontosaurus/core";
+import { Brontosaurus, BrontosaurusKey, BrontosaurusToken } from "@brontosaurus/core";
 import { GroupController, IGroupModel } from "@brontosaurus/db";
 import { IBrontosaurusBody, IBrontosaurusHeader } from "@brontosaurus/definition";
 import { Safe } from "@sudoo/extract";
@@ -15,7 +15,7 @@ import { isArray } from "util";
 import { ERROR_CODE, MODULE_NAME } from "./error";
 import { SafeToken } from "./token";
 
-export const Throwable_ValidateToken = (secret: string, expire: number, tokenString: string): IBrontosaurusBody => {
+export const Throwable_ValidateToken = (secret: BrontosaurusKey, expire: number, tokenString: string): IBrontosaurusBody => {
 
     const token: BrontosaurusToken = Brontosaurus.token(secret);
     const createError: ErrorCreationFunction = Connor.getErrorCreator(MODULE_NAME);

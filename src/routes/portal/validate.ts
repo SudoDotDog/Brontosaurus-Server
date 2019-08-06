@@ -42,7 +42,10 @@ export class AccountValidateRoute extends BrontosaurusRoute {
             }
 
             const application: IApplicationModel = Safe.value(await ApplicationController.getApplicationByKey(applicationKey)).safe();
-            const brontosaurus: IBrontosaurusBody = Throwable_ValidateToken(application.secret, application.expire, token);
+            const brontosaurus: IBrontosaurusBody = Throwable_ValidateToken({
+                public: application.publicKey,
+                private: application.privateKey,
+            }, application.expire, token);
 
             const account: IAccountModel | null = await AccountController.getAccountByUsername(brontosaurus.username);
 

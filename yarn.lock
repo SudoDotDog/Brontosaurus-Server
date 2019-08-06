@@ -18,18 +18,19 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@brontosaurus/core@^1.8.1":
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-1.8.1.tgz#379c15a4399ccc7c4c9525c8153e355b31ea15b6"
-  integrity sha512-xY5qwqVlbsv9gn9cIcUko28klKCbkgaefiP8+WvlsoAWNmaoc9pN+bAdXwN7i0IDWFPcMX8/oRRvoQAcaMAkhg==
+"@brontosaurus/core@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-2.0.1.tgz#bd71da445a6f757a9800d2d0b82465a63b6de2fc"
+  integrity sha512-lW0VnXXO+wkgP4sgIQLp66sK+CXMygMhtWkK9NZqBfQ+jOKDcqRo8OjEzWj8AMBWZ3Bym+voUD7fYfWM+Urk6Q==
   dependencies:
     "@brontosaurus/definition" "^1.6.1"
 
-"@brontosaurus/db@^2.18.0":
-  version "2.18.0"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-2.18.0.tgz#81a05616dfdb975ef25cb1fc3a0ca6301afb596c"
-  integrity sha512-kLNbyurdGjK7OVqoAUUmos44C+hI0+kvcYjnlfCMLAXtOwe2ZWKFE6RTVF8qzwDw5+utLlsfRmnZE8TnNINDbA==
+"@brontosaurus/db@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.0.0.tgz#bbb4e4970f2a6a8a9d6201c10a3fba077986b7b4"
+  integrity sha512-shcN5elPR3AEJnws9eoYymGVR7rx7K3iiuyyiARZ4To0kAsdvq1XPmMWQZturumlNg0EHizz/+6+ze+jzXcNMw==
   dependencies:
+    "@brontosaurus/core" "^2.0.1"
     "@brontosaurus/definition" "^1.6.1"
     "@sudoo/bark" "^2.7.1"
     mongoose "^5.6.8"
