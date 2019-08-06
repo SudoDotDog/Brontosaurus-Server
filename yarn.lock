@@ -18,13 +18,6 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@brontosaurus/core@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-2.0.1.tgz#bd71da445a6f757a9800d2d0b82465a63b6de2fc"
-  integrity sha512-lW0VnXXO+wkgP4sgIQLp66sK+CXMygMhtWkK9NZqBfQ+jOKDcqRo8OjEzWj8AMBWZ3Bym+voUD7fYfWM+Urk6Q==
-  dependencies:
-    "@brontosaurus/definition" "^1.6.1"
-
 "@brontosaurus/core@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-2.1.0.tgz#98b8e07a1d194afdc224875c6b0ffcc27fe6693a"
@@ -32,21 +25,16 @@
   dependencies:
     "@brontosaurus/definition" "^2.1.0"
 
-"@brontosaurus/db@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.0.0.tgz#bbb4e4970f2a6a8a9d6201c10a3fba077986b7b4"
-  integrity sha512-shcN5elPR3AEJnws9eoYymGVR7rx7K3iiuyyiARZ4To0kAsdvq1XPmMWQZturumlNg0EHizz/+6+ze+jzXcNMw==
+"@brontosaurus/db@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.1.0.tgz#8e83b4b9fefb0aefaee48c13115dba43d739c26d"
+  integrity sha512-zKXbJFqANByG6dDly8nQf9z8JO57rBbAHVuK0GOP2ky5wJVpatTr34Kg/QNClMQutXyXsmjuOcOYnASSCN1NuA==
   dependencies:
-    "@brontosaurus/core" "^2.0.1"
-    "@brontosaurus/definition" "^1.6.1"
+    "@brontosaurus/core" "^2.1.0"
+    "@brontosaurus/definition" "^2.1.0"
     "@sudoo/bark" "^2.7.1"
     mongoose "^5.6.8"
     speakeasy "^2.0.0"
-
-"@brontosaurus/definition@^1.6.1":
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/definition/-/definition-1.6.1.tgz#88ac9ff85066b68a0409c3c2946e45e228bbc3b2"
-  integrity sha512-FNJX31Y+nnNIbC47b7JKPPXQ4iN1CZ5lvNUlBpl3Lt8D1zUlr6sUMcpDKUXXVWZg/uHF39rQgqHb2FaksvLOhQ==
 
 "@brontosaurus/definition@^2.1.0":
   version "2.1.0"
