@@ -18,28 +18,28 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@brontosaurus/core@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-2.1.0.tgz#98b8e07a1d194afdc224875c6b0ffcc27fe6693a"
-  integrity sha512-utnJMmq6Ihl0iuWp0mmBGzqhmHx+JhzNFF9ZzZgwQ3+NVN+j0Eo8iQ7CsmGNwK4iaF0Fzv45F5gyiEa0cIeRAw==
+"@brontosaurus/core@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-2.1.1.tgz#e4d920cbccd608b253d7359d2c865a98e3a02c8f"
+  integrity sha512-df2brx0KRHgohlOsu0bvjwwaorbzjmjOH3iOr4ZPJWrlxUgKDJvgiBj+iPYgabT5xGjKOwOxVevD63xMzNp1BA==
   dependencies:
-    "@brontosaurus/definition" "^2.1.0"
+    "@brontosaurus/definition" "^2.1.1"
 
-"@brontosaurus/db@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.1.0.tgz#8e83b4b9fefb0aefaee48c13115dba43d739c26d"
-  integrity sha512-zKXbJFqANByG6dDly8nQf9z8JO57rBbAHVuK0GOP2ky5wJVpatTr34Kg/QNClMQutXyXsmjuOcOYnASSCN1NuA==
+"@brontosaurus/db@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.1.1.tgz#d2d281a13f3dbfe4fbd6f7fee5dc825704af4aab"
+  integrity sha512-1gKvuDeBgAwSIjasNU1azzSYz81WjQ5LpRXtt1yEa7UhJl76ouqqsHe1jaG/AE0Fs1iTTmzoLZrADSvCGCBM6A==
   dependencies:
-    "@brontosaurus/core" "^2.1.0"
-    "@brontosaurus/definition" "^2.1.0"
+    "@brontosaurus/core" "^2.1.1"
+    "@brontosaurus/definition" "^2.1.1"
     "@sudoo/bark" "^2.7.1"
     mongoose "^5.6.8"
     speakeasy "^2.0.0"
 
-"@brontosaurus/definition@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/definition/-/definition-2.1.0.tgz#0b0143da59bc778e0b4e2592410a2ebcb23683ad"
-  integrity sha512-VPYx/ZRmVwhVwSTzWxj948bErxFWfvaWf8WvuZySLcF9a4HNGqJ0PI0ShLkcwCOu7CxZnU/ucUzbicWfRv86VA==
+"@brontosaurus/definition@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/definition/-/definition-2.1.1.tgz#037206586856bc3d6a5218d2ce47881eb4b11a34"
+  integrity sha512-xOta4GCbFaHmSIbn+thqTcqfS2koUiUkOsEblK8y13xQM2Eg3ziuJYboIIN6bVlEGj8wBUif4UcMs/8xGRYa8w==
 
 "@sudoo/bark@^2.7.1":
   version "2.7.1"
