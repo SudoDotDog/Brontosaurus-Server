@@ -79,13 +79,13 @@
     "@types/mongodb" "3.1.28"
     "@types/mongoose" "5.5.6"
 
-"@sudoo/triforce@^1.8.1":
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@sudoo/triforce/-/triforce-1.8.1.tgz#b8c9f848d749cc09315c35e27073651ff828a0fb"
-  integrity sha512-0Al10y8AiYy1JRP5JfCIOjsLjtPbiNGUzW58+6vj1hEqfae9XB4Ub0hpdLyRsDnOU6ZhZNh0gC0MTALQ1D7FzQ==
+"@sudoo/triforce@^1.8.2":
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/@sudoo/triforce/-/triforce-1.8.2.tgz#397f18afdec80f1a18b93ccb905132aaa7e00da4"
+  integrity sha512-Qdnv+wisAkzAKQRWTGYOlWKpLK6UBx7a4pZdblhAJ87nygks7UegujZs5C1+X2XTpNVWsXUGJFVK1XV9yt9DBw==
   dependencies:
-    "@sudoo/tslint-config" "^1.5.0"
-    "@types/chai" "^4.1.7"
+    "@sudoo/tslint-config" "^1.5.1"
+    "@types/chai" "^4.2.0"
     "@types/chance" "^1.0.5"
     "@types/mocha" "^5.2.7"
     "@types/node" "^12.7.1"
@@ -96,10 +96,10 @@
     tslint "^5.18.0"
     typescript "^3.5.3"
 
-"@sudoo/tslint-config@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/tslint-config/-/tslint-config-1.5.0.tgz#e512497ee8d111c98bc690fc7c6470c0269178b6"
-  integrity sha512-W2eGNKP8GMU0U5afYgNcx6tiGcBYNlLsz3C4MbYHnJRUfSoXkjhkPCBWZTq/iuq/Uzd2KhAm0PCYlTl7Od1Mag==
+"@sudoo/tslint-config@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@sudoo/tslint-config/-/tslint-config-1.5.1.tgz#7dc371f81fc3d776ef2364cf7bcc49e876fbae2d"
+  integrity sha512-txHyUNzFIidjlLYeO+92qTY5HtJjVPa+o3/70ohEh3ItaXPGkSuRnoqHxEJjg//X5msr4lcmjc9VB8PRwEPZ1Q==
 
 "@types/body-parser@*":
   version "1.17.0"
@@ -116,10 +116,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/chai@^4.1.7":
-  version "4.1.7"
-  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.1.7.tgz#1b8e33b61a8c09cbe1f85133071baa0dbf9fa71a"
-  integrity sha512-2Y8uPt0/jwjhQ6EiluT0XCri1Dbplr0ZxfFXUz+ye13gaqE8u5gL5ppao1JrUYr9cIip5S6MvQzBS7Kke7U9VA==
+"@types/chai@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.2.0.tgz#2478260021408dec32c123a7cad3414beb811a07"
+  integrity sha512-zw8UvoBEImn392tLjxoavuonblX/4Yb9ha4KBU10FirCfwgzhKO0dvyJSF9ByxV1xK1r2AgnAi/tvQaLgxQqxA==
 
 "@types/chance@^1.0.5":
   version "1.0.5"
