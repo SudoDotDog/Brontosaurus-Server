@@ -28,7 +28,7 @@
     "@sudoo/mock": "^1.2.0",
     "@sudoo/triforce": "^1.8.2",
     "@sudoo/triforce-mongoose-dev": "^1.2.0",
-    "@types/express": "^4.17.0"
+    "@types/express": "^4.17.1"
   },
   "nyc": {
     "extension": [
