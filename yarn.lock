@@ -18,22 +18,22 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@brontosaurus/core@^2.1.1", "@brontosaurus/core@^2.1.2":
+"@brontosaurus/core@^2.1.2":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-2.1.2.tgz#cfeff71e06c6718d7b3a929fe7a2c28247075a47"
   integrity sha512-OqsXCA7LSNxRuNq7o32/+8pR/SSl+WGOh3mD+3fMz8pJ9+6vuvU0j41QzRXTPAWmppJYjGEjjSH25YCh428bjw==
   dependencies:
     "@brontosaurus/definition" "^2.1.1"
 
-"@brontosaurus/db@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.1.1.tgz#d2d281a13f3dbfe4fbd6f7fee5dc825704af4aab"
-  integrity sha512-1gKvuDeBgAwSIjasNU1azzSYz81WjQ5LpRXtt1yEa7UhJl76ouqqsHe1jaG/AE0Fs1iTTmzoLZrADSvCGCBM6A==
+"@brontosaurus/db@^3.1.4":
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.1.4.tgz#df55fdb4f72e0a731accf6734b18c99ff8e8f47b"
+  integrity sha512-uFSj2hHEvfbYlFS2VCUbY+4h1CnQxUkxRfJmbwMkct53MS8kITB0PfEWpchFGqB3yRc0DcGTWne3u4yG2R6YWA==
   dependencies:
-    "@brontosaurus/core" "^2.1.1"
+    "@brontosaurus/core" "^2.1.2"
     "@brontosaurus/definition" "^2.1.1"
     "@sudoo/bark" "^2.7.1"
-    mongoose "^5.6.8"
+    mongoose "^5.6.10"
     speakeasy "^2.0.0"
 
 "@brontosaurus/definition@^2.1.1":
@@ -748,10 +748,10 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@^5.6.8:
-  version "5.6.8"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.6.8.tgz#9b6d2575c21402def45f50072a3900c54b697cc8"
-  integrity sha512-BhgGU/KvnVX8WbamcWgtG/45rp+xZnaF9MhNbzESIIYxK7g5QurXYcaGGCm/JFiIdIxkVUgBycWG7UzRUEzvDg==
+mongoose@^5.6.10:
+  version "5.6.10"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.6.10.tgz#0758b7ae7d6f9654e994cc1aa41efc63e35e131b"
+  integrity sha512-lxWvF4Vl2118K2nZTj+QAEEmNBCbmUAcmF/roe8d+68Np4RXKEQvmpqm1c3aIlE9AVMp//eKB8IfXr38ZHe0Zw==
   dependencies:
     async "2.6.2"
     bson "~1.1.1"
