@@ -29,5 +29,5 @@ export const createToken = (body: IBrontosaurusBody, application: IApplicationMo
 
 export const parseInfo = (infoRecord: Record<string, Basics>): string[] => {
 
-    return _Map.keys(infoRecord).map((key: string) => key + INFOS_SPLITTER + infoRecord[key]);
+    return _Map.keys(infoRecord).map((key: string) => `${key}${INFOS_SPLITTER}${infoRecord[key]}`);
 };

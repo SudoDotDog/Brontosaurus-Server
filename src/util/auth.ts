@@ -15,6 +15,7 @@ import { isArray } from "util";
 import { ERROR_CODE, MODULE_NAME } from "./error";
 import { SafeToken } from "./token";
 
+// tslint:disable-next-line: variable-name
 export const Throwable_ValidateToken = (secret: BrontosaurusKey, expire: number, tokenString: string): IBrontosaurusBody => {
 
     const token: BrontosaurusToken = Brontosaurus.token(secret);
@@ -80,7 +81,7 @@ export const parseBearerAuthorization = (auth: string | undefined): string | nul
     return value;
 };
 
-
+// tslint:disable-next-line: variable-name
 export const Throwable_GetBody = (token: string): IBrontosaurusBody => {
 
     const body: IBrontosaurusBody | null = Brontosaurus.decoupleBody(token);
@@ -94,6 +95,7 @@ export const Throwable_GetBody = (token: string): IBrontosaurusBody => {
     return body;
 };
 
+// tslint:disable-next-line: variable-name
 export const Throwable_MapGroups = async (groups: ObjectID[]): Promise<string[]> => {
 
     const createError: ErrorCreationFunction = Connor.getErrorCreator(MODULE_NAME);
@@ -114,6 +116,7 @@ export const Throwable_MapGroups = async (groups: ObjectID[]): Promise<string[]>
     return result;
 };
 
+// tslint:disable-next-line: variable-name
 export const Throwable_GetGroupsByNames = async (groups: string[]): Promise<IGroupModel[]> => {
 
     const createError: ErrorCreationFunction = Connor.getErrorCreator(MODULE_NAME);
