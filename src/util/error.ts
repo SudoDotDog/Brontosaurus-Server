@@ -21,6 +21,7 @@ export enum ERROR_CODE {
     WIRED_PASSWORD = 4113,
 
     APPLICATION_KEY_NOT_FOUND = 4120,
+    APPLICATION_GROUP_NOT_FULFILLED = 4121,
 
     ACCOUNT_MINT_NOT_VALID = 4130,
 
@@ -58,6 +59,7 @@ export const ERROR_LIST: Record<ERROR_CODE, string> = {
     [ERROR_CODE.WIRED_PASSWORD]: 'Wired password, reason: "{}"',
 
     [ERROR_CODE.APPLICATION_KEY_NOT_FOUND]: 'Application key not found',
+    [ERROR_CODE.APPLICATION_GROUP_NOT_FULFILLED]: 'Application group not fulfilled',
 
     [ERROR_CODE.ACCOUNT_MINT_NOT_VALID]: 'Account mint not valid',
 
