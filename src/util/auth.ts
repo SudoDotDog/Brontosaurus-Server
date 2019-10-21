@@ -5,7 +5,7 @@
  */
 
 import { Brontosaurus, BrontosaurusKey, BrontosaurusToken } from "@brontosaurus/core";
-import { GroupController, IGroupModel } from "@brontosaurus/db";
+import { GroupController, IAccountModel, IApplicationModel, IGroupModel } from "@brontosaurus/db";
 import { IBrontosaurusBody, IBrontosaurusHeader } from "@brontosaurus/definition";
 import { Safe } from "@sudoo/extract";
 import { ObjectID } from "bson";
@@ -163,4 +163,18 @@ export const garblePassword = (password: string, salt: string): string => {
     const md5: Hash = createHash('md5').update(salted);
 
     return md5.digest('hex');
+};
+
+export const AccountHasOneOfApplicationGroups = (application: IApplicationModel, account: IAccountModel) => {
+
+    if (application.groups.length === 0) {
+        return true;
+    }
+
+    for (const group of application.groups) {
+        if (account.groups.includes(group)) {
+            return true;
+        }
+    }
+    return false;
 };

@@ -9,6 +9,7 @@ import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { basicHook } from "../../handlers/hook";
+import { AccountHasOneOfApplicationGroups } from "../../util/auth";
 import { ERROR_CODE } from "../../util/error";
 import { createToken } from '../../util/token';
 import { BrontosaurusRoute } from "../basic";
@@ -58,16 +59,6 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
             }
 
-            const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.directEnsure('applicationKey'));
-
-            if (!application) {
-                throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
-            }
-
-            if (!this._hasOneOfGroup(application, account)) {
-                throw this._error(ERROR_CODE.APPLICATION_GROUP_NOT_FULFILLED);
-            }
-
             res.agent.add('limbo', Boolean(account.limbo));
             res.agent.add('needTwoFA', Boolean(account.twoFA));
 
@@ -75,6 +66,16 @@ export class RetrieveRoute extends BrontosaurusRoute {
 
                 res.agent.add('token', null);
             } else {
+
+                const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.directEnsure('applicationKey'));
+
+                if (!application) {
+                    throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
+                }
+
+                if (!AccountHasOneOfApplicationGroups(application, account)) {
+                    throw this._error(ERROR_CODE.APPLICATION_GROUP_NOT_FULFILLED);
+                }
 
                 const object: IBrontosaurusBody = await this._buildBrontosaurusBody(account);
                 const token: string = createToken(object, application);
@@ -89,16 +90,6 @@ export class RetrieveRoute extends BrontosaurusRoute {
         } finally {
             next();
         }
-    }
-
-    private _hasOneOfGroup(application: IApplicationModel, account: IAccountModel) {
-
-        for (const group of application.groups) {
-            if (account.groups.includes(group)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private async _buildBrontosaurusBody(account: IAccountModel): Promise<IBrontosaurusBody> {
