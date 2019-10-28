@@ -80,10 +80,10 @@
     "@types/mongodb" "3.3.3"
     "@types/mongoose" "5.5.18"
 
-"@sudoo/triforce@^1.8.4":
-  version "1.8.4"
-  resolved "https://registry.yarnpkg.com/@sudoo/triforce/-/triforce-1.8.4.tgz#2c825ff6658f54dff1318d2813f6565614970967"
-  integrity sha512-Dnuuh74ALuFPsOxJ1zJEWz9fvBHf4Q3H/wtQHiyGDEVZzSjMcLxj7Nqy+fUvMQIcVxvYRcsDmZwToEFOcQsUaw==
+"@sudoo/triforce@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/triforce/-/triforce-1.9.0.tgz#76dd184e0e6f22166c84196399aed7ed9a714e08"
+  integrity sha512-dCw3AvcuhG8PV1Z4hQhqv3VtyQ3jdBsmhsSiqJiGQQV3mp7tC22KqjuYfyBtHW2tPliZQcOOsaTuFygWTzPzxg==
   dependencies:
     "@sudoo/tslint-config" "^1.5.1"
     "@types/chai" "^4.2.4"
