@@ -37,6 +37,10 @@ export class ApplicationRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
             }
 
+            if (!application.portalAccess) {
+                throw this._error(ERROR_CODE.APPLICATION_HAS_NO_PORTAL_ACCESS);
+            }
+
             const otherInformation: ApplicationOthersConfig = await InformationController.getApplicationOtherInformationByApplication(application);
 
             const accountName: string | null = await PreferenceController.getSinglePreference('accountName');

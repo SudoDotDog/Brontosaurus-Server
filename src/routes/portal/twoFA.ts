@@ -75,6 +75,10 @@ export class TwoFARoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
             }
 
+            if (!application.portalAccess) {
+                throw this._error(ERROR_CODE.APPLICATION_HAS_NO_PORTAL_ACCESS);
+            }
+
             account.resetAttempt();
             await account.save();
 

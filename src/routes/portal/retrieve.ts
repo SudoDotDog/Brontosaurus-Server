@@ -73,6 +73,10 @@ export class RetrieveRoute extends BrontosaurusRoute {
                     throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
                 }
 
+                if (!application.portalAccess) {
+                    throw this._error(ERROR_CODE.APPLICATION_HAS_NO_PORTAL_ACCESS);
+                }
+
                 if (!AccountHasOneOfApplicationGroups(application, account)) {
                     throw this._error(ERROR_CODE.APPLICATION_GROUP_NOT_FULFILLED);
                 }

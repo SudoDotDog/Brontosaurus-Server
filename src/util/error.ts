@@ -14,6 +14,7 @@ export enum ERROR_CODE {
     OUT_OF_ATTEMPT = 4003,
     TOKEN_INVALID = 4106,
     TOKEN_EXPIRED = 4107,
+    APPLICATION_HAS_NO_PORTAL_ACCESS = 4108,
 
     INVALID_USERNAME = 4110,
     INVALID_PASSWORD = 4111,
@@ -52,6 +53,7 @@ export const ERROR_LIST: Record<ERROR_CODE, string> = {
     [ERROR_CODE.OUT_OF_ATTEMPT]: 'Non attempt left',
     [ERROR_CODE.TOKEN_INVALID]: 'Token invalid',
     [ERROR_CODE.TOKEN_EXPIRED]: 'Token expired',
+    [ERROR_CODE.APPLICATION_HAS_NO_PORTAL_ACCESS]: 'Application has no Portal Access',
 
     [ERROR_CODE.INVALID_USERNAME]: 'Invalid username, reason: "{}"',
     [ERROR_CODE.INVALID_PASSWORD]: 'Invalid password, reason: "{}"',
