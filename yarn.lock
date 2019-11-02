@@ -135,9 +135,9 @@
     "@types/node" "*"
 
 "@types/express-serve-static-core@*":
-  version "4.16.10"
-  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.16.10.tgz#3c1313c6e6b75594561b473a286f016a9abf2132"
-  integrity sha512-gM6evDj0OvTILTRKilh9T5dTaGpv1oYiFcJAfgSejuMJgGJUsD9hKEU2lB4aiTNy4WwChxRnjfYFuBQsULzsJw==
+  version "4.16.11"
+  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.16.11.tgz#46e8cb091de19d51731a05c2581e515855979dad"
+  integrity sha512-K8d2M5t3tBQimkyaYTXxtHYyoJPUEhy2/omVRnTAKw5FEdT+Ft6lTaTOpoJdHeG+mIwQXXtqiTcYZ6IR8LTzjQ==
   dependencies:
     "@types/node" "*"
     "@types/range-parser" "*"
@@ -161,7 +161,15 @@
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.7.tgz#315d570ccb56c53452ff8638738df60726d5b6ea"
   integrity sha512-NYrtPht0wGzhwe9+/idPaBB+TqkY9AhTvOLMkThm0IoEfLaiVQZwBwyJ5puCkO3AUCWrmcoePjp2mbFocKy4SQ==
 
-"@types/mongodb@*", "@types/mongodb@3.3.7":
+"@types/mongodb@*":
+  version "3.3.8"
+  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.3.8.tgz#a6023ff343a90478c0e22b2b5d35e56964c3ba60"
+  integrity sha512-hsLcKRBFVeam4FyJOU6bwklvsNHzmUBI5SIxQ2meZu+RZgTDzrv+W19YAHgDIuiTn6UqHrVolweLMk0RpKEbxg==
+  dependencies:
+    "@types/bson" "*"
+    "@types/node" "*"
+
+"@types/mongodb@3.3.7":
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.3.7.tgz#f11fbad6ea48135634bce7e70080031cb35c5c84"
   integrity sha512-X/yDgFAgn3ypXN/CcckHe3nzxaliGtvrJ52kW2k9MAHDfYpc83wvvqHECfmx88pfrrquxFgRWqCTXprqABPfbw==
@@ -178,9 +186,9 @@
     "@types/node" "*"
 
 "@types/node@*", "@types/node@^12.11.7":
-  version "12.11.7"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.11.7.tgz#57682a9771a3f7b09c2497f28129a0462966524a"
-  integrity sha512-JNbGaHFCLwgHn/iCckiGSOZ1XYHsKFwREtzPwSGCVld1SGhOlmZw2D4ZI94HQCrBHbADzW9m4LER/8olJTRGHA==
+  version "12.12.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.5.tgz#66103d2eddc543d44a04394abb7be52506d7f290"
+  integrity sha512-KEjODidV4XYUlJBF3XdjSH5FWoMCtO0utnhtdLf1AgeuZLOrRbvmU/gaRCVg7ZaQDjVf3l84egiY0mRNe5xE4A==
 
 "@types/range-parser@*":
   version "1.2.3"
@@ -959,9 +967,9 @@ sliced@1.0.1:
   integrity sha1-CzpmK10Ewxd7GSa+qCsD+Dei70E=
 
 source-map-support@^0.5.6:
-  version "0.5.15"
-  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.15.tgz#20fe16f16e74644e21a396c78c841fa66e35df6c"
-  integrity sha512-wYF5aX1J0+V51BDT3Om7uXNn0ct2FWiV4bvwiGVefxkm+1S1o5jsecE5lb2U28DDblzxzxeIDbTVpXHI9D/9hA==
+  version "0.5.16"
+  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.16.tgz#0ae069e7fe3ba7538c64c98515e35339eac5a042"
+  integrity sha512-efyLRJDr68D9hBBNIPWFjhpFzURh+KJykQwvMyW5UiZzYwoF6l4YMMDIJJEyFWxWCqfyxLzz6tSfUFR+kXXsVQ==
   dependencies:
     buffer-from "^1.0.0"
     source-map "^0.6.0"
