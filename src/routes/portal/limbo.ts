@@ -88,7 +88,7 @@ export class LimboRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.APPLICATION_GROUP_NOT_FULFILLED);
             }
 
-            const object: IBrontosaurusBody = await this._buildBrontosaurusBody(account);
+            const object: IBrontosaurusBody = await this._buildBrontosaurusBody(account, application);
             const token: string = createToken(object, application);
 
             res.agent.add('limbo', account.limbo);
@@ -101,7 +101,9 @@ export class LimboRoute extends BrontosaurusRoute {
         }
     }
 
-    private async _buildBrontosaurusBody(account: IAccountModel): Promise<IBrontosaurusBody> {
+    private async _buildBrontosaurusBody(account: IAccountModel, application: IApplicationModel): Promise<IBrontosaurusBody> {
+
+
 
         const groups: IGroupModel[] = await GroupController.getGroupsByIds(account.groups);
         const tags: ITagModel[] = await TagController.getTagsByIds(account.tags);
