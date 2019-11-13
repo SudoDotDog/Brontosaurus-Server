@@ -4,14 +4,14 @@
  * @description Retrieve
  */
 
-import { AccountController, ApplicationController, GroupController, IAccountModel, IApplicationModel, IGroupModel, IOrganizationModel, ITagModel, OrganizationController, TagController } from "@brontosaurus/db";
+import { AccountController, ApplicationController, IAccountModel, IApplicationModel } from "@brontosaurus/db";
 import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { basicHook } from "../../handlers/hook";
 import { AccountHasOneOfApplicationGroups } from "../../util/auth";
 import { ERROR_CODE } from "../../util/error";
-import { createToken } from '../../util/token';
+import { buildBrontosaurusBody, createToken } from '../../util/token';
 import { BrontosaurusRoute } from "../basic";
 
 export type RetrieveRouteBody = {
@@ -81,7 +81,12 @@ export class RetrieveRoute extends BrontosaurusRoute {
                     throw this._error(ERROR_CODE.APPLICATION_GROUP_NOT_FULFILLED);
                 }
 
-                const object: IBrontosaurusBody = await this._buildBrontosaurusBody(account);
+                const object: IBrontosaurusBody | null = await buildBrontosaurusBody(account, application);
+
+                if (!object) {
+                    throw this._error(ERROR_CODE.ORGANIZATION_NOT_FOUND, (account.organization as any).toHexString());
+                }
+
                 const token: string = createToken(object, application);
 
                 account.resetAttempt();
@@ -94,48 +99,5 @@ export class RetrieveRoute extends BrontosaurusRoute {
         } finally {
             next();
         }
-    }
-
-    private async _buildBrontosaurusBody(account: IAccountModel): Promise<IBrontosaurusBody> {
-
-        const groups: IGroupModel[] = await GroupController.getGroupsByIds(account.groups);
-        const tags: ITagModel[] = await TagController.getTagsByIds(account.tags);
-
-        const displayName: string = account.displayName || account.username;
-
-        if (account.organization) {
-
-            const organization: IOrganizationModel | null = await OrganizationController.getOrganizationById(account.organization);
-
-            if (!organization) {
-                throw this._error(ERROR_CODE.ORGANIZATION_NOT_FOUND, account.organization.toHexString());
-            }
-
-            const organizationTags: ITagModel[] = await TagController.getTagsByIds(organization.tags);
-
-            return {
-                username: account.username,
-                displayName,
-                mint: account.mint,
-                organization: organization.name,
-                organizationTags: organizationTags.map((tag: ITagModel) => tag.name),
-                email: account.email,
-                groups: groups.map((group: IGroupModel) => group.name),
-                tags: tags.map((tag: ITagModel) => tag.name),
-                infos: account.getInfoRecords(),
-                beacons: account.getBeaconRecords(),
-            };
-        }
-
-        return {
-            username: account.username,
-            displayName,
-            mint: account.mint,
-            email: account.email,
-            groups: groups.map((group: IGroupModel) => group.name),
-            tags: tags.map((tag: ITagModel) => tag.name),
-            infos: account.getInfoRecords(),
-            beacons: account.getBeaconRecords(),
-        };
     }
 }
