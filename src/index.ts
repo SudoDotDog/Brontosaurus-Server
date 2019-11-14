@@ -7,7 +7,6 @@
 import { connect } from '@brontosaurus/db';
 import { SudooExpress, SudooExpressApplication } from '@sudoo/express';
 import { LOG_LEVEL, SudooLog } from '@sudoo/log';
-import * as Mongoose from "mongoose";
 import * as Path from 'path';
 import { ApplicationRoute } from './routes/portal/application';
 import { LimboRoute } from './routes/portal/limbo';
@@ -33,8 +32,13 @@ const config: BrontosaurusConfig = readConfigEnvironment();
 
 registerConnor();
 
-const db: Mongoose.Connection = connect(config.database);
-db.on('error', console.log.bind(console, 'connection error:'));
+connect(config.database, {
+    connected: true,
+    disconnected: true,
+    error: true,
+    reconnected: true,
+    reconnectedFailed: true,
+});
 
 // Static
 const tenHour: number = 36000000;
