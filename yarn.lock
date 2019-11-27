@@ -25,15 +25,15 @@
   dependencies:
     "@brontosaurus/definition" "^3.0.0"
 
-"@brontosaurus/db@^3.6.1":
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.6.1.tgz#f2f7b7f939be892c0d828c71cae4857262499169"
-  integrity sha512-aTcTBdUXSg06zywsmeOxTMWk1H9ur9otE7xZ0aleejbl3pFtQjh8PXnql2cya/t4jq/hxh/o9Je/3s22SOzAjg==
+"@brontosaurus/db@^3.6.2":
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.6.2.tgz#355df003f51c2ae58dd6d65ee5368683f78b33a7"
+  integrity sha512-athLqklQ7r+9Y2NounjsZpA7nvC1BqrmMLl6TfCQ67bWNlu62G0RYiuoevEsGoYvgvg2mJnNsXqhfxm70Ngwwg==
   dependencies:
     "@brontosaurus/core" "^3.0.0"
     "@brontosaurus/definition" "^3.0.0"
     "@sudoo/bark" "^2.7.1"
-    mongoose "^5.7.11"
+    mongoose "^5.7.12"
     speakeasy "^2.0.0"
 
 "@brontosaurus/definition@^3.0.0":
@@ -366,6 +366,11 @@ connor@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/connor/-/connor-2.6.0.tgz#1ffc2ebc60c2fa0908afd22bc763c74fd6dd4a0f"
   integrity sha512-8y18++OijPHvT3C8d57Z2I3xTFgLJU4hyphsty19kja1KqtgZDFmBwRPZ2zaJHlJZzMAvztVClv30WAaT2l6SA==
+
+connor@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/connor/-/connor-2.6.1.tgz#a25bdd3c84a2b79325496e5d18de68be81da5481"
+  integrity sha512-V2RiLFaZoDIy1GAXoD7I57c90xVWlgRewMGLyRHhMAMmopHzSnDm2EswUj0n5CdEAxHld6/RI+sxUgUquXftyQ==
 
 content-disposition@0.5.3:
   version "0.5.3"
@@ -750,10 +755,10 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@^5.7.11:
-  version "5.7.11"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.7.11.tgz#74a1293deb7a69d41abd447056f5d522e28bab64"
-  integrity sha512-KpXGBTXQTKfTlePpZMY+FBsk9wiyp2gzfph9AsLPfWleK1x2GJY+6xpKx2kKIgLustgNq16OOrqwlAOGUbv3kg==
+mongoose@^5.7.12:
+  version "5.7.12"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.7.12.tgz#ef22a0f741970b6ba504995fdbe0ac9d8289d615"
+  integrity sha512-TqRiJPUeHN1u7Xs/zQmiMHcrzEb1/uKjK3uGzZhyqw25RKQiMV2vSBeBTMt5HXoYlUuDEWXE75FMjpK9X9kD0w==
   dependencies:
     bson "~1.1.1"
     kareem "2.3.1"

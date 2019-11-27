@@ -17,12 +17,12 @@
   "homepage": "https://github.com/SudoDotDog/Brontosaurus-Server#readme",
   "dependencies": {
     "@brontosaurus/core": "^3.0.0",
-    "@brontosaurus/db": "^3.6.1",
+    "@brontosaurus/db": "^3.6.2",
     "@sudoo/bark": "^2.7.1",
     "@sudoo/express": "^2.0.2",
     "@sudoo/extract": "^1.2.1",
     "@sudoo/log": "^1.2.2",
-    "connor": "^2.6.0"
+    "connor": "^2.6.1"
   },
   "devDependencies": {
     "@sudoo/mock": "^1.2.0",
