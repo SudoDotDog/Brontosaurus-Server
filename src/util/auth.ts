@@ -62,6 +62,7 @@ export const getPrincipleFromToken = (tokenString: string): SafeToken => {
 
 export const parseBearerAuthorization = (auth: string | undefined): string | null => {
 
+    // tslint:disable-next-line: no-magic-numbers
     if (!auth || auth.length <= 7) {
         return null;
     }
@@ -154,7 +155,9 @@ export const compareGroups = (userGroups: string[], targetGroups: any): boolean 
     return true;
 };
 
+// tslint:disable-next-line: no-magic-numbers
 export const createSalt = (): string => Math.random().toString(36).substring(2, 9);
+// tslint:disable-next-line: no-magic-numbers
 export const createMint = (): string => Math.random().toString(36).substring(2, 9);
 
 export const garblePassword = (password: string, salt: string): string => {
