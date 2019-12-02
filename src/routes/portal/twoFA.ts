@@ -8,6 +8,7 @@ import { AccountController, ApplicationController, IAccountModel, IApplicationMo
 import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
+import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
 import { basicHook } from "../../handlers/hook";
 import { AccountHasOneOfApplicationGroups } from "../../util/auth";
 import { ERROR_CODE } from "../../util/error";
@@ -63,6 +64,7 @@ export class TwoFARoute extends BrontosaurusRoute {
 
             if (!verifyResult) {
 
+                // tslint:disable-next-line: no-magic-numbers
                 account.useAttemptPoint(5);
                 await account.save();
 
@@ -98,7 +100,8 @@ export class TwoFARoute extends BrontosaurusRoute {
             res.agent.add('needTwoFA', Boolean(account.twoFA));
             res.agent.add('token', token);
         } catch (err) {
-            res.agent.fail(400, err);
+
+            res.agent.fail(HTTP_RESPONSE_CODE.UNAUTHORIZED, err);
         } finally {
             next();
         }

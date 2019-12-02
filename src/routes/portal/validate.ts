@@ -9,6 +9,7 @@ import { AccountController, ApplicationController, IAccountModel, IApplicationMo
 import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
+import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
 import { basicHook } from "../../handlers/hook";
 import { Throwable_ValidateToken } from "../../util/auth";
 import { ERROR_CODE } from "../../util/error";
@@ -63,7 +64,8 @@ export class AccountValidateRoute extends BrontosaurusRoute {
 
             res.agent.add('validate', true);
         } catch (err) {
-            res.agent.fail(400, err);
+
+            res.agent.fail(HTTP_RESPONSE_CODE.BAD_REQUEST, err);
         } finally {
             next();
         }

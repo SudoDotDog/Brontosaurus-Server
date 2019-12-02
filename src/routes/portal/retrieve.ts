@@ -8,6 +8,7 @@ import { AccountController, ApplicationController, IAccountModel, IApplicationMo
 import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
+import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
 import { basicHook } from "../../handlers/hook";
 import { AccountHasOneOfApplicationGroups } from "../../util/auth";
 import { ERROR_CODE } from "../../util/error";
@@ -50,6 +51,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
 
             if (!passwordMatched) {
 
+                // tslint:disable-next-line: no-magic-numbers
                 account.useAttemptPoint(20);
                 await account.save();
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
@@ -95,7 +97,8 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 res.agent.add('token', token);
             }
         } catch (err) {
-            res.agent.fail(400, err);
+
+            res.agent.fail(HTTP_RESPONSE_CODE.UNAUTHORIZED, err);
         } finally {
             next();
         }
