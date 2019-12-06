@@ -25,10 +25,10 @@
   dependencies:
     "@brontosaurus/definition" "^3.0.0"
 
-"@brontosaurus/db@^3.6.4":
-  version "3.6.4"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.6.4.tgz#36d30d80348f9e392f2b584fcde37619f4e8a3a6"
-  integrity sha512-LJnBYiv4Tn6GdIeXSjR2XsBudFwNFEAw4qfgZxC3b21wttmoWQC4o5rnF+LbsJwnNBo0wYzQfyqpfNDwz1xAyA==
+"@brontosaurus/db@^3.6.5":
+  version "3.6.5"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.6.5.tgz#b4f0452ef15afb6bb76d974ab966c5e46fe43ffc"
+  integrity sha512-mv6uAPJHpMGY7vblB8yTSK02py/OtH+NgZm8v5J9alI9BbA4vWcf7gNmynucL5j/HvFXhxcr1yZY3GxgYwtwcA==
   dependencies:
     "@brontosaurus/core" "^3.0.0"
     "@brontosaurus/definition" "^3.0.0"
@@ -167,9 +167,9 @@
   integrity sha512-NYrtPht0wGzhwe9+/idPaBB+TqkY9AhTvOLMkThm0IoEfLaiVQZwBwyJ5puCkO3AUCWrmcoePjp2mbFocKy4SQ==
 
 "@types/mongodb@*":
-  version "3.3.11"
-  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.3.11.tgz#8db69d44cd3845a8867452c2a9b7f449fe65f1fc"
-  integrity sha512-i8mUMYzFYzUpH4a7IBbdOD/87/kyQHvOVAL8J8hvX+E6SQbPd83d+xkpPtRZlRELtjZFqyQMlEcxW+zfMw32vQ==
+  version "3.3.12"
+  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.3.12.tgz#c5afa2de5ee5558603ecee8c9366e86e24576703"
+  integrity sha512-gWIdrA8YKC4OetBk4eT5Zsp4p3oy/BJQKt80tXfgPnfBuLigumcmwNZseVSkLQJ3XkN/1OR0/kIunGWlew3rmQ==
   dependencies:
     "@types/bson" "*"
     "@types/node" "*"
