@@ -1,25 +1,25 @@
 language: node_js
 
-services: 
- - mongodb
+services:
+  - mongodb
 
 node_js:
- - '10'
- - '11'
- - '12'
+  - "10"
+  - "11"
+  - "12"
 
 cache: npm
 
 install:
- - make install
- - npm install codecov nyc -g
+  - make install
+  - npm install codecov nyc -g
 
 before_script:
- - make build
- - sleep 1
+  - make build
+  - sleep 1
 
 script:
- - nyc mocha
+  - nyc mocha
 
 after_success:
- - codecov -f ./coverage/coverage-final.json
+  - codecov -f ./coverage/coverage-final.json
