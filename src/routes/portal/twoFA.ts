@@ -29,7 +29,7 @@ export class TwoFARoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
-        basicHook.wrap(this._twoFAHandler.bind(this), '/twoFA - TwoFA', true),
+        basicHook.wrap(this._twoFAHandler.bind(this), '/twoFA - TwoFA'),
     ];
 
     private async _twoFAHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {

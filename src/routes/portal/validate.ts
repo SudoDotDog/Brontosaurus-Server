@@ -26,7 +26,7 @@ export class AccountValidateRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
-        basicHook.wrap(this._portalHandler.bind(this), '/validate - Validate', true),
+        basicHook.wrap(this._portalHandler.bind(this), '/validate - Validate'),
     ];
 
     private async _portalHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {

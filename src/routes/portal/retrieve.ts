@@ -28,7 +28,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
-        basicHook.wrap(this._retrieveHandler.bind(this), '/retrieve - Retrieve', true),
+        basicHook.wrap(this._retrieveHandler.bind(this), '/retrieve - Retrieve'),
     ];
 
     private async _retrieveHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
