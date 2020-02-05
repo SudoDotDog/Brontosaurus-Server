@@ -89,7 +89,7 @@ export class LimboRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.APPLICATION_GROUP_NOT_FULFILLED);
             }
 
-            const object: IBrontosaurusBody | null = await buildBrontosaurusBody(account, application);
+            const object: IBrontosaurusBody | null = await buildBrontosaurusBody(account, application, false);
 
             if (!object) {
                 throw this._error(ERROR_CODE.ORGANIZATION_NOT_FOUND, (account.organization as any).toHexString());

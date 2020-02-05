@@ -47,9 +47,12 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.OUT_OF_ATTEMPT);
             }
 
-            const passwordMatched: boolean = account.verifyPassword(body.directEnsure('password'));
+            const password: string = body.directEnsure('password');
 
-            if (!passwordMatched) {
+            const passwordMatched: boolean = account.verifyPassword(password);
+            const applicationOrTemporaryPasswordMatched: boolean = account.verifySpecialPasswords(password);
+
+            if (!passwordMatched && !applicationOrTemporaryPasswordMatched) {
 
                 // tslint:disable-next-line: no-magic-numbers
                 account.useAttemptPoint(20);
@@ -61,13 +64,10 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.INACTIVE_ACCOUNT, account.username);
             }
 
-            res.agent.add('limbo', Boolean(account.limbo));
-            res.agent.add('needTwoFA', Boolean(account.twoFA));
+            if (applicationOrTemporaryPasswordMatched) {
 
-            if (account.limbo || account.twoFA) {
-
-                res.agent.add('token', null);
-            } else {
+                res.agent.add('limbo', false);
+                res.agent.add('needTwoFA', false);
 
                 const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.directEnsure('applicationKey'));
 
@@ -83,7 +83,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
                     throw this._error(ERROR_CODE.APPLICATION_GROUP_NOT_FULFILLED);
                 }
 
-                const object: IBrontosaurusBody | null = await buildBrontosaurusBody(account, application);
+                const object: IBrontosaurusBody | null = await buildBrontosaurusBody(account, application, true);
 
                 if (!object) {
                     throw this._error(ERROR_CODE.ORGANIZATION_NOT_FOUND, (account.organization as any).toHexString());
@@ -91,10 +91,44 @@ export class RetrieveRoute extends BrontosaurusRoute {
 
                 const token: string = createToken(object, application);
 
-                account.resetAttempt();
-                await account.save();
-
                 res.agent.add('token', token);
+            } else {
+
+                res.agent.add('limbo', Boolean(account.limbo));
+                res.agent.add('needTwoFA', Boolean(account.twoFA));
+
+                if (account.limbo || account.twoFA) {
+
+                    res.agent.add('token', null);
+                } else {
+
+                    const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.directEnsure('applicationKey'));
+
+                    if (!application) {
+                        throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
+                    }
+
+                    if (!application.portalAccess) {
+                        throw this._error(ERROR_CODE.APPLICATION_HAS_NO_PORTAL_ACCESS);
+                    }
+
+                    if (!AccountHasOneOfApplicationGroups(application, account)) {
+                        throw this._error(ERROR_CODE.APPLICATION_GROUP_NOT_FULFILLED);
+                    }
+
+                    const object: IBrontosaurusBody | null = await buildBrontosaurusBody(account, application, false);
+
+                    if (!object) {
+                        throw this._error(ERROR_CODE.ORGANIZATION_NOT_FOUND, (account.organization as any).toHexString());
+                    }
+
+                    const token: string = createToken(object, application);
+
+                    account.resetAttempt();
+                    await account.save();
+
+                    res.agent.add('token', token);
+                }
             }
         } catch (err) {
 
