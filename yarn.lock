@@ -18,10 +18,10 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@brontosaurus/core@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-3.1.0.tgz#60eddd4e268d94fc3150e98b62e32b1de0b7c911"
-  integrity sha512-4IqRzuoDs/AuYF7NAB7fK5VOD18cUJJ7cJLs0t/nwmEc6sLwmc7h+smRzlKCvGBFxUCIvRNwMoHiAilBKodbvQ==
+"@brontosaurus/core@^3.1.0", "@brontosaurus/core@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-3.1.1.tgz#7837afa81171a039ec138b69f72f0bc35fb9401f"
+  integrity sha512-T+7NK+7wHBomUN6UOeMJqjIPXpP52Z1NGTCGn9TJvF8Lw0k+CKvil8GbuDMAquQpKNZlk0H7DHFyKYzDaOJ9MA==
 
 "@brontosaurus/db@^3.9.0":
   version "3.9.0"
@@ -377,10 +377,10 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
 
-connor@^2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/connor/-/connor-2.6.1.tgz#a25bdd3c84a2b79325496e5d18de68be81da5481"
-  integrity sha512-V2RiLFaZoDIy1GAXoD7I57c90xVWlgRewMGLyRHhMAMmopHzSnDm2EswUj0n5CdEAxHld6/RI+sxUgUquXftyQ==
+connor@^2.6.1, connor@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/connor/-/connor-2.7.0.tgz#b2f04d86c516ba0dcc37dd87c0b80465c89e5f27"
+  integrity sha512-HzaNDJ1KI0vPz/O3ZlVQc2ZFu14GetTp7eQ/5gZ1PFyr7ovMPXsu0AujBzXgiQu162p3UCyFZbnAHY6KS3x8jA==
 
 content-disposition@0.5.3:
   version "0.5.3"
