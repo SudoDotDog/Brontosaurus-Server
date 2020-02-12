@@ -46,16 +46,17 @@ export class ResetTemporaryRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.INACTIVE_ACCOUNT, account.username);
             }
 
-            if (account.email === email) {
-
-                // SendEmail
-                const now: number = Date.now();
-                const dueDate: Date = new Date(now + TIME_IN_MILLISECONDS.MONTH);
-                const resetToken: string = account.generateResetToken(dueDate);
-                // tslint:disable-next-line: no-magic-numbers
-                account.addAttemptPoint(50);
-                console.log(resetToken, dueDate);
+            if (account.email !== email) {
+                throw this._error(ERROR_CODE.EMAIL_DOES_NOT_MATCH);
             }
+
+            // TODO: SendEmail
+            const now: number = Date.now();
+            const dueDate: Date = new Date(now + TIME_IN_MILLISECONDS.MONTH);
+            const resetToken: string = account.generateResetToken(dueDate);
+            // tslint:disable-next-line: no-magic-numbers
+            account.addAttemptPoint(50);
+            console.log(resetToken, dueDate);
 
             await account.save();
         } catch (err) {
