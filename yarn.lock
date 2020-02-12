@@ -23,10 +23,10 @@
   resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-3.1.1.tgz#7837afa81171a039ec138b69f72f0bc35fb9401f"
   integrity sha512-T+7NK+7wHBomUN6UOeMJqjIPXpP52Z1NGTCGn9TJvF8Lw0k+CKvil8GbuDMAquQpKNZlk0H7DHFyKYzDaOJ9MA==
 
-"@brontosaurus/db@^3.9.0":
-  version "3.9.0"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.9.0.tgz#0136544559bae6aa103d47c55da4d57488b28022"
-  integrity sha512-M2Ava8TCWpFfKSqHlTk3hvsF21MFtdqGbcHZUPkps8zPFNmlaHiwfPiPmdmXmrZLNTZ226JIrA5RA5DYuLauVg==
+"@brontosaurus/db@^3.10.0":
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.10.0.tgz#203574e5ed63927df213e3eeb20b9fe3abf17a99"
+  integrity sha512-MxStSFQ4C8xTphC9H1nfLcWKBZvwfu5byjx3qSpa6YJIWhkzl1j5JpjW9TmaLMwFQmR/sSl6CHCJjlSG3i88/Q==
   dependencies:
     "@brontosaurus/core" "^3.1.0"
     "@brontosaurus/definition" "^3.1.0"
@@ -204,6 +204,13 @@
   version "13.1.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.1.0.tgz#225cbaac5fdb2b9ac651b02c070d8aa3c37cc812"
   integrity sha512-zwrxviZS08kRX40nqBrmERElF2vpw4IUTd5khkhBTfFH8AOaeoLVx48EC4+ZzS2/Iga7NevncqnsUSYjM4OWYA==
+
+"@types/nodemailer@^6.4.0":
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/@types/nodemailer/-/nodemailer-6.4.0.tgz#d8c039be3ed685c4719a026455555be82c124b74"
+  integrity sha512-KY7bFWB0MahRZvVW4CuW83qcCDny59pJJ0MQ5ifvfcjNwPlIT0vW4uARO4u1gtkYnWdhSvURegecY/tzcukJcA==
+  dependencies:
+    "@types/node" "*"
 
 "@types/range-parser@*":
   version "1.2.3"
@@ -817,6 +824,11 @@ negotiator@0.6.2:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.2.tgz#feacf7ccf525a77ae9634436a64883ffeca346fb"
   integrity sha512-hZXc7K2e+PgeI1eDBe/10Ard4ekbfrrqG8Ep+8Jmf4JID2bNg7NvCPOZN+kfF574pFQI7mum2AUqDidoKqcTOw==
+
+nodemailer@^6.4.2:
+  version "6.4.2"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.4.2.tgz#7147550e32cdc37453380ab78d2074533966090a"
+  integrity sha512-g0n4nH1ONGvqYo1v72uSWvF/MRNnnq1LzmSzXb/6EPF3LFb51akOhgG3K2+aETAsJx90/Q5eFNTntu4vBCwyQQ==
 
 on-finished@~2.3.0:
   version "2.3.0"
