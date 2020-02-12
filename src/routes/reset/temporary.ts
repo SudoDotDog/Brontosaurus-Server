@@ -25,10 +25,10 @@ export class ResetTemporaryRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
-        basicHook.wrap(this._ResetTemporaryHandler.bind(this), '/reset/temporary - Reset Temporary'),
+        basicHook.wrap(this._resetTemporaryHandler.bind(this), '/reset/temporary - Reset Temporary'),
     ];
 
-    private async _ResetTemporaryHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
+    private async _resetTemporaryHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
         const body: SafeExtract<ResetTemporaryRouteBody> = Safe.extract(req.body as ResetTemporaryRouteBody, this._error(ERROR_CODE.REQUEST_DOES_MATCH_PATTERN));
 
@@ -52,6 +52,8 @@ export class ResetTemporaryRoute extends BrontosaurusRoute {
                 const now: number = Date.now();
                 const dueDate: Date = new Date(now + TIME_IN_MILLISECONDS.MONTH);
                 const resetToken: string = account.generateResetToken(dueDate);
+                // tslint:disable-next-line: no-magic-numbers
+                account.addAttemptPoint(50);
                 console.log(resetToken, dueDate);
             }
 
