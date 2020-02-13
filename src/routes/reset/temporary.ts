@@ -74,6 +74,10 @@ export class ResetTemporaryRoute extends BrontosaurusRoute {
                 text: `Username: ${username}\nPassword: ${resetToken}`,
             });
 
+            if (!result) {
+                throw this._error(ERROR_CODE.EMAIL_SEND_FAILED, 'Result');
+            }
+
             // tslint:disable-next-line: no-magic-numbers
             account.addAttemptPoint(50);
 
