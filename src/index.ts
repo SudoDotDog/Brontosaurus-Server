@@ -13,6 +13,7 @@ import { LimboRoute } from './routes/portal/limbo';
 import { RetrieveRoute } from './routes/portal/retrieve';
 import { TwoFARoute } from './routes/portal/twoFA';
 import { AccountValidateRoute } from './routes/portal/validate';
+import { ResetFinishRoute } from './routes/reset/finish';
 import { ResetResetRoute } from './routes/reset/reset';
 import { ResetTemporaryRoute } from './routes/reset/temporary';
 import { BrontosaurusConfig, isDevelopment, readConfigEnvironment } from './util/conf';
@@ -61,6 +62,7 @@ app.routes(
     new AccountValidateRoute(),
     new ResetTemporaryRoute(),
     new ResetResetRoute(),
+    new ResetFinishRoute(),
 );
 
 // tslint:disable-next-line: no-magic-numbers
