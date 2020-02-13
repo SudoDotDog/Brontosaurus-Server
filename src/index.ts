@@ -11,6 +11,7 @@ import * as Path from 'path';
 import { ApplicationRoute } from './routes/portal/application';
 import { LimboRoute } from './routes/portal/limbo';
 import { RetrieveRoute } from './routes/portal/retrieve';
+import { SimpleRoute } from './routes/portal/simple';
 import { TwoFARoute } from './routes/portal/twoFA';
 import { AccountValidateRoute } from './routes/portal/validate';
 import { ResetFinishRoute } from './routes/reset/finish';
@@ -59,6 +60,7 @@ app.routes(
     new LimboRoute(),
     new TwoFARoute(),
     new ApplicationRoute(),
+    new SimpleRoute(),
     new AccountValidateRoute(),
     new ResetTemporaryRoute(),
     new ResetResetRoute(),

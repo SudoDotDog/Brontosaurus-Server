@@ -70,8 +70,8 @@ export class ResetTemporaryRoute extends BrontosaurusRoute {
                 from: mailerSourceResetPassword,
                 to: email,
                 subject: 'Temporary Password',
-                html: `Username: ${username}\nPassword: ${resetToken}`,
-                text: `Username: ${username}\nPassword: ${resetToken}`,
+                html: this._createHtmlContent(username, resetToken),
+                text: this._createTextContent(username, resetToken),
             });
 
             if (!result) {
@@ -79,7 +79,7 @@ export class ResetTemporaryRoute extends BrontosaurusRoute {
             }
 
             // tslint:disable-next-line: no-magic-numbers
-            account.addAttemptPoint(50);
+            account.attemptPoints = Math.min(100, account.attemptPoints + 50);
 
             await account.save();
         } catch (err) {
@@ -101,5 +101,21 @@ export class ResetTemporaryRoute extends BrontosaurusRoute {
 
             throw this._error(ERROR_CODE.EMAIL_SEND_FAILED, err.toString());
         }
+    }
+
+    private _createHtmlContent(username: string, password: string): string {
+
+        return [
+            `<div>Username: <strong>${username}</strong></div>`,
+            `<div>Password: <strong>${password}</strong></div>`,
+        ].join('\n');
+    }
+
+    private _createTextContent(username: string, password: string): string {
+
+        return [
+            `Username: ${username}`,
+            `Password: ${password}`,
+        ].join('\n');
     }
 }
