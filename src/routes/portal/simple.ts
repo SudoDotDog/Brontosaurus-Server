@@ -5,6 +5,7 @@
  */
 
 import { PreferenceController } from "@brontosaurus/db";
+import { sample } from "@sudoo/bark/array";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
 import { basicHook } from "../../handlers/hook";
@@ -33,10 +34,14 @@ export class SimpleRoute extends BrontosaurusRoute {
             const accountName: string | null = await PreferenceController.getSinglePreference('accountName');
             const systemName: string | null = await PreferenceController.getSinglePreference('systemName');
 
-            res.agent.addIfExist('name', indexPage)
+            const globalBackgroundImages: string[] | null = await PreferenceController.getSinglePreference('globalBackgroundImages');
+            const single: string | null | undefined = globalBackgroundImages ? sample(globalBackgroundImages) : null;
+
+            res.agent.addIfExist('indexPage', indexPage)
                 .addIfExist('entryPage', entryPage)
                 .addIfExist('favicon', favicon)
                 .addIfExist('avatar', avatar)
+                .addIfExist('backgroundImage', single)
                 .addIfExist('privacy', privacyPolicy)
                 .addIfExist('help', helpLink)
                 .addIfExist('accountName', accountName)
