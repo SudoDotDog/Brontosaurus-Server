@@ -43,6 +43,9 @@ export enum ERROR_CODE {
     ACCOUNT_NOT_FOUND = 6202,
     ORGANIZATION_NOT_FOUND = 6203,
 
+    NEED_CONFIG_MAILER = 7000,
+    EMAIL_SEND_FAILED = 7001,
+
     INTERNAL_ERROR = 8000,
 }
 
@@ -83,6 +86,9 @@ export const ERROR_LIST: Record<ERROR_CODE, string> = {
     [ERROR_CODE.GROUP_NOT_FOUND]: 'Group: "{}" not found',
     [ERROR_CODE.ACCOUNT_NOT_FOUND]: 'Account: "{}" not found',
     [ERROR_CODE.ORGANIZATION_NOT_FOUND]: 'Organization: "{}" not found',
+
+    [ERROR_CODE.NEED_CONFIG_MAILER]: 'Mailer need to be config',
+    [ERROR_CODE.EMAIL_SEND_FAILED]: 'Email send failed: "{}"',
 
     [ERROR_CODE.INTERNAL_ERROR]: 'Internal Error',
 };

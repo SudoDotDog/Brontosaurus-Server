@@ -4,11 +4,12 @@
  * @description Temporary
  */
 
-import { AccountController, IAccountModel } from "@brontosaurus/db";
+import { AccountController, IAccountModel, PreferenceController } from "@brontosaurus/db";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { SudooLog } from "@sudoo/log";
 import { TIME_IN_MILLISECONDS } from "@sudoo/magic";
+import { sentEmailAgent, SentEmailOption } from "../../agent/email";
 import { basicHook } from "../../handlers/hook";
 import { ERROR_CODE } from "../../util/error";
 import { BrontosaurusRoute } from "../basic";
@@ -50,13 +51,31 @@ export class ResetTemporaryRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.EMAIL_DOES_NOT_MATCH);
             }
 
-            // TODO: SendEmail
+
+            const mailerTransport: any | null = await PreferenceController.getSinglePreference('mailerTransport');
+            const mailerSourceResetPassword: string | null = await PreferenceController.getSinglePreference('mailerSourceResetPassword');
+
+            if (!mailerTransport) {
+                throw this._error(ERROR_CODE.NEED_CONFIG_MAILER);
+            }
+            if (!mailerSourceResetPassword) {
+                throw this._error(ERROR_CODE.NEED_CONFIG_MAILER);
+            }
+
             const now: number = Date.now();
             const dueDate: Date = new Date(now + TIME_IN_MILLISECONDS.MONTH);
             const resetToken: string = account.generateResetToken(dueDate);
+
+            const result: boolean = await this._sentEmail(mailerTransport, {
+                from: mailerSourceResetPassword,
+                to: email,
+                subject: 'Temporary Password',
+                html: `Username: ${username}\nPassword: ${resetToken}`,
+                text: `Username: ${username}\nPassword: ${resetToken}`,
+            });
+
             // tslint:disable-next-line: no-magic-numbers
             account.addAttemptPoint(50);
-            console.log(resetToken, dueDate);
 
             await account.save();
         } catch (err) {
@@ -65,6 +84,18 @@ export class ResetTemporaryRoute extends BrontosaurusRoute {
         } finally {
             res.agent.add('finish', 'finish');
             next();
+        }
+    }
+
+    private async _sentEmail(config: any, options: SentEmailOption): Promise<boolean> {
+
+        try {
+
+            const result: boolean = await sentEmailAgent(config, options);
+            return result;
+        } catch (err) {
+
+            throw this._error(ERROR_CODE.EMAIL_SEND_FAILED, err.toString());
         }
     }
 }
