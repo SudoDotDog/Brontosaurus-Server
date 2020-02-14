@@ -25,6 +25,7 @@ const setting: SudooExpressApplication = SudooExpressApplication.create('Brontos
 if (isDevelopment()) {
     setting.allowCrossOrigin();
     SudooLog.global.level(LOG_LEVEL.VERBOSE);
+    SudooLog.global.showTime();
 } else {
     SudooLog.global.level(LOG_LEVEL.INFO);
 }
