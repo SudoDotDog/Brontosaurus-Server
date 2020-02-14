@@ -62,10 +62,10 @@
   resolved "https://registry.yarnpkg.com/@sudoo/extract/-/extract-1.3.0.tgz#186434f69372ce3b9ebb77e452377d21695f98e5"
   integrity sha512-ZkZWARfYxIIOwyqGiaVzUqMWdCR1dsJJLkuXG0gNWPxH/6VIAKQFC/2MNqCVqSjCbn/jnYox39YO7Rg5gpGFcg==
 
-"@sudoo/log@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/log/-/log-1.3.0.tgz#3cf49b99303d02d1640afa465ea9006bb0bbb53e"
-  integrity sha512-44LyMWpzgmQOqGzWVdcKc9mDPCmyDqhP/g1lIXf9TkxRaAub0xW+Vxk+E66WlxV94NjTAH2H8heRxkFZ20td4Q==
+"@sudoo/log@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/log/-/log-1.4.0.tgz#47d0dc255c7e5a815cb4d699ef76ab71ed888677"
+  integrity sha512-7U4TApf+ZadIMLWypkr5VHgX4ix9VaA7MhnxkEXP1bKfKgRxuZg+KWPf9COO+G7Z1DKsT9evgtYgzZJ/QLzRSw==
 
 "@sudoo/magic@^1.4.1", "@sudoo/magic@^1.4.3":
   version "1.4.3"
