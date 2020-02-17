@@ -45,15 +45,15 @@
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-2.7.2.tgz#961c4b482dbc00d7c762607c63f7a3eaa8f8811e"
   integrity sha512-COaH8iYTyutU0bgqhklIQShops+NYHRlCb+XEXkMimlkQuiw2dUY6yATSyiq89vIy74W39FAs/FgHAG4+aJVKA==
 
-"@sudoo/express@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-2.1.1.tgz#d730d99ac62e18dc7bd1d33459a2ce67bb46ab14"
-  integrity sha512-dt0Tzika0LK807Ayjji1Maoye5+vs03q4NxvGVUPjRhmsRKZ2+WJU5wSgFWUcPGgtmy1EKiW9x557GmMA8a0CA==
+"@sudoo/express@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-2.2.0.tgz#e9a670496831df2feeffa7b238b4a1a4f22fca3a"
+  integrity sha512-9kQH8bLY+qke3UGHHy2P0st5NxUm49X7p3kPNPb75SBTzH3WnEEza5RDnG7lW/XUcL8GXy5BM4a0TpVHVfjsAw==
   dependencies:
-    "@sudoo/bark" "^2.7.1"
-    "@sudoo/magic" "^1.4.1"
+    "@sudoo/bark" "^2.7.2"
+    "@sudoo/magic" "^1.4.5"
     body-parser "^1.19.0"
-    connor "^2.6.1"
+    connor "^2.7.0"
     cookie-parser "^1.4.4"
     express "^4.17.1"
 
@@ -67,7 +67,7 @@
   resolved "https://registry.yarnpkg.com/@sudoo/log/-/log-1.4.0.tgz#47d0dc255c7e5a815cb4d699ef76ab71ed888677"
   integrity sha512-7U4TApf+ZadIMLWypkr5VHgX4ix9VaA7MhnxkEXP1bKfKgRxuZg+KWPf9COO+G7Z1DKsT9evgtYgzZJ/QLzRSw==
 
-"@sudoo/magic@^1.4.1", "@sudoo/magic@^1.4.5":
+"@sudoo/magic@^1.4.3", "@sudoo/magic@^1.4.5":
   version "1.4.5"
   resolved "https://registry.yarnpkg.com/@sudoo/magic/-/magic-1.4.5.tgz#51c7aa04fcee6a61ad087c142ab58a4f5e754347"
   integrity sha512-8Rrwf6OYmjzhfW8MFpQJXMNxMOIgJu6/0DplPYnCeD49Ee/y7XEnKo7PROVHobBRCRJnj5THu0qW/PyN7D+xfQ==
@@ -384,7 +384,7 @@ concat-map@0.0.1:
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
 
-connor@^2.6.1, connor@^2.7.0:
+connor@^2.7.0:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/connor/-/connor-2.7.0.tgz#b2f04d86c516ba0dcc37dd87c0b80465c89e5f27"
   integrity sha512-HzaNDJ1KI0vPz/O3ZlVQc2ZFu14GetTp7eQ/5gZ1PFyr7ovMPXsu0AujBzXgiQu162p3UCyFZbnAHY6KS3x8jA==
