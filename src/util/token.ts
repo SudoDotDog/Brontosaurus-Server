@@ -77,7 +77,7 @@ export const buildBrontosaurusBody = async (account: IAccountModel, application:
             infos: account.getInfoRecords(),
             beacons: {
                 ...account.getBeaconRecords(),
-                isSpecialPassword,
+                phase: !isSpecialPassword,
             },
         };
     }
