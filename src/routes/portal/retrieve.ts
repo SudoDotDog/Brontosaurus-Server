@@ -83,7 +83,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
                     throw this._error(ERROR_CODE.APPLICATION_GROUP_NOT_FULFILLED);
                 }
 
-                const object: IBrontosaurusBody | null = await buildBrontosaurusBody(account, application, true);
+                const object: IBrontosaurusBody | null = await buildBrontosaurusBody(account, application, ['SPECIAL_PASSWORD']);
 
                 if (!object) {
                     throw this._error(ERROR_CODE.ORGANIZATION_NOT_FOUND, (account.organization as any).toHexString());
@@ -116,7 +116,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
                         throw this._error(ERROR_CODE.APPLICATION_GROUP_NOT_FULFILLED);
                     }
 
-                    const object: IBrontosaurusBody | null = await buildBrontosaurusBody(account, application, false);
+                    const object: IBrontosaurusBody | null = await buildBrontosaurusBody(account, application);
 
                     if (!object) {
                         throw this._error(ERROR_CODE.ORGANIZATION_NOT_FOUND, (account.organization as any).toHexString());

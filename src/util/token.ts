@@ -47,7 +47,11 @@ export const filterGroups = (applicationRequires: ObjectID[], accountGroups: Obj
     return result;
 };
 
-export const buildBrontosaurusBody = async (account: IAccountModel, application: IApplicationModel, isSpecialPassword: boolean): Promise<IBrontosaurusBody | null> => {
+export const buildBrontosaurusBody = async (
+    account: IAccountModel,
+    application: IApplicationModel,
+    modifies: string[] = [],
+): Promise<IBrontosaurusBody | null> => {
 
     const filteredGroups: ObjectID[] = filterGroups(application.requires, account.groups);
     const groups: IGroupModel[] = await GroupController.getGroupsByIds(filteredGroups);
@@ -75,10 +79,8 @@ export const buildBrontosaurusBody = async (account: IAccountModel, application:
             groups: groups.map((group: IGroupModel) => group.name),
             tags: tags.map((tag: ITagModel) => tag.name),
             infos: account.getInfoRecords(),
-            beacons: {
-                ...account.getBeaconRecords(),
-                phase: !isSpecialPassword,
-            },
+            beacons: account.getBeaconRecords(),
+            modifies,
         };
     }
 
@@ -90,9 +92,7 @@ export const buildBrontosaurusBody = async (account: IAccountModel, application:
         groups: groups.map((group: IGroupModel) => group.name),
         tags: tags.map((tag: ITagModel) => tag.name),
         infos: account.getInfoRecords(),
-        beacons: {
-            ...account.getBeaconRecords(),
-            isSpecialPassword,
-        },
+        beacons: account.getBeaconRecords(),
+        modifies,
     };
 };
