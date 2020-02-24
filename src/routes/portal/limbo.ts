@@ -46,7 +46,7 @@ export class LimboRoute extends BrontosaurusRoute {
             }
 
             if (account.attemptPoints <= 0) {
-                throw this._error(ERROR_CODE.OUT_OF_ATTEMPT);
+                throw this._error(ERROR_CODE.OUT_OF_ATTEMPT, account.username);
             }
 
             const passwordMatched: boolean = account.verifyPassword(body.directEnsure('oldPassword'));

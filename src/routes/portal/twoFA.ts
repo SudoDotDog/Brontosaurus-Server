@@ -46,7 +46,7 @@ export class TwoFARoute extends BrontosaurusRoute {
             }
 
             if (account.attemptPoints <= 0) {
-                throw this._error(ERROR_CODE.OUT_OF_ATTEMPT);
+                throw this._error(ERROR_CODE.OUT_OF_ATTEMPT, account.username);
             }
 
             const passwordMatched: boolean = account.verifyPassword(body.directEnsure('password'));
@@ -68,7 +68,7 @@ export class TwoFARoute extends BrontosaurusRoute {
                 account.useAttemptPoint(5);
                 await account.save();
 
-                throw this._error(ERROR_CODE.TWO_FA_DOES_NOT_MATCH);
+                throw this._error(ERROR_CODE.TWO_FA_DOES_NOT_MATCH, account.username);
             }
 
             const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.directEnsure('applicationKey'));
