@@ -37,10 +37,11 @@ export class RetrieveRoute extends BrontosaurusRoute {
 
         try {
 
-            const account: IAccountModel | null = await AccountController.getAccountByUsername(body.directEnsure('username'));
+            const username: string = body.directEnsure('username');
+            const account: IAccountModel | null = await AccountController.getAccountByUsername(username);
 
             if (!account) {
-                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
+                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, username);
             }
 
             if (account.attemptPoints <= 0) {
@@ -57,7 +58,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 // tslint:disable-next-line: no-magic-numbers
                 account.useAttemptPoint(20);
                 await account.save();
-                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
+                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, account.username);
             }
 
             if (!account.active) {

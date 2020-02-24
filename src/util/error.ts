@@ -53,9 +53,9 @@ export const MODULE_NAME = 'Brontosaurus-Server';
 export const ERROR_LIST: Record<ERROR_CODE, string> = {
 
     [ERROR_CODE.INACTIVE_ACCOUNT]: 'Account: "{}" is not active',
-    [ERROR_CODE.PASSWORD_DOES_NOT_MATCH]: 'Username and password not match',
-    [ERROR_CODE.TWO_FA_DOES_NOT_MATCH]: 'TwoFA not match',
-    [ERROR_CODE.OUT_OF_ATTEMPT]: 'Non attempt left',
+    [ERROR_CODE.PASSWORD_DOES_NOT_MATCH]: 'Username and password not match; Username: "{}"',
+    [ERROR_CODE.TWO_FA_DOES_NOT_MATCH]: 'TwoFA not match; Username: "{}"',
+    [ERROR_CODE.OUT_OF_ATTEMPT]: 'No attempt left; Username: "{}"',
     [ERROR_CODE.TOKEN_INVALID]: 'Token invalid',
     [ERROR_CODE.TOKEN_EXPIRED]: 'Token expired',
     [ERROR_CODE.APPLICATION_HAS_NO_PORTAL_ACCESS]: 'Application has no Portal Access',

@@ -42,7 +42,7 @@ export class LimboRoute extends BrontosaurusRoute {
             const account: IAccountModel | null = await AccountController.getAccountByUsername(username);
 
             if (!account) {
-                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
+                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, username);
             }
 
             if (account.attemptPoints <= 0) {
@@ -52,7 +52,7 @@ export class LimboRoute extends BrontosaurusRoute {
             const passwordMatched: boolean = account.verifyPassword(body.directEnsure('oldPassword'));
 
             if (!passwordMatched) {
-                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
+                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, account.username);
             }
 
             if (!account.active) {

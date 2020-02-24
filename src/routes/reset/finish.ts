@@ -39,7 +39,7 @@ export class ResetFinishRoute extends BrontosaurusRoute {
             const account: IAccountModel | null = await AccountController.getAccountByUsername(username);
 
             if (!account) {
-                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH);
+                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, username);
             }
 
             if (account.attemptPoints <= 0) {
