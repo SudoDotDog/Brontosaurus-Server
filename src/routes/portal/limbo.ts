@@ -4,20 +4,22 @@
  * @description Limbo
  */
 
-import { AccountController, ApplicationController, IAccountModel, IApplicationModel, PASSWORD_VALIDATE_RESPONSE, validatePassword } from "@brontosaurus/db";
+import { AccountController, ApplicationController, IAccountModel, IApplicationModel, INamespaceModel, NamespaceController, PASSWORD_VALIDATE_RESPONSE, validatePassword } from "@brontosaurus/db";
 import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
+import { SudooLog } from "@sudoo/log";
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
 import { basicHook } from "../../handlers/hook";
 import { AccountHasOneOfApplicationGroups } from "../../util/auth";
-import { ERROR_CODE } from "../../util/error";
+import { buildNotMatchReason, ERROR_CODE, NOT_MATCH_REASON } from "../../util/error";
 import { buildBrontosaurusBody, createToken } from '../../util/token';
 import { BrontosaurusRoute } from "../basic";
 
 export type LimboRouteBody = {
 
     readonly username: string;
+    readonly namespace: string;
     readonly oldPassword: string;
     readonly newPassword: string;
     readonly applicationKey: string;
@@ -39,24 +41,39 @@ export class LimboRoute extends BrontosaurusRoute {
         try {
 
             const username: string = body.directEnsure('username');
+            const namespace: string = body.directEnsure('namespace');
             const account: IAccountModel | null = await AccountController.getAccountByUsername(username);
 
             if (!account) {
-                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, username);
+                SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.ACCOUNT_NOT_FOUND, username, namespace));
+                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, username, namespace);
+            }
+
+            const namespaceInstance: INamespaceModel | null = await NamespaceController.getNamespaceByNamespace(namespace);
+
+            if (!namespaceInstance) {
+                SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.NAMESPACE_NOT_FOUND, account.username, namespace));
+                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, account.username, namespace);
+            }
+
+            if (account.namespace.toHexString() !== namespaceInstance._id.toString()) {
+                SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.NAMESPACE_NOT_MATCHED, account.username, namespaceInstance.namespace));
+                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, account.username, namespaceInstance.namespace);
             }
 
             if (account.attemptPoints <= 0) {
-                throw this._error(ERROR_CODE.OUT_OF_ATTEMPT, account.username);
+                throw this._error(ERROR_CODE.OUT_OF_ATTEMPT, account.username, namespaceInstance.namespace);
             }
 
             const passwordMatched: boolean = account.verifyPassword(body.directEnsure('oldPassword'));
 
             if (!passwordMatched) {
-                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, account.username);
+                SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.PASSWORD_NOT_MATCHED, account.username, namespaceInstance.namespace));
+                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, account.username, namespaceInstance.namespace);
             }
 
             if (!account.active) {
-                throw this._error(ERROR_CODE.INACTIVE_ACCOUNT, account.username);
+                throw this._error(ERROR_CODE.INACTIVE_ACCOUNT, account.username, namespaceInstance.namespace);
             }
 
             const newPassword: string = body.directEnsure('newPassword');

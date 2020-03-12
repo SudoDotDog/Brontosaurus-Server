@@ -4,7 +4,7 @@
  * @description Temporary
  */
 
-import { AccountController, IAccountModel, PreferenceController } from "@brontosaurus/db";
+import { AccountController, IAccountModel, INamespaceModel, NamespaceController, PreferenceController } from "@brontosaurus/db";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { SudooLog } from "@sudoo/log";
@@ -17,6 +17,7 @@ import { BrontosaurusRoute } from "../basic";
 export type ResetTemporaryRouteBody = {
 
     readonly username: string;
+    readonly namespace: string;
     readonly email: string;
 };
 
@@ -36,21 +37,31 @@ export class ResetTemporaryRoute extends BrontosaurusRoute {
         try {
 
             const username: string = body.directEnsure('username');
+            const namespace: string = body.directEnsure('namespace');
             const email: string = body.directEnsure('email');
             const account: IAccountModel | null = await AccountController.getAccountByUsername(username);
 
             if (!account) {
-                throw this._error(ERROR_CODE.ACCOUNT_NOT_FOUND);
+                throw this._error(ERROR_CODE.ACCOUNT_NOT_FOUND, username);
+            }
+
+            const namespaceInstance: INamespaceModel | null = await NamespaceController.getNamespaceByNamespace(namespace);
+
+            if (!namespaceInstance) {
+                throw this._error(ERROR_CODE.NAMESPACE_NOT_FOUND, namespace);
+            }
+
+            if (account.namespace.toHexString() !== namespaceInstance._id.toString()) {
+                throw this._error(ERROR_CODE.ACCOUNT_NAMESPACE_NOT_MATCH, account.username, namespaceInstance.namespace);
             }
 
             if (!account.active) {
-                throw this._error(ERROR_CODE.INACTIVE_ACCOUNT, account.username);
+                throw this._error(ERROR_CODE.INACTIVE_ACCOUNT, account.username, namespaceInstance.namespace);
             }
 
             if (account.email !== email) {
                 throw this._error(ERROR_CODE.EMAIL_DOES_NOT_MATCH);
             }
-
 
             const mailerTransport: any | null = await PreferenceController.getSinglePreference('mailerTransport');
             const mailerSourceResetPassword: string | null = await PreferenceController.getSinglePreference('mailerSourceResetPassword');
@@ -84,7 +95,7 @@ export class ResetTemporaryRoute extends BrontosaurusRoute {
             await account.save();
         } catch (err) {
 
-            SudooLog.global.warning(`Reset Password Not Match Username: ${String(req.body.username)}, Email: ${String(req.body.email)}`);
+            SudooLog.global.warning(`Reset Password Not Match Username: ${String(req.body.username)}, Namespace: ${String(req.body.namespace)}, Email: ${String(req.body.email)}`);
         } finally {
             res.agent.add('finish', 'finish');
             next();

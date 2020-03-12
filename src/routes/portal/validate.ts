@@ -5,7 +5,7 @@
  */
 
 import { BrontosaurusToken } from "@brontosaurus/core";
-import { AccountController, ApplicationController, IAccountModel, IApplicationModel } from "@brontosaurus/db";
+import { AccountController, ApplicationController, IAccountModel, IApplicationModel, INamespaceModel, NamespaceController } from "@brontosaurus/db";
 import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
@@ -49,9 +49,18 @@ export class AccountValidateRoute extends BrontosaurusRoute {
             }, application.expire, token);
 
             const account: IAccountModel | null = await AccountController.getAccountByUsername(brontosaurus.username);
+            const namespace: INamespaceModel | null = await NamespaceController.getNamespaceByNamespace(brontosaurus.namespace);
 
             if (!account) {
                 throw this._error(ERROR_CODE.ACCOUNT_NOT_FOUND, brontosaurus.username);
+            }
+
+            if (!namespace) {
+                throw this._error(ERROR_CODE.NAMESPACE_NOT_FOUND, brontosaurus.namespace);
+            }
+
+            if (account.namespace.toHexString() !== namespace._id.toString()) {
+                throw this._error(ERROR_CODE.ACCOUNT_NAMESPACE_NOT_MATCH, account.username, namespace.namespace);
             }
 
             if (!account.active) {
