@@ -4,7 +4,7 @@
  * @description Reset
  */
 
-import { AccountController, IAccountModel, INamespaceModel, NamespaceController } from "@brontosaurus/db";
+import { AccountNamespaceMatch, IAccountModel, INamespaceModel, MATCH_FAILS_REASON, MatchController } from "@brontosaurus/db";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { SudooLog } from "@sudoo/log";
@@ -38,23 +38,26 @@ export class ResetResetRoute extends BrontosaurusRoute {
             const username: string = body.directEnsure('username');
             const namespace: string = body.directEnsure('namespace');
             const resetToken: string = body.directEnsure('resetToken');
-            const account: IAccountModel | null = await AccountController.getAccountByUsername(username);
+            const matched: AccountNamespaceMatch = await MatchController.getAccountNamespaceMatchByUsernameAndNamespace(username, namespace);
 
-            if (!account) {
-                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, username, namespace);
+            if (matched.succeed === false) {
+
+                switch (matched.reason) {
+                    case MATCH_FAILS_REASON.ACCOUNT_NOT_FOUND: {
+
+                        SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.ACCOUNT_NOT_FOUND, username, namespace));
+                        throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, username, namespace);
+                    }
+                    case MATCH_FAILS_REASON.NAMESPACE_NOT_FOUND: {
+
+                        SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.NAMESPACE_NOT_FOUND, username, namespace));
+                        throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, username, namespace);
+                    }
+                }
             }
 
-            const namespaceInstance: INamespaceModel | null = await NamespaceController.getNamespaceByNamespace(namespace);
-
-            if (!namespaceInstance) {
-                SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.NAMESPACE_NOT_FOUND, account.username, namespace));
-                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, account.username, namespace);
-            }
-
-            if (account.namespace.toHexString() !== namespaceInstance._id.toString()) {
-                SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.NAMESPACE_NOT_MATCHED, account.username, namespaceInstance.namespace));
-                throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, account.username, namespaceInstance.namespace);
-            }
+            const account: IAccountModel = matched.account;
+            const namespaceInstance: INamespaceModel = matched.namespace;
 
             if (account.attemptPoints <= 0) {
                 throw this._error(ERROR_CODE.OUT_OF_ATTEMPT, account.username, namespaceInstance.namespace);
