@@ -5,7 +5,7 @@
  */
 
 import { BrontosaurusSign } from "@brontosaurus/core";
-import { GroupController, IAccountModel, IApplicationModel, IGroupModel, INFOS_SPLITTER, IOrganizationModel, ITagModel, OrganizationController, TagController } from "@brontosaurus/db";
+import { GroupController, IAccountModel, IApplicationModel, IGroupModel, INamespaceModel, INFOS_SPLITTER, IOrganizationModel, ITagModel, OrganizationController, TagController } from "@brontosaurus/db";
 import { Basics, IBrontosaurusBody, IBrontosaurusHeader } from "@brontosaurus/definition";
 import { _Map } from "@sudoo/bark/map";
 import { SafeObject } from "@sudoo/extract";
@@ -49,6 +49,7 @@ export const filterGroups = (applicationRequires: ObjectID[], accountGroups: Obj
 
 export const buildBrontosaurusBody = async (
     account: IAccountModel,
+    namespace: INamespaceModel,
     application: IApplicationModel,
     modifies: string[] = [],
 ): Promise<IBrontosaurusBody | null> => {
@@ -71,6 +72,7 @@ export const buildBrontosaurusBody = async (
 
         return {
             username: account.username,
+            namespace: namespace.namespace,
             displayName,
             mint: account.mint,
             organization: organization.name,
@@ -87,6 +89,7 @@ export const buildBrontosaurusBody = async (
 
     return {
         username: account.username,
+        namespace: namespace.namespace,
         displayName,
         mint: account.mint,
         email: account.email,
