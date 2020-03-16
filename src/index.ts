@@ -47,7 +47,7 @@ connect(config.database, {
 
 // Static
 const tenHour: number = 36000000;
-app.static(Path.join(__dirname, '..', 'public', 'portal'), {
+app.expressStatic(Path.join(__dirname, '..', 'public', 'portal'), {
     immutable: true,
     maxAge: tenHour,
 });
