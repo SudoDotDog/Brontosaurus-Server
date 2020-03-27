@@ -58,10 +58,10 @@
     cookie-parser "^1.4.5"
     express "^4.17.1"
 
-"@sudoo/extract@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/extract/-/extract-1.3.0.tgz#186434f69372ce3b9ebb77e452377d21695f98e5"
-  integrity sha512-ZkZWARfYxIIOwyqGiaVzUqMWdCR1dsJJLkuXG0gNWPxH/6VIAKQFC/2MNqCVqSjCbn/jnYox39YO7Rg5gpGFcg==
+"@sudoo/extract@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@sudoo/extract/-/extract-1.4.1.tgz#acce222d638579c628fffafdeee4c31d74e21141"
+  integrity sha512-C9erWizWlWwcoIcSQWdsDRNAqiqQIiSezcYLgoNVn6NnY5HtcnCedQUQiBFJejg+WXjJDVP33WJgedr7OSc/rw==
 
 "@sudoo/io@^1.7.0":
   version "1.7.0"
