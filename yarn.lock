@@ -45,10 +45,10 @@
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-2.7.2.tgz#961c4b482dbc00d7c762607c63f7a3eaa8f8811e"
   integrity sha512-COaH8iYTyutU0bgqhklIQShops+NYHRlCb+XEXkMimlkQuiw2dUY6yATSyiq89vIy74W39FAs/FgHAG4+aJVKA==
 
-"@sudoo/express@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-2.4.0.tgz#af59fae4ea26b51fa27acd0c167a775651d377ad"
-  integrity sha512-gKrH3RwnlG+uPy03hdV397VXFFzzIEdLWYEHzjWTnLoKDjis2QDKYzxq6lOpQm6woKsHeutGRKtdQJwycEKLJA==
+"@sudoo/express@^2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-2.4.1.tgz#355f5a6ff02baef183bc020c0bba915b8e088462"
+  integrity sha512-31uhEFF+EK7rQeGSqfE6A61/kmFXdjyaVfjDXyZs6ZEyX8t/RjWlnfdMyNXVolqSqkKTQj2KDarves0AgZMUTw==
   dependencies:
     "@sudoo/bark" "^2.7.2"
     "@sudoo/io" "^1.7.0"
