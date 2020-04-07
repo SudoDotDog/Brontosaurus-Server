@@ -91,13 +91,13 @@
   resolved "https://registry.yarnpkg.com/@sudoo/random/-/random-2.1.1.tgz#acc6a9a5257d1ce6ea0bfe2c87a3696d873492ac"
   integrity sha512-OQE1ea2d7RyTlocWorCcJurMDPUcs6XZiPBOjA/x2Bq1p10YUZNbQZtF+X4OXyjsDH36RxbWvU8P49uRicxq1w==
 
-"@sudoo/triforce-mongoose-dev@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/triforce-mongoose-dev/-/triforce-mongoose-dev-1.4.0.tgz#8b0cd4c4a9256ff7a0f8063620c5b38b20467639"
-  integrity sha512-XOUiU7uyKflX72kxXNxlOyKwL8ByfW6NalbInbh1ny2SWq6CjS3ldqINS2jIc3r3y6jILJ23ZdUva7nradHBrg==
+"@sudoo/triforce-mongoose-dev@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@sudoo/triforce-mongoose-dev/-/triforce-mongoose-dev-1.4.1.tgz#b0c8d4c726999058bc18886fb2ad633cfbb125d9"
+  integrity sha512-IA6Y2e3WbhFxVO9yxmvoDLsVBaQB7KmWDqg5fq6IJsvPlT3j40N90HtBY+U/pP9B5h6SSQpJ8hS0vdwcNcjTkg==
   dependencies:
-    "@types/mongodb" "3.3.16"
-    "@types/mongoose" "5.7.3"
+    "@types/mongodb" "3.5.4"
+    "@types/mongoose" "5.7.8"
 
 "@sudoo/triforce@^2.2.1":
   version "2.2.1"
@@ -181,26 +181,18 @@
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.7.tgz#315d570ccb56c53452ff8638738df60726d5b6ea"
   integrity sha512-NYrtPht0wGzhwe9+/idPaBB+TqkY9AhTvOLMkThm0IoEfLaiVQZwBwyJ5puCkO3AUCWrmcoePjp2mbFocKy4SQ==
 
-"@types/mongodb@*":
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.5.2.tgz#2d815ebb9de9019dd12eb72e8ed1a5121619bf0a"
-  integrity sha512-/p4+HjfQqmNtq88rlLJ9XgUROhmbdUEU0yeVPCPIt8/vA1fSO1dSjwsRcGNaGuPMUSDRuRm8tDlXeGpWUVF71w==
+"@types/mongodb@*", "@types/mongodb@3.5.4":
+  version "3.5.4"
+  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.5.4.tgz#3c54abf6340fd2fe7c83fb8c3f1848497db8e55d"
+  integrity sha512-1Q781+rC+hYB34Ped9dRLOWsw1yTNwqphqkRyJR/yFuoWoZ3664s6RxilVSkqEm3lwFmpTYCXtGudxSpHHGDIQ==
   dependencies:
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/mongodb@3.3.16":
-  version "3.3.16"
-  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.3.16.tgz#3b125aa0e31ef0f6733fcfcf507cce1324823a26"
-  integrity sha512-i1Ov36BXdp+urtPsaSvrNfCdsaVn4Ukq1m1kGyzdWB1+eg3gJ68unXU5LNmnF4EAMRFY6FXZzA7/W3NST40b8g==
-  dependencies:
-    "@types/bson" "*"
-    "@types/node" "*"
-
-"@types/mongoose@5.7.3":
-  version "5.7.3"
-  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.7.3.tgz#2fc7f26cb0fda43d8ff46b5ab6ad13068370f268"
-  integrity sha512-kZR/hBOft/Nm6aFP/1k0aBrfaYZQBM8I7eynpiOdgON2GqzSTd0S1kSGLUkeDLrm5NLcJ6wbXyrbYRm/nWZvlA==
+"@types/mongoose@5.7.8":
+  version "5.7.8"
+  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.7.8.tgz#684e168d605d61be28fe1f1932f0b8b0e17115eb"
+  integrity sha512-nLyVONnGou1DfNwyP70FUVG+teusG8Whlwbke5BZrZ03iG6Iyu5gowzfuKpN7pu8BW/SOcF+Gcpny08FJdGuWw==
   dependencies:
     "@types/mongodb" "*"
     "@types/node" "*"
