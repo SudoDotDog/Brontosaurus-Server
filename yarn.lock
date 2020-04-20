@@ -105,22 +105,22 @@
     "@types/mongodb" "3.5.4"
     "@types/mongoose" "5.7.8"
 
-"@sudoo/triforce@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@sudoo/triforce/-/triforce-2.2.1.tgz#fc425eb61bf910689b7b62e1642ae90a96caa6f9"
-  integrity sha512-mDYFNVez3N2oEj/HQa379ZmWkZPj8GTjsGpW48qcCokFYpjJkVGtpWyGWjvregVq80qqFGGUO6+eoLaQ0y8LSQ==
+"@sudoo/triforce@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@sudoo/triforce/-/triforce-2.3.1.tgz#4613461c292758581cd95914d3210920ed63a341"
+  integrity sha512-T3H5naoqWYLIUpxGAgzG6ZolkxOtLTFgzdWM8889Bsbe6FQfOkhYO2QGKSkYN9VUX024p+GSxMGJ8etGhOCjvg==
   dependencies:
     "@sudoo/tslint-config" "1.6.1"
-    "@types/chai" "4.2.9"
-    "@types/chance" "1.0.8"
+    "@types/chai" "4.2.11"
+    "@types/chance" "1.0.10"
     "@types/mocha" "5.2.7"
-    "@types/node" "13.7.6"
+    "@types/node" "13.13.0"
     chai "4.2.0"
     chance "1.1.4"
     mocha "5.2.0"
-    ts-node "8.6.2"
+    ts-node "8.8.2"
     tslint "5.20.1"
-    typescript "3.8.2"
+    typescript "3.8.3"
 
 "@sudoo/tslint-config@1.6.1":
   version "1.6.1"
@@ -142,15 +142,15 @@
   dependencies:
     "@types/node" "*"
 
-"@types/chai@4.2.9":
-  version "4.2.9"
-  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.2.9.tgz#194332625ed2ae914aef00b8d5ca3b77e7924cc6"
-  integrity sha512-NeXgZj+MFL4izGqA4sapdYzkzQG+MtGra9vhQ58dnmDY++VgJaRUws+aLVV5zRJCYJl/8s9IjMmhiUw1WsKSmw==
+"@types/chai@4.2.11":
+  version "4.2.11"
+  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.2.11.tgz#d3614d6c5f500142358e6ed24e1bf16657536c50"
+  integrity sha512-t7uW6eFafjO+qJ3BIV2gGUyZs27egcNRkUdalkud+Qa3+kg//f129iuOFivHDXQ+vnU3fDXuwgv0cqMCbcE8sw==
 
-"@types/chance@1.0.8":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@types/chance/-/chance-1.0.8.tgz#48e0a5648f54487a9128915fe090154fb1a2f348"
-  integrity sha512-S1VWROFGexiUYyBFsP0NRjp6PkJ4rKECQ3HQJ0cJKW/2BcNyas9lXATRdnTNnN4CsICjEXTltAalAo8dJQQLKg==
+"@types/chance@1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@types/chance/-/chance-1.0.10.tgz#09461c19963a8961c3935d71cef245d5d48ce16c"
+  integrity sha512-929ISFKdeE72r6VuorB5BMjuwQ+t5rx3MLsHq5i+dCM4aJVGb+EJ+mUmaEcqENzoLZuH3xkNpklBip4guQAYiA==
 
 "@types/connect@*":
   version "3.4.33"
@@ -210,15 +210,10 @@
     "@types/mongodb" "*"
     "@types/node" "*"
 
-"@types/node@*":
-  version "13.11.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.11.1.tgz#49a2a83df9d26daacead30d0ccc8762b128d53c7"
-  integrity sha512-eWQGP3qtxwL8FGneRrC5DwrJLGN4/dH1clNTuLfN81HCrxVtxRjygDTUoZJ5ASlDEeo0ppYFQjQIlXhtXpOn6g==
-
-"@types/node@13.7.6":
-  version "13.7.6"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.7.6.tgz#cb734a7c191472ae6a2b3a502b4dfffcea974113"
-  integrity sha512-eyK7MWD0R1HqVTp+PtwRgFeIsemzuj4gBFSQxfPHY5iMjS7474e5wq+VFgTcdpyHeNxyKSaetYAjdMLJlKoWqA==
+"@types/node@*", "@types/node@13.13.0":
+  version "13.13.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.0.tgz#30d2d09f623fe32cde9cb582c7a6eda2788ce4a8"
+  integrity sha512-WE4IOAC6r/yBZss1oQGM5zs2D7RuKR6Q+w+X2SouPofnWn+LbCqClRyhO3ZE7Ix8nmFgo/oVuuE01cJT2XB13A==
 
 "@types/nodemailer@^6.4.0":
   version "6.4.0"
@@ -1116,10 +1111,10 @@ toidentifier@1.0.0:
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
   integrity sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
 
-ts-node@8.6.2:
-  version "8.6.2"
-  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.6.2.tgz#7419a01391a818fbafa6f826a33c1a13e9464e35"
-  integrity sha512-4mZEbofxGqLL2RImpe3zMJukvEvcO1XP8bj8ozBPySdCUXEcU5cIRwR0aM3R+VoZq7iXc8N86NC0FspGRqP4gg==
+ts-node@8.8.2:
+  version "8.8.2"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.8.2.tgz#0b39e690bee39ea5111513a9d2bcdc0bc121755f"
+  integrity sha512-duVj6BpSpUpD/oM4MfhO98ozgkp3Gt9qIp3jGxwU2DFvl/3IRaEAvbLa8G60uS7C77457e/m5TMowjedeRxI1Q==
   dependencies:
     arg "^4.1.0"
     diff "^4.0.1"
@@ -1171,10 +1166,10 @@ type-is@~1.6.17, type-is@~1.6.18:
     media-typer "0.3.0"
     mime-types "~2.1.24"
 
-typescript@3.8.2:
-  version "3.8.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.8.2.tgz#91d6868aaead7da74f493c553aeff76c0c0b1d5a"
-  integrity sha512-EgOVgL/4xfVrCMbhYKUQTdF37SQn4Iw73H5BgCrF1Abdun7Kwy/QZsE/ssAy0y4LxBbvua3PIbFsbRczWWnDdQ==
+typescript@3.8.3:
+  version "3.8.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.8.3.tgz#409eb8544ea0335711205869ec458ab109ee1061"
+  integrity sha512-MYlEfn5VrLNsgudQTVJeNaQFUAI7DkhnOjdpAp4T+ku1TfQClewlbSuTVHiA+8skNBgaf02TL/kLOvig4y3G8w==
 
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
