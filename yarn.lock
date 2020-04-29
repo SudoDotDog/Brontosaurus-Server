@@ -50,15 +50,15 @@
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-2.7.2.tgz#961c4b482dbc00d7c762607c63f7a3eaa8f8811e"
   integrity sha512-COaH8iYTyutU0bgqhklIQShops+NYHRlCb+XEXkMimlkQuiw2dUY6yATSyiq89vIy74W39FAs/FgHAG4+aJVKA==
 
-"@sudoo/express@^2.4.2":
-  version "2.4.2"
-  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-2.4.2.tgz#d64b64c6980a7e40d51d9e14a951ad51d941e314"
-  integrity sha512-+ZtDzRyCuBF+94TFeeck+IDJxWYQqyNvWQf9twtlMkYO2EIvTSMspjMPSAqRyJ1TD8vhZz1X9KpZzT8SOtwp+Q==
+"@sudoo/express@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-2.5.0.tgz#5ab8a03839534918482f9641260eb74f5e735fe7"
+  integrity sha512-rmHJOGISSGH4WyVxlN6A6RR6jIX4BHKZXsAOJF/5qF2tlvjDKsZOKwu/Tae9iL3Iwc+PYHOd7Q9v45M0Us2/OQ==
   dependencies:
-    "@sudoo/bark" "^2.7.2"
     "@sudoo/io" "^1.7.0"
-    "@sudoo/magic" "^1.6.0"
-    "@types/express" "4.17.3"
+    "@sudoo/magic" "^1.8.0"
+    "@sudoo/verify" "^1.3.0"
+    "@types/express" "4.17.6"
     body-parser "^1.19.0"
     connor "^2.7.0"
     cookie-parser "^1.4.5"
@@ -82,7 +82,7 @@
   resolved "https://registry.yarnpkg.com/@sudoo/log/-/log-1.4.1.tgz#3c416b35a2240353234ee75461a6bc79db25ee32"
   integrity sha512-3Pm5Yj9/b7261FBcQ2T7JIVqocWD6PO27ulnVEWvU7S0pr1wVCmk2LKYBlMunhL/mjaaE1AoolJ8rQyJhCgbEA==
 
-"@sudoo/magic@^1.6.0", "@sudoo/magic@^1.8.0":
+"@sudoo/magic@^1.8.0":
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/@sudoo/magic/-/magic-1.8.0.tgz#675396d0217d11884eed21af641c43b6969164de"
   integrity sha512-xAfwMTMB4gXLdbK7iSqS9d26UPvT6+QTJ+SOz4wp0ANpvLarjkCKTNF4x4noKtWikIzZoan9l8J5Vr+lba3/aw==
@@ -127,6 +127,11 @@
   resolved "https://registry.yarnpkg.com/@sudoo/tslint-config/-/tslint-config-1.6.1.tgz#4bca6141cc596f79c64f014832d58a65874b8ade"
   integrity sha512-qrKPhIscCPioJoi/EnFPATTpjXDU5l7kCcJCfbx/lf8BGvZdUY/XshEuTtsgzRWrMtEH39R4aXsfpsKKM6aZOw==
 
+"@sudoo/verify@^1.3.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/verify/-/verify-1.4.0.tgz#9bc991b84b07f4f1b692785dffa8f9484fdaf3d1"
+  integrity sha512-g8U6SZbABEFS6u94GtRM1QtAoFdIq5PV1SWTgA4fUHuh89Tjwl4DPWnXIakrfHPlzn87Mc/LWU9M53kJ+ioL7w==
+
 "@types/body-parser@*":
   version "1.19.0"
   resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-1.19.0.tgz#0685b3c47eb3006ffed117cdd55164b61f80538f"
@@ -167,13 +172,14 @@
     "@types/node" "*"
     "@types/range-parser" "*"
 
-"@types/express@4.17.3":
-  version "4.17.3"
-  resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.3.tgz#38e4458ce2067873b09a73908df488870c303bd9"
-  integrity sha512-I8cGRJj3pyOLs/HndoP+25vOqhqWkAZsWMEmq1qXy/b/M3ppufecUwaK2/TVDVxcV61/iSdhykUjQQ2DLSrTdg==
+"@types/express@4.17.6":
+  version "4.17.6"
+  resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.6.tgz#6bce49e49570507b86ea1b07b806f04697fac45e"
+  integrity sha512-n/mr9tZI83kd4azlPG5y997C/M4DNABK9yErhFM6hKdym4kkmd9j0vtsJyjFIwfRBxtrxZtAfGZCNRIBMFLK5w==
   dependencies:
     "@types/body-parser" "*"
     "@types/express-serve-static-core" "*"
+    "@types/qs" "*"
     "@types/serve-static" "*"
 
 "@types/mime@*":
@@ -221,6 +227,11 @@
   integrity sha512-KY7bFWB0MahRZvVW4CuW83qcCDny59pJJ0MQ5ifvfcjNwPlIT0vW4uARO4u1gtkYnWdhSvURegecY/tzcukJcA==
   dependencies:
     "@types/node" "*"
+
+"@types/qs@*":
+  version "6.9.1"
+  resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.1.tgz#937fab3194766256ee09fcd40b781740758617e7"
+  integrity sha512-lhbQXx9HKZAPgBkISrBcmAcMpZsmpe/Cd/hY7LGZS5OfkySUBItnPZHgQPssWYUET8elF+yCFBbP1Q0RZPTdaw==
 
 "@types/range-parser@*":
   version "1.2.3"
