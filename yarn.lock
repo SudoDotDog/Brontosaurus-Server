@@ -50,14 +50,14 @@
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-2.7.2.tgz#961c4b482dbc00d7c762607c63f7a3eaa8f8811e"
   integrity sha512-COaH8iYTyutU0bgqhklIQShops+NYHRlCb+XEXkMimlkQuiw2dUY6yATSyiq89vIy74W39FAs/FgHAG4+aJVKA==
 
-"@sudoo/express@^2.5.0":
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-2.5.0.tgz#5ab8a03839534918482f9641260eb74f5e735fe7"
-  integrity sha512-rmHJOGISSGH4WyVxlN6A6RR6jIX4BHKZXsAOJF/5qF2tlvjDKsZOKwu/Tae9iL3Iwc+PYHOd7Q9v45M0Us2/OQ==
+"@sudoo/express@^2.6.1":
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-2.6.1.tgz#0aac1ba1faa43c318ecf337bba571645ef92cd62"
+  integrity sha512-5NQ8hnufkZ8d7SS/XVq860z7HBFvUjwnfNCUQCnyLN0j5lIVFTwoSblChDuqt+ODmJ844khhufqyOvG6VTeafw==
   dependencies:
     "@sudoo/io" "^1.7.0"
     "@sudoo/magic" "^1.8.0"
-    "@sudoo/verify" "^1.3.0"
+    "@sudoo/verify" "^1.5.1"
     "@types/express" "4.17.6"
     body-parser "^1.19.0"
     connor "^2.7.0"
@@ -127,10 +127,10 @@
   resolved "https://registry.yarnpkg.com/@sudoo/tslint-config/-/tslint-config-1.6.1.tgz#4bca6141cc596f79c64f014832d58a65874b8ade"
   integrity sha512-qrKPhIscCPioJoi/EnFPATTpjXDU5l7kCcJCfbx/lf8BGvZdUY/XshEuTtsgzRWrMtEH39R4aXsfpsKKM6aZOw==
 
-"@sudoo/verify@^1.3.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/verify/-/verify-1.4.0.tgz#9bc991b84b07f4f1b692785dffa8f9484fdaf3d1"
-  integrity sha512-g8U6SZbABEFS6u94GtRM1QtAoFdIq5PV1SWTgA4fUHuh89Tjwl4DPWnXIakrfHPlzn87Mc/LWU9M53kJ+ioL7w==
+"@sudoo/verify@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@sudoo/verify/-/verify-1.5.1.tgz#084438899758614b77033d319f408d2cd390f96c"
+  integrity sha512-UkgvTBgJfCFjTEfza5drdYGVGG087yaHyRPF7ticm0szz5FL8+oIvoeY3/WuhMs9kVSXBhP0EvWkva8TFZtR9Q==
 
 "@types/body-parser@*":
   version "1.19.0"
