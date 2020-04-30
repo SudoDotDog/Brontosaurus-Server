@@ -50,14 +50,13 @@
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-2.7.2.tgz#961c4b482dbc00d7c762607c63f7a3eaa8f8811e"
   integrity sha512-COaH8iYTyutU0bgqhklIQShops+NYHRlCb+XEXkMimlkQuiw2dUY6yATSyiq89vIy74W39FAs/FgHAG4+aJVKA==
 
-"@sudoo/express@^2.6.1":
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-2.6.1.tgz#0aac1ba1faa43c318ecf337bba571645ef92cd62"
-  integrity sha512-5NQ8hnufkZ8d7SS/XVq860z7HBFvUjwnfNCUQCnyLN0j5lIVFTwoSblChDuqt+ODmJ844khhufqyOvG6VTeafw==
+"@sudoo/express@^2.7.0":
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-2.7.0.tgz#c6c3c90d68f0d0d2cf487cadbd300fc01441865c"
+  integrity sha512-y0kDozTZvg5doAivNTQV6v0FlMvCiru1NPgUId2X9l3dR5DvAO0AhaIu1ozNd1kBYgODtUc27kMkcvhCfeQ20g==
   dependencies:
     "@sudoo/io" "^1.7.0"
     "@sudoo/magic" "^1.8.0"
-    "@sudoo/verify" "^1.5.1"
     "@types/express" "4.17.6"
     body-parser "^1.19.0"
     connor "^2.7.0"
@@ -126,11 +125,6 @@
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/@sudoo/tslint-config/-/tslint-config-1.6.1.tgz#4bca6141cc596f79c64f014832d58a65874b8ade"
   integrity sha512-qrKPhIscCPioJoi/EnFPATTpjXDU5l7kCcJCfbx/lf8BGvZdUY/XshEuTtsgzRWrMtEH39R4aXsfpsKKM6aZOw==
-
-"@sudoo/verify@^1.5.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@sudoo/verify/-/verify-1.5.1.tgz#084438899758614b77033d319f408d2cd390f96c"
-  integrity sha512-UkgvTBgJfCFjTEfza5drdYGVGG087yaHyRPF7ticm0szz5FL8+oIvoeY3/WuhMs9kVSXBhP0EvWkva8TFZtR9Q==
 
 "@types/body-parser@*":
   version "1.19.0"
