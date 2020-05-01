@@ -50,18 +50,19 @@
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-2.7.2.tgz#961c4b482dbc00d7c762607c63f7a3eaa8f8811e"
   integrity sha512-COaH8iYTyutU0bgqhklIQShops+NYHRlCb+XEXkMimlkQuiw2dUY6yATSyiq89vIy74W39FAs/FgHAG4+aJVKA==
 
-"@sudoo/express@^2.7.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-2.7.0.tgz#c6c3c90d68f0d0d2cf487cadbd300fc01441865c"
-  integrity sha512-y0kDozTZvg5doAivNTQV6v0FlMvCiru1NPgUId2X9l3dR5DvAO0AhaIu1ozNd1kBYgODtUc27kMkcvhCfeQ20g==
+"@sudoo/express@^2.7.1":
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-2.7.1.tgz#91dd703fe6ca2c41908d1fed7e0c61c40c47d9ad"
+  integrity sha512-f8HCxisCEUkghGXtdcPIChbruufyvPQQNAogj9pUeNTTSYpdLEMNTbt57Hc/SNTYJw9QHGeBip1aSKBKmQXePw==
   dependencies:
     "@sudoo/io" "^1.7.0"
     "@sudoo/magic" "^1.8.0"
-    "@types/express" "4.17.6"
     body-parser "^1.19.0"
     connor "^2.7.0"
     cookie-parser "^1.4.5"
     express "^4.17.1"
+  optionalDependencies:
+    "@types/express" "*"
 
 "@sudoo/extract@^1.4.2":
   version "1.4.2"
@@ -171,7 +172,7 @@
     "@types/node" "*"
     "@types/range-parser" "*"
 
-"@types/express@4.17.6":
+"@types/express@*":
   version "4.17.6"
   resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.6.tgz#6bce49e49570507b86ea1b07b806f04697fac45e"
   integrity sha512-n/mr9tZI83kd4azlPG5y997C/M4DNABK9yErhFM6hKdym4kkmd9j0vtsJyjFIwfRBxtrxZtAfGZCNRIBMFLK5w==
