@@ -127,10 +127,10 @@
   resolved "https://registry.yarnpkg.com/@sudoo/tslint-config/-/tslint-config-1.6.1.tgz#4bca6141cc596f79c64f014832d58a65874b8ade"
   integrity sha512-qrKPhIscCPioJoi/EnFPATTpjXDU5l7kCcJCfbx/lf8BGvZdUY/XshEuTtsgzRWrMtEH39R4aXsfpsKKM6aZOw==
 
-"@sudoo/verify@^1.9.0":
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/verify/-/verify-1.9.0.tgz#105bbb161639f9bcfbb21d9522aac27d66b282c6"
-  integrity sha512-3krtYFOa3y+5D5uuPZFf6RPPZZ4LxddS6eAonXABgtEUT19DuKJIRIs1e6e9qhNQfod2qK26pdov5cukJR6jIw==
+"@sudoo/verify@^1.10.0":
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/verify/-/verify-1.10.0.tgz#cc580f7c58c79fbb94972545aecc81d62f4bbc25"
+  integrity sha512-zFRC9FINRDYEYSzI2E28H6XqVbfhS3V54yWy7125/w1wmLfpC8ha6jQ32glINOdwIhG+MMjzQzEtLW+PQ6nxXw==
 
 "@types/body-parser@*":
   version "1.19.0"
