@@ -59,6 +59,20 @@ export const buildBrontosaurusBody = async (
     const tags: ITagModel[] = await TagController.getTagsByIds(account.tags);
 
     const displayName: string = account.displayName || account.username;
+    const body: IBrontosaurusBody = {
+        username: account.username,
+        namespace: namespace.namespace,
+        avatar: account.avatar,
+        displayName,
+        mint: account.mint,
+        email: account.email,
+        phone: account.phone,
+        groups: groups.map((group: IGroupModel) => group.name),
+        tags: tags.map((tag: ITagModel) => tag.name),
+        infos: account.getInfoRecords(),
+        beacons: account.getBeaconRecords(),
+        modifies,
+    };
 
     if (account.organization) {
 
@@ -71,33 +85,11 @@ export const buildBrontosaurusBody = async (
         const organizationTags: ITagModel[] = await TagController.getTagsByIds(organization.tags);
 
         return {
-            username: account.username,
-            namespace: namespace.namespace,
-            displayName,
-            mint: account.mint,
+            ...body,
             organization: organization.name,
             organizationTags: organizationTags.map((tag: ITagModel) => tag.name),
-            email: account.email,
-            phone: account.phone,
-            groups: groups.map((group: IGroupModel) => group.name),
-            tags: tags.map((tag: ITagModel) => tag.name),
-            infos: account.getInfoRecords(),
-            beacons: account.getBeaconRecords(),
-            modifies,
         };
     }
 
-    return {
-        username: account.username,
-        namespace: namespace.namespace,
-        displayName,
-        mint: account.mint,
-        email: account.email,
-        phone: account.phone,
-        groups: groups.map((group: IGroupModel) => group.name),
-        tags: tags.map((tag: ITagModel) => tag.name),
-        infos: account.getInfoRecords(),
-        beacons: account.getBeaconRecords(),
-        modifies,
-    };
+    return body;
 };
