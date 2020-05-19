@@ -105,12 +105,12 @@
     "@types/mongodb" "3.5.4"
     "@types/mongoose" "5.7.8"
 
-"@sudoo/triforce@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/triforce/-/triforce-2.4.0.tgz#a7e7f96eaef6ecb4e723d34b337a1fe68640313c"
-  integrity sha512-6gWUlvXnm83G2P3ywWHIo24HJdgcQtHVn4iy38eSFU72/H9opuj5+DbT3dHpY4P4ePT4cMn5cOSD3aK7hILqOA==
+"@sudoo/triforce@^2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@sudoo/triforce/-/triforce-2.4.1.tgz#3a93096e03440e3cbf8369a8f1d7a7d3c338900f"
+  integrity sha512-sMpjU+bPrCBTg2l8shQK7l7ZhlHS+ZXEkFJjRkBNOknwhw4NXtxHAvUqtpeEi0/xBum3Aul+Bj1EgeNMosfZ+g==
   dependencies:
-    "@sudoo/tslint-config" "1.6.1"
+    "@sudoo/tslint-config" "1.6.2"
     "@types/chai" "4.2.11"
     "@types/chance" "1.1.0"
     "@types/mocha" "5.2.7"
@@ -122,10 +122,10 @@
     tslint "5.20.1"
     typescript "3.9.2"
 
-"@sudoo/tslint-config@1.6.1":
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@sudoo/tslint-config/-/tslint-config-1.6.1.tgz#4bca6141cc596f79c64f014832d58a65874b8ade"
-  integrity sha512-qrKPhIscCPioJoi/EnFPATTpjXDU5l7kCcJCfbx/lf8BGvZdUY/XshEuTtsgzRWrMtEH39R4aXsfpsKKM6aZOw==
+"@sudoo/tslint-config@1.6.2":
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/@sudoo/tslint-config/-/tslint-config-1.6.2.tgz#465cf609a35283a6cc602b7741bbcecd75d6ef28"
+  integrity sha512-ndrpc3qcvwsNS1lIiPzjxMVxKm0dBdfMC227NYVMOyCwDg1i2/bOJMGIbd+xdgKGcgS1wUcPEQI7WE7gs3S5RA==
 
 "@sudoo/verify@^1.10.0":
   version "1.10.0"
