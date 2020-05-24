@@ -17,13 +17,13 @@ export type SafeToken = {
     readonly body: SafeObject<IBrontosaurusBody>;
 };
 
-export const createToken = (body: IBrontosaurusBody, application: IApplicationModel): string => {
+export const createToken = (attempt: string, body: IBrontosaurusBody, application: IApplicationModel): string => {
 
     const sign: BrontosaurusSign = BrontosaurusSign.create(application.key, body, {
         public: application.publicKey,
         private: application.privateKey,
     });
-    const token: string = sign.token(Date.now() + application.expire);
+    const token: string = sign.token(attempt, Date.now() + application.expire);
 
     return token;
 };
