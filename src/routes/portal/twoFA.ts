@@ -4,7 +4,8 @@
  * @description TwoFA
  */
 
-import { AccountNamespaceMatch, ApplicationController, IAccountModel, IApplicationModel, INamespaceModel, MATCH_FAILS_REASON, MatchController } from "@brontosaurus/db";
+import { AccountNamespaceMatch, ApplicationController, IAccountModel, IApplicationModel, IAttemptModel, INamespaceModel, MATCH_FAILS_REASON, MatchController } from "@brontosaurus/db";
+import { createUnsavedAttempt } from "@brontosaurus/db/controller/attempt";
 import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
@@ -23,6 +24,9 @@ export type TwoFARouteBody = {
     readonly password: string;
     readonly code: string;
     readonly applicationKey: string;
+
+    readonly platform: string;
+    readonly userAgent: string;
 };
 
 export class TwoFARoute extends BrontosaurusRoute {
@@ -42,6 +46,10 @@ export class TwoFARoute extends BrontosaurusRoute {
 
             const username: string = body.directEnsure('username');
             const namespace: string = body.directEnsure('namespace');
+
+            const platform: string = body.directEnsure('platform');
+            const userAgent: string = body.directEnsure('userAgent');
+
             const matched: AccountNamespaceMatch = await MatchController.getAccountNamespaceMatchByUsernameAndNamespace(username, namespace);
 
             if (matched.succeed === false) {
@@ -113,7 +121,19 @@ export class TwoFARoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.ORGANIZATION_NOT_FOUND, (account.organization as any).toHexString());
             }
 
-            const token: string = createToken(object, application);
+            const attempt: IAttemptModel = createUnsavedAttempt({
+                account: account._id,
+                succeed: true,
+                platform,
+                userAgent,
+                source: req.ip,
+                proxySources: req.ips,
+                application: application._id,
+            });
+
+            await attempt.save();
+
+            const token: string = createToken(attempt.identifier, object, application);
 
             res.agent.add('limbo', account.limbo);
             res.agent.add('needTwoFA', Boolean(account.twoFA));
