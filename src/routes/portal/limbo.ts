@@ -25,6 +25,7 @@ export type LimboRouteBody = {
     readonly newPassword: string;
     readonly applicationKey: string;
 
+    readonly target: string;
     readonly platform: string;
     readonly userAgent: string;
 };
@@ -47,6 +48,7 @@ export class LimboRoute extends BrontosaurusRoute {
             const username: string = body.directEnsure('username');
             const namespace: string = body.directEnsure('namespace');
 
+            const target: string = body.directEnsure('target');
             const platform: string = body.directEnsure('platform');
             const userAgent: string = body.directEnsure('userAgent');
 
@@ -127,6 +129,7 @@ export class LimboRoute extends BrontosaurusRoute {
                 succeed: true,
                 platform,
                 userAgent,
+                target,
                 source: req.ip,
                 proxySources: req.ips,
                 application: application._id,
