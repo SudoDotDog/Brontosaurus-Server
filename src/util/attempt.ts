@@ -18,11 +18,16 @@ export type CreateAttemptConfig = {
 
 export const saveAttemptByObjects = async (config: CreateAttemptConfig): Promise<IAttemptModel> => {
 
+    const userAgent: string | undefined = config.request.headers['user-agent'];
+    const parsedUserAgent: string = typeof userAgent === 'string'
+        ? userAgent
+        : '[EMPTY-USER-AGENT-HEADER]';
+
     const attempt: IAttemptModel = createUnsavedAttempt({
         account: config.account._id,
         succeed: true,
         platform: config.platform,
-        userAgent: config.userAgent,
+        userAgent: parsedUserAgent,
         target: config.target,
         source: config.request.ip,
         proxySources: config.request.ips,

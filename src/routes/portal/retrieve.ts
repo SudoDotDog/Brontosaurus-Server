@@ -45,7 +45,6 @@ export class RetrieveRoute extends BrontosaurusRoute {
 
             const target: string = body.directEnsure('target');
             const platform: string = body.directEnsure('platform');
-            const userAgent: string = body.directEnsure('userAgent');
 
             const matched: AccountNamespaceMatch = await MatchController.getAccountNamespaceMatchByUsernameAndNamespace(username, namespace);
 
@@ -120,7 +119,6 @@ export class RetrieveRoute extends BrontosaurusRoute {
                     application,
                     request: req,
                     platform,
-                    userAgent,
                     target,
                 });
 
@@ -162,7 +160,6 @@ export class RetrieveRoute extends BrontosaurusRoute {
                         application,
                         request: req,
                         platform,
-                        userAgent,
                         target,
                     });
 
