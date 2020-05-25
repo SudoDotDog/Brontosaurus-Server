@@ -5,13 +5,13 @@
  */
 
 import { AccountNamespaceMatch, ApplicationController, IAccountModel, IApplicationModel, IAttemptModel, INamespaceModel, MATCH_FAILS_REASON, MatchController, PASSWORD_VALIDATE_RESPONSE, validatePassword } from "@brontosaurus/db";
-import { createUnsavedAttempt } from "@brontosaurus/db/controller/attempt";
 import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { SudooLog } from "@sudoo/log";
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
 import { basicHook } from "../../handlers/hook";
+import { saveAttemptByObjects } from "../../util/attempt";
 import { AccountHasOneOfApplicationGroups } from "../../util/auth";
 import { buildNotMatchReason, ERROR_CODE, NOT_MATCH_REASON } from "../../util/error";
 import { buildBrontosaurusBody, createToken } from '../../util/token';
@@ -120,18 +120,14 @@ export class LimboRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.ORGANIZATION_NOT_FOUND, (account.organization as any).toHexString());
             }
 
-            const attempt: IAttemptModel = createUnsavedAttempt({
-                account: account._id,
-                succeed: true,
+            const attempt: IAttemptModel = await saveAttemptByObjects({
+                account,
+                application,
+                request: req,
                 platform,
                 userAgent,
                 target,
-                source: req.ip,
-                proxySources: req.ips,
-                application: application._id,
             });
-
-            await attempt.save();
 
             const token: string = createToken(attempt.identifier, object, application);
 
