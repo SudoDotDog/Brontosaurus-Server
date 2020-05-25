@@ -15,7 +15,7 @@ import { basicHook } from "../../handlers/hook";
 import { AccountHasOneOfApplicationGroups } from "../../util/auth";
 import { buildNotMatchReason, ERROR_CODE, NOT_MATCH_REASON } from "../../util/error";
 import { buildBrontosaurusBody, createToken } from '../../util/token';
-import { BrontosaurusRoute } from "../basic";
+import { BaseAttemptBody, BrontosaurusRoute } from "../basic";
 
 export type LimboRouteBody = {
 
@@ -24,11 +24,7 @@ export type LimboRouteBody = {
     readonly oldPassword: string;
     readonly newPassword: string;
     readonly applicationKey: string;
-
-    readonly target: string;
-    readonly platform: string;
-    readonly userAgent: string;
-};
+} & BaseAttemptBody;
 
 export class LimboRoute extends BrontosaurusRoute {
 

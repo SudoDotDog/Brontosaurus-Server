@@ -9,6 +9,13 @@ import { SudooLog } from '@sudoo/log';
 import { ConnorError, ErrorCreationFunction } from "connor";
 import { getErrorCreationFunction } from "../util/error";
 
+export type BaseAttemptBody = {
+
+    readonly target: string;
+    readonly platform: string;
+    readonly userAgent: string;
+};
+
 export abstract class BrontosaurusRoute implements ISudooExpressRoute {
 
     public abstract readonly path: string;
