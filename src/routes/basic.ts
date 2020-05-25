@@ -13,6 +13,8 @@ export type BaseAttemptBody = {
 
     readonly target: string;
     readonly platform: string;
+
+    readonly userAgentOverride?: string;
 };
 
 export abstract class BrontosaurusRoute implements ISudooExpressRoute {
