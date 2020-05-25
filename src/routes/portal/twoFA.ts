@@ -15,7 +15,7 @@ import { basicHook } from "../../handlers/hook";
 import { AccountHasOneOfApplicationGroups } from "../../util/auth";
 import { buildNotMatchReason, ERROR_CODE, NOT_MATCH_REASON } from "../../util/error";
 import { buildBrontosaurusBody, createToken } from '../../util/token';
-import { BrontosaurusRoute } from "../basic";
+import { BaseAttemptBody, BrontosaurusRoute } from "../basic";
 
 export type TwoFARouteBody = {
 
@@ -24,10 +24,7 @@ export type TwoFARouteBody = {
     readonly password: string;
     readonly code: string;
     readonly applicationKey: string;
-
-    readonly platform: string;
-    readonly userAgent: string;
-};
+} & BaseAttemptBody;
 
 export class TwoFARoute extends BrontosaurusRoute {
 
@@ -47,6 +44,7 @@ export class TwoFARoute extends BrontosaurusRoute {
             const username: string = body.directEnsure('username');
             const namespace: string = body.directEnsure('namespace');
 
+            const target: string = body.directEnsure('target');
             const platform: string = body.directEnsure('platform');
             const userAgent: string = body.directEnsure('userAgent');
 
@@ -126,6 +124,7 @@ export class TwoFARoute extends BrontosaurusRoute {
                 succeed: true,
                 platform,
                 userAgent,
+                target,
                 source: req.ip,
                 proxySources: req.ips,
                 application: application._id,
