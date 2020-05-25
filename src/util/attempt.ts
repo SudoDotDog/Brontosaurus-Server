@@ -26,7 +26,7 @@ export const saveAttemptByObjects = async (config: CreateAttemptConfig): Promise
         : '[EMPTY-USER-AGENT-HEADER]';
 
     const combinedUserAgent: string = typeof userAgentOverride === 'string'
-        ? `${userAgentOverride}(${parsedUserAgent})`
+        ? `${userAgentOverride} [${parsedUserAgent}]`
         : parsedUserAgent;
 
     const attempt: IAttemptModel = createUnsavedAttempt({
