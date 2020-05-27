@@ -31,6 +31,7 @@ if (isDevelopment()) {
 }
 
 setting.useBodyParser();
+setting.useTrustProxy();
 const app: SudooExpress = SudooExpress.create(setting);
 
 const config: BrontosaurusConfig = readConfigEnvironment();
