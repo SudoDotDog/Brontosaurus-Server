@@ -28,10 +28,10 @@
   resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-3.4.0.tgz#e15554154d8654d405daa0260577eca5442c896e"
   integrity sha512-Zo+vpKEXMBzZdShn1dwOyKg/xwuQlCoD60fiXsP2etQTTiVKsuBljKCFATZjAsMNP9LlMibCrjlnvtCwWZLGZg==
 
-"@brontosaurus/db@^3.16.3":
-  version "3.16.3"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.16.3.tgz#7cb029a31f6b4eeb515e186714bfeeffa1cc6596"
-  integrity sha512-NrD0VtPhDKHUloq5KyCx0mF3K79yn0MLk+tLvmsM20ipswTdr3LO+8j3cKkwaUsbYQdscYKnWlyZoyRFSgrS4g==
+"@brontosaurus/db@^3.16.4":
+  version "3.16.4"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.16.4.tgz#a4eafafdd80f14ea581378c4f8c65a10253cff2f"
+  integrity sha512-oile+r5+F2g3glHfWGpeE8zSmArHhJ0i96KbbMgVgEX02pYtmXDwEGkiuUNQK8LPpZreFFsuMXHrvkunVHBhkw==
   dependencies:
     "@brontosaurus/core" "^3.4.0"
     "@brontosaurus/definition" "^3.4.0"
