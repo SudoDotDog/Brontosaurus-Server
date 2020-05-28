@@ -40,7 +40,9 @@ export const saveAttemptByObjects = async (config: CreateAttemptConfig): Promise
         ?? config.request.header['X-REAL-IP'];
     if (typeof realIp === 'string') {
 
-
+        if (!ips.includes(realIp)) {
+            ips.unshift(realIp);
+        }
     }
 
     const attempt: IAttemptModel = createUnsavedAttempt({
@@ -50,7 +52,7 @@ export const saveAttemptByObjects = async (config: CreateAttemptConfig): Promise
         userAgent: combinedUserAgent,
         target: config.target,
         source: config.request.ip,
-        proxySources: config.request.ips,
+        proxySources: ips,
         application: config.application._id,
     });
 
