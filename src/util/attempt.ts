@@ -18,7 +18,11 @@ export type CreateAttemptConfig = {
 
 export const saveAttemptByObjects = async (config: CreateAttemptConfig): Promise<IAttemptModel> => {
 
-    const userAgent: string | undefined = config.request.headers['user-agent'];
+    const userAgent: string | undefined =
+        config.request.headers['user-agent']
+        ?? config.request.headers['User-Agent']
+        ?? config.request.headers['USER-AGENT'];
+
     const userAgentOverride: string | undefined = config.request.body.userAgentOverride;
 
     const parsedUserAgent: string = typeof userAgent === 'string'
@@ -28,6 +32,16 @@ export const saveAttemptByObjects = async (config: CreateAttemptConfig): Promise
     const combinedUserAgent: string = typeof userAgentOverride === 'string'
         ? `${userAgentOverride} [${parsedUserAgent}]`
         : parsedUserAgent;
+
+    const ips: string[] = [...config.request.ips];
+    const realIp: string | undefined =
+        config.request.headers['x-real-ip']
+        ?? config.request.headers['X-Real-IP']
+        ?? config.request.header['X-REAL-IP'];
+    if (typeof realIp === 'string') {
+
+
+    }
 
     const attempt: IAttemptModel = createUnsavedAttempt({
         account: config.account._id,
