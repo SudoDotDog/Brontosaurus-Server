@@ -37,7 +37,7 @@ export const saveAttemptByObjects = async (config: CreateAttemptConfig): Promise
     const realIp: string | undefined =
         config.request.headers['x-real-ip']
         ?? config.request.headers['X-Real-IP']
-        ?? config.request.header['X-REAL-IP'];
+        ?? config.request.headers['X-REAL-IP'];
     if (typeof realIp === 'string') {
 
         if (!ips.includes(realIp)) {
