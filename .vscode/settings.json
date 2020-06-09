@@ -12,6 +12,7 @@
         "lockfile",
         "mongod",
         "mongodb",
+        "redirections",
         "setx",
         "splited",
         "sudoo",

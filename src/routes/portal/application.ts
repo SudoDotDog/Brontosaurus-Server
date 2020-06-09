@@ -46,8 +46,13 @@ export class ApplicationRoute extends BrontosaurusRoute {
 
             const accountName: string | null = await PreferenceController.getSinglePreference('accountName');
             const systemName: string | null = await PreferenceController.getSinglePreference('systemName');
+            const entryPage: string | null = await PreferenceController.getSinglePreference('entryPage');
+            const indexPage: string | null = await PreferenceController.getSinglePreference('indexPage');
 
             res.agent.add('name', application.name)
+                .add('redirections', application.redirections)
+                .addIfExist('indexPage', indexPage)
+                .addIfExist('entryPage', entryPage)
                 .addIfExist('favicon', otherInformation.favicon)
                 .addIfExist('avatar', otherInformation.avatar)
                 .addIfExist('background', otherInformation.backgroundImage)
