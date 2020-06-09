@@ -27,11 +27,15 @@ export const validateRedirection = (application: IApplicationModel, target: stri
         return true;
     }
 
-    for (const redirection of redirections) {
-        const regexp: RegExp = new RegExp(redirection.regexp);
-        if (regexp.test(target)) {
-            return true;
+    try {
+        for (const redirection of redirections) {
+            const regexp: RegExp = new RegExp(redirection.regexp);
+            if (regexp.test(target)) {
+                return true;
+            }
         }
+    } catch (err) {
+        return false;
     }
 
     return false;
