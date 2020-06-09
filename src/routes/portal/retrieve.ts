@@ -14,6 +14,7 @@ import { basicHook } from "../../handlers/hook";
 import { saveAttemptByObjects } from "../../util/attempt";
 import { AccountHasOneOfApplicationGroups } from "../../util/auth";
 import { buildNotMatchReason, ERROR_CODE, NOT_MATCH_REASON } from "../../util/error";
+import { validateRedirection } from "../../util/redirection";
 import { buildBrontosaurusBody, createToken } from '../../util/token';
 import { BaseAttemptBody, BrontosaurusRoute } from "../basic";
 
@@ -104,6 +105,10 @@ export class RetrieveRoute extends BrontosaurusRoute {
                     throw this._error(ERROR_CODE.APPLICATION_HAS_NO_PORTAL_ACCESS);
                 }
 
+                if (!validateRedirection(application, target)) {
+                    throw this._error(ERROR_CODE.UNTRUSTED_REDIRECTION);
+                }
+
                 if (!AccountHasOneOfApplicationGroups(application, account)) {
                     throw this._error(ERROR_CODE.APPLICATION_GROUP_NOT_FULFILLED);
                 }
@@ -143,6 +148,10 @@ export class RetrieveRoute extends BrontosaurusRoute {
 
                     if (!application.portalAccess) {
                         throw this._error(ERROR_CODE.APPLICATION_HAS_NO_PORTAL_ACCESS);
+                    }
+
+                    if (!validateRedirection(application, target)) {
+                        throw this._error(ERROR_CODE.UNTRUSTED_REDIRECTION);
                     }
 
                     if (!AccountHasOneOfApplicationGroups(application, account)) {

@@ -39,6 +39,7 @@ export enum ERROR_CODE {
 
     APPLICATION_KEY_NOT_FOUND = 4120,
     APPLICATION_GROUP_NOT_FULFILLED = 4121,
+    UNTRUSTED_REDIRECTION = 4122,
 
     ACCOUNT_MINT_NOT_VALID = 4130,
 
@@ -85,6 +86,7 @@ export const ERROR_LIST: Record<ERROR_CODE, string> = {
 
     [ERROR_CODE.APPLICATION_KEY_NOT_FOUND]: 'Application key not found',
     [ERROR_CODE.APPLICATION_GROUP_NOT_FULFILLED]: 'Application group not fulfilled',
+    [ERROR_CODE.UNTRUSTED_REDIRECTION]: 'Untrusted Redirection',
 
     [ERROR_CODE.ACCOUNT_MINT_NOT_VALID]: 'Account mint not valid',
 
