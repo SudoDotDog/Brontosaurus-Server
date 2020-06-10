@@ -12,6 +12,7 @@ import { filterGroups } from '../../../src/util/token';
 
 describe('Given [Token] Helper Methods', (): void => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const chance: Chance.Chance = new Chance('brontosaurus-server-util-token');
 
     it('should be able to filter groups', (): void => {
@@ -26,7 +27,7 @@ describe('Given [Token] Helper Methods', (): void => {
         const filtered: ObjectID[] = filterGroups(required, has);
 
         expect(filtered).to.be.lengthOf(1);
-        // tslint:disable-next-line: no-unused-expression
-        expect((filtered[0] as ObjectID).equals(group2)).to.be.true;
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+        expect((filtered[0]).equals(group2)).to.be.true;
     });
 });

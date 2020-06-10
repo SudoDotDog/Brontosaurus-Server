@@ -3,13 +3,9 @@ build := typescript/tsconfig.build.json
 dev := typescript/tsconfig.dev.json
 
 # NPX functions
-ifeq ($(OS), Windows_NT)
-	dbPath := F:/db/
-else
-	dbPath := ~/Desktop/db/
-endif
 tsc := node_modules/.bin/tsc
 mocha := node_modules/.bin/mocha
+eslint := node_modules/.bin/eslint
 
 main: run
 
@@ -44,8 +40,13 @@ cov:
 	@NODE_ENV=test \
 	nyc $(mocha)
 
-host:
-	@mongod --dbpath $(dbPath)
+lint:
+	@echo "[INFO] Linting"
+	@$(eslint) . --ext .ts,.tsx --config ./typescript/.eslintrc.json
+
+lint-fix:
+	@echo "[INFO] Linting and Fixing"
+	@$(eslint) . --ext .ts,.tsx --config ./typescript/.eslintrc.json --fix
 
 install:
 	@echo "[INFO] Installing dev Dependencies"
