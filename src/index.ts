@@ -69,6 +69,6 @@ app.routes(
     new ResetFinishRoute(),
 );
 
-// tslint:disable-next-line: no-magic-numbers
+// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 app.host(8080);
 SudooLog.global.critical('Hosting at 8080');

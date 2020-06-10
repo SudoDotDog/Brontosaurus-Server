@@ -19,7 +19,7 @@ export const sentEmailAgent = (config: any, options: SentEmailOption): Promise<b
 
     const mailer = NodeMailer.createTransport(config);
     return new Promise<boolean>((resolve: (result: boolean) => void, reject: (reason: any) => void) => {
-        mailer.sendMail(options, (err: any, data: any) => {
+        mailer.sendMail(options, (err: any) => {
             if (err) {
                 reject(err);
             } else {

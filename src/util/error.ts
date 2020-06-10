@@ -4,7 +4,7 @@
  * @description Error
  */
 
-import { Connor } from 'connor';
+import { Connor, ErrorCreationFunction } from 'connor';
 
 export enum NOT_MATCH_REASON {
 
@@ -112,5 +112,5 @@ export const ERROR_LIST: Record<ERROR_CODE, string> = {
     [ERROR_CODE.INTERNAL_ERROR]: 'Internal Error',
 };
 
-export const registerConnor = () => Connor.dictionary(MODULE_NAME, ERROR_LIST);
-export const getErrorCreationFunction = () => Connor.getErrorCreator(MODULE_NAME);
+export const registerConnor = (): Connor => Connor.dictionary(MODULE_NAME, ERROR_LIST);
+export const getErrorCreationFunction = (): ErrorCreationFunction => Connor.getErrorCreator(MODULE_NAME);

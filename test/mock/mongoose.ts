@@ -37,9 +37,11 @@ export class Connector {
 
     public before(): void {
 
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
         const connector: Connector = this;
 
         before(function (this: Mocha.Context, next: () => void): void {
+            // eslint-disable-next-line no-invalid-this
             this.timeout(connector._timeout);
             mongoose.connect(
                 `mongodb://localhost:27017/${connector._dbName}`,
@@ -48,6 +50,7 @@ export class Connector {
 
             const connection = mongoose.connection;
             connection.on('error', () => {
+                // eslint-disable-next-line no-invalid-this
                 this.skip();
             });
             connection.once('open', next);
@@ -64,11 +67,14 @@ export class Connector {
 
     public after(): void {
 
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
         const connector: Connector = this;
 
         after(function (this: Mocha.Context, next: () => void): void {
+            // eslint-disable-next-line no-invalid-this
             this.timeout(connector._timeout);
             if (!mongoose.connection.db) {
+                // eslint-disable-next-line no-invalid-this
                 this.skip();
             } else {
                 mongoose.connection.db.dropDatabase((): void => {

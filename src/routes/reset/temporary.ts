@@ -94,7 +94,7 @@ export class ResetTemporaryRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.EMAIL_SEND_FAILED, 'Result');
             }
 
-            // tslint:disable-next-line: no-magic-numbers
+            // eslint-disable-next-line @typescript-eslint/no-magic-numbers
             account.attemptPoints = Math.min(100, account.attemptPoints + 50);
 
             await account.save();

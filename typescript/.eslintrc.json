@@ -3,7 +3,9 @@
         "project": "./typescript/tsconfig.lint.json"
     },
     "extends": [
-        "@sudoo/eslint-config",
-        "@sudoo/eslint-config-react"
-    ]
+        "@sudoo/eslint-config"
+    ],
+    "rules": {
+        "no-invalid-this": "off"
+    }
 }

@@ -5,6 +5,7 @@
         "UNTRUSTED",
         "WMXPY",
         "bson",
+        "camelcase",
         "codecov",
         "connor",
         "dbpath",

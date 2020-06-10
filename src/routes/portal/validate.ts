@@ -11,6 +11,7 @@ import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpress
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
 import { basicHook } from "../../handlers/hook";
+// eslint-disable-next-line camelcase
 import { Throwable_ValidateToken } from "../../util/auth";
 import { ERROR_CODE } from "../../util/error";
 import { BrontosaurusRoute } from "../basic";

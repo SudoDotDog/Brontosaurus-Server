@@ -66,7 +66,7 @@ export class ResetResetRoute extends BrontosaurusRoute {
             const tokenMatched: boolean = account.verifyResetToken(resetToken);
 
             if (!tokenMatched) {
-                // tslint:disable-next-line: no-magic-numbers
+                // eslint-disable-next-line @typescript-eslint/no-magic-numbers
                 account.useAttemptPoint(15);
                 await account.save();
                 throw this._error(ERROR_CODE.TOKEN_DOES_NOT_MATCH, account.username, namespaceInstance.namespace);

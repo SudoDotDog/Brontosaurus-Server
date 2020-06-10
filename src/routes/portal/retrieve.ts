@@ -79,7 +79,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
 
             if (!passwordMatched && !applicationOrTemporaryPasswordMatched) {
 
-                // tslint:disable-next-line: no-magic-numbers
+                // eslint-disable-next-line @typescript-eslint/no-magic-numbers
                 account.useAttemptPoint(20);
                 await account.save();
                 SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.PASSWORD_NOT_MATCHED, account.username, namespaceInstance.namespace));
