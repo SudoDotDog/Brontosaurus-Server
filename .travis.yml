@@ -20,7 +20,7 @@ before_script:
   - sleep 1
 
 script:
-  - nyc mocha
+  - make cov
 
 after_success:
   - codecov -f ./coverage/coverage-final.json
