@@ -68,12 +68,12 @@
   resolved "https://registry.yarnpkg.com/@sudoo/eslint-config/-/eslint-config-1.2.0.tgz#f33e5f148b35dce99e99aafaaddfc92d11d118a6"
   integrity sha512-YcPs2ZRTrJPvpDSGBsmOLPIJL5NDg60Fv/avM19DGp/Ze+iBpir5JzmI8DHIlKP50xRxObHjXmwyeUJxHHjovQ==
 
-"@sudoo/express@^2.9.0":
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-2.9.0.tgz#df7eafd02fa79e3c0eb1102cfa05d44a653e93e8"
-  integrity sha512-rY/pxSGV2hbGFInC574hPCcnzjHidbEJ7QvFAV0i4TdtThN+Y9VGDGLfoRfNm/fgpxmlAo4DSl2HKVUht5CT7Q==
+"@sudoo/express@^2.10.0":
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-2.10.0.tgz#31f386c69f7fd7c36e032d09d6672850b27276e8"
+  integrity sha512-wFBiYGoOLtP3G2GLSyCLyxYBGfWqoceTtkmwd0HRdZe/nlcYJwaLbLz0JzV+SF6BNCf+76IaVdiSQJM7QoTgBg==
   dependencies:
-    "@sudoo/io" "^1.7.0"
+    "@sudoo/io" "^1.8.0"
     "@sudoo/magic" "^1.8.0"
     body-parser "^1.19.0"
     connor "^2.7.0"
@@ -87,7 +87,7 @@
   resolved "https://registry.yarnpkg.com/@sudoo/extract/-/extract-1.4.2.tgz#94a27ddb6be9bd7c2c88a8f29f5472322351531d"
   integrity sha512-KwxuMn1evnzStz+N6TMCkTGoz0PP1UM9tAxltoBajDGiENobbxrmUuBdNV+8qNpQ0Tlhb+vdQKi7+HAWdKVMEA==
 
-"@sudoo/io@^1.7.0":
+"@sudoo/io@^1.8.0":
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/@sudoo/io/-/io-1.8.0.tgz#bc57ae7ed0d76797415c1aab9cc7ea7857c3e46e"
   integrity sha512-Gvfx9SnCiZSQO6F0gIZzNMSjJWqr/zWfofJIa0TOc/OIdNgQ9wGyS69wWFXgdtQVvWNXYDjw+efwZmlH2i9VrA==
@@ -119,6 +119,11 @@
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@sudoo/mock/-/mock-1.3.0.tgz#84e8c26724b74045539d26a2c1673ab1c08de6c7"
   integrity sha512-ufWn6iRX3J5Q/3kyGUaku5BAe73QxofTosmdIyn397OtUI0NFQ/luGBFlG3af7Y4oR1f6LEOVI8n7fIYiw8Neg==
+
+"@sudoo/pattern@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/pattern/-/pattern-1.0.0.tgz#f32cfc790dda0ebd3634d5ae5fa6e26ca7c4b374"
+  integrity sha512-FAWani/fuZz6lkmXBwI/qbXVA26+CKA9WkgkBhQf/yV+f9LYZw1V1OWdPNONDctRl0RK1aBqeABV8PcMs0w5qw==
 
 "@sudoo/random@^2.1.1":
   version "2.1.1"
@@ -156,10 +161,10 @@
     ts-node "8.10.2"
     typescript "3.9.5"
 
-"@sudoo/verify@^1.12.1":
-  version "1.12.1"
-  resolved "https://registry.yarnpkg.com/@sudoo/verify/-/verify-1.12.1.tgz#9cc7f53f6598164b831c81a20b691bd391e0bb23"
-  integrity sha512-4av60uf7zFmmeu398keXrIw1GOlvXen39vM+xeQ75LZ0a3wgsTse8emx/jw9W3FutnteGhBpPvj3CWwk2zYUqg==
+"@sudoo/verify@^1.13.0":
+  version "1.13.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/verify/-/verify-1.13.0.tgz#26953041d7211dcc008a6b5030bf71a20288bc94"
+  integrity sha512-5HgSXQSMNthyvkq9EjnnFkjPBazlH0f+yHxDCukWOPZHg2nLeyi0UX4PC1FfU0BEqDHQKV9A605gCfbZ1n2N0g==
 
 "@types/body-parser@*":
   version "1.19.0"
