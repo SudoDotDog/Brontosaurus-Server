@@ -51,6 +51,10 @@ export class ApplicationRoute extends BrontosaurusRoute {
 
             res.agent.add('name', application.name)
                 .add('redirections', application.redirections)
+                .add('iFrameProtocol', application.iFrameProtocol)
+                .add('postProtocol', application.postProtocol)
+                .add('alertProtocol', application.alertProtocol)
+                .add('noneProtocol', application.iFrameProtocol)
                 .addIfExist('indexPage', indexPage)
                 .addIfExist('entryPage', entryPage)
                 .addIfExist('favicon', otherInformation.favicon)
