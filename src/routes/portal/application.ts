@@ -54,7 +54,7 @@ export class ApplicationRoute extends BrontosaurusRoute {
                 .add('iFrameProtocol', application.iFrameProtocol)
                 .add('postProtocol', application.postProtocol)
                 .add('alertProtocol', application.alertProtocol)
-                .add('noneProtocol', application.iFrameProtocol)
+                .add('noneProtocol', application.noneProtocol)
                 .addIfExist('indexPage', indexPage)
                 .addIfExist('entryPage', entryPage)
                 .addIfExist('favicon', otherInformation.favicon)

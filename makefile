@@ -30,10 +30,11 @@ prepare: dev
 	@NODE_ENV=development \
 	BRONTOSAURUS_DB=$(DB) \
 	node dist/prepare.js
-	
+
 tests:
 	@echo "[INFO] Testing with Mocha"
-	@NODE_ENV=test $(mocha) --config test/.mocharc.json
+	@NODE_ENV=test \
+	$(mocha) --config test/.mocharc.json
 
 cov:
 	@echo "[INFO] Testing with Nyc and Mocha"
@@ -42,11 +43,15 @@ cov:
 
 lint:
 	@echo "[INFO] Linting"
-	@$(eslint) . --ext .ts,.tsx --config ./typescript/.eslintrc.json
+	@NODE_ENV=production \
+	$(eslint) . --ext .ts,.tsx \
+	--config ./typescript/.eslintrc.json
 
 lint-fix:
 	@echo "[INFO] Linting and Fixing"
-	@$(eslint) . --ext .ts,.tsx --config ./typescript/.eslintrc.json --fix
+	@NODE_ENV=development \
+	$(eslint) . --ext .ts,.tsx \
+	--config ./typescript/.eslintrc.json --fix
 
 install:
 	@echo "[INFO] Installing dev Dependencies"

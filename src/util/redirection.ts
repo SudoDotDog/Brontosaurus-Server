@@ -18,13 +18,16 @@ export const validateRedirection = (application: IApplicationModel, target: stri
     }
 
     if (target.toUpperCase().startsWith('IFRAME')) {
-        return true;
+        return application.iFrameProtocol;
     }
     if (target.toUpperCase().startsWith('POST')) {
-        return true;
+        return application.postProtocol;
+    }
+    if (target.toUpperCase().startsWith('ALERT')) {
+        return application.alertProtocol;
     }
     if (target.toUpperCase().startsWith('NONE')) {
-        return true;
+        return application.noneProtocol;
     }
 
     try {
