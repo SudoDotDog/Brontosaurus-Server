@@ -7,13 +7,15 @@ tsc := node_modules/.bin/tsc
 mocha := node_modules/.bin/mocha
 eslint := node_modules/.bin/eslint
 
+.IGNORE: clean-linux
+
 main: run
 
 dev:
 	@echo "[INFO] Building for development"
 	@NODE_ENV=development $(tsc) --p $(dev)
 
-build: clean
+build: clean-linux
 	@echo "[INFO] Building for production"
 	@NODE_ENV=production $(tsc) --p $(build)
 
@@ -61,12 +63,8 @@ install-prod:
 	@echo "[INFO] Installing Dependencies"
 	@yarn install --production=true
 
-clean:
-ifeq ($(OS), Windows_NT)
-	@echo "[INFO] Skipping"
-else
+clean-linux:
 	@echo "[INFO] Cleaning dist files"
 	@rm -rf dist
 	@rm -rf .nyc_output
 	@rm -rf coverage
-endif
