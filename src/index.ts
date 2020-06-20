@@ -19,8 +19,9 @@ import { ResetResetRoute } from './routes/reset/reset';
 import { ResetTemporaryRoute } from './routes/reset/temporary';
 import { BrontosaurusConfig, isDevelopment, readConfigEnvironment } from './util/conf';
 import { registerConnor } from './util/error';
+import { getVersion } from './util/version';
 
-const setting: SudooExpressApplication = SudooExpressApplication.create('Brontosaurus', '1');
+const setting: SudooExpressApplication = SudooExpressApplication.create('Brontosaurus', getVersion());
 
 if (isDevelopment()) {
     setting.allowCrossOrigin();
