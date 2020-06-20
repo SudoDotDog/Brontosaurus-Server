@@ -21,7 +21,10 @@ import { BrontosaurusConfig, isDevelopment, readConfigEnvironment } from './util
 import { registerConnor } from './util/error';
 import { getVersion } from './util/version';
 
-const setting: SudooExpressApplication = SudooExpressApplication.create('Brontosaurus', getVersion());
+const setting: SudooExpressApplication = SudooExpressApplication.create(
+    'Brontosaurus',
+    getVersion(),
+);
 
 if (isDevelopment()) {
     setting.allowCrossOrigin();
