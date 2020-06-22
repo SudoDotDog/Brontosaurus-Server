@@ -161,10 +161,10 @@
     ts-node "8.10.2"
     typescript "3.9.5"
 
-"@sudoo/verify@^1.13.0":
-  version "1.13.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/verify/-/verify-1.13.0.tgz#26953041d7211dcc008a6b5030bf71a20288bc94"
-  integrity sha512-5HgSXQSMNthyvkq9EjnnFkjPBazlH0f+yHxDCukWOPZHg2nLeyi0UX4PC1FfU0BEqDHQKV9A605gCfbZ1n2N0g==
+"@sudoo/verify@^1.14.0":
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/verify/-/verify-1.14.0.tgz#db3341ccb283019289634c11c2ed561d280aac5c"
+  integrity sha512-83zurGVZk7WWqw58M580FX6NGg0U+OGE58KCKsu69Mp0Iga1MFknTT6p9Zs1L6L4cj/V5lk3cifyL0TJibydYg==
 
 "@types/body-parser@*":
   version "1.19.0"
