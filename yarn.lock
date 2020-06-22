@@ -120,10 +120,10 @@
   resolved "https://registry.yarnpkg.com/@sudoo/mock/-/mock-1.3.0.tgz#84e8c26724b74045539d26a2c1673ab1c08de6c7"
   integrity sha512-ufWn6iRX3J5Q/3kyGUaku5BAe73QxofTosmdIyn397OtUI0NFQ/luGBFlG3af7Y4oR1f6LEOVI8n7fIYiw8Neg==
 
-"@sudoo/pattern@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/pattern/-/pattern-1.0.0.tgz#f32cfc790dda0ebd3634d5ae5fa6e26ca7c4b374"
-  integrity sha512-FAWani/fuZz6lkmXBwI/qbXVA26+CKA9WkgkBhQf/yV+f9LYZw1V1OWdPNONDctRl0RK1aBqeABV8PcMs0w5qw==
+"@sudoo/pattern@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/pattern/-/pattern-1.1.0.tgz#cb89371e6fca209a39c37d7eefcca2c88215f2f8"
+  integrity sha512-5jUV0BN8rFLbhx1ngwdcMOSJp4eanPIzDj+5MbWLTFglj/MvLXO5gYBYEF8w1aGnCb152T3aUFn2XXRYuPPhTA==
 
 "@sudoo/random@^2.1.1":
   version "2.1.1"
