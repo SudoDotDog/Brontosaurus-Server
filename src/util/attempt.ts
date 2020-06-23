@@ -7,6 +7,7 @@
 import { AttemptController, IAccountModel, IApplicationModel, IAttemptModel } from "@brontosaurus/db";
 import { SudooExpressRequest } from "@sudoo/express";
 import { BaseAttemptBody } from "../routes/basic";
+import { buildIps, buildUserAgent } from "./request";
 
 export type CreateAttemptConfig = {
 
@@ -17,32 +18,8 @@ export type CreateAttemptConfig = {
 
 export const saveAttemptByObjects = async (config: CreateAttemptConfig): Promise<IAttemptModel> => {
 
-    const userAgent: string | undefined =
-        config.request.headers['user-agent']
-        ?? config.request.headers['User-Agent']
-        ?? config.request.headers['USER-AGENT'];
-
-    const userAgentOverride: string | undefined = config.request.body.userAgentOverride;
-
-    const parsedUserAgent: string = typeof userAgent === 'string'
-        ? userAgent
-        : '[EMPTY-USER-AGENT-HEADER]';
-
-    const combinedUserAgent: string = typeof userAgentOverride === 'string'
-        ? `${userAgentOverride} [${parsedUserAgent}]`
-        : parsedUserAgent;
-
-    const ips: string[] = [...config.request.ips];
-    const realIp: string | undefined =
-        config.request.headers['x-real-ip']
-        ?? config.request.headers['X-Real-IP']
-        ?? config.request.headers['X-REAL-IP'];
-    if (typeof realIp === 'string') {
-
-        if (!ips.includes(realIp)) {
-            ips.unshift(realIp);
-        }
-    }
+    const combinedUserAgent: string = buildUserAgent(config.request);
+    const ips: string[] = buildIps(config.request);
 
     const attempt: IAttemptModel = AttemptController.createUnsavedAttempt({
         account: config.account._id,

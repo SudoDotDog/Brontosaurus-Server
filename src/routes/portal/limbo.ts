@@ -109,7 +109,7 @@ export class LimboRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.UNTRUSTED_REDIRECTION);
             }
 
-            account.setPassword(newPassword);
+            account.setPassword(newPassword, 'change');
             account.limbo = false;
             account.resetAttempt();
             await account.save();

@@ -88,7 +88,7 @@ export class ResetFinishRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.WIRED_PASSWORD, validateResult);
             }
 
-            account.setPassword(newPassword);
+            account.setPassword(newPassword, 'change');
             account.limbo = false;
             account.clearResetTokens();
             account.resetAttempt();
