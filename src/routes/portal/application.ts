@@ -8,7 +8,7 @@ import { ApplicationController, ApplicationOthersConfig, IApplicationModel, Info
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
-import { basicHook } from "../../handlers/hook";
+import { autoHook } from "../../handlers/hook";
 import { ERROR_CODE } from "../../util/error";
 import { BrontosaurusRoute } from "../basic";
 
@@ -23,7 +23,7 @@ export class ApplicationRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
-        basicHook.wrap(this._applicationHandler.bind(this), '/application - Application'),
+        autoHook.wrap(this._applicationHandler.bind(this), 'Application'),
     ];
 
     private async _applicationHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {

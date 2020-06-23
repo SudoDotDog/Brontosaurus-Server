@@ -4,12 +4,12 @@
  * @description Finish
  */
 
-import { AccountNamespaceMatch, IAccountModel, INamespaceModel, MATCH_FAILS_REASON, MatchController, PASSWORD_VALIDATE_RESPONSE, validatePassword } from "@brontosaurus/db";
+import { AccountNamespaceMatch, IAccountModel, INamespaceModel, MatchController, MATCH_FAILS_REASON, PASSWORD_VALIDATE_RESPONSE, validatePassword } from "@brontosaurus/db";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { SudooLog } from "@sudoo/log";
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
-import { basicHook } from "../../handlers/hook";
+import { autoHook } from "../../handlers/hook";
 import { buildNotMatchReason, ERROR_CODE, NOT_MATCH_REASON } from "../../util/error";
 import { BrontosaurusRoute } from "../basic";
 
@@ -27,7 +27,7 @@ export class ResetFinishRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
-        basicHook.wrap(this._resetFinishHandler.bind(this), '/reset/finish - Reset Finish'),
+        autoHook.wrap(this._resetFinishHandler.bind(this), 'Reset Finish'),
     ];
 
     private async _resetFinishHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {

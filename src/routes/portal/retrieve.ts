@@ -4,13 +4,13 @@
  * @description Retrieve
  */
 
-import { AccountNamespaceMatch, ApplicationController, IAccountModel, IApplicationModel, IAttemptModel, INamespaceModel, MATCH_FAILS_REASON, MatchController } from "@brontosaurus/db";
+import { AccountNamespaceMatch, ApplicationController, IAccountModel, IApplicationModel, IAttemptModel, INamespaceModel, MatchController, MATCH_FAILS_REASON } from "@brontosaurus/db";
 import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { SudooLog } from "@sudoo/log";
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
-import { basicHook } from "../../handlers/hook";
+import { autoHook } from "../../handlers/hook";
 import { saveAttemptByObjects } from "../../util/attempt";
 import { AccountHasOneOfApplicationGroups } from "../../util/auth";
 import { buildNotMatchReason, ERROR_CODE, NOT_MATCH_REASON } from "../../util/error";
@@ -32,7 +32,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
-        basicHook.wrap(this._retrieveHandler.bind(this), '/retrieve - Retrieve'),
+        autoHook.wrap(this._retrieveHandler.bind(this), 'Retrieve'),
     ];
 
     private async _retrieveHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {

@@ -8,7 +8,7 @@ import { PreferenceController } from "@brontosaurus/db";
 import { sample } from "@sudoo/bark/array";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
-import { basicHook } from "../../handlers/hook";
+import { autoHook } from "../../handlers/hook";
 import { BrontosaurusRoute } from "../basic";
 
 export class SimpleRoute extends BrontosaurusRoute {
@@ -17,7 +17,7 @@ export class SimpleRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.GET;
 
     public readonly groups: SudooExpressHandler[] = [
-        basicHook.wrap(this._simpleHandler.bind(this), '/simple - Simple'),
+        autoHook.wrap(this._simpleHandler.bind(this), 'Simple'),
     ];
 
     private async _simpleHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {

@@ -4,12 +4,12 @@
  * @description Reset
  */
 
-import { AccountNamespaceMatch, IAccountModel, INamespaceModel, MATCH_FAILS_REASON, MatchController } from "@brontosaurus/db";
+import { AccountNamespaceMatch, IAccountModel, INamespaceModel, MatchController, MATCH_FAILS_REASON } from "@brontosaurus/db";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { SudooLog } from "@sudoo/log";
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
-import { basicHook } from "../../handlers/hook";
+import { autoHook } from "../../handlers/hook";
 import { buildNotMatchReason, ERROR_CODE, NOT_MATCH_REASON } from "../../util/error";
 import { BrontosaurusRoute } from "../basic";
 
@@ -26,7 +26,7 @@ export class ResetResetRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
-        basicHook.wrap(this._resetResetHandler.bind(this), '/reset/reset - Reset Password'),
+        autoHook.wrap(this._resetResetHandler.bind(this), 'Reset Password'),
     ];
 
     private async _resetResetHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {

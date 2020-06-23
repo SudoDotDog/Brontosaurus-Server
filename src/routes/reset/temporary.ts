@@ -11,7 +11,7 @@ import { Safe, SafeExtract } from '@sudoo/extract';
 import { SudooLog } from "@sudoo/log";
 import { TIME_IN_MILLISECONDS } from "@sudoo/magic";
 import { sentEmailAgent, SentEmailOption } from "../../agent/email";
-import { basicHook } from "../../handlers/hook";
+import { autoHook } from "../../handlers/hook";
 import { buildNotMatchReason, ERROR_CODE, NOT_MATCH_REASON } from "../../util/error";
 import { saveResetByObjects } from "../../util/reset";
 import { BaseAttemptBody, BrontosaurusRoute } from "../basic";
@@ -30,7 +30,7 @@ export class ResetTemporaryRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
-        basicHook.wrap(this._resetTemporaryHandler.bind(this), '/reset/temporary - Reset Temporary'),
+        autoHook.wrap(this._resetTemporaryHandler.bind(this), 'Reset Temporary'),
     ];
 
     private async _resetTemporaryHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {

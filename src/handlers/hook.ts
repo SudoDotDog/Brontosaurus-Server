@@ -7,9 +7,9 @@
 import { SudooExpressHook, SudooExpressRequest, SudooExpressResponse } from '@sudoo/express';
 import { SudooLog } from '@sudoo/log';
 
-export const basicHook: SudooExpressHook<[string, boolean?]> =
+export const autoHook: SudooExpressHook<[string, boolean?]> =
     SudooExpressHook.create<[string, boolean?]>()
-        .before((_: SudooExpressRequest, res: SudooExpressResponse, content: string, isInfo: boolean = false): boolean => {
+        .before((req: SudooExpressRequest, res: SudooExpressResponse, content: string, isInfo: boolean = false): boolean => {
 
             const log: SudooLog = SudooLog.global;
             const isFailed: boolean = res.agent.isFailed();
@@ -21,9 +21,9 @@ export const basicHook: SudooExpressHook<[string, boolean?]> =
                 }`;
 
             if (isInfo) {
-                log.info(parsedContent);
+                log.info(`${req.path} - ${parsedContent}`);
             } else {
-                log.verbose(parsedContent);
+                log.verbose(`${req.path} - ${parsedContent}`);
             }
 
             return !isFailed;

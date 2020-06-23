@@ -10,7 +10,7 @@ import { IBrontosaurusBody } from "@brontosaurus/definition";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
-import { basicHook } from "../../handlers/hook";
+import { autoHook } from "../../handlers/hook";
 // eslint-disable-next-line camelcase
 import { Throwable_ValidateToken } from "../../util/auth";
 import { ERROR_CODE } from "../../util/error";
@@ -27,7 +27,7 @@ export class AccountValidateRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
-        basicHook.wrap(this._portalHandler.bind(this), '/validate - Validate'),
+        autoHook.wrap(this._portalHandler.bind(this), 'Validate'),
     ];
 
     private async _portalHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
