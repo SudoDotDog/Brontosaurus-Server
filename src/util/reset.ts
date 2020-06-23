@@ -16,7 +16,6 @@ export type CreateResetConfig = {
     readonly request: SudooExpressRequest;
     readonly succeed: boolean;
     readonly emailUsed: string;
-    readonly emailExpected?: string;
 } & BaseAttemptBody;
 
 export const saveResetByObjects = async (config: CreateResetConfig): Promise<IResetModel> => {
@@ -52,7 +51,7 @@ export const saveResetByObjects = async (config: CreateResetConfig): Promise<IRe
         account: config.account._id,
         succeed: config.succeed,
         emailUsed: config.emailUsed,
-        emailExpected: config.emailExpected ?? '[EMPTY]',
+        emailExpected: config.account.email ?? '[EMPTY]',
         platform: config.platform,
         userAgent: combinedUserAgent,
         target: config.target,
