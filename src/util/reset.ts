@@ -1,21 +1,25 @@
 /**
  * @author WMXPY
  * @namespace Brontosaurus_Server_Util
- * @description Attempt
+ * @description Reset
  */
 
-import { AttemptController, IAccountModel, IApplicationModel, IAttemptModel } from "@brontosaurus/db";
+import { IAccountModel, IApplicationModel, ResetController } from "@brontosaurus/db";
+import { IResetModel } from "@brontosaurus/db/model/reset";
 import { SudooExpressRequest } from "@sudoo/express";
 import { BaseAttemptBody } from "../routes/basic";
 
-export type CreateAttemptConfig = {
+export type CreateResetConfig = {
 
     readonly account: IAccountModel;
     readonly application: IApplicationModel;
     readonly request: SudooExpressRequest;
+    readonly succeed: boolean;
+    readonly emailUsed: string;
+    readonly emailExpected?: string;
 } & BaseAttemptBody;
 
-export const saveAttemptByObjects = async (config: CreateAttemptConfig): Promise<IAttemptModel> => {
+export const saveResetByObjects = async (config: CreateResetConfig): Promise<IResetModel> => {
 
     const userAgent: string | undefined =
         config.request.headers['user-agent']
@@ -44,9 +48,11 @@ export const saveAttemptByObjects = async (config: CreateAttemptConfig): Promise
         }
     }
 
-    const attempt: IAttemptModel = AttemptController.createUnsavedAttempt({
+    const reset: IResetModel = ResetController.createUnsavedReset({
         account: config.account._id,
-        succeed: true,
+        succeed: config.succeed,
+        emailUsed: config.emailUsed,
+        emailExpected: config.emailExpected ?? '[EMPTY]',
         platform: config.platform,
         userAgent: combinedUserAgent,
         target: config.target,
@@ -55,7 +61,7 @@ export const saveAttemptByObjects = async (config: CreateAttemptConfig): Promise
         application: config.application._id,
     });
 
-    await attempt.save();
+    await reset.save();
 
-    return attempt;
+    return reset;
 };
