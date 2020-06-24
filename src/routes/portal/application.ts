@@ -5,12 +5,19 @@
  */
 
 import { ApplicationController, ApplicationOthersConfig, IApplicationModel, InformationController, PreferenceController } from "@brontosaurus/db";
-import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
-import { Safe, SafeExtract } from '@sudoo/extract';
+import { createStringedBodyVerifyHandler, ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
+import { createMapPattern, createStringPattern, Pattern } from "@sudoo/pattern";
+import { fillStringedResult, StringedResult } from "@sudoo/verify";
 import { autoHook } from "../../handlers/hook";
 import { ERROR_CODE } from "../../util/error";
 import { BrontosaurusRoute } from "../basic";
+
+const bodyPattern: Pattern = createMapPattern({
+    applicationKey: createStringPattern(),
+}, {
+    strict: true,
+});
 
 export type ApplicationRouteBody = {
 
@@ -23,16 +30,23 @@ export class ApplicationRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
+        autoHook.wrap(createStringedBodyVerifyHandler(bodyPattern), 'Body Verify'),
         autoHook.wrap(this._applicationHandler.bind(this), 'Application'),
     ];
 
     private async _applicationHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
-        const body: SafeExtract<ApplicationRouteBody> = Safe.extract(req.body as ApplicationRouteBody, this._error(ERROR_CODE.REQUEST_DOES_MATCH_PATTERN));
+        const body: ApplicationRouteBody = req.body;
 
         try {
 
-            const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.direct('applicationKey'));
+            const verify: StringedResult = fillStringedResult(req.stringedBodyVerify);
+
+            if (!verify.succeed) {
+                throw this._error(ERROR_CODE.REQUEST_DOES_MATCH_PATTERN, verify.invalids[0]);
+            }
+
+            const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.applicationKey);
 
             if (!application) {
                 throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
