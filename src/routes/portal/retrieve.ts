@@ -47,6 +47,8 @@ export class RetrieveRoute extends BrontosaurusRoute {
             const target: string = body.directEnsure('target');
             const platform: string = body.directEnsure('platform');
 
+            const applicationKey: string = body.directEnsure('applicationKey');
+
             const matched: AccountNamespaceMatch = await MatchController.getAccountNamespaceMatchByUsernameAndNamespace(username, namespace);
 
             if (matched.succeed === false) {
@@ -95,7 +97,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 res.agent.add('limbo', false);
                 res.agent.add('needTwoFA', false);
 
-                const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.directEnsure('applicationKey'));
+                const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(applicationKey);
 
                 if (!application) {
                     throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
@@ -140,7 +142,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
                     res.agent.add('token', null);
                 } else {
 
-                    const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.directEnsure('applicationKey'));
+                    const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(applicationKey);
 
                     if (!application) {
                         throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
