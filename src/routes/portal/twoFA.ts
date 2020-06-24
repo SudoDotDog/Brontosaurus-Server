@@ -10,6 +10,7 @@ import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpress
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { SudooLog } from "@sudoo/log";
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
+import { TWO_FA_ATTEMPT_CONSUME } from "../../declare/attempt";
 import { autoHook } from "../../handlers/hook";
 import { saveAttemptByObjects } from "../../util/attempt";
 import { AccountHasOneOfApplicationGroups } from "../../util/auth";
@@ -89,8 +90,7 @@ export class TwoFARoute extends BrontosaurusRoute {
 
             if (!verifyResult) {
 
-                // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-                account.useAttemptPoint(5);
+                account.useAttemptPoint(TWO_FA_ATTEMPT_CONSUME);
                 await account.save();
 
                 throw this._error(ERROR_CODE.TWO_FA_DOES_NOT_MATCH, account.username);

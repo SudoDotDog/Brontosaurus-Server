@@ -10,6 +10,7 @@ import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpress
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { SudooLog } from "@sudoo/log";
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
+import { LOGIN_ATTEMPT_CONSUME } from "../../declare/attempt";
 import { autoHook } from "../../handlers/hook";
 import { saveAttemptByObjects } from "../../util/attempt";
 import { AccountHasOneOfApplicationGroups } from "../../util/auth";
@@ -43,6 +44,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
 
             const username: string = body.directEnsure('username');
             const namespace: string = body.directEnsure('namespace');
+            const password: string = body.directEnsure('password');
 
             const target: string = body.directEnsure('target');
             const platform: string = body.directEnsure('platform');
@@ -74,15 +76,12 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.OUT_OF_ATTEMPT, account.username, namespaceInstance.namespace);
             }
 
-            const password: string = body.directEnsure('password');
-
             const passwordMatched: boolean = account.verifyPassword(password);
             const applicationOrTemporaryPasswordMatched: boolean = account.verifySpecialPasswords(password);
 
             if (!passwordMatched && !applicationOrTemporaryPasswordMatched) {
 
-                // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-                account.useAttemptPoint(20);
+                account.useAttemptPoint(LOGIN_ATTEMPT_CONSUME);
                 await account.save();
                 SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.PASSWORD_NOT_MATCHED, account.username, namespaceInstance.namespace));
                 throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, account.username, namespaceInstance.namespace);

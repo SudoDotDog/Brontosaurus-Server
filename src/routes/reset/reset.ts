@@ -9,6 +9,7 @@ import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpress
 import { Safe, SafeExtract } from '@sudoo/extract';
 import { SudooLog } from "@sudoo/log";
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
+import { RESET_TOKEN_ATTEMPT_CONSUME } from "../../declare/attempt";
 import { autoHook } from "../../handlers/hook";
 import { buildNotMatchReason, ERROR_CODE, NOT_MATCH_REASON } from "../../util/error";
 import { BrontosaurusRoute } from "../basic";
@@ -66,8 +67,8 @@ export class ResetResetRoute extends BrontosaurusRoute {
             const tokenMatched: boolean = account.verifyResetToken(resetToken);
 
             if (!tokenMatched) {
-                // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-                account.useAttemptPoint(15);
+
+                account.useAttemptPoint(RESET_TOKEN_ATTEMPT_CONSUME);
                 await account.save();
                 throw this._error(ERROR_CODE.TOKEN_DOES_NOT_MATCH, account.username, namespaceInstance.namespace);
             }
