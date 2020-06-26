@@ -6,15 +6,24 @@
 
 import { AccountNamespaceMatch, ApplicationController, IAccountModel, IApplicationModel, INamespaceModel, MatchController, MATCH_FAILS_REASON, PreferenceController } from "@brontosaurus/db";
 import { IResetModel } from "@brontosaurus/db/model/reset";
-import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
-import { Safe, SafeExtract } from '@sudoo/extract';
+import { createStringedBodyVerifyHandler, ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { SudooLog } from "@sudoo/log";
 import { TIME_IN_MILLISECONDS } from "@sudoo/magic";
+import { createStringPattern, Pattern } from "@sudoo/pattern";
+import { fillStringedResult, StringedResult } from "@sudoo/verify";
 import { sentEmailAgent, SentEmailOption } from "../../agent/email";
 import { autoHook } from "../../handlers/hook";
 import { buildNotMatchReason, ERROR_CODE, NOT_MATCH_REASON } from "../../util/error";
 import { saveResetByObjects } from "../../util/reset";
-import { BaseAttemptBody, BrontosaurusRoute } from "../basic";
+import { BaseAttemptBody, BrontosaurusRoute, extendAttemptBodyPattern } from "../basic";
+
+const bodyPattern: Pattern = extendAttemptBodyPattern({
+
+    username: createStringPattern(),
+    namespace: createStringPattern(),
+    email: createStringPattern(),
+    applicationKey: createStringPattern(),
+});
 
 export type ResetTemporaryRouteBody = {
 
@@ -30,63 +39,62 @@ export class ResetTemporaryRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
+        autoHook.wrap(createStringedBodyVerifyHandler(bodyPattern), 'Body Verify'),
         autoHook.wrap(this._resetTemporaryHandler.bind(this), 'Reset Temporary'),
     ];
 
     private async _resetTemporaryHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
-        const body: SafeExtract<ResetTemporaryRouteBody> = Safe.extract(req.body as ResetTemporaryRouteBody, this._error(ERROR_CODE.REQUEST_DOES_MATCH_PATTERN));
+        const body: ResetTemporaryRouteBody = req.body;
 
         try {
 
-            const username: string = body.directEnsure('username');
-            const namespace: string = body.directEnsure('namespace');
-            const email: string = body.directEnsure('email');
-            const applicationKey: string = body.directEnsure('applicationKey');
+            const verify: StringedResult = fillStringedResult(req.stringedBodyVerify);
 
-            const target: string = body.directEnsure('target');
-            const platform: string = body.directEnsure('platform');
+            if (!verify.succeed) {
+                throw this._error(ERROR_CODE.REQUEST_DOES_MATCH_PATTERN, verify.invalids[0]);
+            }
 
-            const matched: AccountNamespaceMatch = await MatchController.getAccountNamespaceMatchByUsernameAndNamespace(username, namespace);
+            const matched: AccountNamespaceMatch = await MatchController.getAccountNamespaceMatchByUsernameAndNamespace(body.username, body.namespace);
 
             if (matched.succeed === false) {
 
                 switch (matched.reason) {
                     case MATCH_FAILS_REASON.ACCOUNT_NOT_FOUND: {
 
-                        SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.ACCOUNT_NOT_FOUND, username, namespace));
-                        throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, username, namespace);
+                        SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.ACCOUNT_NOT_FOUND, body.username, body.namespace));
+                        throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, body.username, body.namespace);
                     }
                     case MATCH_FAILS_REASON.NAMESPACE_NOT_FOUND: {
 
-                        SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.NAMESPACE_NOT_FOUND, username, namespace));
-                        throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, username, namespace);
+                        SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.NAMESPACE_NOT_FOUND, body.username, body.namespace));
+                        throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, body.username, body.namespace);
                     }
                 }
             }
 
             const account: IAccountModel = matched.account;
             const namespaceInstance: INamespaceModel = matched.namespace;
-            const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(applicationKey);
+            const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.applicationKey);
 
             if (!application) {
-                throw this._error(ERROR_CODE.APPLICATION_NOT_FOUND, applicationKey);
+                throw this._error(ERROR_CODE.APPLICATION_NOT_FOUND, body.applicationKey);
             }
 
             if (!account.active) {
                 throw this._error(ERROR_CODE.INACTIVE_ACCOUNT, account.username, namespaceInstance.namespace);
             }
 
-            if (account.email !== email) {
+            if (account.email !== body.email) {
 
                 const failedReset: IResetModel = await saveResetByObjects({
                     account,
                     application,
                     request: req,
-                    platform,
-                    target,
+                    platform: body.platform,
+                    target: body.target,
                     succeed: false,
-                    emailUsed: email,
+                    emailUsed: body.email,
                 });
 
                 await failedReset.save();
@@ -107,10 +115,10 @@ export class ResetTemporaryRoute extends BrontosaurusRoute {
                 account,
                 application,
                 request: req,
-                platform,
-                target,
+                platform: body.platform,
+                target: body.target,
                 succeed: true,
-                emailUsed: email,
+                emailUsed: body.email,
             });
 
             await reset.save();
@@ -121,10 +129,10 @@ export class ResetTemporaryRoute extends BrontosaurusRoute {
 
             const result: boolean = await this._sentEmail(mailerTransport, {
                 from: mailerSourceResetPassword,
-                to: email,
+                to: body.email,
                 subject: 'Temporary Password',
-                html: this._createHtmlContent(username, resetToken),
-                text: this._createTextContent(username, resetToken),
+                html: this._createHtmlContent(body.username, resetToken),
+                text: this._createTextContent(body.username, resetToken),
             });
 
             if (!result) {
@@ -137,7 +145,7 @@ export class ResetTemporaryRoute extends BrontosaurusRoute {
             await account.save();
         } catch (err) {
 
-            SudooLog.global.warning(`Reset Password Not Match Username: ${String(req.body.username)}, Namespace: ${String(req.body.namespace)}, Email: ${String(req.body.email)}`);
+            SudooLog.global.warning(`Reset Password Not Match Username: ${String(body.username)}, Namespace: ${String(body.namespace)}, Email: ${String(body.email)}`);
         } finally {
             res.agent.add('finish', 'finish');
             next();
