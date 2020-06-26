@@ -6,10 +6,11 @@
 
 import { AccountNamespaceMatch, ApplicationController, IAccountModel, IApplicationModel, IAttemptModel, INamespaceModel, MatchController, MATCH_FAILS_REASON } from "@brontosaurus/db";
 import { IBrontosaurusBody } from "@brontosaurus/definition";
-import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
-import { Safe, SafeExtract } from '@sudoo/extract';
+import { createStringedBodyVerifyHandler, ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { SudooLog } from "@sudoo/log";
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
+import { createStringPattern, Pattern } from "@sudoo/pattern";
+import { fillStringedResult, StringedResult } from "@sudoo/verify";
 import { LOGIN_ATTEMPT_CONSUME } from "../../declare/attempt";
 import { autoHook } from "../../handlers/hook";
 import { saveAttemptByObjects } from "../../util/attempt";
@@ -17,7 +18,15 @@ import { AccountHasOneOfApplicationGroups } from "../../util/auth";
 import { buildNotMatchReason, ERROR_CODE, NOT_MATCH_REASON } from "../../util/error";
 import { validateRedirection } from "../../util/redirection";
 import { buildBrontosaurusBody, createToken } from '../../util/token';
-import { BaseAttemptBody, BrontosaurusRoute } from "../basic";
+import { BaseAttemptBody, BrontosaurusRoute, extendAttemptBodyPattern } from "../basic";
+
+const bodyPattern: Pattern = extendAttemptBodyPattern({
+
+    username: createStringPattern(),
+    namespace: createStringPattern(),
+    password: createStringPattern(),
+    applicationKey: createStringPattern(),
+});
 
 export type RetrieveRouteBody = {
 
@@ -33,38 +42,36 @@ export class RetrieveRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
+        autoHook.wrap(createStringedBodyVerifyHandler(bodyPattern), 'Body Verify'),
         autoHook.wrap(this._retrieveHandler.bind(this), 'Retrieve'),
     ];
 
     private async _retrieveHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
-        const body: SafeExtract<RetrieveRouteBody> = Safe.extract(req.body as RetrieveRouteBody, this._error(ERROR_CODE.REQUEST_DOES_MATCH_PATTERN));
+        const body: RetrieveRouteBody = req.body;
 
         try {
 
-            const username: string = body.directEnsure('username');
-            const namespace: string = body.directEnsure('namespace');
-            const password: string = body.directEnsure('password');
+            const verify: StringedResult = fillStringedResult(req.stringedBodyVerify);
 
-            const target: string = body.directEnsure('target');
-            const platform: string = body.directEnsure('platform');
+            if (!verify.succeed) {
+                throw this._error(ERROR_CODE.REQUEST_DOES_MATCH_PATTERN, verify.invalids[0]);
+            }
 
-            const applicationKey: string = body.directEnsure('applicationKey');
-
-            const matched: AccountNamespaceMatch = await MatchController.getAccountNamespaceMatchByUsernameAndNamespace(username, namespace);
+            const matched: AccountNamespaceMatch = await MatchController.getAccountNamespaceMatchByUsernameAndNamespace(body.username, body.namespace);
 
             if (matched.succeed === false) {
 
                 switch (matched.reason) {
                     case MATCH_FAILS_REASON.ACCOUNT_NOT_FOUND: {
 
-                        SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.ACCOUNT_NOT_FOUND, username, namespace));
-                        throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, username, namespace);
+                        SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.ACCOUNT_NOT_FOUND, body.username, body.namespace));
+                        throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, body.username, body.namespace);
                     }
                     case MATCH_FAILS_REASON.NAMESPACE_NOT_FOUND: {
 
-                        SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.NAMESPACE_NOT_FOUND, username, namespace));
-                        throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, username, namespace);
+                        SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.NAMESPACE_NOT_FOUND, body.username, body.namespace));
+                        throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, body.username, body.namespace);
                     }
                 }
             }
@@ -76,8 +83,8 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.OUT_OF_ATTEMPT, account.username, namespaceInstance.namespace);
             }
 
-            const passwordMatched: boolean = account.verifyPassword(password);
-            const applicationOrTemporaryPasswordMatched: boolean = account.verifySpecialPasswords(password);
+            const passwordMatched: boolean = account.verifyPassword(body.password);
+            const applicationOrTemporaryPasswordMatched: boolean = account.verifySpecialPasswords(body.password);
 
             if (!passwordMatched && !applicationOrTemporaryPasswordMatched) {
 
@@ -96,7 +103,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 res.agent.add('limbo', false);
                 res.agent.add('needTwoFA', false);
 
-                const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(applicationKey);
+                const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.applicationKey);
 
                 if (!application) {
                     throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
@@ -106,7 +113,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
                     throw this._error(ERROR_CODE.APPLICATION_HAS_NO_PORTAL_ACCESS);
                 }
 
-                if (!validateRedirection(application, target)) {
+                if (!validateRedirection(application, body.target)) {
                     throw this._error(ERROR_CODE.UNTRUSTED_REDIRECTION);
                 }
 
@@ -124,8 +131,8 @@ export class RetrieveRoute extends BrontosaurusRoute {
                     account,
                     application,
                     request: req,
-                    platform,
-                    target,
+                    platform: body.platform,
+                    target: body.target,
                 });
 
                 const token: string = createToken(attempt.identifier, object, application);
@@ -141,7 +148,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
                     res.agent.add('token', null);
                 } else {
 
-                    const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(applicationKey);
+                    const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.applicationKey);
 
                     if (!application) {
                         throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
@@ -151,7 +158,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
                         throw this._error(ERROR_CODE.APPLICATION_HAS_NO_PORTAL_ACCESS);
                     }
 
-                    if (!validateRedirection(application, target)) {
+                    if (!validateRedirection(application, body.target)) {
                         throw this._error(ERROR_CODE.UNTRUSTED_REDIRECTION);
                     }
 
@@ -169,8 +176,8 @@ export class RetrieveRoute extends BrontosaurusRoute {
                         account,
                         application,
                         request: req,
-                        platform,
-                        target,
+                        platform: body.platform,
+                        target: body.target,
                     });
 
                     const token: string = createToken(attempt.identifier, object, application);

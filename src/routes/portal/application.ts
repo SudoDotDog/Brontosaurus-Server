@@ -14,6 +14,7 @@ import { ERROR_CODE } from "../../util/error";
 import { BrontosaurusRoute } from "../basic";
 
 const bodyPattern: Pattern = createStrictMapPattern({
+
     applicationKey: createStringPattern(),
 });
 
