@@ -6,9 +6,9 @@
 
 import { ISudooExpressRoute, ROUTE_MODE, SudooExpressErrorInfo, SudooExpressHandler } from "@sudoo/express";
 import { SudooLog } from '@sudoo/log';
+import { createStrictMapPattern, createStringPattern, Pattern } from "@sudoo/pattern";
 import { ConnorError, ErrorCreationFunction } from "connor";
 import { getErrorCreationFunction } from "../util/error";
-import { Pattern, createStrictMapPattern, createStringPattern } from "@sudoo/pattern";
 
 export const extendAttemptBodyPattern = (record: Record<string, Pattern>): Pattern => {
 

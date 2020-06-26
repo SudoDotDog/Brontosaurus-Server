@@ -6,17 +6,27 @@
 
 import { AccountNamespaceMatch, ApplicationController, IAccountModel, IApplicationModel, IAttemptModel, INamespaceModel, MatchController, MATCH_FAILS_REASON, PASSWORD_VALIDATE_RESPONSE, validatePassword } from "@brontosaurus/db";
 import { IBrontosaurusBody } from "@brontosaurus/definition";
-import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
-import { Safe, SafeExtract } from '@sudoo/extract';
+import { createStringedBodyVerifyHandler, ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { SudooLog } from "@sudoo/log";
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
+import { createStringPattern, Pattern } from "@sudoo/pattern";
+import { fillStringedResult, StringedResult } from "@sudoo/verify";
 import { autoHook } from "../../handlers/hook";
 import { saveAttemptByObjects } from "../../util/attempt";
 import { AccountHasOneOfApplicationGroups } from "../../util/auth";
 import { buildNotMatchReason, ERROR_CODE, NOT_MATCH_REASON } from "../../util/error";
 import { validateRedirection } from "../../util/redirection";
 import { buildBrontosaurusBody, createToken } from '../../util/token';
-import { BaseAttemptBody, BrontosaurusRoute } from "../basic";
+import { BaseAttemptBody, BrontosaurusRoute, extendAttemptBodyPattern } from "../basic";
+
+const bodyPattern: Pattern = extendAttemptBodyPattern({
+
+    username: createStringPattern(),
+    namespace: createStringPattern(),
+    oldPassword: createStringPattern(),
+    newPassword: createStringPattern(),
+    applicationKey: createStringPattern(),
+});
 
 export type LimboRouteBody = {
 
@@ -33,35 +43,36 @@ export class LimboRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
+        autoHook.wrap(createStringedBodyVerifyHandler(bodyPattern), 'Body Verify'),
         autoHook.wrap(this._limboHandler.bind(this), 'Limbo'),
     ];
 
     private async _limboHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
-        const body: SafeExtract<LimboRouteBody> = Safe.extract(req.body as LimboRouteBody, this._error(ERROR_CODE.REQUEST_DOES_MATCH_PATTERN));
+        const body: LimboRouteBody = req.body;
 
         try {
 
-            const username: string = body.directEnsure('username');
-            const namespace: string = body.directEnsure('namespace');
+            const verify: StringedResult = fillStringedResult(req.stringedBodyVerify);
 
-            const target: string = body.directEnsure('target');
-            const platform: string = body.directEnsure('platform');
+            if (!verify.succeed) {
+                throw this._error(ERROR_CODE.REQUEST_DOES_MATCH_PATTERN, verify.invalids[0]);
+            }
 
-            const matched: AccountNamespaceMatch = await MatchController.getAccountNamespaceMatchByUsernameAndNamespace(username, namespace);
+            const matched: AccountNamespaceMatch = await MatchController.getAccountNamespaceMatchByUsernameAndNamespace(body.username, body.namespace);
 
             if (matched.succeed === false) {
 
                 switch (matched.reason) {
                     case MATCH_FAILS_REASON.ACCOUNT_NOT_FOUND: {
 
-                        SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.ACCOUNT_NOT_FOUND, username, namespace));
-                        throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, username, namespace);
+                        SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.ACCOUNT_NOT_FOUND, body.username, body.namespace));
+                        throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, body.username, body.namespace);
                     }
                     case MATCH_FAILS_REASON.NAMESPACE_NOT_FOUND: {
 
-                        SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.NAMESPACE_NOT_FOUND, username, namespace));
-                        throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, username, namespace);
+                        SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.NAMESPACE_NOT_FOUND, body.username, body.namespace));
+                        throw this._error(ERROR_CODE.PASSWORD_DOES_NOT_MATCH, body.username, body.namespace);
                     }
                 }
             }
@@ -73,7 +84,7 @@ export class LimboRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.OUT_OF_ATTEMPT, account.username, namespaceInstance.namespace);
             }
 
-            const passwordMatched: boolean = account.verifyPassword(body.directEnsure('oldPassword'));
+            const passwordMatched: boolean = account.verifyPassword(body.oldPassword);
 
             if (!passwordMatched) {
                 SudooLog.global.error(buildNotMatchReason(NOT_MATCH_REASON.PASSWORD_NOT_MATCHED, account.username, namespaceInstance.namespace));
@@ -84,7 +95,7 @@ export class LimboRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.INACTIVE_ACCOUNT, account.username, namespaceInstance.namespace);
             }
 
-            const newPassword: string = body.directEnsure('newPassword');
+            const newPassword: string = body.newPassword;
 
             const validateResult: PASSWORD_VALIDATE_RESPONSE = validatePassword(newPassword);
 
@@ -95,7 +106,7 @@ export class LimboRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.WIRED_PASSWORD, validateResult);
             }
 
-            const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.directEnsure('applicationKey'));
+            const application: IApplicationModel | null = await ApplicationController.getApplicationByKey(body.applicationKey);
 
             if (!application) {
                 throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
@@ -105,7 +116,7 @@ export class LimboRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.APPLICATION_HAS_NO_PORTAL_ACCESS);
             }
 
-            if (!validateRedirection(application, target)) {
+            if (!validateRedirection(application, body.target)) {
                 throw this._error(ERROR_CODE.UNTRUSTED_REDIRECTION);
             }
 
@@ -128,8 +139,8 @@ export class LimboRoute extends BrontosaurusRoute {
                 account,
                 application,
                 request: req,
-                platform,
-                target,
+                platform: body.platform,
+                target: body.target,
             });
 
             const token: string = createToken(attempt.identifier, object, application);
