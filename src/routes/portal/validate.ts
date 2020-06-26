@@ -7,14 +7,20 @@
 import { BrontosaurusToken } from "@brontosaurus/core";
 import { ApplicationController, IAccountModel, IApplicationModel, MatchController } from "@brontosaurus/db";
 import { IBrontosaurusBody } from "@brontosaurus/definition";
-import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
-import { Safe, SafeExtract } from '@sudoo/extract';
+import { createStringedBodyVerifyHandler, ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
+import { Safe } from '@sudoo/extract';
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
+import { createStrictMapPattern, createStringPattern, Pattern } from "@sudoo/pattern";
+import { fillStringedResult, StringedResult } from "@sudoo/verify";
 import { autoHook } from "../../handlers/hook";
 // eslint-disable-next-line camelcase
 import { Throwable_ValidateToken } from "../../util/auth";
 import { ERROR_CODE } from "../../util/error";
 import { BrontosaurusRoute } from "../basic";
+
+const bodyPattern: Pattern = createStrictMapPattern({
+    token: createStringPattern(),
+});
 
 export type AccountValidateRouteBody = {
 
@@ -27,17 +33,23 @@ export class AccountValidateRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.POST;
 
     public readonly groups: SudooExpressHandler[] = [
+        autoHook.wrap(createStringedBodyVerifyHandler(bodyPattern), 'Body Verify'),
         autoHook.wrap(this._portalHandler.bind(this), 'Validate'),
     ];
 
     private async _portalHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
-        const body: SafeExtract<AccountValidateRouteBody> = Safe.extract(req.body as AccountValidateRouteBody);
+        const body: AccountValidateRouteBody = req.body;
 
         try {
 
-            const token: string = body.direct('token');
-            const applicationKey: string | null = BrontosaurusToken.key(token);
+            const verify: StringedResult = fillStringedResult(req.stringedBodyVerify);
+
+            if (!verify.succeed) {
+                throw this._error(ERROR_CODE.REQUEST_DOES_MATCH_PATTERN, verify.invalids[0]);
+            }
+
+            const applicationKey: string | null = BrontosaurusToken.key(body.token);
 
             if (!applicationKey) {
                 throw this._error(ERROR_CODE.APPLICATION_KEY_NOT_FOUND);
@@ -47,7 +59,7 @@ export class AccountValidateRoute extends BrontosaurusRoute {
             const brontosaurus: IBrontosaurusBody = Throwable_ValidateToken({
                 public: application.publicKey,
                 private: application.privateKey,
-            }, application.expire, token);
+            }, application.expire, body.token);
 
             const account: IAccountModel | null = await MatchController.getAccountByUsernameAndNamespaceName(brontosaurus.username, brontosaurus.namespace);
 
