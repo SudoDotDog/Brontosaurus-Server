@@ -68,10 +68,10 @@
   resolved "https://registry.yarnpkg.com/@sudoo/eslint-config/-/eslint-config-1.2.0.tgz#f33e5f148b35dce99e99aafaaddfc92d11d118a6"
   integrity sha512-YcPs2ZRTrJPvpDSGBsmOLPIJL5NDg60Fv/avM19DGp/Ze+iBpir5JzmI8DHIlKP50xRxObHjXmwyeUJxHHjovQ==
 
-"@sudoo/express@^2.10.0":
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-2.10.0.tgz#31f386c69f7fd7c36e032d09d6672850b27276e8"
-  integrity sha512-wFBiYGoOLtP3G2GLSyCLyxYBGfWqoceTtkmwd0HRdZe/nlcYJwaLbLz0JzV+SF6BNCf+76IaVdiSQJM7QoTgBg==
+"@sudoo/express@^2.11.0":
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/express/-/express-2.11.0.tgz#6ade9d1df037307e1a5c4dcfd96b5c88963f66c7"
+  integrity sha512-3PRk58IM/OVzLoHYagbFJEVliZlZxEkqcOEp65gJIe15jeRjOVuabNY19Y4n9JtfB+PJPUXk+NrhcBDbSWPHcA==
   dependencies:
     "@sudoo/io" "^1.8.0"
     "@sudoo/magic" "^1.8.0"

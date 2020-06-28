@@ -19,7 +19,7 @@
     "@brontosaurus/core": "^3.4.0",
     "@brontosaurus/db": "^3.20.2",
     "@sudoo/bark": "^2.7.2",
-    "@sudoo/express": "^2.10.0",
+    "@sudoo/express": "^2.11.0",
     "@sudoo/extract": "^1.4.2",
     "@sudoo/log": "^1.4.1",
     "@sudoo/magic": "^1.8.0",
