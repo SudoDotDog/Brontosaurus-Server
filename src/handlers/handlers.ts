@@ -14,7 +14,7 @@ export const createTokenHandler = (): SudooExpressHandler => {
         const authHeader: string | undefined = req.header('authorization') || req.header('Authorization');
         const auth: string | null = parseBearerAuthorization(authHeader);
 
-        req.info.token = auth;
+        req.infos.token = auth;
 
         next();
     };
