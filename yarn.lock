@@ -28,16 +28,16 @@
   resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-3.4.0.tgz#e15554154d8654d405daa0260577eca5442c896e"
   integrity sha512-Zo+vpKEXMBzZdShn1dwOyKg/xwuQlCoD60fiXsP2etQTTiVKsuBljKCFATZjAsMNP9LlMibCrjlnvtCwWZLGZg==
 
-"@brontosaurus/db@^3.20.2":
-  version "3.20.2"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.20.2.tgz#649be58059c90e742cd87af8ed57708671a6ba98"
-  integrity sha512-gAu/a7PT2+wpcT1nZGIwhzG18TZJYJzrGmORfkrgz012B7BgGJAsSicw4Ie3N1bd+t5TG5nvx1wZRxkUfJiegw==
+"@brontosaurus/db@^3.21.3":
+  version "3.21.3"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.21.3.tgz#d6d0e7d5b2af1b636296a75a3ffdc7838300b69e"
+  integrity sha512-Id4DAW2T1e2/ZT4OAt/oG4AQ07uRFiior/hxkOd/cVleTypQLecFfFRwKP7Bu+HNpMZ4qXKCnKaNzMvOaRlIZg==
   dependencies:
     "@brontosaurus/core" "^3.4.0"
     "@brontosaurus/definition" "^3.4.0"
     "@sudoo/bark" "^2.7.2"
     "@sudoo/random" "^2.1.1"
-    mongoose "^5.9.20"
+    mongoose "^5.9.21"
     speakeasy "^2.0.0"
 
 "@brontosaurus/definition@^3.4.0":
@@ -376,15 +376,10 @@ ajv@^6.10.0, ajv@^6.10.2:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-ansi-colors@4.1.1:
+ansi-colors@4.1.1, ansi-colors@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-4.1.1.tgz#cbb9ae256bf750af1eab344f229aa27fe94ba348"
   integrity sha512-JoX0apGbHaUJBNl6yF+p6JAFYZ666/hhCGKN5t9QFjbJQKUU/g8MNbFDbvfrgKXvI1QpZplPOnwIo99lX/AAmA==
-
-ansi-colors@^3.2.1:
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-3.2.4.tgz#e3a3da4bfbae6c86a9c285625de124a234026fbf"
-  integrity sha512-hHUXGagefjN2iRrID63xckIvotOXOojhQKWIPUZ4mNUZ9nLZW+7FMNoE1lOkEhNWYsx/7ysGIuJYCiMAA9FnrA==
 
 ansi-regex@^3.0.0:
   version "3.0.0"
@@ -811,11 +806,11 @@ encodeurl@~1.0.2:
   integrity sha1-rT/0yG7C0CkyL1oCw6mmBslbP1k=
 
 enquirer@^2.3.5:
-  version "2.3.5"
-  resolved "https://registry.yarnpkg.com/enquirer/-/enquirer-2.3.5.tgz#3ab2b838df0a9d8ab9e7dff235b0e8712ef92381"
-  integrity sha512-BNT1C08P9XD0vNg3J475yIUG+mVdp9T6towYFHUv897X0KoHBjB1shyrNmhmtHWKP17iSWgo7Gqh7BBuzLZMSA==
+  version "2.3.6"
+  resolved "https://registry.yarnpkg.com/enquirer/-/enquirer-2.3.6.tgz#2a7fe5dd634a1e4125a975ec994ff5456dc3734d"
+  integrity sha512-yjNnPr315/FjS4zIsUxYguYUPP2e1NK4d7E7ZOLiyYCcbFBiTMyID+2wvm2w6+pZ/odMA7cRkjhsPbltwBOrLg==
   dependencies:
-    ansi-colors "^3.2.1"
+    ansi-colors "^4.1.1"
 
 es-abstract@^1.17.0, es-abstract@^1.17.0-next.1, es-abstract@^1.17.4, es-abstract@^1.17.5:
   version "1.17.6"
@@ -1591,10 +1586,10 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@^5.9.20:
-  version "5.9.20"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.9.20.tgz#975255196104ce760386ab439b1dad43caae23b5"
-  integrity sha512-vRP6Csu2obzSl3ed7kTQMrolBNgweiRJ/eBU1PSe/rJfjqWS1oqDE2D1ZPGxkVOsKXs7Gyd84GAXerj8IB2UWg==
+mongoose@^5.9.21:
+  version "5.9.21"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.9.21.tgz#73bccfada310d0ad4c51b18b038d36a9b50aa870"
+  integrity sha512-HQUemnKJdrE8ig+d3RTeOan6DWasmda8V97fs1ymozTNSuh2eGaf4D92/BrXYCw5QTgE/Ff5SxalndfgLn3DGg==
   dependencies:
     bson "^1.1.4"
     kareem "2.3.1"
