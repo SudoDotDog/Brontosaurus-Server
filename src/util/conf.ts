@@ -16,10 +16,15 @@ export type BrontosaurusConfig = {
     database: string;
 };
 
-export const readConfigEnvironment = (): BrontosaurusConfig => {
+export const getDatabaseLink = (): string | undefined => {
 
     const database: string | undefined = process.env.BRONTOSAURUS_DB || process.env.BRONTOSAURUS_DATABASE;
+    return database;
+};
 
+export const readConfigEnvironment = (): BrontosaurusConfig => {
+
+    const database: string | undefined = getDatabaseLink();
     if (database) {
         return {
             database,
