@@ -4,6 +4,8 @@
  * @description Conf
  */
 
+export const hostPort: number = 9000;
+
 export type BrontosaurusConfig = {
 
     database: string;

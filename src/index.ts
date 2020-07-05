@@ -17,7 +17,7 @@ import { AccountValidateRoute } from './routes/portal/validate';
 import { ResetFinishRoute } from './routes/reset/finish';
 import { ResetResetRoute } from './routes/reset/reset';
 import { ResetTemporaryRoute } from './routes/reset/temporary';
-import { BrontosaurusConfig, isDevelopment, readConfigEnvironment } from './util/conf';
+import { BrontosaurusConfig, hostPort, isDevelopment, readConfigEnvironment } from './util/conf';
 import { registerConnor } from './util/error';
 import { getVersion } from './util/version';
 
@@ -73,6 +73,5 @@ app.routes(
     new ResetFinishRoute(),
 );
 
-// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-app.host(8080);
-SudooLog.global.critical('Hosting at 8080');
+app.host(hostPort);
+SudooLog.global.info(`Hosting at port ${hostPort}`);
