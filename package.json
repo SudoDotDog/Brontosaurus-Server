@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@sudoo/triforce": "^2.7.5",
-    "@sudoo/triforce-mongoose-dev": "^1.4.2",
+    "@sudoo/triforce-mongoose-dev": "^1.4.3",
     "@types/nodemailer": "^6.4.0"
   },
   "nyc": {

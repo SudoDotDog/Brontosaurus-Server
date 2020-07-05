@@ -117,13 +117,13 @@
   resolved "https://registry.yarnpkg.com/@sudoo/random/-/random-2.1.1.tgz#acc6a9a5257d1ce6ea0bfe2c87a3696d873492ac"
   integrity sha512-OQE1ea2d7RyTlocWorCcJurMDPUcs6XZiPBOjA/x2Bq1p10YUZNbQZtF+X4OXyjsDH36RxbWvU8P49uRicxq1w==
 
-"@sudoo/triforce-mongoose-dev@^1.4.2":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@sudoo/triforce-mongoose-dev/-/triforce-mongoose-dev-1.4.2.tgz#532b224f8ce7d600240198ef519b40e541b5d200"
-  integrity sha512-CSryDYpvpUqjaoyromAoq5jUVVXZ5Xco7XvZjaeVLz3klaIVMy5WhRwQbIS7a/wBL3E45EifDE4AbPHS+2rSyQ==
+"@sudoo/triforce-mongoose-dev@^1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@sudoo/triforce-mongoose-dev/-/triforce-mongoose-dev-1.4.3.tgz#7784a2d927c838d0d50c08a44c8f713904dce9a3"
+  integrity sha512-HpNH0gfueNHvUQ31cJ7gnD323iUFdVcMG0OWVShYINWVNT/mYQsg0o2/4TK9A+PjzXSp7FZExVs4r8r4Hq/+Ag==
   dependencies:
-    "@types/mongodb" "3.5.18"
-    "@types/mongoose" "5.7.21"
+    "@types/mongodb" "3.5.25"
+    "@types/mongoose" "5.7.29"
 
 "@sudoo/triforce@^2.7.5":
   version "2.7.5"
@@ -229,7 +229,7 @@
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-7.0.2.tgz#b17f16cf933597e10d6d78eae3251e692ce8b0ce"
   integrity sha512-ZvO2tAcjmMi8V/5Z3JsyofMe3hasRcaw88cto5etSVMwVQfeivGAlEYmaQgceUSVYFofVjT+ioHsATjdWcFt1w==
 
-"@types/mongodb@*":
+"@types/mongodb@*", "@types/mongodb@3.5.25":
   version "3.5.25"
   resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.5.25.tgz#ab187db04d79f8e3f15af236327dc9139d9d4736"
   integrity sha512-2H/Owt+pHCl9YmBOYnXc3VdnxejJEjVdH+QCWL5ZAfPehEn3evygKBX3/vKRv7aTwfNbUd0E5vjJdQklH/9a6w==
@@ -237,18 +237,10 @@
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/mongodb@3.5.18":
-  version "3.5.18"
-  resolved "https://registry.yarnpkg.com/@types/mongodb/-/mongodb-3.5.18.tgz#79b1b8119e035980a4b4412239e0d05b367ec647"
-  integrity sha512-fEmnRmwXt4pEFhqWB/ZlyNaDhLfQv5GALaZAlH9Pb0kEttvsCr66umJ9pfBEEP3ks1hjlwAuMtqk/+DyZDLAXQ==
-  dependencies:
-    "@types/bson" "*"
-    "@types/node" "*"
-
-"@types/mongoose@5.7.21":
-  version "5.7.21"
-  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.7.21.tgz#a3f0b6875f85c2afae6a5f0f1a7991732329e7e8"
-  integrity sha512-KPJ4zVHWZK5vKlnJj2YDDCTmesYkW9iGB95ATfFYcdvx394Xuyh9/Cq0NSJnJ8J8PFVlhx9iBQ+Q425tEuEJvA==
+"@types/mongoose@5.7.29":
+  version "5.7.29"
+  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.7.29.tgz#247a2b4d26bf4d7e81417261f033908eef6b124e"
+  integrity sha512-+7u1akCerciZ2MG66p6Vy+9Tg7dYcgSeNbDInxdOA5vB5xAZhNiIBj8HESnJmIqOBcWxQ90HpaPWtEwggBqXug==
   dependencies:
     "@types/mongodb" "*"
     "@types/node" "*"
