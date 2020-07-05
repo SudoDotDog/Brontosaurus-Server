@@ -17,7 +17,7 @@ import { AccountValidateRoute } from './routes/portal/validate';
 import { ResetFinishRoute } from './routes/reset/finish';
 import { ResetResetRoute } from './routes/reset/reset';
 import { ResetTemporaryRoute } from './routes/reset/temporary';
-import { BrontosaurusConfig, hostPort, isDevelopment, readConfigEnvironment } from './util/conf';
+import { BrontosaurusConfig, hostPort, isDevelopment, readConfigEnvironment, staticMaxAge } from './util/conf';
 import { registerConnor } from './util/error';
 import { getVersion } from './util/version';
 
@@ -51,10 +51,9 @@ connect(config.database, {
 });
 
 // Static
-const tenHour: number = 36000000;
 app.expressStatic(Path.join(__dirname, '..', 'public', 'portal'), {
     immutable: true,
-    maxAge: tenHour,
+    maxAge: staticMaxAge,
 });
 
 // Health

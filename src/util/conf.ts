@@ -4,7 +4,12 @@
  * @description Conf
  */
 
+import { TimeBuilder } from "@sudoo/magic";
+
 export const hostPort: number = 9000;
+export const staticMaxAge: number = TimeBuilder.from({
+    hour: 10,
+}).inMilliseconds();
 
 export type BrontosaurusConfig = {
 
