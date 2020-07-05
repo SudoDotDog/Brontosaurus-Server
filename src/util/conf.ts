@@ -4,6 +4,7 @@
  * @description Conf
  */
 
+import { SudooLog } from "@sudoo/log";
 import { TimeBuilder } from "@sudoo/magic";
 
 export const hostPort: number = 9000;
@@ -31,10 +32,13 @@ export const readConfigEnvironment = (): BrontosaurusConfig => {
         };
     }
 
-    console.log('Environment variable not found');
+    SudooLog.global.error('Database environment variable not found');
     process.exit();
 
     throw new Error('never');
 };
 
-export const isDevelopment = (): boolean => process.env.NODE_ENV === 'development';
+export const isDevelopment = (): boolean => {
+
+    return process.env.NODE_ENV === 'development';
+};
