@@ -29,7 +29,6 @@
     "nodemailer": "^6.4.10"
   },
   "devDependencies": {
-    "@sudoo/mock": "^1.3.0",
     "@sudoo/triforce": "^2.7.5",
     "@sudoo/triforce-mongoose-dev": "^1.4.2",
     "@types/nodemailer": "^6.4.0"
