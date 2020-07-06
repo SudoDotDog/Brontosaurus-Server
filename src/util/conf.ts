@@ -7,7 +7,7 @@
 import { SudooLog } from "@sudoo/log";
 import { TimeBuilder } from "@sudoo/magic";
 
-export const hostPort: number = 9000;
+export const hostPort: number = 8080;
 export const staticMaxAge: number = TimeBuilder.from({
     hour: 10,
 }).inMilliseconds();
