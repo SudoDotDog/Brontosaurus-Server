@@ -29,7 +29,6 @@ export enum ERROR_CODE {
     TOKEN_EXPIRED = 4107,
     APPLICATION_HAS_NO_PORTAL_ACCESS = 4108,
     TOKEN_DOES_NOT_MATCH = 4109,
-    APPLICATION_INACTIVE = 4110,
 
     INVALID_USERNAME = 4110,
     INVALID_PASSWORD = 4111,
@@ -43,6 +42,7 @@ export enum ERROR_CODE {
     UNTRUSTED_REDIRECTION = 4122,
 
     ACCOUNT_MINT_NOT_VALID = 4130,
+    APPLICATION_INACTIVE = 4131,
 
     TOKEN_DOES_NOT_CONTAIN_INFORMATION = 4150,
     TOKEN_DOES_NOT_CONTAIN_HEADER = 4151,
@@ -77,7 +77,6 @@ export const ERROR_LIST: Record<ERROR_CODE, string> = {
     [ERROR_CODE.TOKEN_EXPIRED]: 'Token expired',
     [ERROR_CODE.APPLICATION_HAS_NO_PORTAL_ACCESS]: 'Application has no Portal Access',
     [ERROR_CODE.TOKEN_DOES_NOT_MATCH]: 'Username and token not match, username: "{}", namespace: "{}"',
-    [ERROR_CODE.APPLICATION_INACTIVE]: 'Application is not active',
 
     [ERROR_CODE.INVALID_USERNAME]: 'Invalid username, reason: "{}"',
     [ERROR_CODE.INVALID_PASSWORD]: 'Invalid password, reason: "{}"',
@@ -91,6 +90,7 @@ export const ERROR_LIST: Record<ERROR_CODE, string> = {
     [ERROR_CODE.UNTRUSTED_REDIRECTION]: 'Untrusted Redirection',
 
     [ERROR_CODE.ACCOUNT_MINT_NOT_VALID]: 'Account mint not valid',
+    [ERROR_CODE.APPLICATION_INACTIVE]: 'Application is not active',
 
     [ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_INFORMATION]: 'Token does not contain information: "{}"',
     [ERROR_CODE.TOKEN_DOES_NOT_CONTAIN_HEADER]: 'Token does not contain header',
