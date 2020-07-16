@@ -98,7 +98,8 @@ export const buildBrontosaurusBody = async (
             return null;
         }
 
-        const organizationTags: ITagModel[] = await TagController.getTagsByIds(organization.tags);
+        const filteredOrganizationTags: ObjectID[] = filterTags(application.requireTags, organization.tags);
+        const organizationTags: ITagModel[] = await TagController.getTagsByIds(filteredOrganizationTags);
 
         return {
             ...body,
