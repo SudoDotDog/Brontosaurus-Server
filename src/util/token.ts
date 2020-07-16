@@ -47,6 +47,20 @@ export const filterGroups = (applicationRequires: ObjectID[], accountGroups: Obj
     return result;
 };
 
+export const filterTags = (applicationTags: ObjectID[], tags: ObjectID[]): ObjectID[] => {
+
+    const result: ObjectID[] = [];
+    outer: for (const each of applicationTags) {
+        for (const tag of tags) {
+            if (each.equals(tag)) {
+                result.push(tag);
+                continue outer;
+            }
+        }
+    }
+    return result;
+};
+
 export const buildBrontosaurusBody = async (
     account: IAccountModel,
     namespace: INamespaceModel,
@@ -55,8 +69,10 @@ export const buildBrontosaurusBody = async (
 ): Promise<IBrontosaurusBody | null> => {
 
     const filteredGroups: ObjectID[] = filterGroups(application.requires, account.groups);
+    const filteredAccountTags: ObjectID[] = filterTags(application.requireTags, account.tags);
+
     const groups: IGroupModel[] = await GroupController.getGroupsByIds(filteredGroups);
-    const tags: ITagModel[] = await TagController.getTagsByIds(account.tags);
+    const tags: ITagModel[] = await TagController.getTagsByIds(filteredAccountTags);
 
     const displayName: string = account.displayName || account.username;
     const body: IBrontosaurusBody = {
