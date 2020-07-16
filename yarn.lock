@@ -28,16 +28,16 @@
   resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-3.4.0.tgz#e15554154d8654d405daa0260577eca5442c896e"
   integrity sha512-Zo+vpKEXMBzZdShn1dwOyKg/xwuQlCoD60fiXsP2etQTTiVKsuBljKCFATZjAsMNP9LlMibCrjlnvtCwWZLGZg==
 
-"@brontosaurus/db@^3.22.1":
-  version "3.22.1"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.22.1.tgz#7a3edc3d75969852b157e6be4c7f03b3f032f07b"
-  integrity sha512-aGyjmrgRx/A4M6uSICqcMZz9QwowUYD29Q7XDBh+bpWXmRFLwu81I9RHpSur/AG2HFZWrP+ptaNRtrQmL876mQ==
+"@brontosaurus/db@^3.23.0":
+  version "3.23.0"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/db/-/db-3.23.0.tgz#e07d353160614c225d5bc20e3e574292400d2556"
+  integrity sha512-Y4G51Ud2HZnpeG7tJ+kAR1oslxNbKkl7A0vLIt6tOC9l4/HTyyWr23QPkkFZGGUVBpSlSqB2Q48vBwsTSZjolA==
   dependencies:
     "@brontosaurus/core" "^3.4.0"
     "@brontosaurus/definition" "^3.4.0"
     "@sudoo/bark" "^2.7.2"
     "@sudoo/random" "^2.1.1"
-    mongoose "^5.9.23"
+    mongoose "^5.9.24"
     speakeasy "^2.0.0"
 
 "@brontosaurus/definition@^3.4.0":
@@ -1578,10 +1578,10 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@^5.9.23:
-  version "5.9.23"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.9.23.tgz#cb16687fbd19082bbbf0b8fab4778e2e4d85e7b1"
-  integrity sha512-fMYlMRJz0T6Ax2K2P0jt+kxXd4qaRxyfZCha1YBMczmA2EBlT5SnBlcDyJ4YQa4/z+GoDh06uH090w7BfBcdWg==
+mongoose@^5.9.24:
+  version "5.9.24"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.9.24.tgz#ba7f95529da8fa2160d9b4d708b3fe9856c56636"
+  integrity sha512-uxTLy/ExYmOfKvvbjn1PHbjSJg0SQzff+dW6jbnywtbBcfPRC/3etnG9hPv6KJe/5TFZQGxCyiSezkqa0+iJAQ==
   dependencies:
     bson "^1.1.4"
     kareem "2.3.1"
