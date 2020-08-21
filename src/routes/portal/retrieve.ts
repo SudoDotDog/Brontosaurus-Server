@@ -110,7 +110,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
                 }
 
                 if (!application.active) {
-                    throw this._error(ERROR_CODE.APPLICATION_INACTIVE)
+                    throw this._error(ERROR_CODE.APPLICATION_INACTIVE);
                 }
 
                 if (!application.portalAccess) {
@@ -159,7 +159,7 @@ export class RetrieveRoute extends BrontosaurusRoute {
                     }
 
                     if (!application.active) {
-                        throw this._error(ERROR_CODE.APPLICATION_INACTIVE)
+                        throw this._error(ERROR_CODE.APPLICATION_INACTIVE);
                     }
 
                     if (!application.portalAccess) {

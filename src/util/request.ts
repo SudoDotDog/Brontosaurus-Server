@@ -23,7 +23,7 @@ export const buildUserAgent = (request: SudooExpressRequest): string => {
         ? `${userAgentOverride} [${parsedUserAgent}]`
         : parsedUserAgent;
 
-    return combinedUserAgent
+    return combinedUserAgent;
 };
 
 export const buildIps = (request: SudooExpressRequest): string[] => {
