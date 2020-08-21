@@ -55,10 +55,10 @@
   resolved "https://registry.yarnpkg.com/@sudoo/eslint-config-react/-/eslint-config-react-1.3.0.tgz#b9cc76ff50234bf5df8d3c1fb5764122860e65b6"
   integrity sha512-f06QX+GZsLQrZE04R37CGTa6eUjJPAVEOt5RTFTn4Pq/0eogyHqk3IhzFNtbvCF9qdv9M/J1JHoyGn15kr6Jwg==
 
-"@sudoo/eslint-config@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/eslint-config/-/eslint-config-1.4.0.tgz#930cc99e7ab94874b0aa0283f7f23090df2f3624"
-  integrity sha512-WBcHVBc/hRqTOuCKonheq/bM8raJ0R27Ucxi01BbEPmW4VKpLhJha1rpyHbYmVrVSi6aBt4HxAm0ZhGhIT6CFQ==
+"@sudoo/eslint-config@1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/eslint-config/-/eslint-config-1.5.0.tgz#6394523d5366d95dd18685af700673e14fcf6270"
+  integrity sha512-pFNYuEUwRCsdK6/KuffiRxLiuMWL8hKXEfbAVndBlsGg83C1VZ6B7BFKb2C+QgSIp1vqhmZZcrvB23+LFCQIKQ==
 
 "@sudoo/express@^2.11.0":
   version "2.11.0"
@@ -97,6 +97,11 @@
   resolved "https://registry.yarnpkg.com/@sudoo/magic/-/magic-1.8.0.tgz#675396d0217d11884eed21af641c43b6969164de"
   integrity sha512-xAfwMTMB4gXLdbK7iSqS9d26UPvT6+QTJ+SOz4wp0ANpvLarjkCKTNF4x4noKtWikIzZoan9l8J5Vr+lba3/aw==
 
+"@sudoo/mocha-config-react-native@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/mocha-config-react-native/-/mocha-config-react-native-1.0.0.tgz#82ff531db5475ec99d9e236cd22619a897bc68f5"
+  integrity sha512-uOLi+0kJZV/QkPevD3EloVE8ICL+GyLz6P80kDn/4NXi0O/wbxI9891ZIw9x+2PaN8IxrZ2pZNBxI5r8RZCHXA==
+
 "@sudoo/mocha-config-react@1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@sudoo/mocha-config-react/-/mocha-config-react-1.1.0.tgz#482276a6ed80494389627ab085b578cb09910de5"
@@ -125,15 +130,16 @@
     "@types/mongodb" "3.5.25"
     "@types/mongoose" "5.7.29"
 
-"@sudoo/triforce@^2.7.13":
-  version "2.7.13"
-  resolved "https://registry.yarnpkg.com/@sudoo/triforce/-/triforce-2.7.13.tgz#97b6fd83c5685ed364cabb4f37342d9d3498f6f9"
-  integrity sha512-8Ehq+lRiAshjmsuqdVSyFnsxYElxA/UzPlq5R6hyodwCVEU7rwaAjW/838pDgS1PG0FgQvVc/iYEVPtilU4BtQ==
+"@sudoo/triforce@^2.8.0":
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/triforce/-/triforce-2.8.0.tgz#893df3f9cf1ca30b909ab80ddd3425397d280b39"
+  integrity sha512-M7mdPs/QRwtf1ebqDTfWIurHPURcwI1/YpG9vVZ4iA5XMKpl3sQV8RHVOKNWQsR0f2dc07kjj9x1tE6Pl/bKXw==
   dependencies:
-    "@sudoo/eslint-config" "1.4.0"
+    "@sudoo/eslint-config" "1.5.0"
     "@sudoo/eslint-config-react" "1.3.0"
     "@sudoo/mocha-config" "1.0.0"
     "@sudoo/mocha-config-react" "1.1.0"
+    "@sudoo/mocha-config-react-native" "^1.0.0"
     "@types/chai" "4.2.12"
     "@types/chance" "1.1.0"
     "@types/mocha" "8.0.3"
@@ -146,7 +152,7 @@
     eslint-plugin-react "7.20.6"
     mocha "8.1.1"
     ts-node "8.10.2"
-    typescript "3.9.7"
+    typescript "4.0.2"
 
 "@sudoo/verify@^1.15.0":
   version "1.15.0"
@@ -2290,10 +2296,10 @@ type-is@~1.6.17, type-is@~1.6.18:
     media-typer "0.3.0"
     mime-types "~2.1.24"
 
-typescript@3.9.7:
-  version "3.9.7"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
-  integrity sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
+typescript@4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.0.2.tgz#7ea7c88777c723c681e33bf7988be5d008d05ac2"
+  integrity sha512-e4ERvRV2wb+rRZ/IQeb3jm2VxBsirQLpQhdxplZ2MEzGvDkkMmPglecnNDfSUBivMjP93vRbngYYDQqQ/78bcQ==
 
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
