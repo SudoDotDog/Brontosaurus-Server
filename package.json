@@ -19,17 +19,17 @@
     "@brontosaurus/core": "^3.4.0",
     "@brontosaurus/db": "^3.23.0",
     "@sudoo/bark": "^2.7.2",
-    "@sudoo/express": "^2.11.0",
+    "@sudoo/express": "^2.11.1",
     "@sudoo/extract": "^1.4.2",
     "@sudoo/log": "^1.4.1",
     "@sudoo/magic": "^1.8.0",
-    "@sudoo/pattern": "^1.4.1",
-    "@sudoo/verify": "^1.15.0",
+    "@sudoo/pattern": "^1.5.0",
+    "@sudoo/verify": "^1.16.0",
     "connor": "^2.7.0",
     "nodemailer": "^6.4.11"
   },
   "devDependencies": {
-    "@sudoo/triforce": "^2.7.13",
+    "@sudoo/triforce": "^2.8.0",
     "@sudoo/triforce-mongoose-dev": "^1.4.3",
     "@types/nodemailer": "^6.4.0"
   },
