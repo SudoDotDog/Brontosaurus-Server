@@ -23,7 +23,7 @@
     "@sudoo/extract": "^1.4.2",
     "@sudoo/log": "^1.4.1",
     "@sudoo/magic": "^1.8.0",
-    "@sudoo/pattern": "^1.5.0",
+    "@sudoo/pattern": "^1.6.1",
     "@sudoo/verify": "^1.16.0",
     "connor": "^2.7.0",
     "nodemailer": "^6.4.11"
