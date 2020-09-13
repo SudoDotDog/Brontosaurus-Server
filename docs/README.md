@@ -5,4 +5,8 @@
 
 :zap: Thunder
 
+## Redirection
+
+This repository is the server implementation for `@brontosaurus/core`.
+
 Please visit [Brontosaurus Github Repository](https://github.com/SudoDotDog/Brontosaurus) for project information and install instructions.
