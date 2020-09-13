@@ -4,3 +4,5 @@
 [![codecov](https://codecov.io/gh/SudoDotDog/Brontosaurus-Server/branch/master/graph/badge.svg)](https://codecov.io/gh/SudoDotDog/Brontosaurus-Server)
 
 :zap: Thunder
+
+Please visit [Brontosaurus Github Repository](https://github.com/SudoDotDog/Brontosaurus) for project information and install instructions.
