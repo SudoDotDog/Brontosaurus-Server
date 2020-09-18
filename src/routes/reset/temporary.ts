@@ -13,6 +13,7 @@ import { createStringPattern, Pattern } from "@sudoo/pattern";
 import { fillStringedResult, StringedResult } from "@sudoo/verify";
 import { sentEmailAgent, SentEmailOption } from "../../agent/email";
 import { autoHook } from "../../handlers/hook";
+import { compareEmail } from "../../util/email";
 import { buildNotMatchReason, ERROR_CODE, NOT_MATCH_REASON } from "../../util/error";
 import { saveResetByObjects } from "../../util/reset";
 import { BaseAttemptBody, BrontosaurusRoute, extendAttemptBodyPattern } from "../basic";
@@ -85,7 +86,8 @@ export class ResetTemporaryRoute extends BrontosaurusRoute {
                 throw this._error(ERROR_CODE.INACTIVE_ACCOUNT, account.username, namespaceInstance.namespace);
             }
 
-            if (account.email !== body.email) {
+            const emailCompareResult: boolean = compareEmail(account.email, body.email);
+            if (!emailCompareResult) {
 
                 const failedReset: IResetModel = await saveResetByObjects({
                     account,
