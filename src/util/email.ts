@@ -19,8 +19,14 @@ export const compareEmail = (left?: string, right?: string): boolean => {
         return false;
     }
 
-    const leftPLusSplited: string[] = left.split('+');
-    const rightPLusSplited: string[] = right.split('+');
+    const leftUser: string = leftDomainSplited[0];
+    const rightUser: string = rightDomainSplited[0];
+
+    const leftDomain: string = leftDomainSplited[1];
+    const rightDomain: string = rightDomainSplited[1];
+
+    const leftPLusSplited: string[] = leftUser.split('+');
+    const rightPLusSplited: string[] = rightUser.split('+');
 
     if (leftPLusSplited.length === 1
         && rightPLusSplited.length === 1) {
@@ -34,12 +40,10 @@ export const compareEmail = (left?: string, right?: string): boolean => {
 
     const leftRejoin: string = leftPLusSplited.length === 1
         ? left
-        : leftPLusSplited[0] + '@' + leftDomainSplited[1];
+        : leftPLusSplited[0] + '@' + leftDomain;
     const rightRejoin: string = rightPLusSplited.length === 1
         ? right
-        : rightPLusSplited[0] + '@' + rightDomainSplited[1];
-
-    console.log(leftRejoin, rightRejoin);
+        : rightPLusSplited[0] + '@' + rightDomain;
 
     return leftRejoin.toLowerCase() === rightRejoin.toLowerCase();
 };
