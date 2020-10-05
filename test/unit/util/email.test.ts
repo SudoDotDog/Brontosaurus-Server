@@ -22,4 +22,31 @@ describe('Given [Email] Helper Methods', (): void => {
 
         expect(result).to.be.true;
     });
+
+    it('should be able to compare email with double plus', (): void => {
+
+        const left: string = 'hello+world@email.com';
+        const right: string = 'hello+foo@email.com';
+        const result: boolean = compareEmail(left, right);
+
+        expect(result).to.be.true;
+    });
+
+    it('should be able to compare email with double plus - sad path', (): void => {
+
+        const left: string = 'hello+world@email.com';
+        const right: string = 'hellofoo+foo@email.com';
+        const result: boolean = compareEmail(left, right);
+
+        expect(result).to.be.false;
+    });
+
+    it('should be able to compare email with single plus', (): void => {
+
+        const left: string = 'hello+world@email.com';
+        const right: string = 'hello@email.com';
+        const result: boolean = compareEmail(left, right);
+
+        expect(result).to.be.true;
+    });
 });
