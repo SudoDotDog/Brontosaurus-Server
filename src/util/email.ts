@@ -39,5 +39,7 @@ export const compareEmail = (left?: string, right?: string): boolean => {
         ? right
         : rightPLusSplited[0] + '@' + rightDomainSplited[1];
 
+    console.log(leftRejoin, rightRejoin);
+
     return leftRejoin.toLowerCase() === rightRejoin.toLowerCase();
 };

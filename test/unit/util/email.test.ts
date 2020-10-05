@@ -32,6 +32,24 @@ describe('Given [Email] Helper Methods', (): void => {
         expect(result).to.be.false;
     });
 
+    it('should be able to compare email extension', (): void => {
+
+        const left: string = 'hello@email.com';
+        const right: string = 'hello@email.net';
+        const result: boolean = compareEmail(left, right);
+
+        expect(result).to.be.false;
+    });
+
+    it('should be able to compare plus-added domain', (): void => {
+
+        const left: string = 'hello@email+world.com';
+        const right: string = 'hello@email.com';
+        const result: boolean = compareEmail(left, right);
+
+        expect(result).to.be.false;
+    });
+
     it('should be able to compare email with double plus', (): void => {
 
         const left: string = 'hello+world@email.com';
