@@ -59,7 +59,7 @@ app.expressStatic(Path.join(__dirname, '..', 'public', 'portal'), {
 
 // Health
 app.health('/health', () => {
-    return Mongoose.connection.readyState >= 1;
+    return connection.readyState >= 1;
 });
 
 // Portal
