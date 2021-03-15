@@ -31,7 +31,7 @@
   "devDependencies": {
     "@sudoo/triforce": "^2.9.18",
     "@sudoo/triforce-mongoose-dev": "^1.4.4",
-    "@types/nodemailer": "^6.4.0"
+    "@types/nodemailer": "^6.4.1"
   },
   "nyc": {
     "extension": [
