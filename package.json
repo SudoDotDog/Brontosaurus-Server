@@ -29,7 +29,7 @@
     "nodemailer": "^6.6.2"
   },
   "devDependencies": {
-    "@sudoo/triforce": "^2.9.26",
+    "@sudoo/triforce": "^2.9.28",
     "@sudoo/triforce-mongoose-dev": "^1.5.0",
     "@types/nodemailer": "^6.4.2"
   },
