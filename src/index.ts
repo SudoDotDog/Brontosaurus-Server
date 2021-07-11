@@ -29,10 +29,10 @@ const setting: SudooExpressApplication = SudooExpressApplication.create(
 
 if (isDevelopment()) {
     setting.allowCrossOrigin();
-    SudooLog.global.level(LOG_LEVEL.VERBOSE);
+    SudooLog.global.setLevel(LOG_LEVEL.VERBOSE);
     SudooLog.global.showTime();
 } else {
-    SudooLog.global.level(LOG_LEVEL.INFO);
+    SudooLog.global.setLevel(LOG_LEVEL.INFO);
 }
 
 setting.useBodyParser();

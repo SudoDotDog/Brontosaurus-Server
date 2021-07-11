@@ -144,7 +144,7 @@ export const compareGroups = (userGroups: string[], targetGroups: any): boolean 
         return false;
     }
 
-    for (const need of targetGroups) {
+    for (const need of targetGroups as string[]) {
 
         if (!userGroups.includes(need)) {
             return false;
