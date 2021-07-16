@@ -157,10 +157,10 @@
     "@sudoo/bark" "^2.7.2"
     connor "^2.7.0"
 
-"@sudoo/log@^1.5.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@sudoo/log/-/log-1.5.1.tgz#79415d70172a250734fb50ee472e8c0e00a4fbad"
-  integrity sha512-QIFvoWgOVUSyTpj2iFQfFFrslxXsL9TY4Rm8SANok/GGZ0ezeEfgs1aEKlzUXMiXIsXnG4cJ0CfXSe1eXZ3L8g==
+"@sudoo/log@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/log/-/log-1.6.0.tgz#39415db738effd78ef46594d9f9ae15ef7ff86e4"
+  integrity sha512-u7FE+Ay11m+WNk1ggKIxQvHhctta3CJV6wejYOnTV0JA+x4Yj1h0BP/7NX54p/PahnqCKmzealanw73NT3drkw==
   dependencies:
     "@sudoo/magic" "^1.8.0"
 
