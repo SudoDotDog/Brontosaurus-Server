@@ -190,10 +190,10 @@
   dependencies:
     "@sudoo/magic" "^1.8.0"
 
-"@sudoo/magic@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/magic/-/magic-1.8.0.tgz#675396d0217d11884eed21af641c43b6969164de"
-  integrity sha512-xAfwMTMB4gXLdbK7iSqS9d26UPvT6+QTJ+SOz4wp0ANpvLarjkCKTNF4x4noKtWikIzZoan9l8J5Vr+lba3/aw==
+"@sudoo/magic@^1.8.0", "@sudoo/magic@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/magic/-/magic-1.9.0.tgz#8ba9485604d85c6f88dd891d393e3bb4bc508355"
+  integrity sha512-3z6oK1cEh0uXIyQXgiReQB7IdORIfY638MsiwKyUjXPZeetHiLdLQpNEiCbAxTDPb7kaQvRT7xHlMFI7/LwA+g==
 
 "@sudoo/mocha-config-react-native@1.1.0":
   version "1.1.0"
