@@ -26,7 +26,7 @@
     "@sudoo/pattern": "^1.7.0",
     "@sudoo/verify": "^1.17.1",
     "connor": "^2.7.0",
-    "nodemailer": "^6.7.3"
+    "nodemailer": "^6.7.4"
   },
   "devDependencies": {
     "@sudoo/triforce": "^3.5.1",
