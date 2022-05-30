@@ -480,10 +480,10 @@
   resolved "https://registry.yarnpkg.com/@sudoo/tsconfig/-/tsconfig-1.6.0.tgz#4c03395d7ddb10f3666d9437820f1d92c6f06895"
   integrity sha512-o9mL3Bxt5C3PXa5mR+E4aejg+2OK+nU9sekFRPB7MFk5NNX1tgsK8DGD00OOHxDt7pFdO3EkOdBLzdNZbjSzoQ==
 
-"@sudoo/verify@^1.17.1":
-  version "1.17.1"
-  resolved "https://registry.yarnpkg.com/@sudoo/verify/-/verify-1.17.1.tgz#b8e220a472a3b0261878687d78d19e08b2ce3488"
-  integrity sha512-w9Jb9dvBK/+uMnsszLyb1pyAShuHCPR4BXZKT0OTDaJuBR/dd9zTNd+u69WotFPJgMIHmg7Pd59p01MSSdDeKw==
+"@sudoo/verify@^1.19.0":
+  version "1.19.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/verify/-/verify-1.19.0.tgz#37c01d8d0d5254e6dc4313e6af936ffaa64d2b1f"
+  integrity sha512-2ngxMpoXgatRm9hXRtnnEZZdmkd99xMp43bmHe3TDBYR6gNsoMtw4lZ1Y0gZwX4AnR2DvPBw/bFlFNvZ2B0HSA==
 
 "@tsconfig/node10@^1.0.7":
   version "1.0.8"
