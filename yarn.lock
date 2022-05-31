@@ -421,10 +421,10 @@
   resolved "https://registry.yarnpkg.com/@sudoo/mocha-config/-/mocha-config-3.1.0.tgz#96560cbcb7a9b998f627f12c1a0488bba28a1d22"
   integrity sha512-SOaI7PgxywTp9TxyJOYt0yiirgpNs6xWQqdUWUfAiJ1DwV+RPpzDDC7fCAJ1nDDHilzleWgliUNTbG/W3w8VdA==
 
-"@sudoo/pattern@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/pattern/-/pattern-1.7.0.tgz#bbf681ebca5c36452da059a42402485be1a86c53"
-  integrity sha512-dYw1DHevD940vHmVe+u7PQHQ3cIjzNrkZMakvZVcxNMjJJnVOrDEOOeiZndDLWILqbkWe0/uO3U67GOIHCxxEg==
+"@sudoo/pattern@^1.10.0":
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/pattern/-/pattern-1.10.0.tgz#50df7e10a1dc5b8f259461eba32e7ff13243b070"
+  integrity sha512-XTkI4j3F6OmJo5LQcOsSjIowmdbETm2H0GikM683rt46I4Lau6t6T7iicwqwmEY6Wr/4xNqqhIZJ2QL+92XgBg==
 
 "@sudoo/random@^2.1.1":
   version "2.2.0"
