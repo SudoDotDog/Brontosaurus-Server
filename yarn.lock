@@ -394,12 +394,12 @@
     "@sudoo/bark" "^2.7.2"
     connor "^2.7.0"
 
-"@sudoo/log@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/log/-/log-1.6.0.tgz#39415db738effd78ef46594d9f9ae15ef7ff86e4"
-  integrity sha512-u7FE+Ay11m+WNk1ggKIxQvHhctta3CJV6wejYOnTV0JA+x4Yj1h0BP/7NX54p/PahnqCKmzealanw73NT3drkw==
+"@sudoo/log@^1.7.0":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/log/-/log-1.7.0.tgz#df8e578de457274dfe906fa939d4eecd4140beee"
+  integrity sha512-LgvMFMVoqeSRJcq8QA0tZUsR9kgsulUXy/xiFcfLFX5USA8mnoutVOeFjcTKXetj/KFJP+2RUGB+yskj9BDx4A==
   dependencies:
-    "@sudoo/magic" "^1.8.0"
+    "@sudoo/magic" "^1.9.0"
 
 "@sudoo/magic@^1.8.0", "@sudoo/magic@^1.9.0":
   version "1.9.0"
