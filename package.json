@@ -32,7 +32,7 @@
     "@sudoo/triforce": "^3.7.0",
     "@sudoo/triforce-mongoose-dev": "^1.5.0",
     "@types/nodemailer": "^6.4.4",
-    "ts-node": "^10.8.0"
+    "ts-node": "^10.8.1"
   },
   "nyc": {
     "extension": [
